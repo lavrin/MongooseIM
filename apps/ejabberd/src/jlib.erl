@@ -39,6 +39,8 @@
          remove_attr/2,
          make_jid/3,
          make_jid/1,
+         make_jid_noprep/3,
+         make_jid_noprep/1,
          are_equal_jids/2,
          binary_to_jid/1,
          jid_to_binary/1,
@@ -48,6 +50,7 @@
          resourceprep/1,
          jid_to_lower/1,
          jid_tolower/1,
+         jid_to_lus/1,
          jid_remove_resource/1,
          jid_replace_resource/2,
          iq_query_info/1,
@@ -84,12 +87,15 @@
 -type rsm_out()   :: #rsm_out{}.
 -type xmlcdata()  :: #xmlcdata{}.
 
+-type xmlch() :: xmlel() | xmlcdata(). % (XML ch)ild
+
 -type binary_pair() :: {binary(), binary()}.
 
 -export_type([xmlel/0, xmlstreamstart/0, xmlstreamend/0, xmlstreamel/0,
               binary_pair/0,
               rsm_in/0, rsm_out/0,
-              xmlcdata/0
+              xmlcdata/0,
+              xmlch/0
              ]).
 
 %% Datetime format where all or some elements may be 'false' or integer()
@@ -290,6 +296,21 @@ make_jid(User, Server, Resource) ->
 make_jid({User, Server, Resource}) ->
     make_jid(User, Server, Resource).
 
+-spec make_jid_noprep(User     :: ejabberd:luser(),
+                      Server   :: ejabberd:lserver(),
+                      Resource :: ejabberd:lresource()) -> ejabberd:jid().
+make_jid_noprep(LUser, LServer, LResource) ->
+    #jid{user = LUser,
+         server = LServer,
+         resource = LResource,
+         luser = LUser,
+         lserver = LServer,
+         lresource = LResource}.
+
+-spec make_jid_noprep(ejabberd:simple_jid()) -> ejabberd:jid() | error.
+make_jid_noprep({LUser, LServer, LResource}) ->
+    make_jid_noprep(LUser, LServer, LResource).
+
 -spec are_equal_jids(ejabberd:jid(), ejabberd:jid()) -> boolean().
 are_equal_jids(#jid{luser = LUser, lserver = LServer, lresource = LRes},
                #jid{luser = LUser, lserver = LServer, lresource = LRes}) ->
@@ -346,9 +367,12 @@ binary_to_jid3(<<>>, N, S, R) ->
 
 
 
--spec jid_to_binary(ejabberd:simple_jid() | ejabberd:jid()) -> binary().
+-spec jid_to_binary(ejabberd:simple_jid() | ejabberd:simple_bare_jid()
+                    | ejabberd:jid()) -> binary().
 jid_to_binary(#jid{user = User, server = Server, resource = Resource}) ->
     jid_to_binary({User, Server, Resource});
+jid_to_binary({User, Server}) ->
+    jid_to_binary({User, Server, <<>>});
 jid_to_binary({Node, Server, Resource}) ->
     S1 = case Node of
              <<>> ->
@@ -431,6 +455,9 @@ jid_to_lower({U, S, R}) ->
             end
     end.
 
+-spec jid_to_lus(JID :: ejabberd:jid()) -> error | ejabberd:simple_bare_jid().
+jid_to_lus(#jid{luser = U, lserver = S}) ->
+    {U, S}.
 
 -spec jid_remove_resource(ejabberd:simple_jid() | ejabberd:jid()) ->
                           ejabberd:simple_jid() | ejabberd:jid().
