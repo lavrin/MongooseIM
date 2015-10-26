@@ -221,8 +221,9 @@ get_last_iq(IQ, SubEl, LUser, LServer) ->
 get_last(LUser, LServer) ->
     ?BACKEND:get_last(LUser, LServer).
 
--spec count_active_users(ejabberd:lserver(), non_neg_integer(), '<' | '>')
-        -> non_neg_integer().
+-spec count_active_users(ejabberd:lserver(), non_neg_integer(),
+                         '<' | '>') ->
+    non_neg_integer().
 count_active_users(LServer, Timestamp, Comparator) ->
     ?BACKEND:count_active_users(LServer, Timestamp, Comparator).
 
@@ -247,7 +248,7 @@ get_last_info(LUser, LServer) ->
 
 -spec remove_user(ejabberd:user(), ejabberd:server()) -> ok | {error, term()}.
 remove_user(User, Server) ->
-    LUser = jlib:nodeprep(User),
-    LServer = jlib:nameprep(Server),
+    LUser = jid:nodeprep(User),
+    LServer = jid:nameprep(Server),
     ?BACKEND:remove_user(LUser, LServer).
 

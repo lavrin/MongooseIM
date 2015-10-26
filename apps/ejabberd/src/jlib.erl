@@ -35,19 +35,6 @@
          replace_from_to_attrs/3,
          replace_from_to/3,
          remove_attr/2,
-         make_jid/3,
-         make_jid/1,
-         are_equal_jids/2,
-         binary_to_jid/1,
-         jid_to_binary/1,
-         is_nodename/1,
-         nodeprep/1,
-         nameprep/1,
-         resourceprep/1,
-         jid_to_lower/1,
-         jid_tolower/1,
-         jid_remove_resource/1,
-         jid_replace_resource/2,
          iq_query_info/1,
          iq_query_or_response_info/1,
          iq_to_xml/1,
@@ -66,7 +53,7 @@
          stanza_errort/5,
          stream_error/1,
          stream_errort/3,
-	     remove_delay_tags/1]).
+         remove_delay_tags/1]).
 
 -include_lib("exml/include/exml.hrl").
 -include_lib("exml/include/exml_stream.hrl"). % only used to define stream types
@@ -179,7 +166,7 @@ make_config_change_message(Status) ->
                       Reason :: binary()) -> xmlel().
 make_invitation(From, Password, Reason) ->
     Elements = [#xmlel{name = <<"invite">>,
-                       attrs = [{<<"from">>, jlib:jid_to_binary(From)}]}],
+                       attrs = [{<<"from">>, jid:to_binary(From)}]}],
     Elements2 = case Password of
         <<>> -> Elements;
         _ -> [#xmlel{name = <<"password">>,
@@ -216,7 +203,7 @@ form_field({Var, Type, Value}) ->
 make_voice_approval_form(From, Nick, Role) ->
   Fields = [{<<"FORM_TYPE">>, <<"hidden">>, ?NS_MUC_REQUEST},
     {<<"muc#role">>, <<"text-single">>, Role, <<"Request role">>},
-    {<<"muc#jid">>, <<"jid-single">>, jid_to_binary(From), <<"User ID">>},
+    {<<"muc#jid">>, <<"jid-single">>, jid:to_binary(From), <<"User ID">>},
     {<<"muc#roomnick">>, <<"text-single">>, Nick, <<"Room Nickname">>},
     {<<"muc#request_allow">>, <<"boolean">>, <<"false">>, <<"Grant voice to this person?">>}
   ],
@@ -248,8 +235,8 @@ replace_from_to_attrs(From, To, Attrs) ->
                       To :: ejabberd:simple_jid() | ejabberd:jid(),
                       XE :: xmlel()) -> xmlel().
 replace_from_to(From, To, XE = #xmlel{attrs = Attrs}) ->
-    NewAttrs = replace_from_to_attrs(jlib:jid_to_binary(From),
-                                     jlib:jid_to_binary(To),
+    NewAttrs = replace_from_to_attrs(jid:to_binary(From),
+                                     jid:to_binary(To),
                                      Attrs),
     XE#xmlel{attrs = NewAttrs}.
 
@@ -258,195 +245,6 @@ replace_from_to(From, To, XE = #xmlel{attrs = Attrs}) ->
 remove_attr(Attr, XE = #xmlel{attrs = Attrs}) ->
     NewAttrs = lists:keydelete(Attr, 1, Attrs),
     XE#xmlel{attrs = NewAttrs}.
-
-
--spec make_jid(User     :: ejabberd:user(),
-               Server   :: ejabberd:server(),
-               Resource :: ejabberd:resource()) -> ejabberd:jid() | error.
-make_jid(User, Server, Resource) ->
-    case nodeprep(User) of
-        error -> error;
-        LUser ->
-            case nameprep(Server) of
-                error -> error;
-                LServer ->
-                    case resourceprep(Resource) of
-                        error -> error;
-                        LResource ->
-                            #jid{user = User,
-                                 server = Server,
-                                 resource = Resource,
-                                 luser = LUser,
-                                 lserver = LServer,
-                                 lresource = LResource}
-                    end
-            end
-    end.
-
-
--spec make_jid(ejabberd:simple_jid()) -> ejabberd:jid() | error.
-make_jid({User, Server, Resource}) ->
-    make_jid(User, Server, Resource).
-
--spec are_equal_jids(ejabberd:jid(), ejabberd:jid()) -> boolean().
-are_equal_jids(#jid{luser = LUser, lserver = LServer, lresource = LRes},
-               #jid{luser = LUser, lserver = LServer, lresource = LRes}) ->
-    true;
-are_equal_jids(_, _) ->
-    false.
-
-
--spec binary_to_jid(binary()) -> 'error' | ejabberd:jid().
-binary_to_jid(J) ->
-    binary_to_jid1(J, []).
-
-
--spec binary_to_jid1(binary(), [byte()]) -> 'error' | ejabberd:jid().
-binary_to_jid1(<<$@, _J/binary>>, []) ->
-    error;
-binary_to_jid1(<<$@, J/binary>>, N) ->
-    binary_to_jid2(J, lists:reverse(N), []);
-binary_to_jid1(<<$/, _J/binary>>, []) ->
-    error;
-binary_to_jid1(<<$/, J/binary>>, N) ->
-    binary_to_jid3(J, [], lists:reverse(N), []);
-binary_to_jid1(<<C, J/binary>>, N) ->
-    binary_to_jid1(J, [C | N]);
-binary_to_jid1(<<>>, []) ->
-    error;
-binary_to_jid1(<<>>, N) ->
-    make_jid(<<>>, list_to_binary(lists:reverse(N)), <<>>).
-
-
-%% @doc Only one "@" is admitted per JID
--spec binary_to_jid2(binary(),[byte()],[byte()]) -> 'error' | ejabberd:jid().
-binary_to_jid2(<<$@, _J/binary>>, _N, _S) ->
-    error;
-binary_to_jid2(<<$/, _J/binary>>, _N, []) ->
-    error;
-binary_to_jid2(<<$/, J/binary>>, N, S) ->
-    binary_to_jid3(J, N, lists:reverse(S), []);
-binary_to_jid2(<<C, J/binary>>, N, S) ->
-    binary_to_jid2(J, N, [C | S]);
-binary_to_jid2(<<>>, _N, []) ->
-    error;
-binary_to_jid2(<<>>, N, S) ->
-    make_jid(list_to_binary(N), list_to_binary(lists:reverse(S)), <<>>).
-
-
--spec binary_to_jid3(binary(),[byte()],[byte()],[byte()]) -> 'error' | ejabberd:jid().
-binary_to_jid3(<<C, J/binary>>, N, S, R) ->
-    binary_to_jid3(J, N, S, [C | R]);
-binary_to_jid3(<<>>, N, S, R) ->
-    make_jid(list_to_binary(N), list_to_binary(S), list_to_binary(lists:reverse(R))).
-
-
-
-
-
--spec jid_to_binary(ejabberd:simple_jid() | ejabberd:jid()) -> binary().
-jid_to_binary(#jid{user = User, server = Server, resource = Resource}) ->
-    jid_to_binary({User, Server, Resource});
-jid_to_binary({Node, Server, Resource}) ->
-    S1 = case Node of
-             <<>> ->
-                 <<>>;
-             _ ->
-                 <<Node/binary, "@">>
-         end,
-    S2 = <<S1/binary, Server/binary>>,
-    S3 = case Resource of
-             <<>> ->
-                 S2;
-             _ ->
-                 <<S2/binary, "/", Resource/binary>>
-         end,
-    S3.
-
--spec is_nodename(<<>> | binary()) -> boolean().
-is_nodename([]) ->
-    false;
-is_nodename(J) ->
-    nodeprep(J) /= error.
-
--define(SANE_LIMIT, 1024).
--spec nodeprep(ejabberd:user()) -> 'error' | ejabberd:lserver().
-nodeprep(S) when is_binary(S), size(S) < ?SANE_LIMIT ->
-    R = stringprep:nodeprep(S),
-    if
-        size(R) < ?SANE_LIMIT -> R;
-        true -> error
-    end;
-nodeprep(_) ->
-    error.
-
-
--spec nameprep(ejabberd:server()) -> 'error' | ejabberd:luser().
-nameprep(S) when is_binary(S), size(S) < ?SANE_LIMIT ->
-    R = stringprep:nameprep(S),
-    if
-        size(R) < ?SANE_LIMIT -> R;
-        true -> error
-    end;
-nameprep(_) ->
-    error.
-
-
--spec resourceprep(ejabberd:resource()) ->
-                                        'error' | ejabberd:lresource().
-resourceprep(S) when size(S) < ?SANE_LIMIT ->
-    R = stringprep:resourceprep(S),
-    if
-        size(R) < ?SANE_LIMIT -> R;
-        true -> error
-    end;
-resourceprep(_) ->
-    error.
-
-
-%% @doc You are a bad person if you use this function.
--spec jid_tolower(JID :: ejabberd:simple_jid() | ejabberd:jid()
-                 ) -> error | ejabberd:simple_jid().
-jid_tolower(Any) -> jid_to_lower(Any).
-
-
--spec jid_to_lower(JID :: ejabberd:simple_jid() | ejabberd:jid()
-                 ) -> error | ejabberd:simple_jid().
-jid_to_lower(#jid{luser = U, lserver = S, lresource = R}) ->
-    {U, S, R};
-jid_to_lower({U, S, R}) ->
-    case nodeprep(U) of
-        error -> error;
-        LUser ->
-            case nameprep(S) of
-                error -> error;
-                LServer ->
-                    case resourceprep(R) of
-                        error -> error;
-                        LResource ->
-                            {LUser, LServer, LResource}
-                    end
-            end
-    end.
-
-
--spec jid_remove_resource(ejabberd:simple_jid() | ejabberd:jid()) ->
-                          ejabberd:simple_jid() | ejabberd:jid().
-jid_remove_resource(#jid{} = JID) ->
-    JID#jid{resource = <<>>, lresource = <<>>};
-jid_remove_resource({U, S, _R}) ->
-    {U, S, <<>>}.
-
-
--spec jid_replace_resource(ejabberd:jid(), ejabberd:resource()) ->
-                                                  'error' | ejabberd:jid().
-jid_replace_resource(JID, Resource) ->
-    case resourceprep(Resource) of
-        error -> error;
-        LResource ->
-            JID#jid{resource = Resource, lresource = LResource}
-    end.
-
 
 -spec iq_query_info(xmlel()) -> 'invalid' | 'not_iq' | 'reply' | ejabberd:iq().
 iq_query_info(El) ->
@@ -729,7 +527,7 @@ timestamp_to_iso({{Year, Month, Day}, {Hour, Minute, Second}}, Timezone) ->
 timestamp_to_xml(DateTime, Timezone, FromJID, Desc) ->
     {T_string, Tz_string} = timestamp_to_iso(DateTime, Timezone),
     Text = [#xmlcdata{content = Desc}],
-    From = jlib:jid_to_binary(FromJID),
+    From = jid:to_binary(FromJID),
     #xmlel{name = <<"delay">>,
            attrs = [{<<"xmlns">>, ?NS_DELAY},
                     {<<"from">>, From},

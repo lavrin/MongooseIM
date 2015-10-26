@@ -62,7 +62,7 @@ process_command(From, To, Packet) ->
             #xmlel{name = Name} = Packet,
             case Name of
         <<"message">> ->
-                    LFrom = jlib:jid_tolower(jlib:jid_remove_resource(From)),
+                    LFrom = jid:to_lower(jid:remove_resource(From)),
                     case lists:member(LFrom, get_admin_jids()) of
                         true ->
                             Body = xml:get_path_s(Packet, [{elem, <<"body">>}, cdata]),
@@ -206,10 +206,10 @@ process_large_heap(Pid, Info) ->
                      "(~w) The process ~w is consuming too much memory:~n~p~n"
                      "~s",
                      [node(), Pid, Info, DetailedInfo]),
-        From = jlib:make_jid(<<"">>, Host, <<"watchdog">>),
+            From = jid:make(<<"">>, Host, <<"watchdog">>),
             lists:foreach(
               fun(S) ->
-                      case jlib:binary_to_jid(list_to_binary(S)) of
+                      case jid:from_binary(list_to_binary(S)) of
                           error -> ok;
                           JID -> send_message(From, JID, Body)
                       end
@@ -237,9 +237,9 @@ get_admin_jids() ->
         JIDs when is_list(JIDs) ->
             lists:flatmap(
               fun(S) ->
-                      case jlib:binary_to_jid(list_to_binary(S)) of
+                      case jid:from_binary(list_to_binary(S)) of
                           error -> [];
-                          JID -> [jlib:jid_tolower(JID)]
+                          JID -> [jid:to_lower(JID)]
                       end
               end, JIDs);
         _ ->
