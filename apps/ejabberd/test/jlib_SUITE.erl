@@ -75,42 +75,42 @@ make_iq() ->
                       ]}.
 
 binary_to_jid(_C) ->
-    Prop = ?FORALL(BinJid, valid_jid(),
-                   is_valid_jid_record(jlib:binary_to_jid(BinJid))),
+    Prop = ?FORALL(BinJid, (valid_jid()),
+                    (is_valid_jid_record(jid:from_binary(BinJid)))),
     prop(correct_binary_to_jid, Prop).
 
 
 binary_to_jid_incorrect(_C) ->
     Prop = ?FORALL(BinJid, (invalid_jid()),
-                   (error == jlib:binary_to_jid(BinJid))),
+                     (error == jid:from_binary(BinJid))),
     property_with_custom_opts(Prop, 100, 1, 42).
 
 empty_binary_to_jid(_) ->
-    error = jlib:binary_to_jid(<<>>).
+    error = jid:from_binary(<<>>).
 
 make_jid(_) ->
     Prop = ?FORALL({U, S, R}, {valid_username(), valid_domain(), valid_resource()},
-                   (check_output(U, S, R, jlib:make_jid(U, S, R)))),
+                     (check_output(U, S, R, jid:make(U, S, R)))),
     property_with_custom_opts(Prop, 100, 500, 1500).
 
 jid_to_lower(_) ->
     Prop = ?FORALL({U, S, R}, {maybe_valid_username(), maybe_valid_domain(), maybe_valid_resource()},
-                   (check_jid_to_lower_output(U, S, R, jlib:jid_to_lower({U, S, R})))),
+                   (check_jid_to_lower_output(U, S, R, jid:to_lower({U, S, R})))),
     property_with_custom_opts(Prop, 150, 1, 42).
 
 correct_but_too_long_username(_C) ->
     Prop = ?FORALL(Bin, (valid_username()),
-                   (error == jlib:nodeprep(Bin))),
+                    (error == jid:nodeprep(Bin))),
     property_with_custom_opts(Prop, 5, 1024, 2048).
 
 correct_but_too_long_domain(_C) ->
     Prop = ?FORALL(Bin, (valid_domain()),
-                   (error == jlib:nameprep(Bin))),
+                    (error == jid:nameprep(Bin))),
     property_with_custom_opts(Prop, 5, 1024, 2048).
 
 correct_but_too_long_resource(_C) ->
     Prop = ?FORALL(Bin, (valid_resource()),
-                   (error == jlib:resourceprep(Bin))),
+                    (error == jid:resourceprep(Bin))),
     property_with_custom_opts(Prop, 5, 1024, 2048).
 
 jid_replace_resource(_) ->
@@ -127,18 +127,18 @@ property_with_custom_opts(Prop, NumTest, StartSize, StopSize) ->
 
 incorrect_username(_) ->
     prop(incorrect_username_property,
-         ?FORALL(Bin, invalid_username(),
-                error == jlib:nodeprep(Bin))).
+         ?FORALL(Bin, (invalid_username()),
+                (error == jid:nodeprep(Bin)))).
 
 incorrect_resource(_) ->
     prop(incorrect_resource_property,
-         ?FORALL(Bin, invalid_resource(),
-                error == jlib:resourceprep(Bin))).
+         ?FORALL(Bin, (invalid_resource()),
+                (error == jid:resourceprep(Bin)))).
 
 incorrect_domain(_) ->
     prop(incorrect_domain_property,
-         ?FORALL(Bin, invalid_domain(),
-                error == jlib:nameprep(Bin))).
+         ?FORALL(Bin, (invalid_domain()),
+                (error == jid:nameprep(Bin)))).
 
 is_valid_jid_record(#jid{}) ->
     true;
@@ -156,23 +156,23 @@ check_output(_, _, _, _) ->
 check_jid_to_lower_output(<<>>, <<>>, <<>>, Result) ->
     error =/= Result;
 check_jid_to_lower_output(U, S, R, {_, _, _}) ->
-    jlib:nodeprep(U) =/= error orelse
-    jlib:nameprep(S) =/= error orelse
-    jlib:resourceprep(R) =/= error;
+    jid:nodeprep(U) =/= error orelse
+    jid:nameprep(S) =/= error orelse
+    jid:resourceprep(R) =/= error;
 check_jid_to_lower_output(U, S, R, error) ->
-    jlib:nodeprep(U) == error orelse
-    jlib:nameprep(S) == error orelse
-    jlib:resourceprep(R) == error.
+    jid:nodeprep(U) == error orelse
+    jid:nameprep(S) == error orelse
+    jid:resourceprep(R) == error.
 
 jid_replace_resource(BinJid, Res) ->
-    Jid = jlib:binary_to_jid(BinJid),
-    Jid2 = jlib:jid_replace_resource(Jid, Res),
+    Jid = jid:from_binary(BinJid),
+    Jid2 = jid:replace_resource(Jid, Res),
     check_jid_replace_resource_output(Res, Jid2).
 
 check_jid_replace_resource_output(Resource, error) ->
-    jlib:resourceprep(Resource) == error;
+    jid:resourceprep(Resource) == error;
 check_jid_replace_resource_output(Resource, #jid{}) ->
-    jlib:resourceprep(Resource) =/= error.
+    jid:resourceprep(Resource) =/= error.
 
 valid_jid() ->
     oneof([valid_full_jid(), valid_bare_jid(), valid_domain()]).
