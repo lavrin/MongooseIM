@@ -647,7 +647,8 @@ get_sha(AccountPass) ->
 
 set_last(User, Domain, TStamp) ->
     Mod = escalus_ejabberd:rpc(mod_admin_extra_last, get_lastactivity_module, [Domain]),
-    escalus_ejabberd:rpc(Mod, store_last_info, [escalus_utils:jid_to_lower(User), Domain, TStamp, <<>>]).
+    Fun = escalus_ejabberd:rpc(mod_admin_extra_last, get_lastactivity_fun, [Domain]),
+    escalus_ejabberd:rpc(Mod, Fun, [escalus_utils:jid_to_lower(User), Domain, TStamp, <<>>]).
 
 delete_users(Config) ->
     Users = escalus_users:get_users({by_name, [alice, bob, kate, mike]}),

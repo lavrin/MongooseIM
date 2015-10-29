@@ -114,10 +114,10 @@ check_password(User, Host, Password) ->
                 true ->
                     {ok, io_lib:format("Password '~s' for user ~s@~s is correct", [Password, User, Host])};
                 false ->
-                    {ok, io_lib:format("Password '~s' for user ~s@~s is incorrect", [Password, User, Host])}
+                    {incorrect, io_lib:format("Password '~s' for user ~s@~s is incorrect", [Password, User, Host])}
             end;
         false ->
-            {ok, io_lib:format("Password '~s' for user ~s@~s is incorrect because the account does not exist", [Password, User, Host])}
+            {not_exists, io_lib:format("Password '~s' for user ~s@~s is incorrect because the account does not exist", [Password, User, Host])}
     end.
 
 -spec check_account(ejabberd:user(), ejabberd:server()) -> {'ok', string()}.
@@ -126,7 +126,7 @@ check_account(User, Host) ->
         true ->
             {ok, io_lib:format("Account ~s@~s exists", [User, Host])};
         false ->
-            {ok, io_lib:format("Account ~s@~s does not exist", [User, Host])}
+            {not_exists, io_lib:format("Account ~s@~s does not exist", [User, Host])}
     end.
 
 
@@ -145,7 +145,7 @@ check_password_hash(User, Host, PasswordHash, HashMethod) ->
         PasswordHash ->
             {ok, "Password hash is correct"};
         _->
-            {ok, "Password hash is incorrect"}
+            {incorrect, "Password hash is incorrect"}
     end.
 
 
