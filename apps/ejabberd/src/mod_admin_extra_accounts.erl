@@ -53,7 +53,7 @@ commands() ->
                            desc = "Change the password of an account",
                            module = ?MODULE, function = set_password,
                            args = [{user, binary}, {host, binary}, {newpass, binary}],
-                           result = {res, rescode}},
+                           result = {res, restuple}},
         #ejabberd_commands{name = check_password_hash, tags = [accounts],
                            desc = "Check if the password hash is correct",
                            longdesc = "Allowed hash methods: md5, sha.",
@@ -99,8 +99,10 @@ commands() ->
 -spec set_password(ejabberd:user(), ejabberd:server(), binary()) -> 'error' | 'ok'.
 set_password(User, Host, Password) ->
     case ejabberd_auth:set_password(User, Host, Password) of
-        ok -> ok;
-        _ ->  error
+        ok ->
+            {ok, io_lib:format("Password for user ~s@~s successfully changed", [User, Host])};
+        {error, Reason} ->
+            {error, Reason}
     end.
 
 

@@ -234,7 +234,7 @@ check_digest(Digest, DigestGen, Password, Passwd) ->
 -spec set_password(User :: ejabberd:user(),
                    Server :: ejabberd:server(),
                    Password :: binary()
-                  ) -> ok | {error, empty_password | not_allowed | invalid_jid}.
+                  ) -> ok | {error, empty_password | not_allowed | invalid_jid| user_not_exists}.
 set_password(_User, _Server, "") ->
     %% We do not allow empty password
     {error, empty_password};
@@ -246,12 +246,18 @@ set_password(User, Server, Password) ->
 do_set_password(LUser, LServer, _) when LUser =:= error; LServer =:= error ->
     {error, invalid_jid};
 do_set_password(LUser, LServer, Password) ->
-    lists:foldl(
-      fun(M, {error, _}) ->
-              M:set_password(LUser, LServer, Password);
-         (_M, Res) ->
-              Res
-      end, {error, not_allowed}, auth_modules(LServer)).
+    case is_user_exists(LUser, LServer) of
+        true ->
+            lists:foldl(
+                fun(M, {error, _}) ->
+                    M:set_password(LUser, LServer, Password);
+                   (_M, Res) ->
+                       Res
+                end, {error, not_allowed}, auth_modules(LServer));
+        false ->
+            {error, user_not_exists}
+    end.
+
 
 
 -spec try_register(User :: ejabberd:user(),
