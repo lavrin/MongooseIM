@@ -241,7 +241,9 @@ try_set_password(User, Server, Password, IQ, SubEl, Lang) ->
 		{error, not_allowed} ->
 		    IQ#iq{type = error, sub_el = [SubEl, ?ERR_NOT_ALLOWED]};
 		{error, invalid_jid} ->
-		    IQ#iq{type = error, sub_el = [SubEl, ?ERR_ITEM_NOT_FOUND]}
+		    IQ#iq{type = error, sub_el = [SubEl, ?ERR_NOT_ACCEPTABLE]};
+		{error, user_not_exists} ->
+			IQ#iq{type = error, sub_el = [SubEl, ?ERR_ITEM_NOT_FOUND]}
 	    end;
 	false ->
 	    ErrText = <<"The password is too weak">>,
