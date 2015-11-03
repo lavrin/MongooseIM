@@ -538,8 +538,14 @@ is_regexp_match(String, RegExp) ->
     case catch re:run(String, RegExp) of
         nomatch ->
             false;
-        {match, _} ->
-            true;
+        {match, List} ->
+            Size = length(binary_to_list(String)),
+            case lists:member({0,Size}, List) of
+                true ->
+                    true;
+                false ->
+                    false
+            end;
         Error ->
             io:format("Wrong regexp ~p: ~p", [RegExp, Error]),
             false
