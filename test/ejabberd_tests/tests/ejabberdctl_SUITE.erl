@@ -69,7 +69,13 @@ sessions() -> [num_resources_num, kick_session, status,
 vcard() -> [vcard_rw, vcard2_rw, vcard2_multi_rw].
 
 roster() -> [rosteritem_rw, presence_after_add_rosteritem,
-	     push_roster, push_roster_all, push_roster_alltoall].
+             push_roster, push_roster_all, push_roster_alltoal,
+             process_rosteritems_list_simple,
+             process_rosteritems_list_nomatch,
+             process_rosteritems_list_advanced1,
+             process_rosteritems_list_advanced2,
+             process_rosteritems_delete_advanced,
+             process_rosteritems_delete_advanced2].
 
 last() -> [set_last].
 
@@ -441,6 +447,144 @@ push_roster(Config) ->
 
                 escalus:send(Alice, escalus_stanza:roster_remove_contact(bob)) % cleanup
         end).
+
+process_rosteritems_list_simple(Config) ->
+    escalus:story(Config, [{alice, 1}, {bob, 1}], fun(Alice, Bob) ->
+        %% given
+        Action = "list",
+        Subs = "any",
+        Asks = "any",
+        User = escalus_client:short_jid(Alice),
+        Contact =string:to_lower(binary_to_list(escalus_client:short_jid(Bob))),
+        {AliceName, Domain, _} = get_user_data(alice, Config),
+        {BobName, Domain, _} = get_user_data(bob, Config),
+        %% when
+        {_, 0} = ejabberdctl("add_rosteritem", [AliceName, Domain, BobName, Domain, "MyBob", "MyGroup", "both"], Config),
+        {R, 0} = ejabberdctl("process_rosteritems", [Action, Subs, Asks, User, Contact], Config),
+        %% then
+        {match, _} = re:run(R, ".*Matches:.*"++Contact++".*")
+    end).
+
+process_rosteritems_list_nomatch(Config) ->
+    escalus:story(Config, [{alice, 1}, {bob, 1}], fun(Alice, Bob) ->
+        %% given
+        Action = "list",
+        Subs = "from:both",
+        Asks = "any",
+        User = escalus_client:short_jid(Alice),
+        Contact =string:to_lower(binary_to_list(escalus_client:short_jid(Bob))),
+        {AliceName, Domain, _} = get_user_data(alice, Config),
+        {BobName, Domain, _} = get_user_data(bob, Config),
+        {_, 0} = ejabberdctl("add_rosteritem", [AliceName, Domain, BobName,
+                                                Domain, "MyBob", "MyGroup", "to"], Config),
+        %% when
+        {R, 0} = ejabberdctl("process_rosteritems", [Action, Subs, Asks, User, Contact], Config),
+        %% then
+        nomatch = re:run(R, ".*Matches:.*"++Contact++".*")
+    end).
+
+process_rosteritems_list_advanced1(Config) ->
+    escalus:story(Config, [{alice, 1}, {mike, 1}, {kate, 1}], fun(Alice, Mike, Kate) ->
+        %% given
+        Action = "list",
+        Subs = "from:both",
+        Asks = "any",
+        User = escalus_client:short_jid(Alice),
+        {AliceName, Domain, _} = get_user_data(alice, Config),
+        {MikeName, Domain, _} = get_user_data(mike, Config),
+        {KateName, Domain, _} = get_user_data(kate, Config),
+        ContactMike = string:to_lower(binary_to_list(escalus_client:short_jid(Mike))),
+        ContactKate= string:to_lower(binary_to_list(escalus_client:short_jid(Kate))),
+        ContactsRegexp = ContactMike ++ ":" ++ string:substr(binary_to_list(KateName), 1, 2) ++ ".*@.*",
+
+        {_, 0} = ejabberdctl("add_rosteritem", [AliceName, Domain, MikeName,
+                                                Domain, "DearMike", "MyGroup", "both"], Config),
+        {_, 0} = ejabberdctl("add_rosteritem", [AliceName, Domain, KateName,
+                                                Domain, "BestFriend", "MyGroup", "both"], Config),
+        %% when
+        {R, 0} = ejabberdctl("process_rosteritems", [Action, Subs, Asks, User, ContactsRegexp], Config),
+        %% then
+        {match, _} = re:run(R, ".*Matches:.*"++ContactMike++".*"),
+        {match, _} = re:run(R, ".*Matches:.*"++ContactKate++".*")
+    end).
+
+process_rosteritems_delete_advanced(Config) ->
+    escalus:story(Config, [{alice, 1}, {mike, 1}, {kate, 1}], fun(Alice, Mike, Kate) ->
+        %% given
+        Action = "delete",
+        Subs = "from",
+        Asks = "any",
+        User = escalus_client:short_jid(Alice),
+        {AliceName, Domain, _} = get_user_data(alice, Config),
+        {MikeName, Domain, _} = get_user_data(mike, Config),
+        {KateName, Domain, _} = get_user_data(kate, Config),
+        ContactMike = string:to_lower(binary_to_list(escalus_client:short_jid(Mike))),
+        ContactKate= string:to_lower(binary_to_list(escalus_client:short_jid(Kate))),
+        ContactsRegexp = ".*" ++ string:substr(ContactMike, 3) ++
+                           ":" ++ string:substr(ContactKate, 1,2) ++"@" ++ binary_to_list(Domain),
+        {_, 0} = ejabberdctl("add_rosteritem", [AliceName, Domain, MikeName,
+                                                Domain, "DearMike", "MyGroup", "from"], Config),
+        {_, 0} = ejabberdctl("add_rosteritem", [AliceName, Domain, KateName,
+                                                Domain, "Friend", "MyGroup", "from"], Config),
+        %% when
+        {R, 0} = ejabberdctl("process_rosteritems", [Action, Subs, Asks, User, ContactsRegexp], Config),
+        %% then
+        {match, _} = re:run(R, ".*Matches:.*"++ContactMike++".*"),
+        nomatch = re:run(R, ".*Matches:.*"++ContactKate++".*")
+    end).
+
+process_rosteritems_list_advanced2(Config) ->
+    escalus:story(Config, [{alice, 1}, {mike, 1}, {kate, 1}], fun(Alice, Mike, Kate) ->
+        %% given
+        Action = "list",
+        Subs = "any",
+        Asks = "any",
+        User = escalus_client:short_jid(Alice),
+        {AliceName, Domain, _} = get_user_data(alice, Config),
+        {MikeName, Domain, _} = get_user_data(mike, Config),
+        {KateName, Domain, _} = get_user_data(kate, Config),
+        ContactMike = string:to_lower(binary_to_list(escalus_client:short_jid(Mike))),
+        ContactKate= string:to_lower(binary_to_list(escalus_client:short_jid(Kate))),
+        ContactsRegexp = ".*e@lo.*",
+        {_, 0} = ejabberdctl("add_rosteritem", [AliceName, Domain, MikeName,
+                                                Domain, "DearMike", "MyGroup", "both"], Config),
+        {_, 0} = ejabberdctl("add_rosteritem", [AliceName, Domain, KateName,
+                                                Domain, "KateFromSchool", "MyGroup", "from"], Config),
+        %% when
+        {R, 0} = ejabberdctl("process_rosteritems", [Action, Subs, Asks, User, ContactsRegexp], Config),
+        %% then
+        {match, _} = re:run(R, ".*Matches:.*"++ContactMike++".*"),
+        {match, _} = re:run(R, ".*Matches:.*"++ContactKate++".*")
+    end).
+
+process_rosteritems_delete_advanced2(Config) ->
+    escalus:story(Config, [{alice, 1}, {bob, 1}, {mike, 1}, {kate, 1}], fun(_, Bob, Mike, Kate) ->
+        %% given
+        Action = "delete",
+        Subs = "to:from",
+        Asks = "any",
+        User = "'al.c[e]@.*host:((b[o]b)|(mike))@loc.*t2'",
+        {AliceName, Domain, _} = get_user_data(alice, Config),
+        {BobName, Domain, _} = get_user_data(bob, Config),
+        {MikeName, Domain, _} = get_user_data(mike, Config),
+        {KateName, Domain, _} = get_user_data(kate, Config),
+        ContactMike = string:to_lower(binary_to_list(escalus_client:short_jid(Mike))),
+        ContactKate= string:to_lower(binary_to_list(escalus_client:short_jid(Kate))),
+        ContactBob= string:to_lower(binary_to_list(escalus_client:short_jid(Bob))),
+        ContactsReg = "'.ik[ea]@localho+.*:k@loc.*st:(alice)+@.*:no'",
+        {_, 0} = ejabberdctl("add_rosteritem", [AliceName, Domain, MikeName,
+                                                Domain, "DearMike", "MyGroup", "to"], Config),
+        {_, 0} = ejabberdctl("add_rosteritem", [AliceName, Domain, KateName,
+                                                Domain, "HateHerSheHasSoNiceLegs", "MyGroup", "to"], Config),
+        {_, 0} = ejabberdctl("add_rosteritem", [BobName, Domain, AliceName,
+                                                Domain, "Girlfriend", "MyGroup", "from"], Config),
+        %% when
+        {R, 0} = ejabberdctl("process_rosteritems", [Action, Subs, Asks, User, ContactsReg], Config),
+        %% then
+        {match, _} = re:run(R, ".*Matches:.*"++ContactMike++".*"),
+        nomatch = re:run(R, ".*Matches:.*"++ContactKate++".*"),
+        nomatch = re:run(R, ".*Matches:.*"++ContactBob++".*")
+    end).
 
 push_roster_all(Config) ->
     escalus:story(Config, [{alice, 1}, {bob,1}], fun(Alice, Bob) ->
