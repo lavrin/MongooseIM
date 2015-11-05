@@ -113,21 +113,44 @@ commands() ->
 %%%
 
 get_vcard(User, Host, Name) ->
-    [Res | _] = get_vcard_content(User, Host, [Name]),
-    Res.
+    case get_vcard_content(User, Host, [Name]) of
+        Error when is_atom(Error) ->
+            {error, Error};
+        [Res | _] ->
+            Res
+    end.
 
 get_vcard(User, Host, Name, Subname) ->
-    [Res | _] = get_vcard_content(User, Host, [Name, Subname]),
-    Res.
+    case get_vcard_content(User, Host, [Name, Subname]) of
+        Error when is_atom(Error) ->
+            {error, Error};
+        [Res | _] ->
+            Res
+    end.
 
 get_vcard_multi(User, Host, Name, Subname) ->
-    get_vcard_content(User, Host, [Name, Subname]).
+    case get_vcard_content(User, Host, [Name, Subname]) of
+        Error when is_atom(Error) ->
+            {error, io_lib:format("~p", [Error])};
+        [Res | _] ->
+            Res
+    end.
 
 set_vcard(User, Host, Name, SomeContent) ->
-    set_vcard_content(User, Host, [Name], SomeContent).
+    case set_vcard_content(User, Host, [Name], SomeContent) of
+        Error when is_atom(Error) ->
+            {error, Error};
+        [Res | _] ->
+            Res
+    end.
 
 set_vcard(User, Host, Name, Subname, SomeContent) ->
-    set_vcard_content(User, Host, [Name, Subname], SomeContent).
+    case set_vcard_content(User, Host, [Name, Subname], SomeContent) of
+        Error when is_atom(Error) ->
+            {error, Error};
+        [Res | _] ->
+            Res
+    end.
 
 
 %%
@@ -144,19 +167,24 @@ get_module_resource(Server) ->
 -spec get_vcard_content(ejabberd:user(), ejabberd:server(), any())
             -> [Cdata :: binary()] | none().
 get_vcard_content(User, Server, Data) ->
-    [{_, Module, Function, _Opts}] = ets:lookup(sm_iqtable, {?NS_VCARD, Server}),
-    JID = jlib:make_jid(User, Server, list_to_binary(get_module_resource(Server))),
-    IQ = #iq{type = get, xmlns = ?NS_VCARD},
-    %% TODO: This may benefit from better type control
-    IQr = Module:Function(JID, JID, IQ),
-    case IQr#iq.sub_el of
-        [A1] ->
-            case get_vcard(Data, A1) of
-                [] -> throw(error_no_value_found_in_vcard);
-                ElemList -> [exml_query:cdata(Elem) || Elem <- ElemList]
+    case ejabberd_auth:is_user_exists(User, Server) of
+        true ->
+            [{_, Module, Function, _Opts}] = ets:lookup(sm_iqtable, {?NS_VCARD, Server}),
+            JID = jlib:make_jid(User, Server, list_to_binary(get_module_resource(Server))),
+            IQ = #iq{type = get, xmlns = ?NS_VCARD},
+            %% TODO: This may benefit from better type control
+            IQr = Module:Function(JID, JID, IQ),
+            case IQr#iq.sub_el of
+                [A1] ->
+                    case get_vcard(Data, A1) of
+                        [] -> error_no_value_found_in_vcard;
+                        ElemList -> [exml_query:cdata(Elem) || Elem <- ElemList]
+                    end;
+                [] ->
+                   error_no_vcard_found
             end;
-        [] ->
-            throw(error_no_vcard_found)
+        false ->
+            error_user_not_exists
     end.
 
 
@@ -172,26 +200,33 @@ get_vcard([Data], A1) ->
 set_vcard_content(U, S, D, SomeContent) when is_binary(SomeContent) ->
     set_vcard_content(U, S, D, [SomeContent]);
 set_vcard_content(User, Server, Data, ContentList) ->
-    [{_, Module, Function, _Opts}] = ets:lookup(sm_iqtable, {?NS_VCARD, Server}),
-    JID = jlib:make_jid(User, Server, <<>>),
-    IQ = #iq{type = get, xmlns = ?NS_VCARD},
-    IQr = Module:Function(JID, JID, IQ),
+    case ejabberd_auth:is_user_exists(User, Server) of
+        true ->
+            [{_, Module, Function, _Opts}] = ets:lookup(sm_iqtable, {?NS_VCARD, Server}),
+            JID = jlib:make_jid(User, Server, <<>>),
+            IQ = #iq{type = get, xmlns = ?NS_VCARD},
+            IQr = Module:Function(JID, JID, IQ),
 
-    %% Get old vcard
-    A4 = case IQr#iq.sub_el of
-        [A1] ->
-            {_, _, _, A2} = A1,
-            update_vcard_els(Data, ContentList, A2);
-        _ ->
-            update_vcard_els(Data, ContentList, [])
-    end,
+            %% Get old vcard
+            A4 = case IQr#iq.sub_el of
+                     [A1] ->
+                         {_, _, _, A2} = A1,
+                         update_vcard_els(Data, ContentList, A2);
+                     _ ->
+                         update_vcard_els(Data, ContentList, [])
+                 end,
 
-    %% Build new vcard
-    SubEl = #xmlel{ name = <<"vCard">>, attrs = [{<<"xmlns">>,<<"vcard-temp">>}], children = A4},
-    IQ2 = #iq{type=set, sub_el = SubEl},
+            %% Build new vcard
+            SubEl = #xmlel{ name = <<"vCard">>, attrs = [{<<"xmlns">>,<<"vcard-temp">>}], children = A4},
+            IQ2 = #iq{type=set, sub_el = SubEl},
 
-    Module:Function(JID, JID, IQ2),
-    ok.
+            Module:Function(JID, JID, IQ2),
+            ok;
+        false ->
+            error_user_not_exists
+    end.
+
+
 
 
 -spec update_vcard_els(Data :: [binary(),...],
