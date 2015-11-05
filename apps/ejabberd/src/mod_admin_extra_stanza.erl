@@ -51,18 +51,18 @@ commands() ->
                            desc = "Send a chat message to a local or remote bare of full JID",
                            module = ?MODULE, function = send_message_chat,
                            args = [{from, binary}, {to, binary}, {body, binary}],
-                           result = {res, rescode}},
+                           result = {res, restuple}},
         #ejabberd_commands{name = send_message_headline, tags = [stanza],
                            desc = "Send a headline message to a local or remote bare of full JID",
                            module = ?MODULE, function = send_message_headline,
                            args = [{from, binary}, {to, binary},
                                    {subject, binary}, {body, binary}],
-                           result = {res, rescode}},
+                           result = {res, restuple}},
         #ejabberd_commands{name = send_stanza_c2s, tags = [stanza],
                            desc = "Send a stanza as if sent from a c2s session",
                            module = ?MODULE, function = send_stanza_c2s,
                            args = [{user, binary}, {host, binary}, {resource, binary}, {stanza, binary}],
-                           result = {res, rescode}}
+                           result = {res, restuple}}
         ].
 
 %%%
@@ -97,15 +97,22 @@ send_message_headline(From, To, Subject, Body) ->
                                 jlib:xmlel()) -> 'ok'.
 send_packet_all_resources(FromJIDString, ToJIDString, Packet) ->
     FromJID = jlib:binary_to_jid(FromJIDString),
-    ToJID = jlib:binary_to_jid(ToJIDString),
-    ToUser = ToJID#jid.user,
-    ToServer = ToJID#jid.server,
-    case ToJID#jid.resource of
-        <<"">> ->
-            send_packet_all_resources(FromJID, ToUser, ToServer, Packet);
-        Res ->
-            send_packet_all_resources(FromJID, ToUser, ToServer, Res, Packet)
+    case FromJID of
+        error ->
+            {bad_jid, "Sender JID is invalid"};
+        _ ->
+            ToJID = jlib:binary_to_jid(ToJIDString),
+            ToUser = ToJID#jid.user,
+            ToServer = ToJID#jid.server,
+            case ToJID#jid.resource of
+                <<"">> ->
+                    send_packet_all_resources(FromJID, ToUser, ToServer, Packet);
+                Res ->
+                    send_packet_all_resources(FromJID, ToUser, ToServer, Res, Packet)
+            end,
+            {ok,""}
     end.
+
 
 
 -spec send_packet_all_resources(FromJID :: 'error' | ejabberd:jid(),
@@ -153,6 +160,16 @@ build_packet(message_headline, [Subject, Body]) ->
                       Stanza :: binary()) -> any().
 send_stanza_c2s(Username, Host, Resource, Stanza) ->
     C2sPid = ejabberd_sm:get_session_pid(Username, Host, Resource),
-    {ok, XmlEl} = exml:parse(Stanza),
-    p1_fsm:send_event(C2sPid, {xmlstreamelement, XmlEl}).
+    case C2sPid of
+        none ->
+            {bad_jid, io_lib:format("User ~s@~s/~s does not exist",[Username, Host, Resource])};
+        _ ->
+            case exml:parse(Stanza) of
+                {ok, XmlEl} ->
+                    p1_fsm:send_event(C2sPid, {xmlstreamelement, XmlEl}),
+                    {ok, "Stanza has been sent"};
+                {error, _} ->
+                    {bad_stanza, "Stanza is incorrect"}
+            end
+    end.
 

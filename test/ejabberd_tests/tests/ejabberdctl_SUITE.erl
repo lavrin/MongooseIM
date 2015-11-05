@@ -35,29 +35,25 @@ all() ->
         true ->
             {skip, external_auth_not_supported};
         false ->
-            [
-             {group, accounts},
+            [{group, accounts},
              {group, sessions},
              {group, vcard},
              {group, roster},
              {group, last},
              {group, private},
              {group, stanza},
-             {group, stats}
-            ]
+             {group, stats}]
     end.
 
 groups() ->
-     [
-        {accounts, [sequence], accounts()},
+     [{accounts, [sequence], accounts()},
         {sessions, [sequence], sessions()},
         {vcard, [sequence], vcard()},
         {roster, [sequence], roster()},
         {last, [sequence], last()},
         {private, [sequence], private()},
         {stanza, [sequence], stanza()},
-        {stats, [sequence], stats()}
-     ].
+        {stats, [sequence], stats()}].
 
 accounts() -> [change_password, check_password_hash, check_password,
                check_account, ban_account, num_active_users, delete_old_users,
@@ -81,7 +77,7 @@ last() -> [set_last].
 
 private() -> [private_rw].
 
-stanza() -> [send_message, send_stanza].
+stanza() -> [send_message, send_message_wrong_jid, send_stanza, send_stanzac2s_wrong].
 
 stats() -> [stats_global, stats_host].
 
@@ -331,10 +327,10 @@ sessions_info(Config) ->
 
 set_presence(Config) ->
     escalus:story(Config, [{alice, 1}], fun(Alice) ->
-                Username = escalus_client:username(Alice), 
-                Domain = escalus_client:server(Alice), 
+                Username = escalus_client:username(Alice),
+                Domain = escalus_client:server(Alice),
                 Resource = escalus_client:resource(Alice),
-                
+
                 {_, 0} = ejabberdctl("set_presence", [Username, Domain, Resource,
                                                       "available", "away", "mystatus", "10"], Config),
                 Presence = escalus:wait_for_stanza(Alice),
@@ -690,6 +686,22 @@ send_message(Config) ->
                 escalus:assert(is_headline_message, [<<"Subj">>, <<"Hi Bob!!">>], Stanza3)
         end).
 
+send_message_wrong_jid(Config) ->
+    escalus:story(Config, [{alice, 1}, {bob, 1}], fun(Alice, Bob) ->
+        {_, Err1} = ejabberdctl("send_message_chat", ["'@@#$%!!.§§£'",
+                                                   escalus_client:full_jid(Bob),
+                                                   "\"Hello bobby!\""], Config),
+        {_, Err2} = ejabberdctl("send_message_headline", ["'%%@&@&@==//\///'",
+                                                       escalus_client:short_jid(Bob),
+                                                       "Subj", "\"Are
+                                                       you there?\""],
+                             Config),
+        Err1 =/=0,
+        Err2 =/=0,
+        escalus_assert:has_no_stanzas(Alice),
+        escalus_assert:has_no_stanzas(Bob)
+    end).
+
 send_stanza(Config) ->
     escalus:story(Config, [{alice, 1}, {bob,1}], fun(Alice, Bob) ->
                 Domain = escalus_client:server(Alice),
@@ -705,6 +717,26 @@ send_stanza(Config) ->
                 escalus:assert(is_chat_message, [<<"Hi">>], Message),
                 escalus:assert(is_stanza_from, [Bob], Message)
         end).
+
+send_stanzac2s_wrong(Config) ->
+    escalus:story(Config, [{alice, 1}, {bob,1}], fun(Alice, Bob) ->
+        Domain = escalus_client:server(Alice),
+        Resource = escalus_client:resource(Alice),
+        WrongBobName = "bobby_the_great",
+        {BobName, _, _} = get_user_data(bob, Config),
+        BobJID = <<BobName/binary, $@, Domain/binary, $/, (escalus_client:resource(Bob))/binary>>,
+        Stanza = re:replace(exml:to_binary(escalus_stanza:from(escalus_stanza:chat_to(Alice, "Hi"), BobJID)),
+                            <<?DOUBLE_QUOTE_CHAR>>, <<?SINGLE_QUOTE_CHAR>>, [global, {return, binary}]),
+        StanzaWrong = <<"<iq type='get' id='234234'><xmlns='wrongwrong'>">>,
+        {_, Err} = ejabberdctl("send_stanza_c2s", [WrongBobName, Domain, Resource, <<$\", Stanza/binary, $\">>],
+                               Config),
+        {_, Err2} = ejabberdctl("send_stanza_c2s", [BobName, Domain, Resource, <<$\", StanzaWrong/binary, $\">>],
+                               Config),
+
+        Err =/= 0,
+        Err2 =/= 0,
+        escalus_assert:has_no_stanzas(Alice)
+    end).
 
 %%--------------------------------------------------------------------
 %% mod_admin_extra_stats tests
