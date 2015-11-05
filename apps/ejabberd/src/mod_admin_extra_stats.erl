@@ -48,12 +48,12 @@ commands() ->
                            desc = "Get statistical value: registeredusers onlineusers onlineusersnode uptimeseconds",
                            module = ?MODULE, function = stats,
                            args = [{name, binary}],
-                           result = {stat, integer}},
+                           result = {stat, restuple}},
         #ejabberd_commands{name = stats_host, tags = [stats],
                            desc = "Get statistical value for this host: registeredusers onlineusers",
                            module = ?MODULE, function = stats,
                            args = [{name, binary}, {host, binary}],
-                           result = {stat, integer}}
+                           result = {stat, restuple}}
         ].
 
 %%%
@@ -63,18 +63,37 @@ commands() ->
 -spec stats(binary()) -> integer().
 stats(Name) ->
     case Name of
-        <<"uptimeseconds">> -> trunc(element(1, erlang:statistics(wall_clock))/1000);
-        <<"registeredusers">> -> lists:sum([
+        <<"uptimeseconds">> ->
+            Secs = integer_to_list(trunc(element(1, erlang:statistics(wall_clock))/1000)),
+            {ok, Secs};
+        <<"registeredusers">> ->
+            Registered = lists:sum([
                     ejabberd_auth:get_vh_registered_users_number(Server)
-                    || Server <- ejabberd_config:get_global_option(hosts) ]);
-        <<"onlineusersnode">> -> ejabberd_sm:get_node_sessions_number();
-        <<"onlineusers">> -> ejabberd_sm:get_total_sessions_number()
+                    || Server <- ejabberd_config:get_global_option(hosts) ]),
+            {ok, integer_to_list(Registered)};
+        <<"onlineusersnode">> ->
+            Online = integer_to_list(ejabberd_sm:get_node_sessions_number()),
+            {ok, Online};
+        <<"onlineusers">> ->
+            Online = integer_to_list(ejabberd_sm:get_total_sessions_number()),
+            {ok, Online};
+        _ ->
+            {wrong_command, io_lib:format("Wrong command name. To get a statistical value choose one of the"
+            " following:~nregisteredusers~nonlineusers ~nonlineusersnode ~nuptimeseconds", [])}
     end.
 
 
 -spec stats(binary(), ejabberd:server()) -> integer().
 stats(Name, Host) ->
     case Name of
-        <<"registeredusers">> -> ejabberd_auth:get_vh_registered_users_number(Host);
-        <<"onlineusers">> -> ejabberd_sm:get_vh_session_number(Host)
+        <<"registeredusers">> ->
+            Registered = ejabberd_auth:get_vh_registered_users_number(Host),
+            {ok, integer_to_list(Registered)};
+        <<"onlineusers">> ->
+            Online = ejabberd_sm:get_vh_session_number(Host),
+            {ok, integer_to_list(Online)};
+        _ ->
+            {wrong_command, io_lib:format("Wrong command name. To get a "
+                                          "statistical value choose one of the"
+                                          " following:~nregisteredusers~nonlineusers", [])}
     end.
