@@ -28,6 +28,7 @@
 -author('alexey@process-one.net').
 
 -behaviour(gen_server).
+-behaviour(xmpp_router).
 
 %% API
 -export([start_link/0,
@@ -48,6 +49,9 @@
 %% gen_server callbacks
 -export([init/1, handle_call/3, handle_cast/2, handle_info/2,
          terminate/2, code_change/3]).
+%% xmpp_router callback
+-export([do_route/3]).
+
 %% ejabberd API
 -export([get_info_s2s_connections/1]).
 
@@ -84,13 +88,7 @@ start_link() ->
             To :: ejabberd:jid(),
             Packet :: jlib:xmlel()) -> 'ok' | {'error','lager_not_running'}.
 route(From, To, Packet) ->
-    case catch do_route(From, To, Packet) of
-        {'EXIT', Reason} ->
-            ?ERROR_MSG("~p~nwhen processing: ~p",
-                       [Reason, {From, To, Packet}]);
-        _ ->
-            ok
-    end.
+    xmpp_router:route(?MODULE, From, To, Packet).
 
 -spec remove_connection(_, pid(), _) -> 'ok' | {'aborted',_} | {'atomic',_}.
 remove_connection(FromTo, Pid, Key) ->
@@ -219,13 +217,7 @@ handle_info({mnesia_system_event, {mnesia_down, Node}}, State) ->
     clean_table_from_bad_node(Node),
     {noreply, State};
 handle_info({route, From, To, Packet}, State) ->
-    case catch do_route(From, To, Packet) of
-        {'EXIT', Reason} ->
-            ?ERROR_MSG("~p~nwhen processing: ~p",
-                       [Reason, {From, To, Packet}]);
-        _ ->
-            ok
-    end,
+    route(From, To, Packet),
     {noreply, State};
 handle_info(_Info, State) ->
     {noreply, State}.
