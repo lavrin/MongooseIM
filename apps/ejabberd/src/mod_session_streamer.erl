@@ -80,11 +80,11 @@ handle_call(_Request, _From, State) ->
 
 handle_cast({session_opened, JID} = Ev, #state{} = S) ->
     ?INFO_MSG("Session for ~ts opened", [jlib:jid_to_binary(JID)]),
-    send(S#state.socket, term_to_binary(Ev)),
+    send_event(S#state.socket, Ev),
     {noreply, S};
 handle_cast({session_closed, JID} = Ev, #state{} = S) ->
     ?INFO_MSG("Session for ~ts closed", [jlib:jid_to_binary(JID)]),
-    send(S#state.socket, term_to_binary(Ev)),
+    send_event(S#state.socket, Ev),
     {noreply, S}.
 
 handle_info(reconnect, #state{socket = undefined} = S) ->
@@ -120,13 +120,6 @@ spec(Opts) ->
      {?MODULE, start_link, [Opts]},
      permanent, timer:seconds(2), worker, [?MODULE]}.
 
-send(Socket, Data) ->
-    try gen_tcp:send(Socket, Data) of
-        ok -> ok
-    catch
-        _:_ -> self() ! reconnect
-    end.
-
 get_sink(Opts) ->
     {sink, Sink} = lists:keyfind(sink, 1, Opts),
     Sink.
@@ -141,3 +134,12 @@ default(Opt, Value, Opts) ->
 reconnect(#state{sink = {Address, Port}} = S) ->
     {ok, Socket} = gen_tcp:connect(Address, Port, [binary, {packet, 2}]),
     S#state{socket = Socket}.
+
+send_event(Socket, {SessionEvent, JID}) ->
+    {ok, DataCenter} = application:get_env(mongooseim, datacenter),
+    Ev = {SessionEvent, DataCenter, JID},
+    try gen_tcp:send(Socket, term_to_binary(Ev)) of
+        ok -> ok
+    catch
+        _:_ -> self() ! reconnect
+    end.
