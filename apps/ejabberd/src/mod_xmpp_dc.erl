@@ -13,13 +13,13 @@
 
 start(_Domain, _Opts) ->
     %% TODO: lame! don't register multiple handler instances (i.e. one per vhost)
-    {ok, DataCenter} = application:get_env(mongooseim, datacenter),
+    DataCenter = get_dc(),
     [ ejabberd_hooks:add(Hook, DataCenter, M, F, Prio)
       || {Hook, M, F, Prio} <- hook_handlers() ],
     ok.
 
 stop(Domain) ->
-    {ok, DataCenter} = application:get_env(mongooseim, datacenter),
+    DataCenter = get_dc(),
     [ ejabberd_hooks:delete(Hook, DataCenter, M, F, Prio)
       || {Hook, M, F, Prio} <- hook_handlers() ],
     ok.
@@ -42,3 +42,8 @@ handle_inter_dc_stanza(DCFrom, DCTo, #xmlel{name = <<"message">>} = Packet) ->
     ejabberd_router:route(jlib:binary_to_jid(From),
                           jlib:binary_to_jid(To), Payload),
     ok.
+
+get_dc() ->
+    {ok, DataCenter} = application:get_env(mongooseim, datacenter),
+    DCJID = jlib:binary_to_jid(DataCenter),
+    jlib:jid_to_binary(jlib:jid_remove_resource(DCJID)).

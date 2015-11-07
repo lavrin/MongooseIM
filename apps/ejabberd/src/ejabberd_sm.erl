@@ -694,8 +694,10 @@ route_message(From, To, Packet) ->
     LUser = To#jid.luser,
     LServer = To#jid.lserver,
     PrioPid = get_user_present_pids(LUser,LServer),
-    case catch lists:max(PrioPid) of
-        {Priority, _} when is_integer(Priority), Priority >= 0 ->
+    %% do we support active/active DC setup?
+    DataCenter = application:get_env(mongooseim, datacenter, undefined),
+    case {catch lists:max(PrioPid), DataCenter} of
+        {{Priority, _}, _} when is_integer(Priority), Priority >= 0 ->
             lists:foreach(
               %% Route messages to all priority that equals the max, if
               %% positive
@@ -707,7 +709,7 @@ route_message(From, To, Packet) ->
                       ok
               end,
               PrioPid);
-        _ ->
+        {_, undefined} ->
             case xml:get_tag_attr_s(<<"type">>, Packet) of
                 <<"error">> ->
                     ok;
@@ -731,9 +733,39 @@ route_message(From, To, Packet) ->
                                     Packet, ?ERR_SERVICE_UNAVAILABLE),
                             ejabberd_router:route(To, From, Err)
                     end
+            end;
+        {_, BFromDC} when is_binary(BFromDC) ->
+            %% is the recipient available in any other DC?
+            try lookup_remote_session(LUser, LServer) of
+                [] ->
+                    %% no, (s)he's not
+                    ok;
+                [{remote_session, _, BToDC}] ->
+                    %% indeed!
+                    route_to_other_data_center(BFromDC, BToDC, Packet)
+            catch
+                E:R ->
+                    ?ERROR_MSG("cross DC routing error: ~p", [{E, R}]),
+                    ok
             end
     end.
 
+lookup_remote_session(LUser, LServer) ->
+    ets:lookup(remote_session, {LUser, LServer}).
+
+route_to_other_data_center(BFromDC, BToDC, Packet) ->
+    %% assert packet has From/To!
+    false = undefined == exml_query:attr(Packet, <<"from">>),
+    false = undefined == exml_query:attr(Packet, <<"to">>),
+    %% wrap it
+    Wrapped = #xmlel{name = <<"message">>,
+                     attrs = [{<<"from">>, BFromDC},
+                              {<<"to">>, BToDC}],
+                     children = [Packet]},
+    FromDC = jlib:binary_to_jid(BFromDC),
+    ToDC = jlib:binary_to_jid(BToDC),
+    ejabberd_router:route(FromDC, ToDC, Wrapped),
+    ok.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 

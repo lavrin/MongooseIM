@@ -17,17 +17,22 @@
 %% temp
 -compile([export_all]).
 
+-include("jlib.hrl").
 -include("ejabberd.hrl").
 
 -define(PROCNAME, ejabberd_mod_session_sink).
 
 -record(state, {listen_on, listen_socket}).
+-record(remote_session, {bare_jid, datacenter}).
 
 %%
 %% gen_mod callbacks
 %%
 
 start(Domain, Opts) ->
+    mnesia:create_table(remote_session, [{ram_copies, [node()]},
+                                         {attributes, record_info(fields, remote_session)}]),
+    mnesia:add_table_copy(remote_session, node(), ram_copies),
     %% make sure only one copy is running!
     {ok, _Pid} = start_listener(Opts),
     ok.
@@ -137,4 +142,15 @@ loop(Socket) ->
     end.
 
 got_data(Data) ->
-    ?INFO_MSG("data: ~p~n", [binary_to_term(Data)]).
+    Ev = {_, DataCenter, JID} = deserialize_event(Data),
+    ?INFO_MSG("event: ~p~n", [Ev]),
+    R = #remote_session{bare_jid = {JID#jid.luser, JID#jid.lserver},
+                        datacenter = DataCenter},
+    mnesia:activity(sync_dirty, fun mnesia:write/1, [R]),
+    ok.
+
+deserialize_event(BEvent) ->
+    case binary_to_term(BEvent) of
+        {session_opened, _, _} = Ev -> Ev;
+        {session_closed, _, _} = Ev -> Ev
+    end.
