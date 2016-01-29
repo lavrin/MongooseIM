@@ -15,21 +15,10 @@ main(_Args) ->
     loop(standard_io).
 
 loop(Handle) ->
-    loop(Handle, 0).
-
-loop(Handle, Line) ->
-    case io:read(Handle, '', Line) of
+    case read_term(Handle) of
         eof -> ok;
-        {ok, Parsed, _NewLine} ->
-            %print("~p.~n", [Parsed]),
-            print("~s~n", [format(Parsed)]),
-            loop(Handle, Line);
-        {error, Reason} ->
-            stderr("error: ~p~n", [Reason]),
-            loop(Handle, Line);
-        {error, Reason, _} ->
-            stderr("error: ~p~n", [Reason]),
-            loop(Handle, Line)
+        {ok, Term} -> print("~s~n", [format(Term)]),
+                      loop(Handle)
     end.
 
 print(Fmt, Args) ->
@@ -79,3 +68,26 @@ fa(F, A) -> [?a2b(F), "/", ?i2b(A)].
 
 is_unreadable(T) when is_list(T), length(T) > 10 -> true;
 is_unreadable(T) when is_list(T) -> false.
+
+read_term(Handle) ->
+    read_term(Handle, start, file:read_line(Handle)).
+
+read_term(_Handle, start, eof) -> eof;
+read_term(_Handle, _, {error, Reason}) ->
+    stderr("error: ~p~n", [Reason]);
+read_term(Handle, Cont, {ok, Data}) ->
+    case if_discard(Data) of
+        true -> read_term(Handle, Cont, file:read_line(Handle));
+        false -> do_read_term(Handle, Cont, Data)
+    end.
+
+do_read_term(Handle, Cont, Data) ->
+    case io_lib:get_until(Cont, Data, unicode, {erl_scan, tokens, [1]}) of
+        {stop, {ok, Tokens, _LeftOvers}, _Buf} ->
+            erl_parse:parse_term(Tokens);
+        NCont ->
+            read_term(Handle, NCont, file:read_line(Handle))
+    end.
+
+if_discard("  Proceeding with analysis...\n") -> true;
+if_discard(_) -> false.
