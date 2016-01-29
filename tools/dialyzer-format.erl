@@ -60,6 +60,20 @@ warn_behaviour_m(T1, T2, M, F, A, Extra) ->
      fa(F,A), " is not a subtype of ", T2, ", ",
      "which is the expected return type for the callback of ", ?a2b(M), " behaviour", Extra].
 
+warn_failing_call(L, {call, [M, F, ActualArgs, [Nth], _What, SuccessArgs, _What2, _What3]}) ->
+    [loc(L), [?a2b(M), ":", ?a2b(F), "\n",
+              "    actual : ", ActualArgs, "\n",
+              "    success: ", SuccessArgs, "\n"]].
+
+%{call,[ejabberd_sm,
+%       route,
+%       "('error' | #jid{user::binary(),server::binary(),resource::binary(),luser::binary(),lserver::binary(),lresource::binary()},'error' | #jid{user::binary(),server::binary(),resource::binary(),luser::binary(),lserver::binary(),lresource::binary()},{'broadcast',{'exit',<<_:96>>}})",
+%       [3],
+%       only_sig,
+%       "(#jid{user::binary(),server::binary(),resource::binary(),luser::binary(),lserver::binary(),lresource::binary()},#jid{user::binary(),server::binary(),resource::binary(),luser::binary(),lserver::binary(),lresource::binary()},#xmlel{name::'undefined' | binary(),attrs::[{binary(),binary()}],children::[#xmlcdata{content::binary() | maybe_improper_list(any(),binary() | [])} | #xmlel{name::'undefined' | binary(),attrs::[any()],children::[any()]}]})",
+%       "'ok'",
+%       {true,"(From,To,Packet) -> 'ok' when is_subtype(From,ejabberd:jid()), is_subtype(To,ejabberd:jid()), is_subtype(Packet,jlib:xmlel() | ejabberd_c2s:broadcast())"}]}.
+
 loc({File, Line}) -> [File, ":", ?i2b(Line), ": "].
 
 mfa(M, F, A) -> [?a2b(M), ":", ?a2b(F), "/", ?i2b(A)].
