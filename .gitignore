@@ -123,3 +123,7 @@ TAGS
 
 *.diff
 
+# ASN.1 rebar3 plugin
+asngen
+_build
+_checkouts
