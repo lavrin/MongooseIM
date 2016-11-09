@@ -9,6 +9,7 @@ addons:
         - slapd
         - ldap-utils
 before_install:
+        - curl -sSf https://static.rust-lang.org/rustup.sh | sh
         - tools/travis-generate-pass.sh
 install:
         - tools/travis-build.sh
