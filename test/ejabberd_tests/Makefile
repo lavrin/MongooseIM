@@ -1,7 +1,7 @@
 .PHONY: all test console compile
 all: test
 
-TESTSPEC ?= default.spec
+TESTSPEC ?= rxml.spec
 PRESET   ?= all
 PREPARE  ?= prepare
 
