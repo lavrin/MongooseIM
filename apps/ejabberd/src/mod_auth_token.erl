@@ -362,7 +362,7 @@ get_token_as_record(BToken) ->
                          mac_signature = base16:decode(BMAC)};
              {<<"provision">>, [BVCard, BMAC]} ->
                  {ok, VCard} = exml:parse(BVCard),
-                 T#token{vcard = VCard,
+                 T#token{vcard = xml:normalize(VCard),
                          mac_signature = base16:decode(BMAC)}
          end,
     T1#token{token_body = join_fields(T1)}.

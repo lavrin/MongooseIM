@@ -34,7 +34,8 @@
          get_subtag/2,
          append_subtags/2,
          get_path_s/2,
-         replace_tag_attr/3]).
+         replace_tag_attr/3,
+         normalize/1]).
 
 -include("ejabberd.hrl").
 -include("jlib.hrl").
@@ -144,6 +145,15 @@ replace_tag_attr(Attr, Value, XE = #xmlel{attrs = Attrs}) ->
     Attrs1 = lists:keydelete(Attr, 1, Attrs),
     Attrs2 = [{Attr, Value} | Attrs1],
     XE#xmlel{attrs = Attrs2}.
+
+-spec normalize(jlib:xmlel()) -> jlib:xmlel().
+normalize({xmlcdata, _} = CData) -> CData;
+normalize(#xmlel{} = El) ->
+    #xmlel{attrs = Attrs, children = Children} = El,
+    El#xmlel{attrs = lists:sort(Attrs),
+             children = [ normalize(C) || C <- Children ]};
+normalize(Elements) when is_list(Elements) ->
+    [ normalize(E) || E <- Elements ].
 
 
 -spec context_default(binary() | string()) -> <<>> | [].
