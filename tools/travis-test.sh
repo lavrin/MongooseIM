@@ -103,9 +103,9 @@ maybe_run_small_tests() {
 run_test_preset() {
 	tools/print-dots.sh start
 	if [ "$COVER_ENABLED" = "true" ]; then
-		make cover_test_preset TESTSPEC=default.spec PRESET=$PRESET
+		make cover_test_preset TESTSPEC=rxml.spec PRESET=$PRESET
 	else
-		make test_preset TESTSPEC=default.spec PRESET=$PRESET
+		make test_preset TESTSPEC=rxml.spec PRESET=$PRESET
 	fi
 	tools/print-dots.sh stop
 }
