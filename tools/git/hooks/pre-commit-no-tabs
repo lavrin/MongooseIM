@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+
+# Hook purpose: Don't allow tabs in Erlang source files.
+#
+# This hook will reject commits which add or modify files
+# that contain tab characters.
+# It doesn't matter if the tabs were added in this change set
+# or were present in the files beforehand.
+#
+# Copy it to .git/hooks/pre-commit
+          
+SOURCES=$(# get files to be committed
+          git diff --cached --name-status | \
+          # don't mind file deletions
+          grep -E "^(M|A)" | \
+          # only consider Erlang sources
+          grep -E "\.[eh]rl$" | \
+          # get just the file name
+          awk '{ print $2 }')
+
+INVALID=""
+for f in $SOURCES; do
+    if grep '\t' $f >/dev/null 2>&1; then
+        INVALID="$f:$INVALID"
+    fi
+done
+
+if [ x"$INVALID" != x"" ]; then
+    echo "The following files to be committed contain tabs:"
+    echo
+    (IFS=:; for f in $INVALID; do echo $f; done) | sort
+    echo
+    exit 1
+else
+    exit 0
+fi
