@@ -123,7 +123,7 @@ init_per_suite(Config) ->
     end.
 
 end_per_suite(Config) ->
-    rpc(europe_node2, mongoose_cluster, leave, [ct:get_config(europe_node1)]),
+    rpc(europe_node2, mongoose_cluster, leave, []),
     escalus:end_per_suite(Config).
 
 init_per_group(start_checks, Config) ->
@@ -153,17 +153,17 @@ init_per_group(_, Config0) ->
     Config2 =
         lists:foldl(
           fun({NodeName, LocalHost, ReceiverPort}, Config1) ->
-                  Opts0 = ?config(extra_config, Config1) ++
-		         [{local_host, LocalHost},
-                          {hosts_refresh_interval, ?HOSTS_REFRESH_INTERVAL},
-                          {global_host, "localhost"},
-                          {endpoints, [listen_endpoint(ReceiverPort)]},
-                          {tls_opts, [
-                                      {certfile, ?config(certfile, Config1)},
-                                      {cafile, ?config(cafile, Config1)}
-                                     ]},
-                          {redis, [{port, 6379} | ?config(redis_extra_config, Config1)]},
-                          {resend_after_ms, 500}],
+                  Opts0 = (?config(extra_config, Config1) ++
+                           [{local_host, LocalHost},
+                            {hosts_refresh_interval, ?HOSTS_REFRESH_INTERVAL},
+                            {global_host, "localhost"},
+                            {endpoints, [listen_endpoint(ReceiverPort)]},
+                            {tls_opts, [
+                                        {certfile, ?config(certfile, Config1)},
+                                        {cafile, ?config(cafile, Config1)}
+                                       ]},
+                            {redis, [{port, 6379} | ?config(redis_extra_config, Config1)]},
+                            {resend_after_ms, 500}]),
                   Opts = maybe_add_advertised_endpoints(NodeName, Opts0, Config1),
 
                   OldMods = rpc(NodeName, gen_mod, loaded_modules_with_opts, [<<"localhost">>]),
@@ -640,8 +640,9 @@ test_component_unregister(_Config) ->
 
 test_error_on_wrong_hosts(_Config) ->
     Opts = [{cookie, "cookie"}, {local_host, "no_such_host"}, {global_host, "localhost"}],
-    Result = rpc(europe_node1, gen_mod, start_module, [<<"localhost">>, mod_global_distrib, Opts]),
-    ?assertMatch({badrpc, {'EXIT', {"no_such_host is not a member of the host list", _}}}, Result).
+    ?assertException(error, {badrpc, {'EXIT', {"no_such_host is not a member of the host list", _}}},
+                     rpc(europe_node1, gen_mod, start_module,
+                         [<<"localhost">>, mod_global_distrib, Opts])).
 
 refresh_nodes(Config) ->
     NodesKey = ?config(nodes_key, Config),
@@ -882,7 +883,7 @@ listen_endpoint(Port) ->
 rpc(NodeName, M, F, A) ->
     Node = ct:get_config(NodeName),
     Cookie = escalus_ct:get_config(ejabberd_cookie),
-    escalus_ct:rpc_call(Node, M, F, A, timer:seconds(30), Cookie).
+    escalus_rpc:call(Node, M, F, A, timer:seconds(30), Cookie).
 
 hide_node(NodeName, Config) ->
     NodesKey = ?config(nodes_key, Config),
