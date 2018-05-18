@@ -37,7 +37,7 @@
 %%--------------------------------------------------------------------
 
 all() ->
-    [
+    [{group, all}
      %{group, accounts},
      %{group, sessions},
      %{group, vcard},
@@ -46,21 +46,26 @@ all() ->
      %{group, last},
      %{group, private},
      %{group, stanza},
-     {group, stats}
+     %{group, stats},
      %{group, basic}
     ].
 
 groups() ->
-     [{accounts, [sequence], accounts()},
-      {sessions, [sequence], sessions()},
-      {vcard, [sequence], vcard()},
-      {roster, [sequence], roster()},
-      {last, [sequence], last()},
-      {private, [sequence], private()},
-      {stanza, [sequence], stanza()},
-      {roster_advanced, [sequence], roster_advanced()},
-      {basic, [sequence], basic()},
-      {stats, [sequence, {repeat_until_any_fail, 100}], stats()}].
+    [{all, [{repeat_until_any_fail, 100}],
+      [
+       {accounts, [sequence], accounts()},
+       {sessions, [sequence], sessions()},
+       {vcard, [sequence], vcard()},
+       {roster, [sequence], roster()},
+       {last, [sequence], last()},
+       {private, [sequence], private()},
+       {stanza, [sequence], stanza()},
+       {roster_advanced, [sequence], roster_advanced()},
+       {basic, [sequence], basic()},
+       {stats, [sequence], stats()}
+      ]
+     }].
+
 
 basic() ->
     [simple_register, simple_unregister, register_twice,
