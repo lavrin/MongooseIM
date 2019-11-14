@@ -1718,8 +1718,8 @@ random_filename(Config) ->
     TCName ++ "." ++ integer_to_list(erlang:system_time()) ++ ".zip".
 
 get_mim_cwd() ->
-    {ok, Cwd} = rpc(mim(), file, get_cwd, []),
-    Cwd.
+    MIM = mongoose_node:from_config(mim),
+    mongoose_node:cwd(MIM).
 
 delete_files() ->
     Cwd = get_mim_cwd(),
