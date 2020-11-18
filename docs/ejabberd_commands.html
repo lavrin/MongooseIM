@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.23.0">
+    <meta name="project" content="MongooseIM v4.0.1">
+    <title>ejabberd_commands — MongooseIM v4.0.1</title>
+    <link rel="stylesheet" href="dist/erlang-8a5f731dbc512bf6261b.css" />
+    <script src="dist/sidebar_items-38e40981d8.js"></script>
+      <script src="docs_config.js"></script>
+    <script async src="dist/app-60a0c9f10e9e52eae31f.js"></script>
+  </head>
+  <body data-type="modules">
+    <script>try { if(localStorage.getItem('night-mode') === 'true') document.body.className += ' night-mode'; } catch (e) { }</script>
+<div class="main">
+
+<button class="sidebar-button sidebar-toggle">
+  <span class="icon-menu" title="Collapse/expand sidebar"></span>
+</button>
+
+<section class="sidebar">
+  <form class="sidebar-search" action="search.html">
+    <button type="submit" class="search-button" aria-label="Submit Search">
+      <span class="icon-search" aria-hidden="true" title="Submit search"></span>
+    </button>
+    <button type="button" tabindex="-1" class="search-close-button" aria-label="Cancel Search">
+      <span class="icon-cross" aria-hidden="true" title="Cancel search"></span>
+    </button>
+    <label class="search-label">
+      <input name="q" type="text" id="search-list" class="search-input" placeholder="Search..." aria-label="Input your search terms" autocomplete="off" />
+    </label>
+  </form>
+
+  <div class="autocomplete">
+    <div class="autocomplete-results">
+    </div>
+  </div>
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectDetails">
+      <a href="mongooseim.html" class="sidebar-projectName">
+MongooseIM      </a>
+      <strong class="sidebar-projectVersion">
+        v4.0.1
+      </strong>
+    </div>
+  </div>
+
+  <ul class="sidebar-listNav">
+    <li><a id="extras-list" href="#full-list">Pages</a></li>
+
+      <li><a id="modules-list" href="#full-list">Modules</a></li>
+
+  </ul>
+  <div class="gradient"></div>
+  <ul id="full-list" class="sidebar-fullList"></ul>
+</section>
+
+<section class="content">
+  <div class="content-outer">
+    <div id="content" class="content-inner">
+
+      <h1>
+        ejabberd_commands <small class="app-vsn">(MongooseIM v4.0.1)</small>
+      </h1>
+
+
+        <section id="moduledoc">
+<p>Management of ejabberd commands.</p><p>An ejabberd command is an abstract function identified by a name, with a defined number and type of calling arguments and type of result, that can be defined in any Erlang module and executed using any valid frontend.</p><h3 id="module-define-a-new-ejabberd-command" class="section-heading">
+  <a href="#module-define-a-new-ejabberd-command" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  <a name="Define_a_new_ejabberd_command">Define a new ejabberd command</a>
+</h3>
+<p>ejabberd commands can be defined and registered in any Erlang module.</p><p>Some commands are procedures; and their purpose is to perform an action in the server, so the command result is only some result code or result tuple. Other commands are inspectors, and their purpose is to gather some information about the server and return a detailed response: it can be integer, string, atom, tuple, list or a mix of those ones.</p><p>The arguments and result of an ejabberd command are strictly defined. The number and format of the arguments provided when calling an ejabberd command must match the definition of that command. The format of the result provided by an ejabberd command must be exactly its definition. For example, if a command is said to return an integer, it must always return an integer (except in case of a crash).</p><p>If you are developing an Erlang module that will run inside ejabberd and you want to provide a new ejabberd command to administer some task related to your module, you only need to: implement a function, define the command, and register it.</p><a name="Define_a_new_ejabberd_command">Define a new ejabberd command</a><p>An ejabberd command is defined using the Erlang record 'ejabberd_commands'. This record has several elements that you must define. Note that 'tags', 'desc' and 'longdesc' are optional.</p><p>For example let's define an ejabberd command 'pow' that gets the integers 'base' and 'exponent'. Its result will be an integer 'power':</p><pre>#ejabberd_commands{name = pow, tags = [test],
+                   desc = &quot;Return the power of base for exponent&quot;,
+                   longdesc = &quot;This is an example command. The formula is:\n&quot;
+                   &quot;  power = base ^ exponent&quot;,
+                   module = ?MODULE, function = pow,
+                   args = [{base, integer}, {exponent, integer}],
+                   result = {power, integer}}</pre><a name="Implement_the_function_associated_to_the_command">Implement the function associated to the command</a><p>Now implement a function in your module that matches the arguments and result of the ejabberd command.</p><p>For example the function calc_power gets two integers Base and Exponent. It calculates the power and rounds to an integer:</p><pre>calc_power(Base, Exponent) -&gt;
+      PowFloat = math:pow(Base, Exponent),
+      round(PowFloat).</pre>Since this function will be called by ejabberd_commands, it must be exported. Add to your module:<pre>-export([calc_power/2]).</pre><p>Only some types of result formats are allowed. If the format is defined as 'rescode', then your function must return: ok | true | atom() where the atoms ok and true as considered positive answers, and any other response atom is considered negative.</p><p>If the format is defined as 'restuple', then the command must return: {rescode(), string()}</p><p>If the format is defined as '{list, something()}', then the command must return a list of something().</p><a name="Register_the_command">Register the command</a><p>Define this function and put inside the #ejabberd_command you defined in the beginning:</p><pre>commands() -&gt;
+      [
+  
+      ].</pre><p>You need to include this header file in order to use the record:</p><pre>-include(&quot;ejabberd_commands.hrl&quot;).</pre><p>When your module is initialized or started, register your commands:</p><pre>ejabberd_commands:register_commands(commands()), </pre><p>And when your module is stopped, unregister your commands:</p><pre>ejabberd_commands:unregister_commands(commands()), </pre><p>That's all! Now when your module is started, the command will be registered and any frontend can access it. For example:</p><pre>$ mongooseimctl help pow
+  
+     Command Name: pow
+  
+     Arguments: base::integer
+                exponent::integer
+  
+     Returns: power::integer
+  
+     Tags: test
+  
+     Description: Return the power of base for exponent
+  
+   This is an example command. The formula is:
+    power = base ^ exponent
+  
+   $ mongooseimctl pow 3 4
+   81
+   </pre><h3 id="module-execute-an-ejabberd-command" class="section-heading">
+  <a href="#module-execute-an-ejabberd-command" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  <a name="Execute_an_ejabberd_command">Execute an ejabberd command</a>
+</h3>
+<p>ejabberd commands are mean to be executed using any valid frontend. An ejabberd commands is implemented in a regular Erlang function, so it is also possible to execute this function in any Erlang module, without dealing with the associated ejabberd commands.</p><h3 id="module-frontend-to-ejabberd-commands" class="section-heading">
+  <a href="#module-frontend-to-ejabberd-commands" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  <a name="Frontend_to_ejabberd_commands">Frontend to ejabberd commands</a>
+</h3>
+<p>Currently there is one frontend to ejabberd commands: the shell script - mongooseimctl</p><a name="mongooseimctl_as_a_frontend_to_ejabberd_commands">mongooseimctl as a frontend to ejabberd commands</a><p>It is possible to use mongooseimctl to get documentation of any command. But mongooseimctl does not support all the argument types allowed in ejabberd commands, so there are some ejabberd commands that cannot be executed using mongooseimctl.</p>Also note that the mongooseimctl shell administration script also manages mongooseimctl commands, which are unrelated to ejabberd commands and can only be executed using mongooseimctl.        </section>
+
+        <section id="summary" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#summary">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+            Summary
+          </h1>
+  <div class="summary-types summary">
+    <h2>
+      <a href="#types">Types</a>
+    </h2>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:access_cmd/0">access_cmd()</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:aterm/0">aterm()</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:atype/0">atype()</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:auth/0">auth()</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:cmd/0">cmd()</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:cmd_error/0">cmd_error()</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:list_cmd/0">list_cmd()</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:rterm/0">rterm()</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:rtype/0">rtype()</a>
+  </div>
+</div>
+  </div>
+  <div class="summary-functions summary">
+    <h2>
+      <a href="#functions">Functions</a>
+    </h2>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#check_access/2">check_access/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#check_access_arguments/3">check_access_arguments/3</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#check_access_command/5">check_access_command/5</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#check_access_commands/5">check_access_commands/5</a>
+  </div>
+    <div class="summary-synopsis">Check access is allowed to that command. At least one AccessCommand must be satisfied. May throw {error, account_unprivileged | invalid_account_data}</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#execute_command/2">execute_command/2</a>
+  </div>
+    <div class="summary-synopsis">Execute a command.</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#execute_command/4">execute_command/4</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#get_command_definition/1">get_command_definition/1</a>
+  </div>
+    <div class="summary-synopsis">Get the definition record of a command.</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#get_command_format/1">get_command_format/1</a>
+  </div>
+    <div class="summary-synopsis">Get the format of arguments and result of a command.</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#get_md5/1">get_md5/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#get_tags_commands/0">get_tags_commands/0</a>
+  </div>
+    <div class="summary-synopsis">Get all the tags and associated commands.</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#init/0">init/0</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#list_commands/0">list_commands/0</a>
+  </div>
+    <div class="summary-synopsis">Get a list of all the available commands, arguments and description.</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#register_commands/1">register_commands/1</a>
+  </div>
+    <div class="summary-synopsis">Register ejabberd commands. If a command is already registered, a warning is printed and the old command is preserved.</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#tag_arguments/2">tag_arguments/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#unregister_commands/1">unregister_commands/1</a>
+  </div>
+    <div class="summary-synopsis">Unregister ejabberd commands.</div>
+</div>
+  </div>
+        </section>
+
+        <section id="types" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#types">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+Types          </h1>
+          <div class="types-list">
+<section class="detail" id="t:access_cmd/0">
+  <div class="detail-header">
+    <a href="#t:access_cmd/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">access_cmd()</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>t:ejabberd_commands.access_cmd/0</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="t:aterm/0">
+  <div class="detail-header">
+    <a href="#t:aterm/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">aterm()</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>t:ejabberd_commands.aterm/0</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="t:atype/0">
+  <div class="detail-header">
+    <a href="#t:atype/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">atype()</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>t:ejabberd_commands.atype/0</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="t:auth/0">
+  <div class="detail-header">
+    <a href="#t:auth/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">auth()</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>t:ejabberd_commands.auth/0</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="t:cmd/0">
+  <div class="detail-header">
+    <a href="#t:cmd/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">cmd()</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>t:ejabberd_commands.cmd/0</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="t:cmd_error/0">
+  <div class="detail-header">
+    <a href="#t:cmd_error/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">cmd_error()</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>t:ejabberd_commands.cmd_error/0</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="t:list_cmd/0">
+  <div class="detail-header">
+    <a href="#t:list_cmd/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">list_cmd()</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>t:ejabberd_commands.list_cmd/0</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="t:rterm/0">
+  <div class="detail-header">
+    <a href="#t:rterm/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">rterm()</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>t:ejabberd_commands.rterm/0</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="t:rtype/0">
+  <div class="detail-header">
+    <a href="#t:rtype/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">rtype()</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>t:ejabberd_commands.rtype/0</pre>
+      </div>
+
+  </section>
+</section>
+          </div>
+        </section>
+        <section id="functions" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#functions">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+Functions          </h1>
+          <div class="functions-list">
+<section class="detail" id="check_access/2">
+  <div class="detail-header">
+    <a href="#check_access/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">check_access/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>ejabberd_commands.check_access/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="check_access_arguments/3">
+  <div class="detail-header">
+    <a href="#check_access_arguments/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">check_access_arguments/3</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>ejabberd_commands.check_access_arguments/3</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="check_access_command/5">
+  <div class="detail-header">
+    <a href="#check_access_command/5" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">check_access_command/5</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>ejabberd_commands.check_access_command/5</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="check_access_commands/5">
+  <div class="detail-header">
+    <a href="#check_access_commands/5" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">check_access_commands/5</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>ejabberd_commands.check_access_commands/5</pre>
+      </div>
+
+Check access is allowed to that command. At least one AccessCommand must be satisfied. May throw {error, account_unprivileged | invalid_account_data}  </section>
+</section>
+<section class="detail" id="execute_command/2">
+  <div class="detail-header">
+    <a href="#execute_command/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">execute_command/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>ejabberd_commands.execute_command/2</pre>
+      </div>
+
+Execute a command.  </section>
+</section>
+<section class="detail" id="execute_command/4">
+  <div class="detail-header">
+    <a href="#execute_command/4" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">execute_command/4</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>ejabberd_commands.execute_command/4</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="get_command_definition/1">
+  <div class="detail-header">
+    <a href="#get_command_definition/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">get_command_definition/1</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>ejabberd_commands.get_command_definition/1</pre>
+      </div>
+
+Get the definition record of a command.  </section>
+</section>
+<section class="detail" id="get_command_format/1">
+  <div class="detail-header">
+    <a href="#get_command_format/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">get_command_format/1</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>ejabberd_commands.get_command_format/1</pre>
+      </div>
+
+Get the format of arguments and result of a command.  </section>
+</section>
+<section class="detail" id="get_md5/1">
+  <div class="detail-header">
+    <a href="#get_md5/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">get_md5/1</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>ejabberd_commands.get_md5/1</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="get_tags_commands/0">
+  <div class="detail-header">
+    <a href="#get_tags_commands/0" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">get_tags_commands/0</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>ejabberd_commands.get_tags_commands/0</pre>
+      </div>
+
+Get all the tags and associated commands.  </section>
+</section>
+<section class="detail" id="init/0">
+  <div class="detail-header">
+    <a href="#init/0" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">init/0</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="list_commands/0">
+  <div class="detail-header">
+    <a href="#list_commands/0" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">list_commands/0</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>ejabberd_commands.list_commands/0</pre>
+      </div>
+
+Get a list of all the available commands, arguments and description.  </section>
+</section>
+<section class="detail" id="register_commands/1">
+  <div class="detail-header">
+    <a href="#register_commands/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">register_commands/1</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>ejabberd_commands.register_commands/1</pre>
+      </div>
+
+Register ejabberd commands. If a command is already registered, a warning is printed and the old command is preserved.  </section>
+</section>
+<section class="detail" id="tag_arguments/2">
+  <div class="detail-header">
+    <a href="#tag_arguments/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">tag_arguments/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>ejabberd_commands.tag_arguments/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="unregister_commands/1">
+  <div class="detail-header">
+    <a href="#unregister_commands/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">unregister_commands/1</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>ejabberd_commands.unregister_commands/1</pre>
+      </div>
+
+Unregister ejabberd commands.  </section>
+</section>
+          </div>
+        </section>
+      <footer class="footer">
+        <p>
+          <span class="line">
+            Built using
+            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener">ExDoc</a> (v0.23.0) for the
+            <a href="https://elixir-lang.org" title="Elixir" target="_blank">Elixir programming language</a>.
+          </span>
+          <span class="line">
+            Designed by
+            <a href="https://twitter.com/dignifiedquire" target="_blank" rel="noopener" title="@dignifiedquire">Friedel Ziegelmayer</a>.
+          </span>
+        </p>
+        <p>
+            <a href="api-reference.html" title="API reference" class="line footer-button">API Reference</a>
+          <button class="line footer-button display-shortcuts-help">
+            Display keyboard shortcuts
+          </button>
+          <button class="line footer-button night-mode-toggle">
+            Toggle night mode
+          </button>
+          <button class="line footer-button display-quick-switch">
+            Go to a HexDocs package
+          </button>
+          <button class="line footer-button tooltips-toggle">
+            <span class="tooltips-option-disable">Disable tooltips</span>
+            <span class="tooltips-option-enable">Enable tooltips</span>
+          </button>
+        </p>
+      </footer>
+    </div>
+  </div>
+</section>
+</div>
+  </body>
+</html>

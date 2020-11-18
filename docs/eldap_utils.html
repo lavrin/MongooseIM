@@ -1,0 +1,911 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.23.0">
+    <meta name="project" content="MongooseIM v4.0.1">
+    <title>eldap_utils — MongooseIM v4.0.1</title>
+    <link rel="stylesheet" href="dist/erlang-8a5f731dbc512bf6261b.css" />
+    <script src="dist/sidebar_items-38e40981d8.js"></script>
+      <script src="docs_config.js"></script>
+    <script async src="dist/app-60a0c9f10e9e52eae31f.js"></script>
+  </head>
+  <body data-type="modules">
+    <script>try { if(localStorage.getItem('night-mode') === 'true') document.body.className += ' night-mode'; } catch (e) { }</script>
+<div class="main">
+
+<button class="sidebar-button sidebar-toggle">
+  <span class="icon-menu" title="Collapse/expand sidebar"></span>
+</button>
+
+<section class="sidebar">
+  <form class="sidebar-search" action="search.html">
+    <button type="submit" class="search-button" aria-label="Submit Search">
+      <span class="icon-search" aria-hidden="true" title="Submit search"></span>
+    </button>
+    <button type="button" tabindex="-1" class="search-close-button" aria-label="Cancel Search">
+      <span class="icon-cross" aria-hidden="true" title="Cancel search"></span>
+    </button>
+    <label class="search-label">
+      <input name="q" type="text" id="search-list" class="search-input" placeholder="Search..." aria-label="Input your search terms" autocomplete="off" />
+    </label>
+  </form>
+
+  <div class="autocomplete">
+    <div class="autocomplete-results">
+    </div>
+  </div>
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectDetails">
+      <a href="mongooseim.html" class="sidebar-projectName">
+MongooseIM      </a>
+      <strong class="sidebar-projectVersion">
+        v4.0.1
+      </strong>
+    </div>
+  </div>
+
+  <ul class="sidebar-listNav">
+    <li><a id="extras-list" href="#full-list">Pages</a></li>
+
+      <li><a id="modules-list" href="#full-list">Modules</a></li>
+
+  </ul>
+  <div class="gradient"></div>
+  <ul id="full-list" class="sidebar-fullList"></ul>
+</section>
+
+<section class="content">
+  <div class="content-outer">
+    <div id="content" class="content-inner">
+
+      <h1>
+        eldap_utils <small class="app-vsn">(MongooseIM v4.0.1)</small>
+      </h1>
+
+
+
+        <section id="summary" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#summary">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+            Summary
+          </h1>
+  <div class="summary-types summary">
+    <h2>
+      <a href="#types">Types</a>
+    </h2>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:check_fun/0">check_fun()</a>
+  </div>
+</div>
+  </div>
+  <div class="summary-functions summary">
+    <h2>
+      <a href="#functions">Functions</a>
+    </h2>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#case_insensitive_match/2">case_insensitive_match/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#check_and_convert_restricted_string/2">check_and_convert_restricted_string/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#check_filter/1">check_filter/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#collect_parts/1">collect_parts/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#collect_parts/2">collect_parts/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#collect_parts_bit/3">collect_parts_bit/3</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#decode_octet_string/3">decode_octet_string/3</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#decode_restricted_string/3">decode_restricted_string/3</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#find_ldap_attrs/2">find_ldap_attrs/2</a>
+  </div>
+    <div class="summary-synopsis">Not tail-recursive, but it is not very terribly. It stops finding on the first not empty value.</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#generate_subfilter/1">generate_subfilter/1</a>
+  </div>
+    <div class="summary-synopsis">Generate an 'or' LDAP query on one or several attributes If there is only one attribute</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#generate_substring_list/1">generate_substring_list/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#generate_substring_list/2">generate_substring_list/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#get_base/1">get_base/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#get_deref_aliases/1">get_deref_aliases/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#get_dn_filter_with_attrs/1">get_dn_filter_with_attrs/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#get_ldap_attr/2">get_ldap_attr/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#get_mod_opt/2">get_mod_opt/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#get_mod_opt/3">get_mod_opt/3</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#get_mod_opt/4">get_mod_opt/4</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#get_search_filter/1">get_search_filter/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#get_state/2">get_state/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#get_uids/2">get_uids/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#get_user_filter/2">get_user_filter/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#get_user_part/2">get_user_part/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#make_filter/2">make_filter/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#make_filter/3">make_filter/3</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#match_filter_name/2">match_filter_name/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#match_tags/2">match_tags/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#maybe_b2list/1">maybe_b2list/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#maybe_list2b/1">maybe_list2b/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#prepare_opt_val/4">prepare_opt_val/4</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#process_uids/1">process_uids/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#singleton_value/1">singleton_value/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#subfilter/1">subfilter/1</a>
+  </div>
+    <div class="summary-synopsis">Subfilter for a single attribute</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#traverse_filter_fun/1">traverse_filter_fun/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#uids_domain_subst/2">uids_domain_subst/2</a>
+  </div>
+    <div class="summary-synopsis">From the list of uids attribute: we look from alias domain (%d) and make the substitution with the actual host domain. This helps when you need to configure many virtual domains.</div>
+</div>
+  </div>
+        </section>
+
+        <section id="types" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#types">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+Types          </h1>
+          <div class="types-list">
+<section class="detail" id="t:check_fun/0">
+  <div class="detail-header">
+    <a href="#t:check_fun/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">check_fun()</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>t:eldap_utils.check_fun/0</pre>
+      </div>
+
+  </section>
+</section>
+          </div>
+        </section>
+        <section id="functions" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#functions">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+Functions          </h1>
+          <div class="functions-list">
+<section class="detail" id="case_insensitive_match/2">
+  <div class="detail-header">
+    <a href="#case_insensitive_match/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">case_insensitive_match/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>eldap_utils.case_insensitive_match/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="check_and_convert_restricted_string/2">
+  <div class="detail-header">
+    <a href="#check_and_convert_restricted_string/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">check_and_convert_restricted_string/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>eldap_utils.check_and_convert_restricted_string/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="check_filter/1">
+  <div class="detail-header">
+    <a href="#check_filter/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">check_filter/1</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>eldap_utils.check_filter/1</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="collect_parts/1">
+  <div class="detail-header">
+    <a href="#collect_parts/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">collect_parts/1</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>eldap_utils.collect_parts/1</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="collect_parts/2">
+  <div class="detail-header">
+    <a href="#collect_parts/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">collect_parts/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>eldap_utils.collect_parts/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="collect_parts_bit/3">
+  <div class="detail-header">
+    <a href="#collect_parts_bit/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">collect_parts_bit/3</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>eldap_utils.collect_parts_bit/3</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="decode_octet_string/3">
+  <div class="detail-header">
+    <a href="#decode_octet_string/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">decode_octet_string/3</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>eldap_utils.decode_octet_string/3</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="decode_restricted_string/3">
+  <div class="detail-header">
+    <a href="#decode_restricted_string/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">decode_restricted_string/3</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>eldap_utils.decode_restricted_string/3</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="find_ldap_attrs/2">
+  <div class="detail-header">
+    <a href="#find_ldap_attrs/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">find_ldap_attrs/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>eldap_utils.find_ldap_attrs/2</pre>
+      </div>
+
+Not tail-recursive, but it is not very terribly. It stops finding on the first not empty value.  </section>
+</section>
+<section class="detail" id="generate_subfilter/1">
+  <div class="detail-header">
+    <a href="#generate_subfilter/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">generate_subfilter/1</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>eldap_utils.generate_subfilter/1</pre>
+      </div>
+
+Generate an 'or' LDAP query on one or several attributes If there is only one attribute  </section>
+</section>
+<section class="detail" id="generate_substring_list/1">
+  <div class="detail-header">
+    <a href="#generate_substring_list/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">generate_substring_list/1</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>eldap_utils.generate_substring_list/1</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="generate_substring_list/2">
+  <div class="detail-header">
+    <a href="#generate_substring_list/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">generate_substring_list/2</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="get_base/1">
+  <div class="detail-header">
+    <a href="#get_base/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">get_base/1</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="get_deref_aliases/1">
+  <div class="detail-header">
+    <a href="#get_deref_aliases/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">get_deref_aliases/1</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="get_dn_filter_with_attrs/1">
+  <div class="detail-header">
+    <a href="#get_dn_filter_with_attrs/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">get_dn_filter_with_attrs/1</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="get_ldap_attr/2">
+  <div class="detail-header">
+    <a href="#get_ldap_attr/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">get_ldap_attr/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>eldap_utils.get_ldap_attr/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="get_mod_opt/2">
+  <div class="detail-header">
+    <a href="#get_mod_opt/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">get_mod_opt/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>eldap_utils.get_mod_opt/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="get_mod_opt/3">
+  <div class="detail-header">
+    <a href="#get_mod_opt/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">get_mod_opt/3</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>eldap_utils.get_mod_opt/3</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="get_mod_opt/4">
+  <div class="detail-header">
+    <a href="#get_mod_opt/4" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">get_mod_opt/4</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>eldap_utils.get_mod_opt/4</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="get_search_filter/1">
+  <div class="detail-header">
+    <a href="#get_search_filter/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">get_search_filter/1</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="get_state/2">
+  <div class="detail-header">
+    <a href="#get_state/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">get_state/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>eldap_utils.get_state/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="get_uids/2">
+  <div class="detail-header">
+    <a href="#get_uids/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">get_uids/2</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="get_user_filter/2">
+  <div class="detail-header">
+    <a href="#get_user_filter/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">get_user_filter/2</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="get_user_part/2">
+  <div class="detail-header">
+    <a href="#get_user_part/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">get_user_part/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>eldap_utils.get_user_part/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="make_filter/2">
+  <div class="detail-header">
+    <a href="#make_filter/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">make_filter/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>eldap_utils.make_filter/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="make_filter/3">
+  <div class="detail-header">
+    <a href="#make_filter/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">make_filter/3</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>eldap_utils.make_filter/3</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="match_filter_name/2">
+  <div class="detail-header">
+    <a href="#match_filter_name/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">match_filter_name/2</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="match_tags/2">
+  <div class="detail-header">
+    <a href="#match_tags/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">match_tags/2</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="maybe_b2list/1">
+  <div class="detail-header">
+    <a href="#maybe_b2list/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">maybe_b2list/1</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="maybe_list2b/1">
+  <div class="detail-header">
+    <a href="#maybe_list2b/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">maybe_list2b/1</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="prepare_opt_val/4">
+  <div class="detail-header">
+    <a href="#prepare_opt_val/4" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">prepare_opt_val/4</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>eldap_utils.prepare_opt_val/4</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="process_uids/1">
+  <div class="detail-header">
+    <a href="#process_uids/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">process_uids/1</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="singleton_value/1">
+  <div class="detail-header">
+    <a href="#singleton_value/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">singleton_value/1</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>eldap_utils.singleton_value/1</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="subfilter/1">
+  <div class="detail-header">
+    <a href="#subfilter/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">subfilter/1</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>eldap_utils.subfilter/1</pre>
+      </div>
+
+Subfilter for a single attribute  </section>
+</section>
+<section class="detail" id="traverse_filter_fun/1">
+  <div class="detail-header">
+    <a href="#traverse_filter_fun/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">traverse_filter_fun/1</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="uids_domain_subst/2">
+  <div class="detail-header">
+    <a href="#uids_domain_subst/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">uids_domain_subst/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>eldap_utils.uids_domain_subst/2</pre>
+      </div>
+
+From the list of uids attribute: we look from alias domain (%d) and make the substitution with the actual host domain. This helps when you need to configure many virtual domains.  </section>
+</section>
+          </div>
+        </section>
+      <footer class="footer">
+        <p>
+          <span class="line">
+            Built using
+            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener">ExDoc</a> (v0.23.0) for the
+            <a href="https://elixir-lang.org" title="Elixir" target="_blank">Elixir programming language</a>.
+          </span>
+          <span class="line">
+            Designed by
+            <a href="https://twitter.com/dignifiedquire" target="_blank" rel="noopener" title="@dignifiedquire">Friedel Ziegelmayer</a>.
+          </span>
+        </p>
+        <p>
+            <a href="api-reference.html" title="API reference" class="line footer-button">API Reference</a>
+          <button class="line footer-button display-shortcuts-help">
+            Display keyboard shortcuts
+          </button>
+          <button class="line footer-button night-mode-toggle">
+            Toggle night mode
+          </button>
+          <button class="line footer-button display-quick-switch">
+            Go to a HexDocs package
+          </button>
+          <button class="line footer-button tooltips-toggle">
+            <span class="tooltips-option-disable">Disable tooltips</span>
+            <span class="tooltips-option-enable">Enable tooltips</span>
+          </button>
+        </p>
+      </footer>
+    </div>
+  </div>
+</section>
+</div>
+  </body>
+</html>

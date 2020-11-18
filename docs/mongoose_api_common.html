@@ -1,0 +1,928 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.23.0">
+    <meta name="project" content="MongooseIM v4.0.1">
+    <title>mongoose_api_common — MongooseIM v4.0.1</title>
+    <link rel="stylesheet" href="dist/erlang-8a5f731dbc512bf6261b.css" />
+    <script src="dist/sidebar_items-38e40981d8.js"></script>
+      <script src="docs_config.js"></script>
+    <script async src="dist/app-60a0c9f10e9e52eae31f.js"></script>
+  </head>
+  <body data-type="modules">
+    <script>try { if(localStorage.getItem('night-mode') === 'true') document.body.className += ' night-mode'; } catch (e) { }</script>
+<div class="main">
+
+<button class="sidebar-button sidebar-toggle">
+  <span class="icon-menu" title="Collapse/expand sidebar"></span>
+</button>
+
+<section class="sidebar">
+  <form class="sidebar-search" action="search.html">
+    <button type="submit" class="search-button" aria-label="Submit Search">
+      <span class="icon-search" aria-hidden="true" title="Submit search"></span>
+    </button>
+    <button type="button" tabindex="-1" class="search-close-button" aria-label="Cancel Search">
+      <span class="icon-cross" aria-hidden="true" title="Cancel search"></span>
+    </button>
+    <label class="search-label">
+      <input name="q" type="text" id="search-list" class="search-input" placeholder="Search..." aria-label="Input your search terms" autocomplete="off" />
+    </label>
+  </form>
+
+  <div class="autocomplete">
+    <div class="autocomplete-results">
+    </div>
+  </div>
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectDetails">
+      <a href="mongooseim.html" class="sidebar-projectName">
+MongooseIM      </a>
+      <strong class="sidebar-projectVersion">
+        v4.0.1
+      </strong>
+    </div>
+  </div>
+
+  <ul class="sidebar-listNav">
+    <li><a id="extras-list" href="#full-list">Pages</a></li>
+
+      <li><a id="modules-list" href="#full-list">Modules</a></li>
+
+  </ul>
+  <div class="gradient"></div>
+  <ul id="full-list" class="sidebar-fullList"></ul>
+</section>
+
+<section class="content">
+  <div class="content-outer">
+    <div id="content" class="content-inner">
+
+      <h1>
+        mongoose_api_common <small class="app-vsn">(MongooseIM v4.0.1)</small>
+      </h1>
+
+
+        <section id="moduledoc">
+<p>MongooseIM REST API backend</p><p>This module handles the client HTTP REST requests, then respectively convert them to Commands from mongoose_commands and execute with <code>admin` privileges. It supports responses with appropriate HTTP Status codes returned to the client. This module implements behaviour introduced in ejabberd_cowboy which is %% built on top of the cowboy library. The method supported: GET, POST, PUT, DELETE. Only JSON format. The library &quot;jiffy&quot; used to serialize and deserialized JSON data. REQUESTS The module is based on mongoose_commands registry. The root http path for a command is build based on the &quot;category&quot; field. %% It</code>s always used as path a prefix. The commands are translated to HTTP API in the following manner:</p><p>command of action &quot;read&quot; will be called by GET request command of action &quot;create&quot; will be called by POST request command of action &quot;update&quot; will be called by PUT request command of action &quot;delete&quot; will be called by DELETE request</p><p>The args of the command will be filled with the values provided in path %% bindings or body parameters, depending of the method type: - for command of action &quot;read&quot; or &quot;delete&quot; all the args are pulled from the path bindings. The path should be constructed of pairs &quot;/arg_name/arg_value&quot; so that it could match the {arg_name, type} %% pattern in the command registry. E.g having the record of category &quot;users&quot; and args: [{username, binary}, {domain, binary}] we will have to make following GET request %% path: http://domain:port/api/users/username/Joe/domain/localhost and the command will be called with arguments &quot;Joe&quot; and &quot;localhost&quot;</p><p>- for command of action &quot;create&quot; or &quot;update&quot; args are pulled from the body JSON, except those that are on the &quot;identifiers&quot; list of the command. Those go to the path bindings. E.g having the record of category &quot;animals&quot;, action &quot;update&quot; and args: [{species, binary}, {name, binary}, {age, integer}] and identifiers: [species, name] we can set the age for our elephant Ed in the PUT request: path: http://domain:port/api/species/elephant/name/Ed body: {&quot;age&quot; : &quot;10&quot;} and then the command will be called with arguments [&quot;elephant&quot;, &quot;Ed&quot; and 10].</p><p>RESPONSES</p>The API supports some of the http status code like 200, 201, 400, 404 etc depending on the return value of the command execution and arguments checks. Additionally, when the command's action is &quot;create&quot; and it returns a value, it is concatenated to the path and return to the client in header &quot;location&quot; with response code 201 so that it could represent now a new created resource. If error occured while executing the command, the appropriate reason is returned in response body.        </section>
+
+        <section id="summary" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#summary">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+            Summary
+          </h1>
+  <div class="summary-types summary">
+    <h2>
+      <a href="#types">Types</a>
+    </h2>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:arg_name/0">arg_name()</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:arg_spec_list/0">arg_spec_list()</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:arg_value/0">arg_value()</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:args_applied/0">args_applied()</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:correct_result/0">correct_result()</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:error_result/0">error_result()</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:http_api_state/0">http_api_state()</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:method/0">method()</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:optarg_spec_list/0">optarg_spec_list()</a>
+  </div>
+</div>
+  </div>
+  <div class="summary-functions summary">
+    <h2>
+      <a href="#functions">Functions</a>
+    </h2>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#action_to_method/1">action_to_method/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#add_bind/2">add_bind/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#add_bindings/2">add_bindings/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#add_location_header/3">add_location_header/3</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#both_bind_and_body/1">both_bind_and_body/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#check_and_extract_args/3">check_and_extract_args/3</a>
+  </div>
+    <div class="summary-synopsis">Checks if the arguments are correct. Return the arguments that can be applied to the execution of command.</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#convert_arg/2">convert_arg/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#create_admin_url_path/1">create_admin_url_path/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#create_params_proplist/1">create_params_proplist/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#create_user_url_path/1">create_user_url_path/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#error_code/1">error_code/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#error_response/4">error_response/4</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#execute_command/3">execute_command/3</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#get_allowed_methods/1">get_allowed_methods/1</a>
+  </div>
+    <div class="summary-synopsis">Returns list of allowed methods.</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#get_auth_details/1">get_auth_details/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#handle_request/5">handle_request/5</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#handle_result/4">handle_result/4</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#is_known_auth_method/1">is_known_auth_method/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#make_unauthorized_response/2">make_unauthorized_response/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#maybe_add_bindings/2">maybe_add_bindings/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#maybe_add_caller/1">maybe_add_caller/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#maybe_add_location_header/3">maybe_add_location_header/3</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#maybe_add_subcategory/1">maybe_add_subcategory/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#method_to_action/1">method_to_action/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#parse_request_body/1">parse_request_body/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#process_request/4">process_request/4</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#reload_dispatches/1">reload_dispatches/1</a>
+  </div>
+    <div class="summary-synopsis">Reload all ejabberd_cowboy listeners. When a command is registered or unregistered, the routing paths that cowboy stores as a &quot;dispatch&quot; must be refreshed. Read more http://ninenines.eu/docs/en/cowboy/1.0/guide/routing/</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#to_atom/1">to_atom/1</a>
+  </div>
+</div>
+  </div>
+        </section>
+
+        <section id="types" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#types">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+Types          </h1>
+          <div class="types-list">
+<section class="detail" id="t:arg_name/0">
+  <div class="detail-header">
+    <a href="#t:arg_name/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">arg_name()</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>t:mongoose_api_common.arg_name/0</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="t:arg_spec_list/0">
+  <div class="detail-header">
+    <a href="#t:arg_spec_list/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">arg_spec_list()</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>t:mongoose_api_common.arg_spec_list/0</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="t:arg_value/0">
+  <div class="detail-header">
+    <a href="#t:arg_value/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">arg_value()</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>t:mongoose_api_common.arg_value/0</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="t:args_applied/0">
+  <div class="detail-header">
+    <a href="#t:args_applied/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">args_applied()</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>t:mongoose_api_common.args_applied/0</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="t:correct_result/0">
+  <div class="detail-header">
+    <a href="#t:correct_result/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">correct_result()</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>t:mongoose_api_common.correct_result/0</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="t:error_result/0">
+  <div class="detail-header">
+    <a href="#t:error_result/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">error_result()</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>t:mongoose_api_common.error_result/0</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="t:http_api_state/0">
+  <div class="detail-header">
+    <a href="#t:http_api_state/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">http_api_state()</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>t:mongoose_api_common.http_api_state/0</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="t:method/0">
+  <div class="detail-header">
+    <a href="#t:method/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">method()</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>t:mongoose_api_common.method/0</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="t:optarg_spec_list/0">
+  <div class="detail-header">
+    <a href="#t:optarg_spec_list/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">optarg_spec_list()</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>t:mongoose_api_common.optarg_spec_list/0</pre>
+      </div>
+
+  </section>
+</section>
+          </div>
+        </section>
+        <section id="functions" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#functions">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+Functions          </h1>
+          <div class="functions-list">
+<section class="detail" id="action_to_method/1">
+  <div class="detail-header">
+    <a href="#action_to_method/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">action_to_method/1</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="add_bind/2">
+  <div class="detail-header">
+    <a href="#add_bind/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">add_bind/2</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="add_bindings/2">
+  <div class="detail-header">
+    <a href="#add_bindings/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">add_bindings/2</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="add_location_header/3">
+  <div class="detail-header">
+    <a href="#add_location_header/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">add_location_header/3</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="both_bind_and_body/1">
+  <div class="detail-header">
+    <a href="#both_bind_and_body/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">both_bind_and_body/1</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_api_common.both_bind_and_body/1</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="check_and_extract_args/3">
+  <div class="detail-header">
+    <a href="#check_and_extract_args/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">check_and_extract_args/3</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_api_common.check_and_extract_args/3</pre>
+      </div>
+
+Checks if the arguments are correct. Return the arguments that can be applied to the execution of command.  </section>
+</section>
+<section class="detail" id="convert_arg/2">
+  <div class="detail-header">
+    <a href="#convert_arg/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">convert_arg/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_api_common.convert_arg/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="create_admin_url_path/1">
+  <div class="detail-header">
+    <a href="#create_admin_url_path/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">create_admin_url_path/1</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_api_common.create_admin_url_path/1</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="create_params_proplist/1">
+  <div class="detail-header">
+    <a href="#create_params_proplist/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">create_params_proplist/1</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_api_common.create_params_proplist/1</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="create_user_url_path/1">
+  <div class="detail-header">
+    <a href="#create_user_url_path/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">create_user_url_path/1</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_api_common.create_user_url_path/1</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="error_code/1">
+  <div class="detail-header">
+    <a href="#error_code/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">error_code/1</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="error_response/4">
+  <div class="detail-header">
+    <a href="#error_response/4" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">error_response/4</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_api_common.error_response/4</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="execute_command/3">
+  <div class="detail-header">
+    <a href="#execute_command/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">execute_command/3</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_api_common.execute_command/3</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="get_allowed_methods/1">
+  <div class="detail-header">
+    <a href="#get_allowed_methods/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">get_allowed_methods/1</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_api_common.get_allowed_methods/1</pre>
+      </div>
+
+Returns list of allowed methods.  </section>
+</section>
+<section class="detail" id="get_auth_details/1">
+  <div class="detail-header">
+    <a href="#get_auth_details/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">get_auth_details/1</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_api_common.get_auth_details/1</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="handle_request/5">
+  <div class="detail-header">
+    <a href="#handle_request/5" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">handle_request/5</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_api_common.handle_request/5</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="handle_result/4">
+  <div class="detail-header">
+    <a href="#handle_result/4" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">handle_result/4</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_api_common.handle_result/4</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="is_known_auth_method/1">
+  <div class="detail-header">
+    <a href="#is_known_auth_method/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">is_known_auth_method/1</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_api_common.is_known_auth_method/1</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="make_unauthorized_response/2">
+  <div class="detail-header">
+    <a href="#make_unauthorized_response/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">make_unauthorized_response/2</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="maybe_add_bindings/2">
+  <div class="detail-header">
+    <a href="#maybe_add_bindings/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">maybe_add_bindings/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_api_common.maybe_add_bindings/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="maybe_add_caller/1">
+  <div class="detail-header">
+    <a href="#maybe_add_caller/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">maybe_add_caller/1</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_api_common.maybe_add_caller/1</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="maybe_add_location_header/3">
+  <div class="detail-header">
+    <a href="#maybe_add_location_header/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">maybe_add_location_header/3</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_api_common.maybe_add_location_header/3</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="maybe_add_subcategory/1">
+  <div class="detail-header">
+    <a href="#maybe_add_subcategory/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">maybe_add_subcategory/1</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="method_to_action/1">
+  <div class="detail-header">
+    <a href="#method_to_action/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">method_to_action/1</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="parse_request_body/1">
+  <div class="detail-header">
+    <a href="#parse_request_body/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">parse_request_body/1</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_api_common.parse_request_body/1</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="process_request/4">
+  <div class="detail-header">
+    <a href="#process_request/4" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">process_request/4</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_api_common.process_request/4</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="reload_dispatches/1">
+  <div class="detail-header">
+    <a href="#reload_dispatches/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">reload_dispatches/1</h1>
+  </div>
+
+  <section class="docstring">
+
+Reload all ejabberd_cowboy listeners. When a command is registered or unregistered, the routing paths that cowboy stores as a &quot;dispatch&quot; must be refreshed. Read more http://ninenines.eu/docs/en/cowboy/1.0/guide/routing/  </section>
+</section>
+<section class="detail" id="to_atom/1">
+  <div class="detail-header">
+    <a href="#to_atom/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">to_atom/1</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_api_common.to_atom/1</pre>
+      </div>
+
+  </section>
+</section>
+          </div>
+        </section>
+      <footer class="footer">
+        <p>
+          <span class="line">
+            Built using
+            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener">ExDoc</a> (v0.23.0) for the
+            <a href="https://elixir-lang.org" title="Elixir" target="_blank">Elixir programming language</a>.
+          </span>
+          <span class="line">
+            Designed by
+            <a href="https://twitter.com/dignifiedquire" target="_blank" rel="noopener" title="@dignifiedquire">Friedel Ziegelmayer</a>.
+          </span>
+        </p>
+        <p>
+            <a href="api-reference.html" title="API reference" class="line footer-button">API Reference</a>
+          <button class="line footer-button display-shortcuts-help">
+            Display keyboard shortcuts
+          </button>
+          <button class="line footer-button night-mode-toggle">
+            Toggle night mode
+          </button>
+          <button class="line footer-button display-quick-switch">
+            Go to a HexDocs package
+          </button>
+          <button class="line footer-button tooltips-toggle">
+            <span class="tooltips-option-disable">Disable tooltips</span>
+            <span class="tooltips-option-enable">Enable tooltips</span>
+          </button>
+        </p>
+      </footer>
+    </div>
+  </div>
+</section>
+</div>
+  </body>
+</html>

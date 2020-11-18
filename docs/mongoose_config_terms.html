@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.23.0">
+    <meta name="project" content="MongooseIM v4.0.1">
+    <title>mongoose_config_terms — MongooseIM v4.0.1</title>
+    <link rel="stylesheet" href="dist/erlang-8a5f731dbc512bf6261b.css" />
+    <script src="dist/sidebar_items-38e40981d8.js"></script>
+      <script src="docs_config.js"></script>
+    <script async src="dist/app-60a0c9f10e9e52eae31f.js"></script>
+  </head>
+  <body data-type="modules">
+    <script>try { if(localStorage.getItem('night-mode') === 'true') document.body.className += ' night-mode'; } catch (e) { }</script>
+<div class="main">
+
+<button class="sidebar-button sidebar-toggle">
+  <span class="icon-menu" title="Collapse/expand sidebar"></span>
+</button>
+
+<section class="sidebar">
+  <form class="sidebar-search" action="search.html">
+    <button type="submit" class="search-button" aria-label="Submit Search">
+      <span class="icon-search" aria-hidden="true" title="Submit search"></span>
+    </button>
+    <button type="button" tabindex="-1" class="search-close-button" aria-label="Cancel Search">
+      <span class="icon-cross" aria-hidden="true" title="Cancel search"></span>
+    </button>
+    <label class="search-label">
+      <input name="q" type="text" id="search-list" class="search-input" placeholder="Search..." aria-label="Input your search terms" autocomplete="off" />
+    </label>
+  </form>
+
+  <div class="autocomplete">
+    <div class="autocomplete-results">
+    </div>
+  </div>
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectDetails">
+      <a href="mongooseim.html" class="sidebar-projectName">
+MongooseIM      </a>
+      <strong class="sidebar-projectVersion">
+        v4.0.1
+      </strong>
+    </div>
+  </div>
+
+  <ul class="sidebar-listNav">
+    <li><a id="extras-list" href="#full-list">Pages</a></li>
+
+      <li><a id="modules-list" href="#full-list">Modules</a></li>
+
+  </ul>
+  <div class="gradient"></div>
+  <ul id="full-list" class="sidebar-fullList"></ul>
+</section>
+
+<section class="content">
+  <div class="content-outer">
+    <div id="content" class="content-inner">
+
+      <h1>
+        mongoose_config_terms <small class="app-vsn">(MongooseIM v4.0.1)</small>
+      </h1>
+
+
+        <section id="moduledoc">
+Parsing of the 'cfg' file to Erlang terms        </section>
+
+        <section id="summary" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#summary">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+            Summary
+          </h1>
+  <div class="summary-types summary">
+    <h2>
+      <a href="#types">Types</a>
+    </h2>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:config_problem/0">config_problem()</a>
+  </div>
+    <div class="summary-synopsis">spec me better</div>
+</div>
+  </div>
+  <div class="summary-functions summary">
+    <h2>
+      <a href="#functions">Functions</a>
+    </h2>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#config_filenames_to_include/1">config_filenames_to_include/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#delete_disallowed/2">delete_disallowed/2</a>
+  </div>
+    <div class="summary-synopsis">Filter from the list of terms the disallowed. Returns a sublist of Terms without the ones which first element is included in Disallowed.</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#delete_disallowed2/2">delete_disallowed2/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#describe_config_problem/2">describe_config_problem/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#describe_config_problem/3">describe_config_problem/3</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#find_plain_terms_for_file/2">find_plain_terms_for_file/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#get_plain_terms_file/1">get_plain_terms_file/1</a>
+  </div>
+    <div class="summary-synopsis">Read an ejabberd configuration file and return the terms. Input is an absolute or relative path to an ejabberd config file. Returns a list of plain terms, in which the options 'include_config_file' were parsed and the terms in those files were included.</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#include_config_files/1">include_config_files/1</a>
+  </div>
+    <div class="summary-synopsis">Include additional configuration files in the list of terms.</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#include_config_files/2">include_config_files/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#include_config_files/3">include_config_files/3</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#keep_only_allowed/2">keep_only_allowed/2</a>
+  </div>
+    <div class="summary-synopsis">Keep from the list only the allowed terms. Returns a sublist of Terms with only the ones which first element is included in Allowed.</div>
+</div>
+  </div>
+        </section>
+
+        <section id="types" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#types">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+Types          </h1>
+          <div class="types-list">
+<section class="detail" id="t:config_problem/0">
+  <div class="detail-header">
+    <a href="#t:config_problem/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">config_problem()</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>t:mongoose_config_terms.config_problem/0</pre>
+      </div>
+
+spec me better  </section>
+</section>
+          </div>
+        </section>
+        <section id="functions" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#functions">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+Functions          </h1>
+          <div class="functions-list">
+<section class="detail" id="config_filenames_to_include/1">
+  <div class="detail-header">
+    <a href="#config_filenames_to_include/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">config_filenames_to_include/1</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="delete_disallowed/2">
+  <div class="detail-header">
+    <a href="#delete_disallowed/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">delete_disallowed/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_config_terms.delete_disallowed/2</pre>
+      </div>
+
+Filter from the list of terms the disallowed. Returns a sublist of Terms without the ones which first element is included in Disallowed.  </section>
+</section>
+<section class="detail" id="delete_disallowed2/2">
+  <div class="detail-header">
+    <a href="#delete_disallowed2/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">delete_disallowed2/2</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="describe_config_problem/2">
+  <div class="detail-header">
+    <a href="#describe_config_problem/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">describe_config_problem/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_config_terms.describe_config_problem/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="describe_config_problem/3">
+  <div class="detail-header">
+    <a href="#describe_config_problem/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">describe_config_problem/3</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_config_terms.describe_config_problem/3</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="find_plain_terms_for_file/2">
+  <div class="detail-header">
+    <a href="#find_plain_terms_for_file/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">find_plain_terms_for_file/2</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="get_plain_terms_file/1">
+  <div class="detail-header">
+    <a href="#get_plain_terms_file/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">get_plain_terms_file/1</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_config_terms.get_plain_terms_file/1</pre>
+      </div>
+
+Read an ejabberd configuration file and return the terms. Input is an absolute or relative path to an ejabberd config file. Returns a list of plain terms, in which the options 'include_config_file' were parsed and the terms in those files were included.  </section>
+</section>
+<section class="detail" id="include_config_files/1">
+  <div class="detail-header">
+    <a href="#include_config_files/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">include_config_files/1</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_config_terms.include_config_files/1</pre>
+      </div>
+
+Include additional configuration files in the list of terms.  </section>
+</section>
+<section class="detail" id="include_config_files/2">
+  <div class="detail-header">
+    <a href="#include_config_files/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">include_config_files/2</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="include_config_files/3">
+  <div class="detail-header">
+    <a href="#include_config_files/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">include_config_files/3</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="keep_only_allowed/2">
+  <div class="detail-header">
+    <a href="#keep_only_allowed/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">keep_only_allowed/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_config_terms.keep_only_allowed/2</pre>
+      </div>
+
+Keep from the list only the allowed terms. Returns a sublist of Terms with only the ones which first element is included in Allowed.  </section>
+</section>
+          </div>
+        </section>
+      <footer class="footer">
+        <p>
+          <span class="line">
+            Built using
+            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener">ExDoc</a> (v0.23.0) for the
+            <a href="https://elixir-lang.org" title="Elixir" target="_blank">Elixir programming language</a>.
+          </span>
+          <span class="line">
+            Designed by
+            <a href="https://twitter.com/dignifiedquire" target="_blank" rel="noopener" title="@dignifiedquire">Friedel Ziegelmayer</a>.
+          </span>
+        </p>
+        <p>
+            <a href="api-reference.html" title="API reference" class="line footer-button">API Reference</a>
+          <button class="line footer-button display-shortcuts-help">
+            Display keyboard shortcuts
+          </button>
+          <button class="line footer-button night-mode-toggle">
+            Toggle night mode
+          </button>
+          <button class="line footer-button display-quick-switch">
+            Go to a HexDocs package
+          </button>
+          <button class="line footer-button tooltips-toggle">
+            <span class="tooltips-option-disable">Disable tooltips</span>
+            <span class="tooltips-option-enable">Enable tooltips</span>
+          </button>
+        </p>
+      </footer>
+    </div>
+  </div>
+</section>
+</div>
+  </body>
+</html>

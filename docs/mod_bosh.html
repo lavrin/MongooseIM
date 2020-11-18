@@ -1,0 +1,1412 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.23.0">
+    <meta name="project" content="MongooseIM v4.0.1">
+    <title>mod_bosh — MongooseIM v4.0.1</title>
+    <link rel="stylesheet" href="dist/erlang-8a5f731dbc512bf6261b.css" />
+    <script src="dist/sidebar_items-38e40981d8.js"></script>
+      <script src="docs_config.js"></script>
+    <script async src="dist/app-60a0c9f10e9e52eae31f.js"></script>
+  </head>
+  <body data-type="modules">
+    <script>try { if(localStorage.getItem('night-mode') === 'true') document.body.className += ' night-mode'; } catch (e) { }</script>
+<div class="main">
+
+<button class="sidebar-button sidebar-toggle">
+  <span class="icon-menu" title="Collapse/expand sidebar"></span>
+</button>
+
+<section class="sidebar">
+  <form class="sidebar-search" action="search.html">
+    <button type="submit" class="search-button" aria-label="Submit Search">
+      <span class="icon-search" aria-hidden="true" title="Submit search"></span>
+    </button>
+    <button type="button" tabindex="-1" class="search-close-button" aria-label="Cancel Search">
+      <span class="icon-cross" aria-hidden="true" title="Cancel search"></span>
+    </button>
+    <label class="search-label">
+      <input name="q" type="text" id="search-list" class="search-input" placeholder="Search..." aria-label="Input your search terms" autocomplete="off" />
+    </label>
+  </form>
+
+  <div class="autocomplete">
+    <div class="autocomplete-results">
+    </div>
+  </div>
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectDetails">
+      <a href="mongooseim.html" class="sidebar-projectName">
+MongooseIM      </a>
+      <strong class="sidebar-projectVersion">
+        v4.0.1
+      </strong>
+    </div>
+  </div>
+
+  <ul class="sidebar-listNav">
+    <li><a id="extras-list" href="#full-list">Pages</a></li>
+
+      <li><a id="modules-list" href="#full-list">Modules</a></li>
+
+  </ul>
+  <div class="gradient"></div>
+  <ul id="full-list" class="sidebar-fullList"></ul>
+</section>
+
+<section class="content">
+  <div class="content-outer">
+    <div id="content" class="content-inner">
+
+      <h1>
+        mod_bosh <small>behaviour</small> <small class="app-vsn">(MongooseIM v4.0.1)</small>
+      </h1>
+
+
+        <section id="moduledoc">
+Cowboy based BOSH support for MongooseIM        </section>
+
+        <section id="summary" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#summary">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+            Summary
+          </h1>
+  <div class="summary-types summary">
+    <h2>
+      <a href="#types">Types</a>
+    </h2>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:event_type/0">event_type()</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:headers_list/0">headers_list()</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:info/0">info()</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:option/0">option()</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:req/0">req()</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:rstate/0">rstate()</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:session/0">session()</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:sid/0">sid()</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:socket/0">socket()</a>
+  </div>
+</div>
+  </div>
+  <div class="summary-functions summary">
+    <h2>
+      <a href="#functions">Functions</a>
+    </h2>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#ac_all/1">ac_all/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#ac_allow_headers/0">ac_allow_headers/0</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#ac_allow_methods/0">ac_allow_methods/0</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#ac_allow_origin/1">ac_allow_origin/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#ac_max_age/0">ac_max_age/0</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#bosh_reply_headers/0">bosh_reply_headers/0</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#check_event_type_pause/1">check_event_type_pause/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#check_event_type_restart/1">check_event_type_restart/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#check_event_type_streamend/1">check_event_type_streamend/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#check_event_type_streamstrart/1">check_event_type_streamstrart/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#config_metrics/1">config_metrics/1</a>
+  </div>
+    <div class="summary-synopsis"><p>Callback implementation for <code class="inline">c::mongoose_module_metrics.config_metrics/1</code>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#content_type/0">content_type/0</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#cowboy_reply/4">cowboy_reply/4</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#forward_body/3">forward_body/3</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#get_inactivity/0">get_inactivity/0</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#get_max_wait/0">get_max_wait/0</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#get_server_acks/0">get_server_acks/0</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#get_session_socket/1">get_session_socket/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#handle_request/3">handle_request/3</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#info/3">info/3</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#init/2">init/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#init_msg/1">init_msg/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#is_known_host/1">is_known_host/1</a>
+  </div>
+    <div class="summary-synopsis">Is the argument locally served host?</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#make_sid/0">make_sid/0</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#maybe_set_max_hold/2">maybe_set_max_hold/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#maybe_start_session/2">maybe_start_session/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#maybe_start_session_on_known_host/2">maybe_start_session_on_known_host/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#maybe_start_session_on_known_host_unsafe/2">maybe_start_session_on_known_host_unsafe/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#method_not_allowed_error/1">method_not_allowed_error/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#no_body_error/1">no_body_error/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#node_cleanup/2">node_cleanup/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#set_inactivity/1">set_inactivity/1</a>
+  </div>
+    <div class="summary-synopsis">Return true if succeeded, false otherwise.</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#set_max_hold/1">set_max_hold/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#set_max_wait/1">set_max_wait/1</a>
+  </div>
+    <div class="summary-synopsis">Return true if succeeded, false otherwise.</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#set_server_acks/1">set_server_acks/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#start/2">start/2</a>
+  </div>
+    <div class="summary-synopsis"><p>Callback implementation for <code class="inline">c::gen_mod.start/2</code>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#start_backend/1">start_backend/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#start_session/3">start_session/3</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#stop/1">stop/1</a>
+  </div>
+    <div class="summary-synopsis"><p>Callback implementation for <code class="inline">c::gen_mod.stop/1</code>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#store_session/2">store_session/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#terminal_condition/2">terminal_condition/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#terminal_condition/3">terminal_condition/3</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#terminal_condition_body/2">terminal_condition_body/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#terminate/3">terminate/3</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#to_event_type/1">to_event_type/1</a>
+  </div>
+</div>
+  </div>
+  <div class="summary-callbacks summary">
+    <h2>
+      <a href="#callbacks">Callbacks</a>
+    </h2>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#c:create_session/1">create_session(arg1)</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#c:delete_session/1">delete_session(arg1)</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#c:get_session/1">get_session(arg1)</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#c:get_sessions/0">get_sessions()</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#c:node_cleanup/1">node_cleanup(node)</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#c:start/1">start(list)</a>
+  </div>
+</div>
+  </div>
+        </section>
+
+        <section id="types" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#types">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+Types          </h1>
+          <div class="types-list">
+<section class="detail" id="t:event_type/0">
+  <div class="detail-header">
+    <a href="#t:event_type/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">event_type()</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>t:mod_bosh.event_type/0</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="t:headers_list/0">
+  <div class="detail-header">
+    <a href="#t:headers_list/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">headers_list()</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>t:mod_bosh.headers_list/0</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="t:info/0">
+  <div class="detail-header">
+    <a href="#t:info/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">info()</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>t:mod_bosh.info/0</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="t:option/0">
+  <div class="detail-header">
+    <a href="#t:option/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">option()</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>t:mod_bosh.option/0</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="t:req/0">
+  <div class="detail-header">
+    <a href="#t:req/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">req()</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>t:mod_bosh.req/0</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="t:rstate/0">
+  <div class="detail-header">
+    <a href="#t:rstate/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">rstate()</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>t:mod_bosh.rstate/0</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="t:session/0">
+  <div class="detail-header">
+    <a href="#t:session/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">session()</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>t:mod_bosh.session/0</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="t:sid/0">
+  <div class="detail-header">
+    <a href="#t:sid/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">sid()</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>t:mod_bosh.sid/0</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="t:socket/0">
+  <div class="detail-header">
+    <a href="#t:socket/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">socket()</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>t:mod_bosh.socket/0</pre>
+      </div>
+
+  </section>
+</section>
+          </div>
+        </section>
+        <section id="functions" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#functions">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+Functions          </h1>
+          <div class="functions-list">
+<section class="detail" id="ac_all/1">
+  <div class="detail-header">
+    <a href="#ac_all/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">ac_all/1</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_bosh.ac_all/1</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="ac_allow_headers/0">
+  <div class="detail-header">
+    <a href="#ac_allow_headers/0" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">ac_allow_headers/0</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="ac_allow_methods/0">
+  <div class="detail-header">
+    <a href="#ac_allow_methods/0" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">ac_allow_methods/0</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="ac_allow_origin/1">
+  <div class="detail-header">
+    <a href="#ac_allow_origin/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">ac_allow_origin/1</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="ac_max_age/0">
+  <div class="detail-header">
+    <a href="#ac_max_age/0" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">ac_max_age/0</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="bosh_reply_headers/0">
+  <div class="detail-header">
+    <a href="#bosh_reply_headers/0" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">bosh_reply_headers/0</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_bosh.bosh_reply_headers/0</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="check_event_type_pause/1">
+  <div class="detail-header">
+    <a href="#check_event_type_pause/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">check_event_type_pause/1</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="check_event_type_restart/1">
+  <div class="detail-header">
+    <a href="#check_event_type_restart/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">check_event_type_restart/1</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="check_event_type_streamend/1">
+  <div class="detail-header">
+    <a href="#check_event_type_streamend/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">check_event_type_streamend/1</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="check_event_type_streamstrart/1">
+  <div class="detail-header">
+    <a href="#check_event_type_streamstrart/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">check_event_type_streamstrart/1</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="config_metrics/1">
+  <div class="detail-header">
+    <a href="#config_metrics/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">config_metrics/1</h1>
+  </div>
+
+  <section class="docstring">
+
+<p>Callback implementation for <code class="inline">c::mongoose_module_metrics.config_metrics/1</code>.</p>  </section>
+</section>
+<section class="detail" id="content_type/0">
+  <div class="detail-header">
+    <a href="#content_type/0" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">content_type/0</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="cowboy_reply/4">
+  <div class="detail-header">
+    <a href="#cowboy_reply/4" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">cowboy_reply/4</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_bosh.cowboy_reply/4</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="forward_body/3">
+  <div class="detail-header">
+    <a href="#forward_body/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">forward_body/3</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_bosh.forward_body/3</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="get_inactivity/0">
+  <div class="detail-header">
+    <a href="#get_inactivity/0" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">get_inactivity/0</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_bosh.get_inactivity/0</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="get_max_wait/0">
+  <div class="detail-header">
+    <a href="#get_max_wait/0" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">get_max_wait/0</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_bosh.get_max_wait/0</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="get_server_acks/0">
+  <div class="detail-header">
+    <a href="#get_server_acks/0" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">get_server_acks/0</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_bosh.get_server_acks/0</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="get_session_socket/1">
+  <div class="detail-header">
+    <a href="#get_session_socket/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">get_session_socket/1</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_bosh.get_session_socket/1</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="handle_request/3">
+  <div class="detail-header">
+    <a href="#handle_request/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">handle_request/3</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_bosh.handle_request/3</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="info/3">
+  <div class="detail-header">
+    <a href="#info/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">info/3</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_bosh.info/3</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="init/2">
+  <div class="detail-header">
+    <a href="#init/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">init/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_bosh.init/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="init_msg/1">
+  <div class="detail-header">
+    <a href="#init_msg/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">init_msg/1</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="is_known_host/1">
+  <div class="detail-header">
+    <a href="#is_known_host/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">is_known_host/1</h1>
+  </div>
+
+  <section class="docstring">
+
+Is the argument locally served host?  </section>
+</section>
+<section class="detail" id="make_sid/0">
+  <div class="detail-header">
+    <a href="#make_sid/0" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">make_sid/0</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_bosh.make_sid/0</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="maybe_set_max_hold/2">
+  <div class="detail-header">
+    <a href="#maybe_set_max_hold/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">maybe_set_max_hold/2</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="maybe_start_session/2">
+  <div class="detail-header">
+    <a href="#maybe_start_session/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">maybe_start_session/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_bosh.maybe_start_session/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="maybe_start_session_on_known_host/2">
+  <div class="detail-header">
+    <a href="#maybe_start_session_on_known_host/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">maybe_start_session_on_known_host/2</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="maybe_start_session_on_known_host_unsafe/2">
+  <div class="detail-header">
+    <a href="#maybe_start_session_on_known_host_unsafe/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">maybe_start_session_on_known_host_unsafe/2</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="method_not_allowed_error/1">
+  <div class="detail-header">
+    <a href="#method_not_allowed_error/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">method_not_allowed_error/1</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_bosh.method_not_allowed_error/1</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="no_body_error/1">
+  <div class="detail-header">
+    <a href="#no_body_error/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">no_body_error/1</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_bosh.no_body_error/1</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="node_cleanup/2">
+  <div class="detail-header">
+    <a href="#node_cleanup/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">node_cleanup/2</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="set_inactivity/1">
+  <div class="detail-header">
+    <a href="#set_inactivity/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">set_inactivity/1</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_bosh.set_inactivity/1</pre>
+      </div>
+
+Return true if succeeded, false otherwise.  </section>
+</section>
+<section class="detail" id="set_max_hold/1">
+  <div class="detail-header">
+    <a href="#set_max_hold/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">set_max_hold/1</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="set_max_wait/1">
+  <div class="detail-header">
+    <a href="#set_max_wait/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">set_max_wait/1</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_bosh.set_max_wait/1</pre>
+      </div>
+
+Return true if succeeded, false otherwise.  </section>
+</section>
+<section class="detail" id="set_server_acks/1">
+  <div class="detail-header">
+    <a href="#set_server_acks/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">set_server_acks/1</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_bosh.set_server_acks/1</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="start/2">
+  <div class="detail-header">
+    <a href="#start/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">start/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_bosh.start/2</pre>
+      </div>
+
+<p>Callback implementation for <code class="inline">c::gen_mod.start/2</code>.</p>  </section>
+</section>
+<section class="detail" id="start_backend/1">
+  <div class="detail-header">
+    <a href="#start_backend/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">start_backend/1</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_bosh.start_backend/1</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="start_session/3">
+  <div class="detail-header">
+    <a href="#start_session/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">start_session/3</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_bosh.start_session/3</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="stop/1">
+  <div class="detail-header">
+    <a href="#stop/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">stop/1</h1>
+  </div>
+
+  <section class="docstring">
+
+<p>Callback implementation for <code class="inline">c::gen_mod.stop/1</code>.</p>  </section>
+</section>
+<section class="detail" id="store_session/2">
+  <div class="detail-header">
+    <a href="#store_session/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">store_session/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_bosh.store_session/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="terminal_condition/2">
+  <div class="detail-header">
+    <a href="#terminal_condition/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">terminal_condition/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_bosh.terminal_condition/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="terminal_condition/3">
+  <div class="detail-header">
+    <a href="#terminal_condition/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">terminal_condition/3</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_bosh.terminal_condition/3</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="terminal_condition_body/2">
+  <div class="detail-header">
+    <a href="#terminal_condition_body/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">terminal_condition_body/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_bosh.terminal_condition_body/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="terminate/3">
+  <div class="detail-header">
+    <a href="#terminate/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">terminate/3</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="to_event_type/1">
+  <div class="detail-header">
+    <a href="#to_event_type/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">to_event_type/1</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_bosh.to_event_type/1</pre>
+      </div>
+
+  </section>
+</section>
+          </div>
+        </section>
+        <section id="callbacks" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#callbacks">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+Callbacks          </h1>
+          <div class="callbacks-list">
+<section class="detail" id="c:create_session/1">
+  <div class="detail-header">
+    <a href="#c:create_session/1" class="detail-link" title="Link to this callback">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this callback</span>
+    </a>
+    <h1 class="signature">create_session(arg1)</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>c:mod_bosh.create_session/1</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="c:delete_session/1">
+  <div class="detail-header">
+    <a href="#c:delete_session/1" class="detail-link" title="Link to this callback">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this callback</span>
+    </a>
+    <h1 class="signature">delete_session(arg1)</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>c:mod_bosh.delete_session/1</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="c:get_session/1">
+  <div class="detail-header">
+    <a href="#c:get_session/1" class="detail-link" title="Link to this callback">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this callback</span>
+    </a>
+    <h1 class="signature">get_session(arg1)</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>c:mod_bosh.get_session/1</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="c:get_sessions/0">
+  <div class="detail-header">
+    <a href="#c:get_sessions/0" class="detail-link" title="Link to this callback">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this callback</span>
+    </a>
+    <h1 class="signature">get_sessions()</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>c:mod_bosh.get_sessions/0</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="c:node_cleanup/1">
+  <div class="detail-header">
+    <a href="#c:node_cleanup/1" class="detail-link" title="Link to this callback">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this callback</span>
+    </a>
+    <h1 class="signature">node_cleanup(node)</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>c:mod_bosh.node_cleanup/1</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="c:start/1">
+  <div class="detail-header">
+    <a href="#c:start/1" class="detail-link" title="Link to this callback">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this callback</span>
+    </a>
+    <h1 class="signature">start(list)</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>c:mod_bosh.start/1</pre>
+      </div>
+
+  </section>
+</section>
+          </div>
+        </section>
+      <footer class="footer">
+        <p>
+          <span class="line">
+            Built using
+            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener">ExDoc</a> (v0.23.0) for the
+            <a href="https://elixir-lang.org" title="Elixir" target="_blank">Elixir programming language</a>.
+          </span>
+          <span class="line">
+            Designed by
+            <a href="https://twitter.com/dignifiedquire" target="_blank" rel="noopener" title="@dignifiedquire">Friedel Ziegelmayer</a>.
+          </span>
+        </p>
+        <p>
+            <a href="api-reference.html" title="API reference" class="line footer-button">API Reference</a>
+          <button class="line footer-button display-shortcuts-help">
+            Display keyboard shortcuts
+          </button>
+          <button class="line footer-button night-mode-toggle">
+            Toggle night mode
+          </button>
+          <button class="line footer-button display-quick-switch">
+            Go to a HexDocs package
+          </button>
+          <button class="line footer-button tooltips-toggle">
+            <span class="tooltips-option-disable">Disable tooltips</span>
+            <span class="tooltips-option-enable">Enable tooltips</span>
+          </button>
+        </p>
+      </footer>
+    </div>
+  </div>
+</section>
+</div>
+  </body>
+</html>

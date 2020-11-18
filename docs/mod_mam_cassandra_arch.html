@@ -1,0 +1,1621 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.23.0">
+    <meta name="project" content="MongooseIM v4.0.1">
+    <title>mod_mam_cassandra_arch — MongooseIM v4.0.1</title>
+    <link rel="stylesheet" href="dist/erlang-8a5f731dbc512bf6261b.css" />
+    <script src="dist/sidebar_items-38e40981d8.js"></script>
+      <script src="docs_config.js"></script>
+    <script async src="dist/app-60a0c9f10e9e52eae31f.js"></script>
+  </head>
+  <body data-type="modules">
+    <script>try { if(localStorage.getItem('night-mode') === 'true') document.body.className += ' night-mode'; } catch (e) { }</script>
+<div class="main">
+
+<button class="sidebar-button sidebar-toggle">
+  <span class="icon-menu" title="Collapse/expand sidebar"></span>
+</button>
+
+<section class="sidebar">
+  <form class="sidebar-search" action="search.html">
+    <button type="submit" class="search-button" aria-label="Submit Search">
+      <span class="icon-search" aria-hidden="true" title="Submit search"></span>
+    </button>
+    <button type="button" tabindex="-1" class="search-close-button" aria-label="Cancel Search">
+      <span class="icon-cross" aria-hidden="true" title="Cancel search"></span>
+    </button>
+    <label class="search-label">
+      <input name="q" type="text" id="search-list" class="search-input" placeholder="Search..." aria-label="Input your search terms" autocomplete="off" />
+    </label>
+  </form>
+
+  <div class="autocomplete">
+    <div class="autocomplete-results">
+    </div>
+  </div>
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectDetails">
+      <a href="mongooseim.html" class="sidebar-projectName">
+MongooseIM      </a>
+      <strong class="sidebar-projectVersion">
+        v4.0.1
+      </strong>
+    </div>
+  </div>
+
+  <ul class="sidebar-listNav">
+    <li><a id="extras-list" href="#full-list">Pages</a></li>
+
+      <li><a id="modules-list" href="#full-list">Modules</a></li>
+
+  </ul>
+  <div class="gradient"></div>
+  <ul id="full-list" class="sidebar-fullList"></ul>
+</section>
+
+<section class="content">
+  <div class="content-outer">
+    <div id="content" class="content-inner">
+
+      <h1>
+        mod_mam_cassandra_arch <small>behaviour</small> <small class="app-vsn">(MongooseIM v4.0.1)</small>
+      </h1>
+
+
+        <section id="moduledoc">
+RDBMS backend for Message Archive Management.        </section>
+
+        <section id="summary" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#summary">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+            Summary
+          </h1>
+  <div class="summary-types summary">
+    <h2>
+      <a href="#types">Types</a>
+    </h2>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:filter/0">filter()</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:message_id/0">message_id()</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:server_hostname/0">server_hostname()</a>
+  </div>
+</div>
+  </div>
+  <div class="summary-functions summary">
+    <h2>
+      <a href="#functions">Functions</a>
+    </h2>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#after_id/2">after_id/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#archive_message/3">archive_message/3</a>
+  </div>
+    <div class="summary-synopsis"><p>Callback implementation for <code class="inline">c::ejabberd_gen_mam_archive.archive_message/3</code>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#archive_message2/1">archive_message2/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#archive_size/4">archive_size/4</a>
+  </div>
+    <div class="summary-synopsis"><p>Callback implementation for <code class="inline">c::ejabberd_gen_mam_archive.archive_size/4</code>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#before_id/2">before_id/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#calc_before/5">calc_before/5</a>
+  </div>
+    <div class="summary-synopsis"><p>Count of elements in RSet before the passed element.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#calc_count/4">calc_count/4</a>
+  </div>
+    <div class="summary-synopsis">Get the total result set size. &quot;SELECT COUNT(*) as &quot;count&quot; FROM mam_message WHERE &quot;</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#calc_count_cql/1">calc_count_cql/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#calc_count_queries/0">calc_count_queries/0</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#calc_index/5">calc_index/5</a>
+  </div>
+    <div class="summary-synopsis"><p>Calculate a zero-based index of the row with UID in the result test.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#calc_offset/7">calc_offset/7</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#calc_offset_to_start_id/4">calc_offset_to_start_id/4</a>
+  </div>
+    <div class="summary-synopsis">Convert offset to index of the first entry Returns undefined if not there are not enough rows</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#compile_params_module/1">compile_params_module/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#db_message_format/0">db_message_format/0</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#ensure_params_loaded/1">ensure_params_loaded/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#eval_filter_params/1">eval_filter_params/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#expand_simple_param/1">expand_simple_param/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#extract_messages/6">extract_messages/6</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#extract_messages_cql/1">extract_messages_cql/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#extract_messages_queries/0">extract_messages_queries/0</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#extract_messages_r_cql/1">extract_messages_r_cql/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#extract_messages_r_queries/0">extract_messages_r_queries/0</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#fetch_user_messages/3">fetch_user_messages/3</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#fetch_user_messages_cql/0">fetch_user_messages_cql/0</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#filter_to_cql/0">filter_to_cql/0</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#from_id/2">from_id/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#get_mam_pm_gdpr_data/2">get_mam_pm_gdpr_data/2</a>
+  </div>
+    <div class="summary-synopsis"><p>Callback implementation for <code class="inline">c::ejabberd_gen_mam_archive.get_mam_pm_gdpr_data/2</code>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#insert_offset_hint_query_cql/0">insert_offset_hint_query_cql/0</a>
+  </div>
+    <div class="summary-synopsis">Insert offset -&gt; message id 'hint'</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#insert_query_cql/0">insert_query_cql/0</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#list_message_ids_cql/1">list_message_ids_cql/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#list_message_ids_queries/0">list_message_ids_queries/0</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#lookup_messages/3">lookup_messages/3</a>
+  </div>
+    <div class="summary-synopsis"><p>Callback implementation for <code class="inline">c::ejabberd_gen_mam_archive.lookup_messages/3</code>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#lookup_messages2/10">lookup_messages2/10</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#lookup_messages_after_id/6">lookup_messages_after_id/6</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#lookup_messages_before_id/6">lookup_messages_before_id/6</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#lookup_messages_by_offset/6">lookup_messages_by_offset/6</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#lookup_messages_first_page/6">lookup_messages_first_page/6</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#lookup_messages_last_page/6">lookup_messages_last_page/6</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#lookup_messages_simple/6">lookup_messages_simple/6</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#maybe_full_jid/1">maybe_full_jid/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#maybe_save_offset_hint/6">maybe_save_offset_hint/6</a>
+  </div>
+    <div class="summary-synopsis">Saves offset hint for future use in order to speed up queries with similar offset Hint is save only if previous offset hint was 50+ entires from current query This function returns given StartId as passthrough for convenience</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#message_to_params/1">message_to_params/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#offset_to_start_id/4">offset_to_start_id/4</a>
+  </div>
+    <div class="summary-synopsis">Convert offset to index of the first entry Returns undefined if not there are not enough rows Uses previously calculated offsets to speed up queries</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#packet_to_stored_binary/1">packet_to_stored_binary/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#params_helper/1">params_helper/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#pool_name/0">pool_name/0</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#prepare_filter/5">prepare_filter/5</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#prepare_filter_cql/2">prepare_filter_cql/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#prepare_filter_params/4">prepare_filter_params/4</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#prepared_queries/0">prepared_queries/0</a>
+  </div>
+    <div class="summary-synopsis"><p>Callback implementation for <code class="inline">c::mongoose_cassandra.prepared_queries/0</code>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#prev_offset_query_cql/0">prev_offset_query_cql/0</a>
+  </div>
+    <div class="summary-synopsis">Get closest offset -&gt; message id 'hint' for specified offset</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#remove_archive/2">remove_archive/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#remove_archive/4">remove_archive/4</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#remove_archive_offsets_query_cql/0">remove_archive_offsets_query_cql/0</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#remove_archive_query_cql/0">remove_archive_query_cql/0</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#row_to_message_id/1">row_to_message_id/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#row_to_uniform_format/1">row_to_uniform_format/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#rows_to_gdpr_mam_message/1">rows_to_gdpr_mam_message/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#rows_to_uniform_format/1">rows_to_uniform_format/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#rsm_to_strategy/1">rsm_to_strategy/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#select_filter/1">select_filter/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#select_filter/2">select_filter/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#select_for_removal_query_cql/0">select_for_removal_query_cql/0</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#simple_params/0">simple_params/0</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#start/2">start/2</a>
+  </div>
+    <div class="summary-synopsis"><p>Callback implementation for <code class="inline">c::gen_mod.start/2</code>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#start_pm/2">start_pm/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#stop/1">stop/1</a>
+  </div>
+    <div class="summary-synopsis"><p>Callback implementation for <code class="inline">c::gen_mod.stop/1</code>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#stop_pm/1">stop_pm/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#stored_binary_to_packet/1">stored_binary_to_packet/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#to_id/2">to_id/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#write_messages/2">write_messages/2</a>
+  </div>
+</div>
+  </div>
+  <div class="summary-callbacks summary">
+    <h2>
+      <a href="#callbacks">Callbacks</a>
+    </h2>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#c:decode/1">decode(binary)</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#c:encode/1">encode(binary)</a>
+  </div>
+</div>
+  </div>
+        </section>
+
+        <section id="types" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#types">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+Types          </h1>
+          <div class="types-list">
+<section class="detail" id="t:filter/0">
+  <div class="detail-header">
+    <a href="#t:filter/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">filter()</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>t:mod_mam_cassandra_arch.filter/0</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="t:message_id/0">
+  <div class="detail-header">
+    <a href="#t:message_id/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">message_id()</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>t:mod_mam_cassandra_arch.message_id/0</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="t:server_hostname/0">
+  <div class="detail-header">
+    <a href="#t:server_hostname/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">server_hostname()</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>t:mod_mam_cassandra_arch.server_hostname/0</pre>
+      </div>
+
+  </section>
+</section>
+          </div>
+        </section>
+        <section id="functions" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#functions">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+Functions          </h1>
+          <div class="functions-list">
+<section class="detail" id="after_id/2">
+  <div class="detail-header">
+    <a href="#after_id/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">after_id/2</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="archive_message/3">
+  <div class="detail-header">
+    <a href="#archive_message/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">archive_message/3</h1>
+  </div>
+
+  <section class="docstring">
+
+<p>Callback implementation for <code class="inline">c::ejabberd_gen_mam_archive.archive_message/3</code>.</p>  </section>
+</section>
+<section class="detail" id="archive_message2/1">
+  <div class="detail-header">
+    <a href="#archive_message2/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">archive_message2/1</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="archive_size/4">
+  <div class="detail-header">
+    <a href="#archive_size/4" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">archive_size/4</h1>
+  </div>
+
+  <section class="docstring">
+
+<p>Callback implementation for <code class="inline">c::ejabberd_gen_mam_archive.archive_size/4</code>.</p>  </section>
+</section>
+<section class="detail" id="before_id/2">
+  <div class="detail-header">
+    <a href="#before_id/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">before_id/2</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="calc_before/5">
+  <div class="detail-header">
+    <a href="#calc_before/5" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">calc_before/5</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_mam_cassandra_arch.calc_before/5</pre>
+      </div>
+
+<p>Count of elements in RSet before the passed element.</p>The element with the passed UID can be already deleted.  </section>
+</section>
+<section class="detail" id="calc_count/4">
+  <div class="detail-header">
+    <a href="#calc_count/4" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">calc_count/4</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_mam_cassandra_arch.calc_count/4</pre>
+      </div>
+
+Get the total result set size. &quot;SELECT COUNT(*) as &quot;count&quot; FROM mam_message WHERE &quot;  </section>
+</section>
+<section class="detail" id="calc_count_cql/1">
+  <div class="detail-header">
+    <a href="#calc_count_cql/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">calc_count_cql/1</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="calc_count_queries/0">
+  <div class="detail-header">
+    <a href="#calc_count_queries/0" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">calc_count_queries/0</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="calc_index/5">
+  <div class="detail-header">
+    <a href="#calc_index/5" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">calc_index/5</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_mam_cassandra_arch.calc_index/5</pre>
+      </div>
+
+<p>Calculate a zero-based index of the row with UID in the result test.</p>If the element does not exists, the ID of the next element will be returned instead.  </section>
+</section>
+<section class="detail" id="calc_offset/7">
+  <div class="detail-header">
+    <a href="#calc_offset/7" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">calc_offset/7</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_mam_cassandra_arch.calc_offset/7</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="calc_offset_to_start_id/4">
+  <div class="detail-header">
+    <a href="#calc_offset_to_start_id/4" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">calc_offset_to_start_id/4</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_mam_cassandra_arch.calc_offset_to_start_id/4</pre>
+      </div>
+
+Convert offset to index of the first entry Returns undefined if not there are not enough rows  </section>
+</section>
+<section class="detail" id="compile_params_module/1">
+  <div class="detail-header">
+    <a href="#compile_params_module/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">compile_params_module/1</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="db_message_format/0">
+  <div class="detail-header">
+    <a href="#db_message_format/0" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">db_message_format/0</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_mam_cassandra_arch.db_message_format/0</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="ensure_params_loaded/1">
+  <div class="detail-header">
+    <a href="#ensure_params_loaded/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">ensure_params_loaded/1</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="eval_filter_params/1">
+  <div class="detail-header">
+    <a href="#eval_filter_params/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">eval_filter_params/1</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="expand_simple_param/1">
+  <div class="detail-header">
+    <a href="#expand_simple_param/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">expand_simple_param/1</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="extract_messages/6">
+  <div class="detail-header">
+    <a href="#extract_messages/6" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">extract_messages/6</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_mam_cassandra_arch.extract_messages/6</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="extract_messages_cql/1">
+  <div class="detail-header">
+    <a href="#extract_messages_cql/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">extract_messages_cql/1</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="extract_messages_queries/0">
+  <div class="detail-header">
+    <a href="#extract_messages_queries/0" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">extract_messages_queries/0</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="extract_messages_r_cql/1">
+  <div class="detail-header">
+    <a href="#extract_messages_r_cql/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">extract_messages_r_cql/1</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="extract_messages_r_queries/0">
+  <div class="detail-header">
+    <a href="#extract_messages_r_queries/0" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">extract_messages_r_queries/0</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="fetch_user_messages/3">
+  <div class="detail-header">
+    <a href="#fetch_user_messages/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">fetch_user_messages/3</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="fetch_user_messages_cql/0">
+  <div class="detail-header">
+    <a href="#fetch_user_messages_cql/0" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">fetch_user_messages_cql/0</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="filter_to_cql/0">
+  <div class="detail-header">
+    <a href="#filter_to_cql/0" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">filter_to_cql/0</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="from_id/2">
+  <div class="detail-header">
+    <a href="#from_id/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">from_id/2</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="get_mam_pm_gdpr_data/2">
+  <div class="detail-header">
+    <a href="#get_mam_pm_gdpr_data/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">get_mam_pm_gdpr_data/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_mam_cassandra_arch.get_mam_pm_gdpr_data/2</pre>
+      </div>
+
+<p>Callback implementation for <code class="inline">c::ejabberd_gen_mam_archive.get_mam_pm_gdpr_data/2</code>.</p>  </section>
+</section>
+<section class="detail" id="insert_offset_hint_query_cql/0">
+  <div class="detail-header">
+    <a href="#insert_offset_hint_query_cql/0" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">insert_offset_hint_query_cql/0</h1>
+  </div>
+
+  <section class="docstring">
+
+Insert offset -&gt; message id 'hint'  </section>
+</section>
+<section class="detail" id="insert_query_cql/0">
+  <div class="detail-header">
+    <a href="#insert_query_cql/0" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">insert_query_cql/0</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="list_message_ids_cql/1">
+  <div class="detail-header">
+    <a href="#list_message_ids_cql/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">list_message_ids_cql/1</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="list_message_ids_queries/0">
+  <div class="detail-header">
+    <a href="#list_message_ids_queries/0" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">list_message_ids_queries/0</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="lookup_messages/3">
+  <div class="detail-header">
+    <a href="#lookup_messages/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">lookup_messages/3</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_mam_cassandra_arch.lookup_messages/3</pre>
+      </div>
+
+<p>Callback implementation for <code class="inline">c::ejabberd_gen_mam_archive.lookup_messages/3</code>.</p>  </section>
+</section>
+<section class="detail" id="lookup_messages2/10">
+  <div class="detail-header">
+    <a href="#lookup_messages2/10" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">lookup_messages2/10</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="lookup_messages_after_id/6">
+  <div class="detail-header">
+    <a href="#lookup_messages_after_id/6" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">lookup_messages_after_id/6</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="lookup_messages_before_id/6">
+  <div class="detail-header">
+    <a href="#lookup_messages_before_id/6" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">lookup_messages_before_id/6</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="lookup_messages_by_offset/6">
+  <div class="detail-header">
+    <a href="#lookup_messages_by_offset/6" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">lookup_messages_by_offset/6</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="lookup_messages_first_page/6">
+  <div class="detail-header">
+    <a href="#lookup_messages_first_page/6" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">lookup_messages_first_page/6</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="lookup_messages_last_page/6">
+  <div class="detail-header">
+    <a href="#lookup_messages_last_page/6" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">lookup_messages_last_page/6</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="lookup_messages_simple/6">
+  <div class="detail-header">
+    <a href="#lookup_messages_simple/6" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">lookup_messages_simple/6</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="maybe_full_jid/1">
+  <div class="detail-header">
+    <a href="#maybe_full_jid/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">maybe_full_jid/1</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_mam_cassandra_arch.maybe_full_jid/1</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="maybe_save_offset_hint/6">
+  <div class="detail-header">
+    <a href="#maybe_save_offset_hint/6" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">maybe_save_offset_hint/6</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_mam_cassandra_arch.maybe_save_offset_hint/6</pre>
+      </div>
+
+Saves offset hint for future use in order to speed up queries with similar offset Hint is save only if previous offset hint was 50+ entires from current query This function returns given StartId as passthrough for convenience  </section>
+</section>
+<section class="detail" id="message_to_params/1">
+  <div class="detail-header">
+    <a href="#message_to_params/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">message_to_params/1</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="offset_to_start_id/4">
+  <div class="detail-header">
+    <a href="#offset_to_start_id/4" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">offset_to_start_id/4</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_mam_cassandra_arch.offset_to_start_id/4</pre>
+      </div>
+
+Convert offset to index of the first entry Returns undefined if not there are not enough rows Uses previously calculated offsets to speed up queries  </section>
+</section>
+<section class="detail" id="packet_to_stored_binary/1">
+  <div class="detail-header">
+    <a href="#packet_to_stored_binary/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">packet_to_stored_binary/1</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="params_helper/1">
+  <div class="detail-header">
+    <a href="#params_helper/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">params_helper/1</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="pool_name/0">
+  <div class="detail-header">
+    <a href="#pool_name/0" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">pool_name/0</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_mam_cassandra_arch.pool_name/0</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="prepare_filter/5">
+  <div class="detail-header">
+    <a href="#prepare_filter/5" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">prepare_filter/5</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="prepare_filter_cql/2">
+  <div class="detail-header">
+    <a href="#prepare_filter_cql/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">prepare_filter_cql/2</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="prepare_filter_params/4">
+  <div class="detail-header">
+    <a href="#prepare_filter_params/4" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">prepare_filter_params/4</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="prepared_queries/0">
+  <div class="detail-header">
+    <a href="#prepared_queries/0" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">prepared_queries/0</h1>
+  </div>
+
+  <section class="docstring">
+
+<p>Callback implementation for <code class="inline">c::mongoose_cassandra.prepared_queries/0</code>.</p>  </section>
+</section>
+<section class="detail" id="prev_offset_query_cql/0">
+  <div class="detail-header">
+    <a href="#prev_offset_query_cql/0" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">prev_offset_query_cql/0</h1>
+  </div>
+
+  <section class="docstring">
+
+Get closest offset -&gt; message id 'hint' for specified offset  </section>
+</section>
+<section class="detail" id="remove_archive/2">
+  <div class="detail-header">
+    <a href="#remove_archive/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">remove_archive/2</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="remove_archive/4">
+  <div class="detail-header">
+    <a href="#remove_archive/4" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">remove_archive/4</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="remove_archive_offsets_query_cql/0">
+  <div class="detail-header">
+    <a href="#remove_archive_offsets_query_cql/0" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">remove_archive_offsets_query_cql/0</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="remove_archive_query_cql/0">
+  <div class="detail-header">
+    <a href="#remove_archive_query_cql/0" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">remove_archive_query_cql/0</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="row_to_message_id/1">
+  <div class="detail-header">
+    <a href="#row_to_message_id/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">row_to_message_id/1</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="row_to_uniform_format/1">
+  <div class="detail-header">
+    <a href="#row_to_uniform_format/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">row_to_uniform_format/1</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="rows_to_gdpr_mam_message/1">
+  <div class="detail-header">
+    <a href="#rows_to_gdpr_mam_message/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">rows_to_gdpr_mam_message/1</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="rows_to_uniform_format/1">
+  <div class="detail-header">
+    <a href="#rows_to_uniform_format/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">rows_to_uniform_format/1</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="rsm_to_strategy/1">
+  <div class="detail-header">
+    <a href="#rsm_to_strategy/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">rsm_to_strategy/1</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="select_filter/1">
+  <div class="detail-header">
+    <a href="#select_filter/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">select_filter/1</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="select_filter/2">
+  <div class="detail-header">
+    <a href="#select_filter/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">select_filter/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_mam_cassandra_arch.select_filter/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="select_for_removal_query_cql/0">
+  <div class="detail-header">
+    <a href="#select_for_removal_query_cql/0" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">select_for_removal_query_cql/0</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="simple_params/0">
+  <div class="detail-header">
+    <a href="#simple_params/0" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">simple_params/0</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="start/2">
+  <div class="detail-header">
+    <a href="#start/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">start/2</h1>
+  </div>
+
+  <section class="docstring">
+
+<p>Callback implementation for <code class="inline">c::gen_mod.start/2</code>.</p>  </section>
+</section>
+<section class="detail" id="start_pm/2">
+  <div class="detail-header">
+    <a href="#start_pm/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">start_pm/2</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="stop/1">
+  <div class="detail-header">
+    <a href="#stop/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">stop/1</h1>
+  </div>
+
+  <section class="docstring">
+
+<p>Callback implementation for <code class="inline">c::gen_mod.stop/1</code>.</p>  </section>
+</section>
+<section class="detail" id="stop_pm/1">
+  <div class="detail-header">
+    <a href="#stop_pm/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">stop_pm/1</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="stored_binary_to_packet/1">
+  <div class="detail-header">
+    <a href="#stored_binary_to_packet/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">stored_binary_to_packet/1</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="to_id/2">
+  <div class="detail-header">
+    <a href="#to_id/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">to_id/2</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="write_messages/2">
+  <div class="detail-header">
+    <a href="#write_messages/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">write_messages/2</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+          </div>
+        </section>
+        <section id="callbacks" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#callbacks">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+Callbacks          </h1>
+          <div class="callbacks-list">
+<section class="detail" id="c:decode/1">
+  <div class="detail-header">
+    <a href="#c:decode/1" class="detail-link" title="Link to this callback">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this callback</span>
+    </a>
+    <h1 class="signature">decode(binary)</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>c:mod_mam_cassandra_arch.decode/1</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="c:encode/1">
+  <div class="detail-header">
+    <a href="#c:encode/1" class="detail-link" title="Link to this callback">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this callback</span>
+    </a>
+    <h1 class="signature">encode(binary)</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>c:mod_mam_cassandra_arch.encode/1</pre>
+      </div>
+
+  </section>
+</section>
+          </div>
+        </section>
+      <footer class="footer">
+        <p>
+          <span class="line">
+            Built using
+            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener">ExDoc</a> (v0.23.0) for the
+            <a href="https://elixir-lang.org" title="Elixir" target="_blank">Elixir programming language</a>.
+          </span>
+          <span class="line">
+            Designed by
+            <a href="https://twitter.com/dignifiedquire" target="_blank" rel="noopener" title="@dignifiedquire">Friedel Ziegelmayer</a>.
+          </span>
+        </p>
+        <p>
+            <a href="api-reference.html" title="API reference" class="line footer-button">API Reference</a>
+          <button class="line footer-button display-shortcuts-help">
+            Display keyboard shortcuts
+          </button>
+          <button class="line footer-button night-mode-toggle">
+            Toggle night mode
+          </button>
+          <button class="line footer-button display-quick-switch">
+            Go to a HexDocs package
+          </button>
+          <button class="line footer-button tooltips-toggle">
+            <span class="tooltips-option-disable">Disable tooltips</span>
+            <span class="tooltips-option-enable">Enable tooltips</span>
+          </button>
+        </p>
+      </footer>
+    </div>
+  </div>
+</section>
+</div>
+  </body>
+</html>

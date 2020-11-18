@@ -1,0 +1,1033 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.23.0">
+    <meta name="project" content="MongooseIM v4.0.1">
+    <title>mongoose_config_flat — MongooseIM v4.0.1</title>
+    <link rel="stylesheet" href="dist/erlang-8a5f731dbc512bf6261b.css" />
+    <script src="dist/sidebar_items-38e40981d8.js"></script>
+      <script src="docs_config.js"></script>
+    <script async src="dist/app-60a0c9f10e9e52eae31f.js"></script>
+  </head>
+  <body data-type="modules">
+    <script>try { if(localStorage.getItem('night-mode') === 'true') document.body.className += ' night-mode'; } catch (e) { }</script>
+<div class="main">
+
+<button class="sidebar-button sidebar-toggle">
+  <span class="icon-menu" title="Collapse/expand sidebar"></span>
+</button>
+
+<section class="sidebar">
+  <form class="sidebar-search" action="search.html">
+    <button type="submit" class="search-button" aria-label="Submit Search">
+      <span class="icon-search" aria-hidden="true" title="Submit search"></span>
+    </button>
+    <button type="button" tabindex="-1" class="search-close-button" aria-label="Cancel Search">
+      <span class="icon-cross" aria-hidden="true" title="Cancel search"></span>
+    </button>
+    <label class="search-label">
+      <input name="q" type="text" id="search-list" class="search-input" placeholder="Search..." aria-label="Input your search terms" autocomplete="off" />
+    </label>
+  </form>
+
+  <div class="autocomplete">
+    <div class="autocomplete-results">
+    </div>
+  </div>
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectDetails">
+      <a href="mongooseim.html" class="sidebar-projectName">
+MongooseIM      </a>
+      <strong class="sidebar-projectVersion">
+        v4.0.1
+      </strong>
+    </div>
+  </div>
+
+  <ul class="sidebar-listNav">
+    <li><a id="extras-list" href="#full-list">Pages</a></li>
+
+      <li><a id="modules-list" href="#full-list">Modules</a></li>
+
+  </ul>
+  <div class="gradient"></div>
+  <ul id="full-list" class="sidebar-fullList"></ul>
+</section>
+
+<section class="content">
+  <div class="content-outer">
+    <div id="content" class="content-inner">
+
+      <h1>
+        mongoose_config_flat <small class="app-vsn">(MongooseIM v4.0.1)</small>
+      </h1>
+
+
+        <section id="moduledoc">
+<p>Pure flat config logic. No ets table manipulations, no Mnesia, no starting modules, no file reading here. Everything here is safe, side effect free. OK, logging is possible, but keep it to minimum.</p>Flat format is a list of pairs, corresponding to some part of config tree. Keys are: - [g, K] - global option; - [a, K] - acl list; - [l, listener, Address, Module] - enabled listener; - [l, listener_opt, Address, Module, OptName] - option with value; - [l, listener_simple_opt, Address, Module, Opt] - option without value; - [h, Host, modules] - we need this to build tree (expand options back); - [h, Host, module, Module] - for an enabled module; - [h, H, module_opt, Module, OptName] - option of module; - [h, Host, module_subopt, Module, OptName|Path] - if value of OptName is a proplist, we split is into module_subopt-s recursively.        </section>
+
+        <section id="summary" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#summary">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+            Summary
+          </h1>
+  <div class="summary-types summary">
+    <h2>
+      <a href="#types">Types</a>
+    </h2>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:flat_option/0">flat_option()</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:flat_options/0">flat_options()</a>
+  </div>
+</div>
+  </div>
+  <div class="summary-functions summary">
+    <h2>
+      <a href="#functions">Functions</a>
+    </h2>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#add_to_group/3">add_to_group/3</a>
+  </div>
+    <div class="summary-synopsis">Append into a group for later use Returns updated Groups</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#can_be_flattened_value/1">can_be_flattened_value/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#do_split_node_specific_options_tree/1">do_split_node_specific_options_tree/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#does_pattern_match/2">does_pattern_match/2</a>
+  </div>
+    <div class="summary-synopsis">Use erlang match spec to check if the Subject fits the Pattern. http://erlang.org/doc/apps/erts/match_spec.html</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#expand_all_opts/1">expand_all_opts/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#expand_global_config_group/2">expand_global_config_group/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#expand_global_config_group_item/3">expand_global_config_group_item/3</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#expand_host_config_group/2">expand_host_config_group/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#expand_host_config_group_item/4">expand_host_config_group_item/4</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#expand_host_config_group_item_value/4">expand_host_config_group_item_value/4</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#expand_local_config_group/2">expand_local_config_group/2</a>
+  </div>
+    <div class="summary-synopsis">Rewrite LocalConfigGroup to <code>{local_config, _, _}</code> format using <code>Groups</code> for quick lookups</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#expand_local_config_group_item/4">expand_local_config_group_item/4</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#expand_local_config_group_item_value/3">expand_local_config_group_item_value/3</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#expand_module_opts/4">expand_module_opts/4</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#expand_module_subopts/4">expand_module_subopts/4</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#expand_module_subopts_path/4">expand_module_subopts_path/4</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#expand_opts/1">expand_opts/1</a>
+  </div>
+    <div class="summary-synopsis">Convert flat list of options back to LocalConfig and HostLocalConfig Useful, but not used</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#find_matching_node_specific_pattern/2">find_matching_node_specific_pattern/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#flatten_acl_config_opt/2">flatten_acl_config_opt/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#flatten_all_opts/1">flatten_all_opts/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#flatten_global_config_opt/2">flatten_global_config_opt/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#flatten_global_config_opts/1">flatten_global_config_opts/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#flatten_listen/3">flatten_listen/3</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#flatten_listen_opts/3">flatten_listen_opts/3</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#flatten_local_config_host_opt/3">flatten_local_config_host_opt/3</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#flatten_local_config_host_opts/1">flatten_local_config_host_opts/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#flatten_local_config_opt/2">flatten_local_config_opt/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#flatten_local_config_opts/1">flatten_local_config_opts/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#flatten_module/3">flatten_module/3</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#flatten_module_opts/3">flatten_module_opts/3</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#flatten_module_subopts/4">flatten_module_subopts/4</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#flatten_opts/2">flatten_opts/2</a>
+  </div>
+    <div class="summary-synopsis">Convert LocalConfig and HostLocalConfig to a flat list of options</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#flatten_subopt/3">flatten_subopt/3</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#flatten_subopts/2">flatten_subopts/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#group_flat_opt/2">group_flat_opt/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#group_flat_opts/1">group_flat_opts/1</a>
+  </div>
+    <div class="summary-synopsis">group opts for faster lookups in expand_opts</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#last_init/1">last_init/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#make_listener_opts_from_groups/3">make_listener_opts_from_groups/3</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#make_listeners_from_groups/1">make_listeners_from_groups/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#make_module_opts_from_groups/3">make_module_opts_from_groups/3</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#make_modules_for_host_from_groups/2">make_modules_for_host_from_groups/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#node_specific_orphans/1">node_specific_orphans/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#split_node_specific_options/2">split_node_specific_options/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#split_node_specific_options/5">split_node_specific_options/5</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#split_node_specific_options_tree/2">split_node_specific_options_tree/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#subtract_lists/2">subtract_lists/2</a>
+  </div>
+</div>
+  </div>
+        </section>
+
+        <section id="types" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#types">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+Types          </h1>
+          <div class="types-list">
+<section class="detail" id="t:flat_option/0">
+  <div class="detail-header">
+    <a href="#t:flat_option/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">flat_option()</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>t:mongoose_config_flat.flat_option/0</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="t:flat_options/0">
+  <div class="detail-header">
+    <a href="#t:flat_options/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">flat_options()</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>t:mongoose_config_flat.flat_options/0</pre>
+      </div>
+
+  </section>
+</section>
+          </div>
+        </section>
+        <section id="functions" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#functions">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+Functions          </h1>
+          <div class="functions-list">
+<section class="detail" id="add_to_group/3">
+  <div class="detail-header">
+    <a href="#add_to_group/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">add_to_group/3</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_config_flat.add_to_group/3</pre>
+      </div>
+
+Append into a group for later use Returns updated Groups  </section>
+</section>
+<section class="detail" id="can_be_flattened_value/1">
+  <div class="detail-header">
+    <a href="#can_be_flattened_value/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">can_be_flattened_value/1</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="do_split_node_specific_options_tree/1">
+  <div class="detail-header">
+    <a href="#do_split_node_specific_options_tree/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">do_split_node_specific_options_tree/1</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="does_pattern_match/2">
+  <div class="detail-header">
+    <a href="#does_pattern_match/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">does_pattern_match/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_config_flat.does_pattern_match/2</pre>
+      </div>
+
+Use erlang match spec to check if the Subject fits the Pattern. http://erlang.org/doc/apps/erts/match_spec.html  </section>
+</section>
+<section class="detail" id="expand_all_opts/1">
+  <div class="detail-header">
+    <a href="#expand_all_opts/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">expand_all_opts/1</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="expand_global_config_group/2">
+  <div class="detail-header">
+    <a href="#expand_global_config_group/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">expand_global_config_group/2</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="expand_global_config_group_item/3">
+  <div class="detail-header">
+    <a href="#expand_global_config_group_item/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">expand_global_config_group_item/3</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="expand_host_config_group/2">
+  <div class="detail-header">
+    <a href="#expand_host_config_group/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">expand_host_config_group/2</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="expand_host_config_group_item/4">
+  <div class="detail-header">
+    <a href="#expand_host_config_group_item/4" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">expand_host_config_group_item/4</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="expand_host_config_group_item_value/4">
+  <div class="detail-header">
+    <a href="#expand_host_config_group_item_value/4" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">expand_host_config_group_item_value/4</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="expand_local_config_group/2">
+  <div class="detail-header">
+    <a href="#expand_local_config_group/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">expand_local_config_group/2</h1>
+  </div>
+
+  <section class="docstring">
+
+Rewrite LocalConfigGroup to <code>{local_config, _, _}</code> format using <code>Groups</code> for quick lookups  </section>
+</section>
+<section class="detail" id="expand_local_config_group_item/4">
+  <div class="detail-header">
+    <a href="#expand_local_config_group_item/4" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">expand_local_config_group_item/4</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="expand_local_config_group_item_value/3">
+  <div class="detail-header">
+    <a href="#expand_local_config_group_item_value/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">expand_local_config_group_item_value/3</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="expand_module_opts/4">
+  <div class="detail-header">
+    <a href="#expand_module_opts/4" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">expand_module_opts/4</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="expand_module_subopts/4">
+  <div class="detail-header">
+    <a href="#expand_module_subopts/4" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">expand_module_subopts/4</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="expand_module_subopts_path/4">
+  <div class="detail-header">
+    <a href="#expand_module_subopts_path/4" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">expand_module_subopts_path/4</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="expand_opts/1">
+  <div class="detail-header">
+    <a href="#expand_opts/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">expand_opts/1</h1>
+  </div>
+
+  <section class="docstring">
+
+Convert flat list of options back to LocalConfig and HostLocalConfig Useful, but not used  </section>
+</section>
+<section class="detail" id="find_matching_node_specific_pattern/2">
+  <div class="detail-header">
+    <a href="#find_matching_node_specific_pattern/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">find_matching_node_specific_pattern/2</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="flatten_acl_config_opt/2">
+  <div class="detail-header">
+    <a href="#flatten_acl_config_opt/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">flatten_acl_config_opt/2</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="flatten_all_opts/1">
+  <div class="detail-header">
+    <a href="#flatten_all_opts/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">flatten_all_opts/1</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="flatten_global_config_opt/2">
+  <div class="detail-header">
+    <a href="#flatten_global_config_opt/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">flatten_global_config_opt/2</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="flatten_global_config_opts/1">
+  <div class="detail-header">
+    <a href="#flatten_global_config_opts/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">flatten_global_config_opts/1</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="flatten_listen/3">
+  <div class="detail-header">
+    <a href="#flatten_listen/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">flatten_listen/3</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="flatten_listen_opts/3">
+  <div class="detail-header">
+    <a href="#flatten_listen_opts/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">flatten_listen_opts/3</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="flatten_local_config_host_opt/3">
+  <div class="detail-header">
+    <a href="#flatten_local_config_host_opt/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">flatten_local_config_host_opt/3</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="flatten_local_config_host_opts/1">
+  <div class="detail-header">
+    <a href="#flatten_local_config_host_opts/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">flatten_local_config_host_opts/1</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="flatten_local_config_opt/2">
+  <div class="detail-header">
+    <a href="#flatten_local_config_opt/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">flatten_local_config_opt/2</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="flatten_local_config_opts/1">
+  <div class="detail-header">
+    <a href="#flatten_local_config_opts/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">flatten_local_config_opts/1</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="flatten_module/3">
+  <div class="detail-header">
+    <a href="#flatten_module/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">flatten_module/3</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="flatten_module_opts/3">
+  <div class="detail-header">
+    <a href="#flatten_module_opts/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">flatten_module_opts/3</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="flatten_module_subopts/4">
+  <div class="detail-header">
+    <a href="#flatten_module_subopts/4" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">flatten_module_subopts/4</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="flatten_opts/2">
+  <div class="detail-header">
+    <a href="#flatten_opts/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">flatten_opts/2</h1>
+  </div>
+
+  <section class="docstring">
+
+Convert LocalConfig and HostLocalConfig to a flat list of options  </section>
+</section>
+<section class="detail" id="flatten_subopt/3">
+  <div class="detail-header">
+    <a href="#flatten_subopt/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">flatten_subopt/3</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="flatten_subopts/2">
+  <div class="detail-header">
+    <a href="#flatten_subopts/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">flatten_subopts/2</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="group_flat_opt/2">
+  <div class="detail-header">
+    <a href="#group_flat_opt/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">group_flat_opt/2</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="group_flat_opts/1">
+  <div class="detail-header">
+    <a href="#group_flat_opts/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">group_flat_opts/1</h1>
+  </div>
+
+  <section class="docstring">
+
+group opts for faster lookups in expand_opts  </section>
+</section>
+<section class="detail" id="last_init/1">
+  <div class="detail-header">
+    <a href="#last_init/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">last_init/1</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="make_listener_opts_from_groups/3">
+  <div class="detail-header">
+    <a href="#make_listener_opts_from_groups/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">make_listener_opts_from_groups/3</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="make_listeners_from_groups/1">
+  <div class="detail-header">
+    <a href="#make_listeners_from_groups/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">make_listeners_from_groups/1</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="make_module_opts_from_groups/3">
+  <div class="detail-header">
+    <a href="#make_module_opts_from_groups/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">make_module_opts_from_groups/3</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="make_modules_for_host_from_groups/2">
+  <div class="detail-header">
+    <a href="#make_modules_for_host_from_groups/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">make_modules_for_host_from_groups/2</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="node_specific_orphans/1">
+  <div class="detail-header">
+    <a href="#node_specific_orphans/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">node_specific_orphans/1</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="split_node_specific_options/2">
+  <div class="detail-header">
+    <a href="#split_node_specific_options/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">split_node_specific_options/2</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="split_node_specific_options/5">
+  <div class="detail-header">
+    <a href="#split_node_specific_options/5" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">split_node_specific_options/5</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="split_node_specific_options_tree/2">
+  <div class="detail-header">
+    <a href="#split_node_specific_options_tree/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">split_node_specific_options_tree/2</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="subtract_lists/2">
+  <div class="detail-header">
+    <a href="#subtract_lists/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">subtract_lists/2</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+          </div>
+        </section>
+      <footer class="footer">
+        <p>
+          <span class="line">
+            Built using
+            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener">ExDoc</a> (v0.23.0) for the
+            <a href="https://elixir-lang.org" title="Elixir" target="_blank">Elixir programming language</a>.
+          </span>
+          <span class="line">
+            Designed by
+            <a href="https://twitter.com/dignifiedquire" target="_blank" rel="noopener" title="@dignifiedquire">Friedel Ziegelmayer</a>.
+          </span>
+        </p>
+        <p>
+            <a href="api-reference.html" title="API reference" class="line footer-button">API Reference</a>
+          <button class="line footer-button display-shortcuts-help">
+            Display keyboard shortcuts
+          </button>
+          <button class="line footer-button night-mode-toggle">
+            Toggle night mode
+          </button>
+          <button class="line footer-button display-quick-switch">
+            Go to a HexDocs package
+          </button>
+          <button class="line footer-button tooltips-toggle">
+            <span class="tooltips-option-disable">Disable tooltips</span>
+            <span class="tooltips-option-enable">Enable tooltips</span>
+          </button>
+        </p>
+      </footer>
+    </div>
+  </div>
+</section>
+</div>
+  </body>
+</html>

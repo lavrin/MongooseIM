@@ -1,0 +1,1158 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.23.0">
+    <meta name="project" content="MongooseIM v4.0.1">
+    <title>gen_mod — MongooseIM v4.0.1</title>
+    <link rel="stylesheet" href="dist/erlang-8a5f731dbc512bf6261b.css" />
+    <script src="dist/sidebar_items-38e40981d8.js"></script>
+      <script src="docs_config.js"></script>
+    <script async src="dist/app-60a0c9f10e9e52eae31f.js"></script>
+  </head>
+  <body data-type="modules">
+    <script>try { if(localStorage.getItem('night-mode') === 'true') document.body.className += ' night-mode'; } catch (e) { }</script>
+<div class="main">
+
+<button class="sidebar-button sidebar-toggle">
+  <span class="icon-menu" title="Collapse/expand sidebar"></span>
+</button>
+
+<section class="sidebar">
+  <form class="sidebar-search" action="search.html">
+    <button type="submit" class="search-button" aria-label="Submit Search">
+      <span class="icon-search" aria-hidden="true" title="Submit search"></span>
+    </button>
+    <button type="button" tabindex="-1" class="search-close-button" aria-label="Cancel Search">
+      <span class="icon-cross" aria-hidden="true" title="Cancel search"></span>
+    </button>
+    <label class="search-label">
+      <input name="q" type="text" id="search-list" class="search-input" placeholder="Search..." aria-label="Input your search terms" autocomplete="off" />
+    </label>
+  </form>
+
+  <div class="autocomplete">
+    <div class="autocomplete-results">
+    </div>
+  </div>
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectDetails">
+      <a href="mongooseim.html" class="sidebar-projectName">
+MongooseIM      </a>
+      <strong class="sidebar-projectVersion">
+        v4.0.1
+      </strong>
+    </div>
+  </div>
+
+  <ul class="sidebar-listNav">
+    <li><a id="extras-list" href="#full-list">Pages</a></li>
+
+      <li><a id="modules-list" href="#full-list">Modules</a></li>
+
+  </ul>
+  <div class="gradient"></div>
+  <ul id="full-list" class="sidebar-fullList"></ul>
+</section>
+
+<section class="content">
+  <div class="content-outer">
+    <div id="content" class="content-inner">
+
+      <h1>
+        gen_mod <small>behaviour</small> <small class="app-vsn">(MongooseIM v4.0.1)</small>
+      </h1>
+
+
+
+        <section id="summary" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#summary">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+            Summary
+          </h1>
+  <div class="summary-types summary">
+    <h2>
+      <a href="#types">Types</a>
+    </h2>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:dep_arguments/0">dep_arguments()</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:deps_list/0">deps_list()</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:module_deps_list/0">module_deps_list()</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:service_deps_list/0">service_deps_list()</a>
+  </div>
+</div>
+  </div>
+  <div class="summary-functions summary">
+    <h2>
+      <a href="#functions">Functions</a>
+    </h2>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#clear_opts/2">clear_opts/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#del_module_mnesia/2">del_module_mnesia/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#expand_hosts/1">expand_hosts/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#get_deps/3">get_deps/3</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#get_module_opt/4">get_module_opt/4</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#get_module_opt_by_subhost/4">get_module_opt_by_subhost/4</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#get_module_opt_subhost/3">get_module_opt_subhost/3</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#get_module_opts/2">get_module_opts/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#get_module_proc/2">get_module_proc/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#get_opt/2">get_opt/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#get_opt/3">get_opt/3</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#get_opt/4">get_opt/4</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#get_opt_subhost/3">get_opt_subhost/3</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#get_opt_subhost/4">get_opt_subhost/4</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#get_required_services/3">get_required_services/3</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#is_app_running/1">is_app_running/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#is_common_test_running/0">is_common_test_running/0</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#is_loaded/2">is_loaded/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#is_mim_or_ct_running/0">is_mim_or_ct_running/0</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#loaded_modules/1">loaded_modules/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#loaded_modules_with_opts/1">loaded_modules_with_opts/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#make_subhost/2">make_subhost/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#make_subhosts/2">make_subhosts/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#opts_for_module/2">opts_for_module/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#reload_module/3">reload_module/3</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#set_module_opt/4">set_module_opt/4</a>
+  </div>
+    <div class="summary-synopsis">Non-atomic! You have been warned.</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#set_module_opt_by_subhost/4">set_module_opt_by_subhost/4</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#set_module_opts/3">set_module_opts/3</a>
+  </div>
+    <div class="summary-synopsis">Replaces all module options</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#set_module_opts_mnesia/3">set_module_opts_mnesia/3</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#set_opt/3">set_opt/3</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#start/0">start/0</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#start_backend_module/2">start_backend_module/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#start_backend_module/3">start_backend_module/3</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#start_module/3">start_module/3</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#start_module_for_host/3">start_module_for_host/3</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#stop_module/2">stop_module/2</a>
+  </div>
+    <div class="summary-synopsis">Stop the module in a host, and forget its configuration.</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#stop_module_for_host/2">stop_module_for_host/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#stop_module_keep_config/2">stop_module_keep_config/2</a>
+  </div>
+    <div class="summary-synopsis">Stop the module in a host, but keep its configuration. As the module configuration is kept in the Mnesia local_config table, when ejabberd is restarted the module will be started again. This function is useful when ejabberd is being stopped and it stops all modules.</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#wait_for_process/1">wait_for_process/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#wait_for_stop/2">wait_for_stop/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#wait_for_stop1/1">wait_for_stop1/1</a>
+  </div>
+</div>
+  </div>
+  <div class="summary-callbacks summary">
+    <h2>
+      <a href="#callbacks">Callbacks</a>
+    </h2>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#c:start/2">start(host, opts)</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#c:stop/1">stop(host)</a>
+  </div>
+</div>
+  </div>
+        </section>
+
+        <section id="types" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#types">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+Types          </h1>
+          <div class="types-list">
+<section class="detail" id="t:dep_arguments/0">
+  <div class="detail-header">
+    <a href="#t:dep_arguments/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">dep_arguments()</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>t:gen_mod.dep_arguments/0</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="t:deps_list/0">
+  <div class="detail-header">
+    <a href="#t:deps_list/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">deps_list()</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>t:gen_mod.deps_list/0</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="t:module_deps_list/0">
+  <div class="detail-header">
+    <a href="#t:module_deps_list/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">module_deps_list()</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>t:gen_mod.module_deps_list/0</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="t:service_deps_list/0">
+  <div class="detail-header">
+    <a href="#t:service_deps_list/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">service_deps_list()</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>t:gen_mod.service_deps_list/0</pre>
+      </div>
+
+  </section>
+</section>
+          </div>
+        </section>
+        <section id="functions" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#functions">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+Functions          </h1>
+          <div class="functions-list">
+<section class="detail" id="clear_opts/2">
+  <div class="detail-header">
+    <a href="#clear_opts/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">clear_opts/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>gen_mod.clear_opts/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="del_module_mnesia/2">
+  <div class="detail-header">
+    <a href="#del_module_mnesia/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">del_module_mnesia/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>gen_mod.del_module_mnesia/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="expand_hosts/1">
+  <div class="detail-header">
+    <a href="#expand_hosts/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">expand_hosts/1</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>gen_mod.expand_hosts/1</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="get_deps/3">
+  <div class="detail-header">
+    <a href="#get_deps/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">get_deps/3</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>gen_mod.get_deps/3</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="get_module_opt/4">
+  <div class="detail-header">
+    <a href="#get_module_opt/4" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">get_module_opt/4</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="get_module_opt_by_subhost/4">
+  <div class="detail-header">
+    <a href="#get_module_opt_by_subhost/4" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">get_module_opt_by_subhost/4</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>gen_mod.get_module_opt_by_subhost/4</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="get_module_opt_subhost/3">
+  <div class="detail-header">
+    <a href="#get_module_opt_subhost/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">get_module_opt_subhost/3</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>gen_mod.get_module_opt_subhost/3</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="get_module_opts/2">
+  <div class="detail-header">
+    <a href="#get_module_opts/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">get_module_opts/2</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="get_module_proc/2">
+  <div class="detail-header">
+    <a href="#get_module_proc/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">get_module_proc/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>gen_mod.get_module_proc/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="get_opt/2">
+  <div class="detail-header">
+    <a href="#get_opt/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">get_opt/2</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="get_opt/3">
+  <div class="detail-header">
+    <a href="#get_opt/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">get_opt/3</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="get_opt/4">
+  <div class="detail-header">
+    <a href="#get_opt/4" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">get_opt/4</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="get_opt_subhost/3">
+  <div class="detail-header">
+    <a href="#get_opt_subhost/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">get_opt_subhost/3</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>gen_mod.get_opt_subhost/3</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="get_opt_subhost/4">
+  <div class="detail-header">
+    <a href="#get_opt_subhost/4" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">get_opt_subhost/4</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>gen_mod.get_opt_subhost/4</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="get_required_services/3">
+  <div class="detail-header">
+    <a href="#get_required_services/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">get_required_services/3</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>gen_mod.get_required_services/3</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="is_app_running/1">
+  <div class="detail-header">
+    <a href="#is_app_running/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">is_app_running/1</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>gen_mod.is_app_running/1</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="is_common_test_running/0">
+  <div class="detail-header">
+    <a href="#is_common_test_running/0" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">is_common_test_running/0</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="is_loaded/2">
+  <div class="detail-header">
+    <a href="#is_loaded/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">is_loaded/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>gen_mod.is_loaded/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="is_mim_or_ct_running/0">
+  <div class="detail-header">
+    <a href="#is_mim_or_ct_running/0" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">is_mim_or_ct_running/0</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="loaded_modules/1">
+  <div class="detail-header">
+    <a href="#loaded_modules/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">loaded_modules/1</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>gen_mod.loaded_modules/1</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="loaded_modules_with_opts/1">
+  <div class="detail-header">
+    <a href="#loaded_modules_with_opts/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">loaded_modules_with_opts/1</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>gen_mod.loaded_modules_with_opts/1</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="make_subhost/2">
+  <div class="detail-header">
+    <a href="#make_subhost/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">make_subhost/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>gen_mod.make_subhost/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="make_subhosts/2">
+  <div class="detail-header">
+    <a href="#make_subhosts/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">make_subhosts/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>gen_mod.make_subhosts/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="opts_for_module/2">
+  <div class="detail-header">
+    <a href="#opts_for_module/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">opts_for_module/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>gen_mod.opts_for_module/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="reload_module/3">
+  <div class="detail-header">
+    <a href="#reload_module/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">reload_module/3</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>gen_mod.reload_module/3</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="set_module_opt/4">
+  <div class="detail-header">
+    <a href="#set_module_opt/4" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">set_module_opt/4</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>gen_mod.set_module_opt/4</pre>
+      </div>
+
+Non-atomic! You have been warned.  </section>
+</section>
+<section class="detail" id="set_module_opt_by_subhost/4">
+  <div class="detail-header">
+    <a href="#set_module_opt_by_subhost/4" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">set_module_opt_by_subhost/4</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>gen_mod.set_module_opt_by_subhost/4</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="set_module_opts/3">
+  <div class="detail-header">
+    <a href="#set_module_opts/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">set_module_opts/3</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>gen_mod.set_module_opts/3</pre>
+      </div>
+
+Replaces all module options  </section>
+</section>
+<section class="detail" id="set_module_opts_mnesia/3">
+  <div class="detail-header">
+    <a href="#set_module_opts_mnesia/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">set_module_opts_mnesia/3</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>gen_mod.set_module_opts_mnesia/3</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="set_opt/3">
+  <div class="detail-header">
+    <a href="#set_opt/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">set_opt/3</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>gen_mod.set_opt/3</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="start/0">
+  <div class="detail-header">
+    <a href="#start/0" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">start/0</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>gen_mod.start/0</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="start_backend_module/2">
+  <div class="detail-header">
+    <a href="#start_backend_module/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">start_backend_module/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>gen_mod.start_backend_module/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="start_backend_module/3">
+  <div class="detail-header">
+    <a href="#start_backend_module/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">start_backend_module/3</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="start_module/3">
+  <div class="detail-header">
+    <a href="#start_module/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">start_module/3</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>gen_mod.start_module/3</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="start_module_for_host/3">
+  <div class="detail-header">
+    <a href="#start_module_for_host/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">start_module_for_host/3</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="stop_module/2">
+  <div class="detail-header">
+    <a href="#stop_module/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">stop_module/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>gen_mod.stop_module/2</pre>
+      </div>
+
+Stop the module in a host, and forget its configuration.  </section>
+</section>
+<section class="detail" id="stop_module_for_host/2">
+  <div class="detail-header">
+    <a href="#stop_module_for_host/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">stop_module_for_host/2</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="stop_module_keep_config/2">
+  <div class="detail-header">
+    <a href="#stop_module_keep_config/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">stop_module_keep_config/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>gen_mod.stop_module_keep_config/2</pre>
+      </div>
+
+Stop the module in a host, but keep its configuration. As the module configuration is kept in the Mnesia local_config table, when ejabberd is restarted the module will be started again. This function is useful when ejabberd is being stopped and it stops all modules.  </section>
+</section>
+<section class="detail" id="wait_for_process/1">
+  <div class="detail-header">
+    <a href="#wait_for_process/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">wait_for_process/1</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>gen_mod.wait_for_process/1</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="wait_for_stop/2">
+  <div class="detail-header">
+    <a href="#wait_for_stop/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">wait_for_stop/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>gen_mod.wait_for_stop/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="wait_for_stop1/1">
+  <div class="detail-header">
+    <a href="#wait_for_stop1/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">wait_for_stop1/1</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>gen_mod.wait_for_stop1/1</pre>
+      </div>
+
+  </section>
+</section>
+          </div>
+        </section>
+        <section id="callbacks" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#callbacks">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+Callbacks          </h1>
+          <div class="callbacks-list">
+<section class="detail" id="c:start/2">
+  <div class="detail-header">
+    <a href="#c:start/2" class="detail-link" title="Link to this callback">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this callback</span>
+    </a>
+    <h1 class="signature">start(host, opts)</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>c:gen_mod.start/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="c:stop/1">
+  <div class="detail-header">
+    <a href="#c:stop/1" class="detail-link" title="Link to this callback">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this callback</span>
+    </a>
+    <h1 class="signature">stop(host)</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>c:gen_mod.stop/1</pre>
+      </div>
+
+  </section>
+</section>
+          </div>
+        </section>
+      <footer class="footer">
+        <p>
+          <span class="line">
+            Built using
+            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener">ExDoc</a> (v0.23.0) for the
+            <a href="https://elixir-lang.org" title="Elixir" target="_blank">Elixir programming language</a>.
+          </span>
+          <span class="line">
+            Designed by
+            <a href="https://twitter.com/dignifiedquire" target="_blank" rel="noopener" title="@dignifiedquire">Friedel Ziegelmayer</a>.
+          </span>
+        </p>
+        <p>
+            <a href="api-reference.html" title="API reference" class="line footer-button">API Reference</a>
+          <button class="line footer-button display-shortcuts-help">
+            Display keyboard shortcuts
+          </button>
+          <button class="line footer-button night-mode-toggle">
+            Toggle night mode
+          </button>
+          <button class="line footer-button display-quick-switch">
+            Go to a HexDocs package
+          </button>
+          <button class="line footer-button tooltips-toggle">
+            <span class="tooltips-option-disable">Disable tooltips</span>
+            <span class="tooltips-option-enable">Enable tooltips</span>
+          </button>
+        </p>
+      </footer>
+    </div>
+  </div>
+</section>
+</div>
+  </body>
+</html>

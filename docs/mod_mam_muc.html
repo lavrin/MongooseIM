@@ -1,0 +1,1269 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.23.0">
+    <meta name="project" content="MongooseIM v4.0.1">
+    <title>mod_mam_muc — MongooseIM v4.0.1</title>
+    <link rel="stylesheet" href="dist/erlang-8a5f731dbc512bf6261b.css" />
+    <script src="dist/sidebar_items-38e40981d8.js"></script>
+      <script src="docs_config.js"></script>
+    <script async src="dist/app-60a0c9f10e9e52eae31f.js"></script>
+  </head>
+  <body data-type="modules">
+    <script>try { if(localStorage.getItem('night-mode') === 'true') document.body.className += ' night-mode'; } catch (e) { }</script>
+<div class="main">
+
+<button class="sidebar-button sidebar-toggle">
+  <span class="icon-menu" title="Collapse/expand sidebar"></span>
+</button>
+
+<section class="sidebar">
+  <form class="sidebar-search" action="search.html">
+    <button type="submit" class="search-button" aria-label="Submit Search">
+      <span class="icon-search" aria-hidden="true" title="Submit search"></span>
+    </button>
+    <button type="button" tabindex="-1" class="search-close-button" aria-label="Cancel Search">
+      <span class="icon-cross" aria-hidden="true" title="Cancel search"></span>
+    </button>
+    <label class="search-label">
+      <input name="q" type="text" id="search-list" class="search-input" placeholder="Search..." aria-label="Input your search terms" autocomplete="off" />
+    </label>
+  </form>
+
+  <div class="autocomplete">
+    <div class="autocomplete-results">
+    </div>
+  </div>
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectDetails">
+      <a href="mongooseim.html" class="sidebar-projectName">
+MongooseIM      </a>
+      <strong class="sidebar-projectVersion">
+        v4.0.1
+      </strong>
+    </div>
+  </div>
+
+  <ul class="sidebar-listNav">
+    <li><a id="extras-list" href="#full-list">Pages</a></li>
+
+      <li><a id="modules-list" href="#full-list">Modules</a></li>
+
+  </ul>
+  <div class="gradient"></div>
+  <ul id="full-list" class="sidebar-fullList"></ul>
+</section>
+
+<section class="content">
+  <div class="content-outer">
+    <div id="content" class="content-inner">
+
+      <h1>
+        mod_mam_muc <small>behaviour</small> <small class="app-vsn">(MongooseIM v4.0.1)</small>
+      </h1>
+
+
+        <section id="moduledoc">
+<p>XEP-0313: Message Archive Management</p><p>The module uses several backend modules:</p><ul><li>Preference manager (<a orig-tag="a" href="mod_mam_muc_rdbms_prefs" rel="https://erlang.org/doc/link/seeerl"><code>mod_mam_muc_rdbms_prefs</code></a>);</li><li>Writer (<a orig-tag="a" href="mod_mam_muc_rdbms_arch" rel="https://erlang.org/doc/link/seeerl"><code>mod_mam_muc_rdbms_arch</code></a> or <a orig-tag="a" href="mod_mam_muc_rdbms_async_pool_writer" rel="https://erlang.org/doc/link/seeerl"><code>mod_mam_muc_rdbms_async_pool_writer</code></a>);</li><li>Archive manager (<a orig-tag="a" href="mod_mam_muc_rdbms_arch" rel="https://erlang.org/doc/link/seeerl"><code>mod_mam_muc_rdbms_arch</code></a>);</li><li>User's ID generator (<a orig-tag="a" href="mod_mam_muc_user" rel="https://erlang.org/doc/link/seeerl"><code>mod_mam_muc_user</code></a>).</li></ul><p>Preferencies can be also stored in Mnesia (<a orig-tag="a" href="mod_mam_mnesia_prefs" rel="https://erlang.org/doc/link/seeerl"><code>mod_mam_mnesia_prefs</code></a>). This module handles MUC archives.</p><p>This module should be started for each host. Message archivation is not shaped here (use standard support for this). MAM's IQs are shaped inside <a orig-tag="a" href="shaper_srv" rel="https://erlang.org/doc/link/seeerl"><code>shaper_srv</code></a>.</p><p>Message identifiers (or UIDs in the spec) are generated based on:</p><ul><li>date (using <code>timestamp()</code>);</li><li>node number (using <a orig-tag="a" href="ejabberd_node_id" rel="https://erlang.org/doc/link/seeerl"><code>ejabberd_node_id</code></a>).</li></ul>        </section>
+
+        <section id="summary" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#summary">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+            Summary
+          </h1>
+  <div class="summary-types summary">
+    <h2>
+      <a href="#types">Types</a>
+    </h2>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:packet/0">packet()</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:row/0">row()</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:row_batch/0">row_batch()</a>
+  </div>
+</div>
+  </div>
+  <div class="summary-functions summary">
+    <h2>
+      <a href="#functions">Functions</a>
+    </h2>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#archive_id/2">archive_id/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#archive_id_int/2">archive_id_int/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#archive_message/2">archive_message/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#archive_room_packet/6">archive_room_packet/6</a>
+  </div>
+    <div class="summary-synopsis">Archive without validation.</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#archive_size/2">archive_size/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#archive_size/3">archive_size/3</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#can_access_room/2">can_access_room/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#delete_archive/2">delete_archive/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#filter_room_packet/2">filter_room_packet/2</a>
+  </div>
+    <div class="summary-synopsis">Handle public MUC-message.</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#forget_room/2">forget_room/2</a>
+  </div>
+    <div class="summary-synopsis">This hook is called from <code>mod_muc:forget_room(Host, Name)</code>.</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#forget_room/3">forget_room/3</a>
+  </div>
+    <div class="summary-synopsis">This hook is called from <code>mod_muc:forget_room(Host, Name)</code>.</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#forward_messages/6">forward_messages/6</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#get_behaviour/5">get_behaviour/5</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#get_personal_data/2">get_personal_data/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#get_prefs/4">get_prefs/4</a>
+  </div>
+    <div class="summary-synopsis">Load settings from the database.</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#handle_error_iq/5">handle_error_iq/5</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#handle_get_message_form/3">handle_get_message_form/3</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#handle_get_prefs/2">handle_get_prefs/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#handle_get_prefs_result/3">handle_get_prefs_result/3</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#handle_lookup_result/4">handle_lookup_result/4</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#handle_mam_iq/4">handle_mam_iq/4</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#handle_set_message_form/3">handle_set_message_form/3</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#handle_set_prefs/2">handle_set_prefs/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#handle_set_prefs_result/5">handle_set_prefs_result/5</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#is_action_allowed/3">is_action_allowed/3</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#is_action_allowed_by_default/3">is_action_allowed_by_default/3</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#is_archivable_message/3">is_archivable_message/3</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#is_room_action_allowed_by_default/3">is_room_action_allowed_by_default/3</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#is_room_owner/2">is_room_owner/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#is_user_identity_hidden/2">is_user_identity_hidden/2</a>
+  </div>
+    <div class="summary-synopsis">Return true if user element should be removed from results</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#lookup_messages/2">lookup_messages/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#lookup_messages_without_policy_violation_check/2">lookup_messages_without_policy_violation_check/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#maybe_delete_x_user_element/3">maybe_delete_x_user_element/3</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#message_row_to_ext_id/1">message_row_to_ext_id/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#message_row_to_xml/6">message_row_to_xml/6</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#remove_archive/3">remove_archive/3</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#replace_from_to_attributes/2">replace_from_to_attributes/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#report_issue/4">report_issue/4</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#report_issue/5">report_issue/5</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#return_action_not_allowed_error_iq/1">return_action_not_allowed_error_iq/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#return_error_iq/2">return_error_iq/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#return_max_delay_reached_error_iq/1">return_max_delay_reached_error_iq/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#return_message_form_iq/2">return_message_form_iq/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#room_process_mam_iq/4">room_process_mam_iq/4</a>
+  </div>
+    <div class="summary-synopsis"><code>To</code> is an account or server entity hosting the archive. Servers that archive messages on behalf of local users SHOULD expose archives to the user on their bare JID (i.e. <code>From.luser</code>), while a MUC service might allow MAM queries to be sent to the room's bare JID (i.e <code>To.luser</code>).</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#send_messages_and_iq_result/4">send_messages_and_iq_result/4</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#set_prefs/6">set_prefs/6</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#start/2">start/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#stop/1">stop/1</a>
+  </div>
+</div>
+  </div>
+  <div class="summary-callbacks summary">
+    <h2>
+      <a href="#callbacks">Callbacks</a>
+    </h2>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#c:is_complete_message/3">is_complete_message(module, dir, packet)</a>
+  </div>
+</div>
+  </div>
+        </section>
+
+        <section id="types" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#types">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+Types          </h1>
+          <div class="types-list">
+<section class="detail" id="t:packet/0">
+  <div class="detail-header">
+    <a href="#t:packet/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">packet()</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>t:mod_mam_muc.packet/0</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="t:row/0">
+  <div class="detail-header">
+    <a href="#t:row/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">row()</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>t:mod_mam_muc.row/0</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="t:row_batch/0">
+  <div class="detail-header">
+    <a href="#t:row_batch/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">row_batch()</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>t:mod_mam_muc.row_batch/0</pre>
+      </div>
+
+  </section>
+</section>
+          </div>
+        </section>
+        <section id="functions" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#functions">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+Functions          </h1>
+          <div class="functions-list">
+<section class="detail" id="archive_id/2">
+  <div class="detail-header">
+    <a href="#archive_id/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">archive_id/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_mam_muc.archive_id/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="archive_id_int/2">
+  <div class="detail-header">
+    <a href="#archive_id_int/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">archive_id_int/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_mam_muc.archive_id_int/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="archive_message/2">
+  <div class="detail-header">
+    <a href="#archive_message/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">archive_message/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_mam_muc.archive_message/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="archive_room_packet/6">
+  <div class="detail-header">
+    <a href="#archive_room_packet/6" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">archive_room_packet/6</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_mam_muc.archive_room_packet/6</pre>
+      </div>
+
+Archive without validation.  </section>
+</section>
+<section class="detail" id="archive_size/2">
+  <div class="detail-header">
+    <a href="#archive_size/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">archive_size/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_mam_muc.archive_size/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="archive_size/3">
+  <div class="detail-header">
+    <a href="#archive_size/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">archive_size/3</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_mam_muc.archive_size/3</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="can_access_room/2">
+  <div class="detail-header">
+    <a href="#can_access_room/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">can_access_room/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_mam_muc.can_access_room/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="delete_archive/2">
+  <div class="detail-header">
+    <a href="#delete_archive/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">delete_archive/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_mam_muc.delete_archive/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="filter_room_packet/2">
+  <div class="detail-header">
+    <a href="#filter_room_packet/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">filter_room_packet/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_mam_muc.filter_room_packet/2</pre>
+      </div>
+
+Handle public MUC-message.  </section>
+</section>
+<section class="detail" id="forget_room/2">
+  <div class="detail-header">
+    <a href="#forget_room/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">forget_room/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_mam_muc.forget_room/2</pre>
+      </div>
+
+This hook is called from <code>mod_muc:forget_room(Host, Name)</code>.  </section>
+</section>
+<section class="detail" id="forget_room/3">
+  <div class="detail-header">
+    <a href="#forget_room/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">forget_room/3</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_mam_muc.forget_room/3</pre>
+      </div>
+
+This hook is called from <code>mod_muc:forget_room(Host, Name)</code>.  </section>
+</section>
+<section class="detail" id="forward_messages/6">
+  <div class="detail-header">
+    <a href="#forward_messages/6" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">forward_messages/6</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="get_behaviour/5">
+  <div class="detail-header">
+    <a href="#get_behaviour/5" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">get_behaviour/5</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_mam_muc.get_behaviour/5</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="get_personal_data/2">
+  <div class="detail-header">
+    <a href="#get_personal_data/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">get_personal_data/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_mam_muc.get_personal_data/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="get_prefs/4">
+  <div class="detail-header">
+    <a href="#get_prefs/4" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">get_prefs/4</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_mam_muc.get_prefs/4</pre>
+      </div>
+
+Load settings from the database.  </section>
+</section>
+<section class="detail" id="handle_error_iq/5">
+  <div class="detail-header">
+    <a href="#handle_error_iq/5" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">handle_error_iq/5</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_mam_muc.handle_error_iq/5</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="handle_get_message_form/3">
+  <div class="detail-header">
+    <a href="#handle_get_message_form/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">handle_get_message_form/3</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_mam_muc.handle_get_message_form/3</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="handle_get_prefs/2">
+  <div class="detail-header">
+    <a href="#handle_get_prefs/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">handle_get_prefs/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_mam_muc.handle_get_prefs/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="handle_get_prefs_result/3">
+  <div class="detail-header">
+    <a href="#handle_get_prefs_result/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">handle_get_prefs_result/3</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="handle_lookup_result/4">
+  <div class="detail-header">
+    <a href="#handle_lookup_result/4" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">handle_lookup_result/4</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_mam_muc.handle_lookup_result/4</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="handle_mam_iq/4">
+  <div class="detail-header">
+    <a href="#handle_mam_iq/4" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">handle_mam_iq/4</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_mam_muc.handle_mam_iq/4</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="handle_set_message_form/3">
+  <div class="detail-header">
+    <a href="#handle_set_message_form/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">handle_set_message_form/3</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_mam_muc.handle_set_message_form/3</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="handle_set_prefs/2">
+  <div class="detail-header">
+    <a href="#handle_set_prefs/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">handle_set_prefs/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_mam_muc.handle_set_prefs/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="handle_set_prefs_result/5">
+  <div class="detail-header">
+    <a href="#handle_set_prefs_result/5" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">handle_set_prefs_result/5</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="is_action_allowed/3">
+  <div class="detail-header">
+    <a href="#is_action_allowed/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">is_action_allowed/3</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_mam_muc.is_action_allowed/3</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="is_action_allowed_by_default/3">
+  <div class="detail-header">
+    <a href="#is_action_allowed_by_default/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">is_action_allowed_by_default/3</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_mam_muc.is_action_allowed_by_default/3</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="is_archivable_message/3">
+  <div class="detail-header">
+    <a href="#is_archivable_message/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">is_archivable_message/3</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_mam_muc.is_archivable_message/3</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="is_room_action_allowed_by_default/3">
+  <div class="detail-header">
+    <a href="#is_room_action_allowed_by_default/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">is_room_action_allowed_by_default/3</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_mam_muc.is_room_action_allowed_by_default/3</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="is_room_owner/2">
+  <div class="detail-header">
+    <a href="#is_room_owner/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">is_room_owner/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_mam_muc.is_room_owner/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="is_user_identity_hidden/2">
+  <div class="detail-header">
+    <a href="#is_user_identity_hidden/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">is_user_identity_hidden/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_mam_muc.is_user_identity_hidden/2</pre>
+      </div>
+
+Return true if user element should be removed from results  </section>
+</section>
+<section class="detail" id="lookup_messages/2">
+  <div class="detail-header">
+    <a href="#lookup_messages/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">lookup_messages/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_mam_muc.lookup_messages/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="lookup_messages_without_policy_violation_check/2">
+  <div class="detail-header">
+    <a href="#lookup_messages_without_policy_violation_check/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">lookup_messages_without_policy_violation_check/2</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="maybe_delete_x_user_element/3">
+  <div class="detail-header">
+    <a href="#maybe_delete_x_user_element/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">maybe_delete_x_user_element/3</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="message_row_to_ext_id/1">
+  <div class="detail-header">
+    <a href="#message_row_to_ext_id/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">message_row_to_ext_id/1</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_mam_muc.message_row_to_ext_id/1</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="message_row_to_xml/6">
+  <div class="detail-header">
+    <a href="#message_row_to_xml/6" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">message_row_to_xml/6</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_mam_muc.message_row_to_xml/6</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="remove_archive/3">
+  <div class="detail-header">
+    <a href="#remove_archive/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">remove_archive/3</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_mam_muc.remove_archive/3</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="replace_from_to_attributes/2">
+  <div class="detail-header">
+    <a href="#replace_from_to_attributes/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">replace_from_to_attributes/2</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="report_issue/4">
+  <div class="detail-header">
+    <a href="#report_issue/4" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">report_issue/4</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="report_issue/5">
+  <div class="detail-header">
+    <a href="#report_issue/5" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">report_issue/5</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="return_action_not_allowed_error_iq/1">
+  <div class="detail-header">
+    <a href="#return_action_not_allowed_error_iq/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">return_action_not_allowed_error_iq/1</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_mam_muc.return_action_not_allowed_error_iq/1</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="return_error_iq/2">
+  <div class="detail-header">
+    <a href="#return_error_iq/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">return_error_iq/2</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="return_max_delay_reached_error_iq/1">
+  <div class="detail-header">
+    <a href="#return_max_delay_reached_error_iq/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">return_max_delay_reached_error_iq/1</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_mam_muc.return_max_delay_reached_error_iq/1</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="return_message_form_iq/2">
+  <div class="detail-header">
+    <a href="#return_message_form_iq/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">return_message_form_iq/2</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="room_process_mam_iq/4">
+  <div class="detail-header">
+    <a href="#room_process_mam_iq/4" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">room_process_mam_iq/4</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_mam_muc.room_process_mam_iq/4</pre>
+      </div>
+
+<code>To</code> is an account or server entity hosting the archive. Servers that archive messages on behalf of local users SHOULD expose archives to the user on their bare JID (i.e. <code>From.luser</code>), while a MUC service might allow MAM queries to be sent to the room's bare JID (i.e <code>To.luser</code>).  </section>
+</section>
+<section class="detail" id="send_messages_and_iq_result/4">
+  <div class="detail-header">
+    <a href="#send_messages_and_iq_result/4" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">send_messages_and_iq_result/4</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="set_prefs/6">
+  <div class="detail-header">
+    <a href="#set_prefs/6" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">set_prefs/6</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_mam_muc.set_prefs/6</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="start/2">
+  <div class="detail-header">
+    <a href="#start/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">start/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_mam_muc.start/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="stop/1">
+  <div class="detail-header">
+    <a href="#stop/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">stop/1</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_mam_muc.stop/1</pre>
+      </div>
+
+  </section>
+</section>
+          </div>
+        </section>
+        <section id="callbacks" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#callbacks">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+Callbacks          </h1>
+          <div class="callbacks-list">
+<section class="detail" id="c:is_complete_message/3">
+  <div class="detail-header">
+    <a href="#c:is_complete_message/3" class="detail-link" title="Link to this callback">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this callback</span>
+    </a>
+    <h1 class="signature">is_complete_message(module, dir, packet)</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>c:mod_mam_muc.is_complete_message/3</pre>
+      </div>
+
+  </section>
+</section>
+          </div>
+        </section>
+      <footer class="footer">
+        <p>
+          <span class="line">
+            Built using
+            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener">ExDoc</a> (v0.23.0) for the
+            <a href="https://elixir-lang.org" title="Elixir" target="_blank">Elixir programming language</a>.
+          </span>
+          <span class="line">
+            Designed by
+            <a href="https://twitter.com/dignifiedquire" target="_blank" rel="noopener" title="@dignifiedquire">Friedel Ziegelmayer</a>.
+          </span>
+        </p>
+        <p>
+            <a href="api-reference.html" title="API reference" class="line footer-button">API Reference</a>
+          <button class="line footer-button display-shortcuts-help">
+            Display keyboard shortcuts
+          </button>
+          <button class="line footer-button night-mode-toggle">
+            Toggle night mode
+          </button>
+          <button class="line footer-button display-quick-switch">
+            Go to a HexDocs package
+          </button>
+          <button class="line footer-button tooltips-toggle">
+            <span class="tooltips-option-disable">Disable tooltips</span>
+            <span class="tooltips-option-enable">Enable tooltips</span>
+          </button>
+        </p>
+      </footer>
+    </div>
+  </div>
+</section>
+</div>
+  </body>
+</html>

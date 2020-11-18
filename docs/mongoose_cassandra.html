@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.23.0">
+    <meta name="project" content="MongooseIM v4.0.1">
+    <title>mongoose_cassandra — MongooseIM v4.0.1</title>
+    <link rel="stylesheet" href="dist/erlang-8a5f731dbc512bf6261b.css" />
+    <script src="dist/sidebar_items-38e40981d8.js"></script>
+      <script src="docs_config.js"></script>
+    <script async src="dist/app-60a0c9f10e9e52eae31f.js"></script>
+  </head>
+  <body data-type="modules">
+    <script>try { if(localStorage.getItem('night-mode') === 'true') document.body.className += ' night-mode'; } catch (e) { }</script>
+<div class="main">
+
+<button class="sidebar-button sidebar-toggle">
+  <span class="icon-menu" title="Collapse/expand sidebar"></span>
+</button>
+
+<section class="sidebar">
+  <form class="sidebar-search" action="search.html">
+    <button type="submit" class="search-button" aria-label="Submit Search">
+      <span class="icon-search" aria-hidden="true" title="Submit search"></span>
+    </button>
+    <button type="button" tabindex="-1" class="search-close-button" aria-label="Cancel Search">
+      <span class="icon-cross" aria-hidden="true" title="Cancel search"></span>
+    </button>
+    <label class="search-label">
+      <input name="q" type="text" id="search-list" class="search-input" placeholder="Search..." aria-label="Input your search terms" autocomplete="off" />
+    </label>
+  </form>
+
+  <div class="autocomplete">
+    <div class="autocomplete-results">
+    </div>
+  </div>
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectDetails">
+      <a href="mongooseim.html" class="sidebar-projectName">
+MongooseIM      </a>
+      <strong class="sidebar-projectVersion">
+        v4.0.1
+      </strong>
+    </div>
+  </div>
+
+  <ul class="sidebar-listNav">
+    <li><a id="extras-list" href="#full-list">Pages</a></li>
+
+      <li><a id="modules-list" href="#full-list">Modules</a></li>
+
+  </ul>
+  <div class="gradient"></div>
+  <ul id="full-list" class="sidebar-fullList"></ul>
+</section>
+
+<section class="content">
+  <div class="content-outer">
+    <div id="content" class="content-inner">
+
+      <h1>
+        mongoose_cassandra <small>behaviour</small> <small class="app-vsn">(MongooseIM v4.0.1)</small>
+      </h1>
+
+
+
+        <section id="summary" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#summary">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+            Summary
+          </h1>
+  <div class="summary-types summary">
+    <h2>
+      <a href="#types">Types</a>
+    </h2>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:fold_accumulator/0">fold_accumulator()</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:fold_fun/0">fold_fun()</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:parameters/0">parameters()</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:pool_name/0">pool_name()</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:query_name/0">query_name()</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:row/0">row()</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:rows/0">rows()</a>
+  </div>
+</div>
+  </div>
+  <div class="summary-functions summary">
+    <h2>
+      <a href="#functions">Functions</a>
+    </h2>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#cql_foldl/7">cql_foldl/7</a>
+  </div>
+    <div class="summary-synopsis">Execute read query to cassandra (select). This functions behaves much like the lists:foldl/3 but the input are pages from result of given query. Therefore each execution of given fun gets list of several result rows (by default 100 at most). --------------------------------------------------------</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#cql_read/5">cql_read/5</a>
+  </div>
+    <div class="summary-synopsis">Execute read query to cassandra (select). Returns all rows at once even if there are several query pages. --------------------------------------------------------</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#cql_write/5">cql_write/5</a>
+  </div>
+    <div class="summary-synopsis">Execute batch write query to cassandra (insert, update or delete). Note that Cassandra doesn't like big batches, therefore this function will try to split given rows into batches of 20 rows and will fall back to smaller batches if Cassandra rejects the query due to its size being to big. --------------------------------------------------------</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#cql_write_async/5">cql_write_async/5</a>
+  </div>
+    <div class="summary-synopsis">Execute async batch write query to cassandra (insert, update or delete). Note that Cassandra doesn't like big batches and there's not retry login when query size will be exceeded like in cql_write/5. --------------------------------------------------------</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#now_timestamp/0">now_timestamp/0</a>
+  </div>
+    <div class="summary-synopsis">Return timestamp in microseconds</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#prepared_queries/0">prepared_queries/0</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#tables/0">tables/0</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#test_query/1">test_query/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#test_query/2">test_query/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#test_query_sql/0">test_query_sql/0</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#total_count_queries/0">total_count_queries/0</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#total_count_query/2">total_count_query/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#total_count_query_cql/1">total_count_query_cql/1</a>
+  </div>
+</div>
+  </div>
+  <div class="summary-callbacks summary">
+    <h2>
+      <a href="#callbacks">Callbacks</a>
+    </h2>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#c:prepared_queries/0">prepared_queries()</a>
+  </div>
+</div>
+  </div>
+        </section>
+
+        <section id="types" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#types">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+Types          </h1>
+          <div class="types-list">
+<section class="detail" id="t:fold_accumulator/0">
+  <div class="detail-header">
+    <a href="#t:fold_accumulator/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">fold_accumulator()</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>t:mongoose_cassandra.fold_accumulator/0</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="t:fold_fun/0">
+  <div class="detail-header">
+    <a href="#t:fold_fun/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">fold_fun()</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>t:mongoose_cassandra.fold_fun/0</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="t:parameters/0">
+  <div class="detail-header">
+    <a href="#t:parameters/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">parameters()</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>t:mongoose_cassandra.parameters/0</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="t:pool_name/0">
+  <div class="detail-header">
+    <a href="#t:pool_name/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">pool_name()</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>t:mongoose_cassandra.pool_name/0</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="t:query_name/0">
+  <div class="detail-header">
+    <a href="#t:query_name/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">query_name()</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>t:mongoose_cassandra.query_name/0</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="t:row/0">
+  <div class="detail-header">
+    <a href="#t:row/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">row()</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>t:mongoose_cassandra.row/0</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="t:rows/0">
+  <div class="detail-header">
+    <a href="#t:rows/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">rows()</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>t:mongoose_cassandra.rows/0</pre>
+      </div>
+
+  </section>
+</section>
+          </div>
+        </section>
+        <section id="functions" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#functions">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+Functions          </h1>
+          <div class="functions-list">
+<section class="detail" id="cql_foldl/7">
+  <div class="detail-header">
+    <a href="#cql_foldl/7" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">cql_foldl/7</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_cassandra.cql_foldl/7</pre>
+      </div>
+
+Execute read query to cassandra (select). This functions behaves much like the lists:foldl/3 but the input are pages from result of given query. Therefore each execution of given fun gets list of several result rows (by default 100 at most). --------------------------------------------------------  </section>
+</section>
+<section class="detail" id="cql_read/5">
+  <div class="detail-header">
+    <a href="#cql_read/5" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">cql_read/5</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_cassandra.cql_read/5</pre>
+      </div>
+
+Execute read query to cassandra (select). Returns all rows at once even if there are several query pages. --------------------------------------------------------  </section>
+</section>
+<section class="detail" id="cql_write/5">
+  <div class="detail-header">
+    <a href="#cql_write/5" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">cql_write/5</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_cassandra.cql_write/5</pre>
+      </div>
+
+Execute batch write query to cassandra (insert, update or delete). Note that Cassandra doesn't like big batches, therefore this function will try to split given rows into batches of 20 rows and will fall back to smaller batches if Cassandra rejects the query due to its size being to big. --------------------------------------------------------  </section>
+</section>
+<section class="detail" id="cql_write_async/5">
+  <div class="detail-header">
+    <a href="#cql_write_async/5" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">cql_write_async/5</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_cassandra.cql_write_async/5</pre>
+      </div>
+
+Execute async batch write query to cassandra (insert, update or delete). Note that Cassandra doesn't like big batches and there's not retry login when query size will be exceeded like in cql_write/5. --------------------------------------------------------  </section>
+</section>
+<section class="detail" id="now_timestamp/0">
+  <div class="detail-header">
+    <a href="#now_timestamp/0" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">now_timestamp/0</h1>
+  </div>
+
+  <section class="docstring">
+
+Return timestamp in microseconds  </section>
+</section>
+<section class="detail" id="prepared_queries/0">
+  <div class="detail-header">
+    <a href="#prepared_queries/0" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">prepared_queries/0</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="tables/0">
+  <div class="detail-header">
+    <a href="#tables/0" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">tables/0</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="test_query/1">
+  <div class="detail-header">
+    <a href="#test_query/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">test_query/1</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_cassandra.test_query/1</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="test_query/2">
+  <div class="detail-header">
+    <a href="#test_query/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">test_query/2</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="test_query_sql/0">
+  <div class="detail-header">
+    <a href="#test_query_sql/0" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">test_query_sql/0</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="total_count_queries/0">
+  <div class="detail-header">
+    <a href="#total_count_queries/0" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">total_count_queries/0</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="total_count_query/2">
+  <div class="detail-header">
+    <a href="#total_count_query/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">total_count_query/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_cassandra.total_count_query/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="total_count_query_cql/1">
+  <div class="detail-header">
+    <a href="#total_count_query_cql/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">total_count_query_cql/1</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+          </div>
+        </section>
+        <section id="callbacks" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#callbacks">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+Callbacks          </h1>
+          <div class="callbacks-list">
+<section class="detail" id="c:prepared_queries/0">
+  <div class="detail-header">
+    <a href="#c:prepared_queries/0" class="detail-link" title="Link to this callback">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this callback</span>
+    </a>
+    <h1 class="signature">prepared_queries()</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>c:mongoose_cassandra.prepared_queries/0</pre>
+      </div>
+
+  </section>
+</section>
+          </div>
+        </section>
+      <footer class="footer">
+        <p>
+          <span class="line">
+            Built using
+            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener">ExDoc</a> (v0.23.0) for the
+            <a href="https://elixir-lang.org" title="Elixir" target="_blank">Elixir programming language</a>.
+          </span>
+          <span class="line">
+            Designed by
+            <a href="https://twitter.com/dignifiedquire" target="_blank" rel="noopener" title="@dignifiedquire">Friedel Ziegelmayer</a>.
+          </span>
+        </p>
+        <p>
+            <a href="api-reference.html" title="API reference" class="line footer-button">API Reference</a>
+          <button class="line footer-button display-shortcuts-help">
+            Display keyboard shortcuts
+          </button>
+          <button class="line footer-button night-mode-toggle">
+            Toggle night mode
+          </button>
+          <button class="line footer-button display-quick-switch">
+            Go to a HexDocs package
+          </button>
+          <button class="line footer-button tooltips-toggle">
+            <span class="tooltips-option-disable">Disable tooltips</span>
+            <span class="tooltips-option-enable">Enable tooltips</span>
+          </button>
+        </p>
+      </footer>
+    </div>
+  </div>
+</section>
+</div>
+  </body>
+</html>

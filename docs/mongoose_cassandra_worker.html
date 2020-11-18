@@ -1,0 +1,1468 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.23.0">
+    <meta name="project" content="MongooseIM v4.0.1">
+    <title>mongoose_cassandra_worker — MongooseIM v4.0.1</title>
+    <link rel="stylesheet" href="dist/erlang-8a5f731dbc512bf6261b.css" />
+    <script src="dist/sidebar_items-38e40981d8.js"></script>
+      <script src="docs_config.js"></script>
+    <script async src="dist/app-60a0c9f10e9e52eae31f.js"></script>
+  </head>
+  <body data-type="modules">
+    <script>try { if(localStorage.getItem('night-mode') === 'true') document.body.className += ' night-mode'; } catch (e) { }</script>
+<div class="main">
+
+<button class="sidebar-button sidebar-toggle">
+  <span class="icon-menu" title="Collapse/expand sidebar"></span>
+</button>
+
+<section class="sidebar">
+  <form class="sidebar-search" action="search.html">
+    <button type="submit" class="search-button" aria-label="Submit Search">
+      <span class="icon-search" aria-hidden="true" title="Submit search"></span>
+    </button>
+    <button type="button" tabindex="-1" class="search-close-button" aria-label="Cancel Search">
+      <span class="icon-cross" aria-hidden="true" title="Cancel search"></span>
+    </button>
+    <label class="search-label">
+      <input name="q" type="text" id="search-list" class="search-input" placeholder="Search..." aria-label="Input your search terms" autocomplete="off" />
+    </label>
+  </form>
+
+  <div class="autocomplete">
+    <div class="autocomplete-results">
+    </div>
+  </div>
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectDetails">
+      <a href="mongooseim.html" class="sidebar-projectName">
+MongooseIM      </a>
+      <strong class="sidebar-projectVersion">
+        v4.0.1
+      </strong>
+    </div>
+  </div>
+
+  <ul class="sidebar-listNav">
+    <li><a id="extras-list" href="#full-list">Pages</a></li>
+
+      <li><a id="modules-list" href="#full-list">Modules</a></li>
+
+  </ul>
+  <div class="gradient"></div>
+  <ul id="full-list" class="sidebar-fullList"></ul>
+</section>
+
+<section class="content">
+  <div class="content-outer">
+    <div id="content" class="content-inner">
+
+      <h1>
+        mongoose_cassandra_worker <small class="app-vsn">(MongooseIM v4.0.1)</small>
+      </h1>
+
+
+
+        <section id="summary" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#summary">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+            Summary
+          </h1>
+  <div class="summary-types summary">
+    <h2>
+      <a href="#types">Types</a>
+    </h2>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:action/0">action()</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:batch_mode/0">batch_mode()</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:batch_mode_int/0">batch_mode_int()</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:caller/0">caller()</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:consistency_level/0">consistency_level()</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:consistency_level_int/0">consistency_level_int()</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:context_id/0">context_id()</a>
+  </div>
+    <div class="summary-synopsis">This value is used as a hash base in worker selection</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:cql_mref/0">cql_mref()</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:cql_query/0">cql_query()</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:cql_result/0">cql_result()</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:cql_tag/0">cql_tag()</a>
+  </div>
+    <div class="summary-synopsis">Normally it's a reference(), but let's not depend on that</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:datatype/0">datatype()</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:error_reason/0">error_reason()</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:error_type/0">error_type()</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:named_parameter/0">named_parameter()</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:options/0">options()</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:parameter/0">parameter()</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:parameter_val/0">parameter_val()</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:process_type/0">process_type()</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:query_str/0">query_str()</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:read_action/0">read_action()</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:request/0">request()</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:request_id/0">request_id()</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:serial_consistency/0">serial_consistency()</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:serial_consistency_int/0">serial_consistency_int()</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:worker_state/0">worker_state()</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:write_action/0">write_action()</a>
+  </div>
+</div>
+  </div>
+  <div class="summary-functions summary">
+    <h2>
+      <a href="#functions">Functions</a>
+    </h2>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#cleanup_request/2">cleanup_request/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#code_change/3">code_change/3</a>
+  </div>
+    <div class="summary-synopsis"><p>Callback implementation for <a href="http://www.erlang.org/doc/man/gen_server.html#Module:code_change-3"><code class="inline">:gen_server.code_change/3</code></a>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#cql_error_text/1">cql_error_text/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#do_handle_error/4">do_handle_error/4</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#do_handle_result/3">do_handle_result/3</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#do_read/5">do_read/5</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#error_text/3">error_text/3</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#get_client/1">get_client/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#get_client_loop/2">get_client_loop/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#handle_call/3">handle_call/3</a>
+  </div>
+    <div class="summary-synopsis"><p>Callback implementation for <a href="http://www.erlang.org/doc/man/gen_server.html#Module:handle_call-3"><code class="inline">:gen_server.handle_call/3</code></a>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#handle_cancel/3">handle_cancel/3</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#handle_cast/2">handle_cast/2</a>
+  </div>
+    <div class="summary-synopsis"><p>Callback implementation for <a href="http://www.erlang.org/doc/man/gen_server.html#Module:handle_cast-2"><code class="inline">:gen_server.handle_cast/2</code></a>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#handle_down/2">handle_down/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#handle_error/2">handle_error/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#handle_info/2">handle_info/2</a>
+  </div>
+    <div class="summary-synopsis"><p>Callback implementation for <a href="http://www.erlang.org/doc/man/gen_server.html#Module:handle_info-2"><code class="inline">:gen_server.handle_info/2</code></a>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#handle_result/2">handle_result/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#init/1">init/1</a>
+  </div>
+    <div class="summary-synopsis"><p>Callback implementation for <a href="http://www.erlang.org/doc/man/gen_server.html#Module:init-1"><code class="inline">:gen_server.init/1</code></a>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#is_finished/2">is_finished/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#maybe_reply/2">maybe_reply/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#new_read_action/2">new_read_action/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#new_request/3">new_request/3</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#new_write_action/2">new_write_action/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#prepare_options/1">prepare_options/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#process_request/2">process_request/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#query_type/1">query_type/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#read/7">read/7</a>
+  </div>
+    <div class="summary-synopsis">Execute read query to Cassandra (select). This functions behaves much like the lists:foldl/3 but the input are pages from result of given query. Therefore each execution of given fun gets list of several result rows (by default 100 at most).</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#response_code_to_binary/1">response_code_to_binary/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#retry_info/4">retry_info/4</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#schedule_retry/3">schedule_retry/3</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#schedule_timeout/2">schedule_timeout/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#send_next_request/3">send_next_request/3</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#terminate/2">terminate/2</a>
+  </div>
+    <div class="summary-synopsis"><p>Callback implementation for <a href="http://www.erlang.org/doc/man/gen_server.html#Module:terminate-2"><code class="inline">:gen_server.terminate/2</code></a>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#update_req/2">update_req/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#write/5">write/5</a>
+  </div>
+    <div class="summary-synopsis">Execute batch write query to Cassandra (insert, update or delete). Note that Cassandra doesn't like big batches, therefore this function will try to split given rows into batches of 20 rows and will fall back to smaller batches if Cassandra rejects the query due to its size being to big.</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#write_async/5">write_async/5</a>
+  </div>
+    <div class="summary-synopsis">Same as @see write/5 but asynchronous (without response).</div>
+</div>
+  </div>
+        </section>
+
+        <section id="types" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#types">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+Types          </h1>
+          <div class="types-list">
+<section class="detail" id="t:action/0">
+  <div class="detail-header">
+    <a href="#t:action/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">action()</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>t:mongoose_cassandra_worker.action/0</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="t:batch_mode/0">
+  <div class="detail-header">
+    <a href="#t:batch_mode/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">batch_mode()</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>t:mongoose_cassandra_worker.batch_mode/0</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="t:batch_mode_int/0">
+  <div class="detail-header">
+    <a href="#t:batch_mode_int/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">batch_mode_int()</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>t:mongoose_cassandra_worker.batch_mode_int/0</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="t:caller/0">
+  <div class="detail-header">
+    <a href="#t:caller/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">caller()</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>t:mongoose_cassandra_worker.caller/0</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="t:consistency_level/0">
+  <div class="detail-header">
+    <a href="#t:consistency_level/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">consistency_level()</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>t:mongoose_cassandra_worker.consistency_level/0</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="t:consistency_level_int/0">
+  <div class="detail-header">
+    <a href="#t:consistency_level_int/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">consistency_level_int()</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>t:mongoose_cassandra_worker.consistency_level_int/0</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="t:context_id/0">
+  <div class="detail-header">
+    <a href="#t:context_id/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">context_id()</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>t:mongoose_cassandra_worker.context_id/0</pre>
+      </div>
+
+This value is used as a hash base in worker selection  </section>
+</section>
+<section class="detail" id="t:cql_mref/0">
+  <div class="detail-header">
+    <a href="#t:cql_mref/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">cql_mref()</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>t:mongoose_cassandra_worker.cql_mref/0</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="t:cql_query/0">
+  <div class="detail-header">
+    <a href="#t:cql_query/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">cql_query()</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>t:mongoose_cassandra_worker.cql_query/0</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="t:cql_result/0">
+  <div class="detail-header">
+    <a href="#t:cql_result/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">cql_result()</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>t:mongoose_cassandra_worker.cql_result/0</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="t:cql_tag/0">
+  <div class="detail-header">
+    <a href="#t:cql_tag/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">cql_tag()</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>t:mongoose_cassandra_worker.cql_tag/0</pre>
+      </div>
+
+Normally it's a reference(), but let's not depend on that  </section>
+</section>
+<section class="detail" id="t:datatype/0">
+  <div class="detail-header">
+    <a href="#t:datatype/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">datatype()</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>t:mongoose_cassandra_worker.datatype/0</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="t:error_reason/0">
+  <div class="detail-header">
+    <a href="#t:error_reason/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">error_reason()</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>t:mongoose_cassandra_worker.error_reason/0</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="t:error_type/0">
+  <div class="detail-header">
+    <a href="#t:error_type/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">error_type()</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>t:mongoose_cassandra_worker.error_type/0</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="t:named_parameter/0">
+  <div class="detail-header">
+    <a href="#t:named_parameter/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">named_parameter()</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>t:mongoose_cassandra_worker.named_parameter/0</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="t:options/0">
+  <div class="detail-header">
+    <a href="#t:options/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">options()</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>t:mongoose_cassandra_worker.options/0</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="t:parameter/0">
+  <div class="detail-header">
+    <a href="#t:parameter/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">parameter()</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>t:mongoose_cassandra_worker.parameter/0</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="t:parameter_val/0">
+  <div class="detail-header">
+    <a href="#t:parameter_val/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">parameter_val()</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>t:mongoose_cassandra_worker.parameter_val/0</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="t:process_type/0">
+  <div class="detail-header">
+    <a href="#t:process_type/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">process_type()</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>t:mongoose_cassandra_worker.process_type/0</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="t:query_str/0">
+  <div class="detail-header">
+    <a href="#t:query_str/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">query_str()</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>t:mongoose_cassandra_worker.query_str/0</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="t:read_action/0">
+  <div class="detail-header">
+    <a href="#t:read_action/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">read_action()</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>t:mongoose_cassandra_worker.read_action/0</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="t:request/0">
+  <div class="detail-header">
+    <a href="#t:request/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">request()</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>t:mongoose_cassandra_worker.request/0</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="t:request_id/0">
+  <div class="detail-header">
+    <a href="#t:request_id/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">request_id()</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>t:mongoose_cassandra_worker.request_id/0</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="t:serial_consistency/0">
+  <div class="detail-header">
+    <a href="#t:serial_consistency/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">serial_consistency()</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>t:mongoose_cassandra_worker.serial_consistency/0</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="t:serial_consistency_int/0">
+  <div class="detail-header">
+    <a href="#t:serial_consistency_int/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">serial_consistency_int()</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>t:mongoose_cassandra_worker.serial_consistency_int/0</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="t:worker_state/0">
+  <div class="detail-header">
+    <a href="#t:worker_state/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">worker_state()</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>t:mongoose_cassandra_worker.worker_state/0</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="t:write_action/0">
+  <div class="detail-header">
+    <a href="#t:write_action/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">write_action()</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>t:mongoose_cassandra_worker.write_action/0</pre>
+      </div>
+
+  </section>
+</section>
+          </div>
+        </section>
+        <section id="functions" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#functions">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+Functions          </h1>
+          <div class="functions-list">
+<section class="detail" id="cleanup_request/2">
+  <div class="detail-header">
+    <a href="#cleanup_request/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">cleanup_request/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_cassandra_worker.cleanup_request/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="code_change/3">
+  <div class="detail-header">
+    <a href="#code_change/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">code_change/3</h1>
+  </div>
+
+  <section class="docstring">
+
+<p>Callback implementation for <a href="http://www.erlang.org/doc/man/gen_server.html#Module:code_change-3"><code class="inline">:gen_server.code_change/3</code></a>.</p>  </section>
+</section>
+<section class="detail" id="cql_error_text/1">
+  <div class="detail-header">
+    <a href="#cql_error_text/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">cql_error_text/1</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="do_handle_error/4">
+  <div class="detail-header">
+    <a href="#do_handle_error/4" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">do_handle_error/4</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_cassandra_worker.do_handle_error/4</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="do_handle_result/3">
+  <div class="detail-header">
+    <a href="#do_handle_result/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">do_handle_result/3</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_cassandra_worker.do_handle_result/3</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="do_read/5">
+  <div class="detail-header">
+    <a href="#do_read/5" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">do_read/5</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="error_text/3">
+  <div class="detail-header">
+    <a href="#error_text/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">error_text/3</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="get_client/1">
+  <div class="detail-header">
+    <a href="#get_client/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">get_client/1</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_cassandra_worker.get_client/1</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="get_client_loop/2">
+  <div class="detail-header">
+    <a href="#get_client_loop/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">get_client_loop/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_cassandra_worker.get_client_loop/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="handle_call/3">
+  <div class="detail-header">
+    <a href="#handle_call/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">handle_call/3</h1>
+  </div>
+
+  <section class="docstring">
+
+<p>Callback implementation for <a href="http://www.erlang.org/doc/man/gen_server.html#Module:handle_call-3"><code class="inline">:gen_server.handle_call/3</code></a>.</p>  </section>
+</section>
+<section class="detail" id="handle_cancel/3">
+  <div class="detail-header">
+    <a href="#handle_cancel/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">handle_cancel/3</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_cassandra_worker.handle_cancel/3</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="handle_cast/2">
+  <div class="detail-header">
+    <a href="#handle_cast/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">handle_cast/2</h1>
+  </div>
+
+  <section class="docstring">
+
+<p>Callback implementation for <a href="http://www.erlang.org/doc/man/gen_server.html#Module:handle_cast-2"><code class="inline">:gen_server.handle_cast/2</code></a>.</p>  </section>
+</section>
+<section class="detail" id="handle_down/2">
+  <div class="detail-header">
+    <a href="#handle_down/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">handle_down/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_cassandra_worker.handle_down/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="handle_error/2">
+  <div class="detail-header">
+    <a href="#handle_error/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">handle_error/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_cassandra_worker.handle_error/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="handle_info/2">
+  <div class="detail-header">
+    <a href="#handle_info/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">handle_info/2</h1>
+  </div>
+
+  <section class="docstring">
+
+<p>Callback implementation for <a href="http://www.erlang.org/doc/man/gen_server.html#Module:handle_info-2"><code class="inline">:gen_server.handle_info/2</code></a>.</p>  </section>
+</section>
+<section class="detail" id="handle_result/2">
+  <div class="detail-header">
+    <a href="#handle_result/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">handle_result/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_cassandra_worker.handle_result/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="init/1">
+  <div class="detail-header">
+    <a href="#init/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">init/1</h1>
+  </div>
+
+  <section class="docstring">
+
+<p>Callback implementation for <a href="http://www.erlang.org/doc/man/gen_server.html#Module:init-1"><code class="inline">:gen_server.init/1</code></a>.</p>  </section>
+</section>
+<section class="detail" id="is_finished/2">
+  <div class="detail-header">
+    <a href="#is_finished/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">is_finished/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_cassandra_worker.is_finished/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="maybe_reply/2">
+  <div class="detail-header">
+    <a href="#maybe_reply/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">maybe_reply/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_cassandra_worker.maybe_reply/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="new_read_action/2">
+  <div class="detail-header">
+    <a href="#new_read_action/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">new_read_action/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_cassandra_worker.new_read_action/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="new_request/3">
+  <div class="detail-header">
+    <a href="#new_request/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">new_request/3</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_cassandra_worker.new_request/3</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="new_write_action/2">
+  <div class="detail-header">
+    <a href="#new_write_action/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">new_write_action/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_cassandra_worker.new_write_action/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="prepare_options/1">
+  <div class="detail-header">
+    <a href="#prepare_options/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">prepare_options/1</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_cassandra_worker.prepare_options/1</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="process_request/2">
+  <div class="detail-header">
+    <a href="#process_request/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">process_request/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_cassandra_worker.process_request/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="query_type/1">
+  <div class="detail-header">
+    <a href="#query_type/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">query_type/1</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="read/7">
+  <div class="detail-header">
+    <a href="#read/7" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">read/7</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_cassandra_worker.read/7</pre>
+      </div>
+
+Execute read query to Cassandra (select). This functions behaves much like the lists:foldl/3 but the input are pages from result of given query. Therefore each execution of given fun gets list of several result rows (by default 100 at most).  </section>
+</section>
+<section class="detail" id="response_code_to_binary/1">
+  <div class="detail-header">
+    <a href="#response_code_to_binary/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">response_code_to_binary/1</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="retry_info/4">
+  <div class="detail-header">
+    <a href="#retry_info/4" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">retry_info/4</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_cassandra_worker.retry_info/4</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="schedule_retry/3">
+  <div class="detail-header">
+    <a href="#schedule_retry/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">schedule_retry/3</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_cassandra_worker.schedule_retry/3</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="schedule_timeout/2">
+  <div class="detail-header">
+    <a href="#schedule_timeout/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">schedule_timeout/2</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="send_next_request/3">
+  <div class="detail-header">
+    <a href="#send_next_request/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">send_next_request/3</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_cassandra_worker.send_next_request/3</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="terminate/2">
+  <div class="detail-header">
+    <a href="#terminate/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">terminate/2</h1>
+  </div>
+
+  <section class="docstring">
+
+<p>Callback implementation for <a href="http://www.erlang.org/doc/man/gen_server.html#Module:terminate-2"><code class="inline">:gen_server.terminate/2</code></a>.</p>  </section>
+</section>
+<section class="detail" id="update_req/2">
+  <div class="detail-header">
+    <a href="#update_req/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">update_req/2</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="write/5">
+  <div class="detail-header">
+    <a href="#write/5" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">write/5</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_cassandra_worker.write/5</pre>
+      </div>
+
+Execute batch write query to Cassandra (insert, update or delete). Note that Cassandra doesn't like big batches, therefore this function will try to split given rows into batches of 20 rows and will fall back to smaller batches if Cassandra rejects the query due to its size being to big.  </section>
+</section>
+<section class="detail" id="write_async/5">
+  <div class="detail-header">
+    <a href="#write_async/5" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">write_async/5</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_cassandra_worker.write_async/5</pre>
+      </div>
+
+Same as @see write/5 but asynchronous (without response).  </section>
+</section>
+          </div>
+        </section>
+      <footer class="footer">
+        <p>
+          <span class="line">
+            Built using
+            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener">ExDoc</a> (v0.23.0) for the
+            <a href="https://elixir-lang.org" title="Elixir" target="_blank">Elixir programming language</a>.
+          </span>
+          <span class="line">
+            Designed by
+            <a href="https://twitter.com/dignifiedquire" target="_blank" rel="noopener" title="@dignifiedquire">Friedel Ziegelmayer</a>.
+          </span>
+        </p>
+        <p>
+            <a href="api-reference.html" title="API reference" class="line footer-button">API Reference</a>
+          <button class="line footer-button display-shortcuts-help">
+            Display keyboard shortcuts
+          </button>
+          <button class="line footer-button night-mode-toggle">
+            Toggle night mode
+          </button>
+          <button class="line footer-button display-quick-switch">
+            Go to a HexDocs package
+          </button>
+          <button class="line footer-button tooltips-toggle">
+            <span class="tooltips-option-disable">Disable tooltips</span>
+            <span class="tooltips-option-enable">Enable tooltips</span>
+          </button>
+        </p>
+      </footer>
+    </div>
+  </div>
+</section>
+</div>
+  </body>
+</html>

@@ -1,0 +1,1200 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.23.0">
+    <meta name="project" content="MongooseIM v4.0.1">
+    <title>mod_global_distrib_mapping_redis — MongooseIM v4.0.1</title>
+    <link rel="stylesheet" href="dist/erlang-8a5f731dbc512bf6261b.css" />
+    <script src="dist/sidebar_items-38e40981d8.js"></script>
+      <script src="docs_config.js"></script>
+    <script async src="dist/app-60a0c9f10e9e52eae31f.js"></script>
+  </head>
+  <body data-type="modules">
+    <script>try { if(localStorage.getItem('night-mode') === 'true') document.body.className += ' night-mode'; } catch (e) { }</script>
+<div class="main">
+
+<button class="sidebar-button sidebar-toggle">
+  <span class="icon-menu" title="Collapse/expand sidebar"></span>
+</button>
+
+<section class="sidebar">
+  <form class="sidebar-search" action="search.html">
+    <button type="submit" class="search-button" aria-label="Submit Search">
+      <span class="icon-search" aria-hidden="true" title="Submit search"></span>
+    </button>
+    <button type="button" tabindex="-1" class="search-close-button" aria-label="Cancel Search">
+      <span class="icon-cross" aria-hidden="true" title="Cancel search"></span>
+    </button>
+    <label class="search-label">
+      <input name="q" type="text" id="search-list" class="search-input" placeholder="Search..." aria-label="Input your search terms" autocomplete="off" />
+    </label>
+  </form>
+
+  <div class="autocomplete">
+    <div class="autocomplete-results">
+    </div>
+  </div>
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectDetails">
+      <a href="mongooseim.html" class="sidebar-projectName">
+MongooseIM      </a>
+      <strong class="sidebar-projectVersion">
+        v4.0.1
+      </strong>
+    </div>
+  </div>
+
+  <ul class="sidebar-listNav">
+    <li><a id="extras-list" href="#full-list">Pages</a></li>
+
+      <li><a id="modules-list" href="#full-list">Modules</a></li>
+
+  </ul>
+  <div class="gradient"></div>
+  <ul id="full-list" class="sidebar-fullList"></ul>
+</section>
+
+<section class="content">
+  <div class="content-outer">
+    <div id="content" class="content-inner">
+
+      <h1>
+        mod_global_distrib_mapping_redis <small class="app-vsn">(MongooseIM v4.0.1)</small>
+      </h1>
+
+
+
+        <section id="summary" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#summary">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+            Summary
+          </h1>
+  <div class="summary-functions summary">
+    <h2>
+      <a href="#functions">Functions</a>
+    </h2>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#binary_to_endpoint/1">binary_to_endpoint/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#delete_domain/1">delete_domain/1</a>
+  </div>
+    <div class="summary-synopsis"><p>Callback implementation for <code class="inline">c::mod_global_distrib_mapping.delete_domain/1</code>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#delete_session/1">delete_session/1</a>
+  </div>
+    <div class="summary-synopsis"><p>Callback implementation for <code class="inline">c::mod_global_distrib_mapping.delete_session/1</code>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#do_delete/1">do_delete/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#do_get/1">do_get/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#do_put/2">do_put/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#domains_key/0">domains_key/0</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#domains_key/2">domains_key/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#endpoint_to_binary/1">endpoint_to_binary/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#endpoints_key/0">endpoints_key/0</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#endpoints_key/2">endpoints_key/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#expire_after/0">expire_after/0</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#get_domain/1">get_domain/1</a>
+  </div>
+    <div class="summary-synopsis"><p>Callback implementation for <code class="inline">c::mod_global_distrib_mapping.get_domain/1</code>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#get_domains/0">get_domains/0</a>
+  </div>
+    <div class="summary-synopsis"><p>Callback implementation for <code class="inline">c::mod_global_distrib_mapping.get_domains/0</code>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#get_domains/1">get_domains/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#get_endpoints/1">get_endpoints/1</a>
+  </div>
+    <div class="summary-synopsis"><p>Callback implementation for <code class="inline">c::mod_global_distrib_mapping.get_endpoints/1</code>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#get_endpoints_for_nodes/2">get_endpoints_for_nodes/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#get_expired_nodes/1">get_expired_nodes/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#get_hosts/0">get_hosts/0</a>
+  </div>
+    <div class="summary-synopsis"><p>Callback implementation for <code class="inline">c::mod_global_distrib_mapping.get_hosts/0</code>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#get_nodes/1">get_nodes/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#get_public_domains/0">get_public_domains/0</a>
+  </div>
+    <div class="summary-synopsis"><p>Callback implementation for <code class="inline">c::mod_global_distrib_mapping.get_public_domains/0</code>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#get_session/1">get_session/1</a>
+  </div>
+    <div class="summary-synopsis"><p>Callback implementation for <code class="inline">c::mod_global_distrib_mapping.get_session/1</code>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#handle_info/2">handle_info/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#init/1">init/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#key/1">key/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#key/3">key/3</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#nodes_key/0">nodes_key/0</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#nodes_key/1">nodes_key/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#opt/1">opt/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#pool/0">pool/0</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#public_domains_key/0">public_domains_key/0</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#public_domains_key/2">public_domains_key/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#put_domain/2">put_domain/2</a>
+  </div>
+    <div class="summary-synopsis"><p>Callback implementation for <code class="inline">c::mod_global_distrib_mapping.put_domain/2</code>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#put_session/1">put_session/1</a>
+  </div>
+    <div class="summary-synopsis"><p>Callback implementation for <code class="inline">c::mod_global_distrib_mapping.put_session/1</code>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#q/1">q/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#refresh/0">refresh/0</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#refresh/1">refresh/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#refresh_and_schedule_next/2">refresh_and_schedule_next/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#refresh_domains/0">refresh_domains/0</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#refresh_endpoints/0">refresh_endpoints/0</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#refresh_hosts/0">refresh_hosts/0</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#refresh_jid/1">refresh_jid/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#refresh_jids/0">refresh_jids/0</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#refresh_nodes/0">refresh_nodes/0</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#refresh_public_domains/0">refresh_public_domains/0</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#refresh_set/2">refresh_set/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#set_endpoints/1">set_endpoints/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#start/1">start/1</a>
+  </div>
+    <div class="summary-synopsis"><p>Callback implementation for <code class="inline">c::mod_global_distrib_mapping.start/1</code>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#stop/0">stop/0</a>
+  </div>
+    <div class="summary-synopsis"><p>Callback implementation for <code class="inline">c::mod_global_distrib_mapping.stop/0</code>.</p></div>
+</div>
+  </div>
+        </section>
+
+        <section id="functions" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#functions">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+Functions          </h1>
+          <div class="functions-list">
+<section class="detail" id="binary_to_endpoint/1">
+  <div class="detail-header">
+    <a href="#binary_to_endpoint/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">binary_to_endpoint/1</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_global_distrib_mapping_redis.binary_to_endpoint/1</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="delete_domain/1">
+  <div class="detail-header">
+    <a href="#delete_domain/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">delete_domain/1</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_global_distrib_mapping_redis.delete_domain/1</pre>
+      </div>
+
+<p>Callback implementation for <code class="inline">c::mod_global_distrib_mapping.delete_domain/1</code>.</p>  </section>
+</section>
+<section class="detail" id="delete_session/1">
+  <div class="detail-header">
+    <a href="#delete_session/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">delete_session/1</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_global_distrib_mapping_redis.delete_session/1</pre>
+      </div>
+
+<p>Callback implementation for <code class="inline">c::mod_global_distrib_mapping.delete_session/1</code>.</p>  </section>
+</section>
+<section class="detail" id="do_delete/1">
+  <div class="detail-header">
+    <a href="#do_delete/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">do_delete/1</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_global_distrib_mapping_redis.do_delete/1</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="do_get/1">
+  <div class="detail-header">
+    <a href="#do_get/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">do_get/1</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_global_distrib_mapping_redis.do_get/1</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="do_put/2">
+  <div class="detail-header">
+    <a href="#do_put/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">do_put/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_global_distrib_mapping_redis.do_put/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="domains_key/0">
+  <div class="detail-header">
+    <a href="#domains_key/0" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">domains_key/0</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_global_distrib_mapping_redis.domains_key/0</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="domains_key/2">
+  <div class="detail-header">
+    <a href="#domains_key/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">domains_key/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_global_distrib_mapping_redis.domains_key/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="endpoint_to_binary/1">
+  <div class="detail-header">
+    <a href="#endpoint_to_binary/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">endpoint_to_binary/1</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_global_distrib_mapping_redis.endpoint_to_binary/1</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="endpoints_key/0">
+  <div class="detail-header">
+    <a href="#endpoints_key/0" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">endpoints_key/0</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_global_distrib_mapping_redis.endpoints_key/0</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="endpoints_key/2">
+  <div class="detail-header">
+    <a href="#endpoints_key/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">endpoints_key/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_global_distrib_mapping_redis.endpoints_key/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="expire_after/0">
+  <div class="detail-header">
+    <a href="#expire_after/0" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">expire_after/0</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_global_distrib_mapping_redis.expire_after/0</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="get_domain/1">
+  <div class="detail-header">
+    <a href="#get_domain/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">get_domain/1</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_global_distrib_mapping_redis.get_domain/1</pre>
+      </div>
+
+<p>Callback implementation for <code class="inline">c::mod_global_distrib_mapping.get_domain/1</code>.</p>  </section>
+</section>
+<section class="detail" id="get_domains/0">
+  <div class="detail-header">
+    <a href="#get_domains/0" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">get_domains/0</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_global_distrib_mapping_redis.get_domains/0</pre>
+      </div>
+
+<p>Callback implementation for <code class="inline">c::mod_global_distrib_mapping.get_domains/0</code>.</p>  </section>
+</section>
+<section class="detail" id="get_domains/1">
+  <div class="detail-header">
+    <a href="#get_domains/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">get_domains/1</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_global_distrib_mapping_redis.get_domains/1</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="get_endpoints/1">
+  <div class="detail-header">
+    <a href="#get_endpoints/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">get_endpoints/1</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_global_distrib_mapping_redis.get_endpoints/1</pre>
+      </div>
+
+<p>Callback implementation for <code class="inline">c::mod_global_distrib_mapping.get_endpoints/1</code>.</p>  </section>
+</section>
+<section class="detail" id="get_endpoints_for_nodes/2">
+  <div class="detail-header">
+    <a href="#get_endpoints_for_nodes/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">get_endpoints_for_nodes/2</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="get_expired_nodes/1">
+  <div class="detail-header">
+    <a href="#get_expired_nodes/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">get_expired_nodes/1</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_global_distrib_mapping_redis.get_expired_nodes/1</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="get_hosts/0">
+  <div class="detail-header">
+    <a href="#get_hosts/0" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">get_hosts/0</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_global_distrib_mapping_redis.get_hosts/0</pre>
+      </div>
+
+<p>Callback implementation for <code class="inline">c::mod_global_distrib_mapping.get_hosts/0</code>.</p>  </section>
+</section>
+<section class="detail" id="get_nodes/1">
+  <div class="detail-header">
+    <a href="#get_nodes/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">get_nodes/1</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_global_distrib_mapping_redis.get_nodes/1</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="get_public_domains/0">
+  <div class="detail-header">
+    <a href="#get_public_domains/0" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">get_public_domains/0</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_global_distrib_mapping_redis.get_public_domains/0</pre>
+      </div>
+
+<p>Callback implementation for <code class="inline">c::mod_global_distrib_mapping.get_public_domains/0</code>.</p>  </section>
+</section>
+<section class="detail" id="get_session/1">
+  <div class="detail-header">
+    <a href="#get_session/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">get_session/1</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_global_distrib_mapping_redis.get_session/1</pre>
+      </div>
+
+<p>Callback implementation for <code class="inline">c::mod_global_distrib_mapping.get_session/1</code>.</p>  </section>
+</section>
+<section class="detail" id="handle_info/2">
+  <div class="detail-header">
+    <a href="#handle_info/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">handle_info/2</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="init/1">
+  <div class="detail-header">
+    <a href="#init/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">init/1</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="key/1">
+  <div class="detail-header">
+    <a href="#key/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">key/1</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_global_distrib_mapping_redis.key/1</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="key/3">
+  <div class="detail-header">
+    <a href="#key/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">key/3</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_global_distrib_mapping_redis.key/3</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="nodes_key/0">
+  <div class="detail-header">
+    <a href="#nodes_key/0" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">nodes_key/0</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_global_distrib_mapping_redis.nodes_key/0</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="nodes_key/1">
+  <div class="detail-header">
+    <a href="#nodes_key/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">nodes_key/1</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_global_distrib_mapping_redis.nodes_key/1</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="opt/1">
+  <div class="detail-header">
+    <a href="#opt/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">opt/1</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_global_distrib_mapping_redis.opt/1</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="pool/0">
+  <div class="detail-header">
+    <a href="#pool/0" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">pool/0</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_global_distrib_mapping_redis.pool/0</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="public_domains_key/0">
+  <div class="detail-header">
+    <a href="#public_domains_key/0" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">public_domains_key/0</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_global_distrib_mapping_redis.public_domains_key/0</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="public_domains_key/2">
+  <div class="detail-header">
+    <a href="#public_domains_key/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">public_domains_key/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_global_distrib_mapping_redis.public_domains_key/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="put_domain/2">
+  <div class="detail-header">
+    <a href="#put_domain/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">put_domain/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_global_distrib_mapping_redis.put_domain/2</pre>
+      </div>
+
+<p>Callback implementation for <code class="inline">c::mod_global_distrib_mapping.put_domain/2</code>.</p>  </section>
+</section>
+<section class="detail" id="put_session/1">
+  <div class="detail-header">
+    <a href="#put_session/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">put_session/1</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_global_distrib_mapping_redis.put_session/1</pre>
+      </div>
+
+<p>Callback implementation for <code class="inline">c::mod_global_distrib_mapping.put_session/1</code>.</p>  </section>
+</section>
+<section class="detail" id="q/1">
+  <div class="detail-header">
+    <a href="#q/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">q/1</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_global_distrib_mapping_redis.q/1</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="refresh/0">
+  <div class="detail-header">
+    <a href="#refresh/0" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">refresh/0</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="refresh/1">
+  <div class="detail-header">
+    <a href="#refresh/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">refresh/1</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_global_distrib_mapping_redis.refresh/1</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="refresh_and_schedule_next/2">
+  <div class="detail-header">
+    <a href="#refresh_and_schedule_next/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">refresh_and_schedule_next/2</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="refresh_domains/0">
+  <div class="detail-header">
+    <a href="#refresh_domains/0" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">refresh_domains/0</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_global_distrib_mapping_redis.refresh_domains/0</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="refresh_endpoints/0">
+  <div class="detail-header">
+    <a href="#refresh_endpoints/0" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">refresh_endpoints/0</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_global_distrib_mapping_redis.refresh_endpoints/0</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="refresh_hosts/0">
+  <div class="detail-header">
+    <a href="#refresh_hosts/0" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">refresh_hosts/0</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_global_distrib_mapping_redis.refresh_hosts/0</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="refresh_jid/1">
+  <div class="detail-header">
+    <a href="#refresh_jid/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">refresh_jid/1</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_global_distrib_mapping_redis.refresh_jid/1</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="refresh_jids/0">
+  <div class="detail-header">
+    <a href="#refresh_jids/0" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">refresh_jids/0</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_global_distrib_mapping_redis.refresh_jids/0</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="refresh_nodes/0">
+  <div class="detail-header">
+    <a href="#refresh_nodes/0" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">refresh_nodes/0</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_global_distrib_mapping_redis.refresh_nodes/0</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="refresh_public_domains/0">
+  <div class="detail-header">
+    <a href="#refresh_public_domains/0" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">refresh_public_domains/0</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_global_distrib_mapping_redis.refresh_public_domains/0</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="refresh_set/2">
+  <div class="detail-header">
+    <a href="#refresh_set/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">refresh_set/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_global_distrib_mapping_redis.refresh_set/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="set_endpoints/1">
+  <div class="detail-header">
+    <a href="#set_endpoints/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">set_endpoints/1</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_global_distrib_mapping_redis.set_endpoints/1</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="start/1">
+  <div class="detail-header">
+    <a href="#start/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">start/1</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_global_distrib_mapping_redis.start/1</pre>
+      </div>
+
+<p>Callback implementation for <code class="inline">c::mod_global_distrib_mapping.start/1</code>.</p>  </section>
+</section>
+<section class="detail" id="stop/0">
+  <div class="detail-header">
+    <a href="#stop/0" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">stop/0</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_global_distrib_mapping_redis.stop/0</pre>
+      </div>
+
+<p>Callback implementation for <code class="inline">c::mod_global_distrib_mapping.stop/0</code>.</p>  </section>
+</section>
+          </div>
+        </section>
+      <footer class="footer">
+        <p>
+          <span class="line">
+            Built using
+            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener">ExDoc</a> (v0.23.0) for the
+            <a href="https://elixir-lang.org" title="Elixir" target="_blank">Elixir programming language</a>.
+          </span>
+          <span class="line">
+            Designed by
+            <a href="https://twitter.com/dignifiedquire" target="_blank" rel="noopener" title="@dignifiedquire">Friedel Ziegelmayer</a>.
+          </span>
+        </p>
+        <p>
+            <a href="api-reference.html" title="API reference" class="line footer-button">API Reference</a>
+          <button class="line footer-button display-shortcuts-help">
+            Display keyboard shortcuts
+          </button>
+          <button class="line footer-button night-mode-toggle">
+            Toggle night mode
+          </button>
+          <button class="line footer-button display-quick-switch">
+            Go to a HexDocs package
+          </button>
+          <button class="line footer-button tooltips-toggle">
+            <span class="tooltips-option-disable">Disable tooltips</span>
+            <span class="tooltips-option-enable">Enable tooltips</span>
+          </button>
+        </p>
+      </footer>
+    </div>
+  </div>
+</section>
+</div>
+  </body>
+</html>

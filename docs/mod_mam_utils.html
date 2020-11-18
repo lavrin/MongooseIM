@@ -1,0 +1,2529 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.23.0">
+    <meta name="project" content="MongooseIM v4.0.1">
+    <title>mod_mam_utils — MongooseIM v4.0.1</title>
+    <link rel="stylesheet" href="dist/erlang-8a5f731dbc512bf6261b.css" />
+    <script src="dist/sidebar_items-38e40981d8.js"></script>
+      <script src="docs_config.js"></script>
+    <script async src="dist/app-60a0c9f10e9e52eae31f.js"></script>
+  </head>
+  <body data-type="modules">
+    <script>try { if(localStorage.getItem('night-mode') === 'true') document.body.className += ' night-mode'; } catch (e) { }</script>
+<div class="main">
+
+<button class="sidebar-button sidebar-toggle">
+  <span class="icon-menu" title="Collapse/expand sidebar"></span>
+</button>
+
+<section class="sidebar">
+  <form class="sidebar-search" action="search.html">
+    <button type="submit" class="search-button" aria-label="Submit Search">
+      <span class="icon-search" aria-hidden="true" title="Submit search"></span>
+    </button>
+    <button type="button" tabindex="-1" class="search-close-button" aria-label="Cancel Search">
+      <span class="icon-cross" aria-hidden="true" title="Cancel search"></span>
+    </button>
+    <label class="search-label">
+      <input name="q" type="text" id="search-list" class="search-input" placeholder="Search..." aria-label="Input your search terms" autocomplete="off" />
+    </label>
+  </form>
+
+  <div class="autocomplete">
+    <div class="autocomplete-results">
+    </div>
+  </div>
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectDetails">
+      <a href="mongooseim.html" class="sidebar-projectName">
+MongooseIM      </a>
+      <strong class="sidebar-projectVersion">
+        v4.0.1
+      </strong>
+    </div>
+  </div>
+
+  <ul class="sidebar-listNav">
+    <li><a id="extras-list" href="#full-list">Pages</a></li>
+
+      <li><a id="modules-list" href="#full-list">Modules</a></li>
+
+  </ul>
+  <div class="gradient"></div>
+  <ul id="full-list" class="sidebar-fullList"></ul>
+</section>
+
+<section class="content">
+  <div class="content-outer">
+    <div id="content" class="content-inner">
+
+      <h1>
+        mod_mam_utils <small class="app-vsn">(MongooseIM v4.0.1)</small>
+      </h1>
+
+
+        <section id="moduledoc">
+General functions for MAM.        </section>
+
+        <section id="summary" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#summary">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+            Summary
+          </h1>
+  <div class="summary-types summary">
+    <h2>
+      <a href="#types">Types</a>
+    </h2>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:archive_behaviour/0">archive_behaviour()</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:archive_behaviour_bin/0">archive_behaviour_bin()</a>
+  </div>
+    <div class="summary-synopsis"><code>&lt;&lt;&quot;roster&quot;&gt;&gt; | &lt;&lt;&quot;always&quot;&gt;&gt; | &lt;&lt;&quot;never&quot;&gt;&gt;</code>.</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:iso8601_datetime_binary/0">iso8601_datetime_binary()</a>
+  </div>
+    <div class="summary-synopsis">Microseconds from 01.01.1970</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:ne_binary/0">ne_binary()</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:unix_timestamp/0">unix_timestamp()</a>
+  </div>
+</div>
+  </div>
+  <div class="summary-functions summary">
+    <h2>
+      <a href="#functions">Functions</a>
+    </h2>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#action_to_global_shaper_name/1">action_to_global_shaper_name/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#action_to_shaper_name/1">action_to_shaper_name/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#append_arcid_elem/4">append_arcid_elem/4</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#append_x_user_element/4">append_x_user_element/4</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#apply_end_border/2">apply_end_border/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#apply_start_border/2">apply_start_border/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#bare_jid/1">bare_jid/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#binary_jid_to_lower/1">binary_jid_to_lower/1</a>
+  </div>
+    <div class="summary-synopsis">Normalize JID to be used when comparing JIDs in DB</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#borders/4">borders/4</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#borders_decode/1">borders_decode/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#calculate_msg_id_borders/3">calculate_msg_id_borders/3</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#calculate_msg_id_borders/4">calculate_msg_id_borders/4</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#check_for_item_not_found/3">check_for_item_not_found/3</a>
+  </div>
+    <div class="summary-synopsis"><p>Check for XEP-313 <code>item-not-found</code> error condition, that is if a message ID passed in a <code>before</code>/<code>after</code> query is actually present in the archive. See https://xmpp.org/extensions/xep-0313.html#query-paging for details.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#check_result_for_policy_violation/2">check_result_for_policy_violation/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#decode_compact_uuid/1">decode_compact_uuid/1</a>
+  </div>
+    <div class="summary-synopsis">Extract date and node id from a message id.</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#decode_optimizations/1">decode_optimizations/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#delay/2">delay/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#delete_arcid_elem/3">delete_arcid_elem/3</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#delete_x_user_element/1">delete_x_user_element/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#encode_compact_uuid/2">encode_compact_uuid/2</a>
+  </div>
+    <div class="summary-synopsis"><p>Create a message ID (UID).</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#encode_jids/1">encode_jids/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#error_on_sql_error/3">error_on_sql_error/3</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#expand_minified_jid/2">expand_minified_jid/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#expand_minified_jid/3">expand_minified_jid/3</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#external_binary_to_mess_id/1">external_binary_to_mess_id/1</a>
+  </div>
+    <div class="summary-synopsis">Decode a message ID received from the user.</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#features/2">features/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#field_to_value/1">field_to_value/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#find_field/2">find_field/2</a>
+  </div>
+    <div class="summary-synopsis">Return first matched field</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#form_borders_decode/1">form_borders_decode/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#form_decode_optimizations/1">form_decode_optimizations/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#form_field/2">form_field/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#form_field_mess_id/2">form_field_mess_id/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#form_field_value/2">form_field_value/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#form_field_value_s/2">form_field_value_s/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#form_to_text/1">form_to_text/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#form_type_field/1">form_type_field/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#forwarded/3">forwarded/3</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#full_jid/1">full_jid/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#generate_message_id/0">generate_message_id/0</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#get_one_of_path/2">get_one_of_path/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#get_one_of_path/3">get_one_of_path/3</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#get_origin_id/1">get_origin_id/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#get_retract_id/1">get_retract_id/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#get_retract_id/3">get_retract_id/3</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#has_any/1">has_any/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#has_chat_marker/1">has_chat_marker/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#has_full_text_search/2">has_full_text_search/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#has_message_retraction/2">has_message_retraction/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#is_archivable_message/4">is_archivable_message/4</a>
+  </div>
+    <div class="summary-synopsis">In order to be archived, the message must be of type &quot;normal&quot;, &quot;chat&quot; or &quot;groupchat&quot;. It also must include a body or chat marker, as long as it doesn't include &quot;result&quot;, &quot;delay&quot; or &quot;no-store&quot; elements.</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#is_arcid_elem_for/3">is_arcid_elem_for/3</a>
+  </div>
+    <div class="summary-synopsis">Return true, if the first element points on <code>By</code>.</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#is_complete_result_page/4">is_complete_result_page/4</a>
+  </div>
+    <div class="summary-synopsis"><p>Returns true, if the current page is the final one in the result set. If there are more pages with messages, than this function returns false.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#is_jid_element/1">is_jid_element/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#is_jid_in_user_roster/2">is_jid_in_user_roster/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#is_mam_namespace/1">is_mam_namespace/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#is_mam_result_message/1">is_mam_result_message/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#is_most_recent_page/4">is_most_recent_page/4</a>
+  </div>
+    <div class="summary-synopsis">Returns true, if the current page contains the most recent messages. If there are some more recent messages in archive, this function returns false.</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#is_policy_violation/4">is_policy_violation/4</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#is_valid_message/4">is_valid_message/4</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#is_valid_message_type/3">is_valid_message_type/3</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#is_x_user_element/1">is_x_user_element/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#jid_to_opt_binary/2">jid_to_opt_binary/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#make_fin_element/4">make_fin_element/4</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#mam_features/0">mam_features/0</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#maybe_add_arcid_elems/4">maybe_add_arcid_elems/4</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#maybe_encode_compact_uuid/2">maybe_encode_compact_uuid/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#maybe_external_binary_to_mess_id/1">maybe_external_binary_to_mess_id/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#maybe_get_result_namespace/1">maybe_get_result_namespace/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#maybe_integer/2">maybe_integer/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#maybe_last/1">maybe_last/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#maybe_log_deprecation/1">maybe_log_deprecation/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#maybe_max/2">maybe_max/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#maybe_microseconds/1">maybe_microseconds/1</a>
+  </div>
+    <div class="summary-synopsis"><p>Return a unix timestamp in microseconds.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#maybe_min/2">maybe_min/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#maybe_next_id/1">maybe_next_id/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#maybe_previous_id/1">maybe_previous_id/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#maybe_set_client_xmlns/2">maybe_set_client_xmlns/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#mess_id_to_external_binary/1">mess_id_to_external_binary/1</a>
+  </div>
+    <div class="summary-synopsis">Encode a message ID to pass it to the user.</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#message_form/3">message_form/3</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#message_form_fields/3">message_form_fields/3</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#normalize_search_text/1">normalize_search_text/1</a>
+  </div>
+    <div class="summary-synopsis">Normalize given text to improve text search in some MAM backends. This normalization involves making text all lowercase, replacing some word separators ([, .:;-?!]) with given one (by default &quot;%&quot;) and removing all unicode characters that are considered non-alphanumerical. For example, text: &quot;My cat, was eaten by: my dog?!? Why...?!?&quot; will be normalized as: &quot;my%cat%was%eaten%by%my%dog%why&quot;</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#normalize_search_text/2">normalize_search_text/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#packet_to_search_body/3">packet_to_search_body/3</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#packet_to_x_user_jid/1">packet_to_x_user_jid/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#parse_jid_list/2">parse_jid_list/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#parse_prefs/1">parse_prefs/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#replace_arcid_elem/4">replace_arcid_elem/4</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#replace_from_attribute/2">replace_from_attribute/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#replace_x_user_element/4">replace_x_user_element/4</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#result/4">result/4</a>
+  </div>
+    <div class="summary-synopsis">Generates tag <code>&lt;result /&gt;</code>. This element will be added in each forwarded message.</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#result_prefs/4">result_prefs/4</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#result_query/2">result_query/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#result_set/4">result_set/4</a>
+  </div>
+    <div class="summary-synopsis"><p>Generates <code>&lt;set /&gt;</code> tag.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#retracted_element/1">retracted_element/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#retraction_features/2">retraction_features/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#rsm_ns_binary/0">rsm_ns_binary/0</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#send_message/3">send_message/3</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#skip_bad_jids/1">skip_bad_jids/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#success_sql_execute/3">success_sql_execute/3</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#success_sql_query/2">success_sql_query/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#tag_id/2">tag_id/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#tombstone/2">tombstone/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#undefined_to_empty/1">undefined_to_empty/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#valid_behavior/1">valid_behavior/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#wait_shaper/3">wait_shaper/3</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#wrap_message/6">wrap_message/6</a>
+  </div>
+    <div class="summary-synopsis">Forms <code>&lt;forwarded/&gt;</code> element, according to the XEP.</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#wrap_message/7">wrap_message/7</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#wrapper_id/0">wrapper_id/0</a>
+  </div>
+    <div class="summary-synopsis">Returns a UUIDv4 canonical form binary.</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#x_user_item/3">x_user_item/3</a>
+  </div>
+</div>
+  </div>
+        </section>
+
+        <section id="types" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#types">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+Types          </h1>
+          <div class="types-list">
+<section class="detail" id="t:archive_behaviour/0">
+  <div class="detail-header">
+    <a href="#t:archive_behaviour/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">archive_behaviour()</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>t:mod_mam_utils.archive_behaviour/0</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="t:archive_behaviour_bin/0">
+  <div class="detail-header">
+    <a href="#t:archive_behaviour_bin/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">archive_behaviour_bin()</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>t:mod_mam_utils.archive_behaviour_bin/0</pre>
+      </div>
+
+<code>&lt;&lt;&quot;roster&quot;&gt;&gt; | &lt;&lt;&quot;always&quot;&gt;&gt; | &lt;&lt;&quot;never&quot;&gt;&gt;</code>.  </section>
+</section>
+<section class="detail" id="t:iso8601_datetime_binary/0">
+  <div class="detail-header">
+    <a href="#t:iso8601_datetime_binary/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">iso8601_datetime_binary()</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>t:mod_mam_utils.iso8601_datetime_binary/0</pre>
+      </div>
+
+Microseconds from 01.01.1970  </section>
+</section>
+<section class="detail" id="t:ne_binary/0">
+  <div class="detail-header">
+    <a href="#t:ne_binary/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">ne_binary()</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>t:mod_mam_utils.ne_binary/0</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="t:unix_timestamp/0">
+  <div class="detail-header">
+    <a href="#t:unix_timestamp/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">unix_timestamp()</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>t:mod_mam_utils.unix_timestamp/0</pre>
+      </div>
+
+  </section>
+</section>
+          </div>
+        </section>
+        <section id="functions" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#functions">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+Functions          </h1>
+          <div class="functions-list">
+<section class="detail" id="action_to_global_shaper_name/1">
+  <div class="detail-header">
+    <a href="#action_to_global_shaper_name/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">action_to_global_shaper_name/1</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_mam_utils.action_to_global_shaper_name/1</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="action_to_shaper_name/1">
+  <div class="detail-header">
+    <a href="#action_to_shaper_name/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">action_to_shaper_name/1</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_mam_utils.action_to_shaper_name/1</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="append_arcid_elem/4">
+  <div class="detail-header">
+    <a href="#append_arcid_elem/4" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">append_arcid_elem/4</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_mam_utils.append_arcid_elem/4</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="append_x_user_element/4">
+  <div class="detail-header">
+    <a href="#append_x_user_element/4" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">append_x_user_element/4</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="apply_end_border/2">
+  <div class="detail-header">
+    <a href="#apply_end_border/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">apply_end_border/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_mam_utils.apply_end_border/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="apply_start_border/2">
+  <div class="detail-header">
+    <a href="#apply_start_border/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">apply_start_border/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_mam_utils.apply_start_border/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="bare_jid/1">
+  <div class="detail-header">
+    <a href="#bare_jid/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">bare_jid/1</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_mam_utils.bare_jid/1</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="binary_jid_to_lower/1">
+  <div class="detail-header">
+    <a href="#binary_jid_to_lower/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">binary_jid_to_lower/1</h1>
+  </div>
+
+  <section class="docstring">
+
+Normalize JID to be used when comparing JIDs in DB  </section>
+</section>
+<section class="detail" id="borders/4">
+  <div class="detail-header">
+    <a href="#borders/4" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">borders/4</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_mam_utils.borders/4</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="borders_decode/1">
+  <div class="detail-header">
+    <a href="#borders_decode/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">borders_decode/1</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_mam_utils.borders_decode/1</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="calculate_msg_id_borders/3">
+  <div class="detail-header">
+    <a href="#calculate_msg_id_borders/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">calculate_msg_id_borders/3</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_mam_utils.calculate_msg_id_borders/3</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="calculate_msg_id_borders/4">
+  <div class="detail-header">
+    <a href="#calculate_msg_id_borders/4" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">calculate_msg_id_borders/4</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_mam_utils.calculate_msg_id_borders/4</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="check_for_item_not_found/3">
+  <div class="detail-header">
+    <a href="#check_for_item_not_found/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">check_for_item_not_found/3</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_mam_utils.check_for_item_not_found/3</pre>
+      </div>
+
+<p>Check for XEP-313 <code>item-not-found</code> error condition, that is if a message ID passed in a <code>before</code>/<code>after</code> query is actually present in the archive. See https://xmpp.org/extensions/xep-0313.html#query-paging for details.</p>In a backend it's reasonable to query for PageSize + 1 messages, so that once the interval endpoint with requested ID is discarded we actually return (up to) PageSize messages.  </section>
+</section>
+<section class="detail" id="check_result_for_policy_violation/2">
+  <div class="detail-header">
+    <a href="#check_result_for_policy_violation/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">check_result_for_policy_violation/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_mam_utils.check_result_for_policy_violation/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="decode_compact_uuid/1">
+  <div class="detail-header">
+    <a href="#decode_compact_uuid/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">decode_compact_uuid/1</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_mam_utils.decode_compact_uuid/1</pre>
+      </div>
+
+Extract date and node id from a message id.  </section>
+</section>
+<section class="detail" id="decode_optimizations/1">
+  <div class="detail-header">
+    <a href="#decode_optimizations/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">decode_optimizations/1</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_mam_utils.decode_optimizations/1</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="delay/2">
+  <div class="detail-header">
+    <a href="#delay/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">delay/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_mam_utils.delay/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="delete_arcid_elem/3">
+  <div class="detail-header">
+    <a href="#delete_arcid_elem/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">delete_arcid_elem/3</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_mam_utils.delete_arcid_elem/3</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="delete_x_user_element/1">
+  <div class="detail-header">
+    <a href="#delete_x_user_element/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">delete_x_user_element/1</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_mam_utils.delete_x_user_element/1</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="encode_compact_uuid/2">
+  <div class="detail-header">
+    <a href="#encode_compact_uuid/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">encode_compact_uuid/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_mam_utils.encode_compact_uuid/2</pre>
+      </div>
+
+<p>Create a message ID (UID).</p>It removes a leading 0 from 64-bit binary representation. It puts node id as a last byte. The maximum date, that can be encoded is <code>{{4253, 5, 31}, {22, 20, 37}}</code>.  </section>
+</section>
+<section class="detail" id="encode_jids/1">
+  <div class="detail-header">
+    <a href="#encode_jids/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">encode_jids/1</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_mam_utils.encode_jids/1</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="error_on_sql_error/3">
+  <div class="detail-header">
+    <a href="#error_on_sql_error/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">error_on_sql_error/3</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="expand_minified_jid/2">
+  <div class="detail-header">
+    <a href="#expand_minified_jid/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">expand_minified_jid/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_mam_utils.expand_minified_jid/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="expand_minified_jid/3">
+  <div class="detail-header">
+    <a href="#expand_minified_jid/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">expand_minified_jid/3</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_mam_utils.expand_minified_jid/3</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="external_binary_to_mess_id/1">
+  <div class="detail-header">
+    <a href="#external_binary_to_mess_id/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">external_binary_to_mess_id/1</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_mam_utils.external_binary_to_mess_id/1</pre>
+      </div>
+
+Decode a message ID received from the user.  </section>
+</section>
+<section class="detail" id="features/2">
+  <div class="detail-header">
+    <a href="#features/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">features/2</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="field_to_value/1">
+  <div class="detail-header">
+    <a href="#field_to_value/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">field_to_value/1</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_mam_utils.field_to_value/1</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="find_field/2">
+  <div class="detail-header">
+    <a href="#find_field/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">find_field/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_mam_utils.find_field/2</pre>
+      </div>
+
+Return first matched field  </section>
+</section>
+<section class="detail" id="form_borders_decode/1">
+  <div class="detail-header">
+    <a href="#form_borders_decode/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">form_borders_decode/1</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_mam_utils.form_borders_decode/1</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="form_decode_optimizations/1">
+  <div class="detail-header">
+    <a href="#form_decode_optimizations/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">form_decode_optimizations/1</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_mam_utils.form_decode_optimizations/1</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="form_field/2">
+  <div class="detail-header">
+    <a href="#form_field/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">form_field/2</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="form_field_mess_id/2">
+  <div class="detail-header">
+    <a href="#form_field_mess_id/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">form_field_mess_id/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_mam_utils.form_field_mess_id/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="form_field_value/2">
+  <div class="detail-header">
+    <a href="#form_field_value/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">form_field_value/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_mam_utils.form_field_value/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="form_field_value_s/2">
+  <div class="detail-header">
+    <a href="#form_field_value_s/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">form_field_value_s/2</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="form_to_text/1">
+  <div class="detail-header">
+    <a href="#form_to_text/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">form_to_text/1</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_mam_utils.form_to_text/1</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="form_type_field/1">
+  <div class="detail-header">
+    <a href="#form_type_field/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">form_type_field/1</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="forwarded/3">
+  <div class="detail-header">
+    <a href="#forwarded/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">forwarded/3</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_mam_utils.forwarded/3</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="full_jid/1">
+  <div class="detail-header">
+    <a href="#full_jid/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">full_jid/1</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_mam_utils.full_jid/1</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="generate_message_id/0">
+  <div class="detail-header">
+    <a href="#generate_message_id/0" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">generate_message_id/0</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_mam_utils.generate_message_id/0</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="get_one_of_path/2">
+  <div class="detail-header">
+    <a href="#get_one_of_path/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">get_one_of_path/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_mam_utils.get_one_of_path/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="get_one_of_path/3">
+  <div class="detail-header">
+    <a href="#get_one_of_path/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">get_one_of_path/3</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_mam_utils.get_one_of_path/3</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="get_origin_id/1">
+  <div class="detail-header">
+    <a href="#get_origin_id/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">get_origin_id/1</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="get_retract_id/1">
+  <div class="detail-header">
+    <a href="#get_retract_id/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">get_retract_id/1</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="get_retract_id/3">
+  <div class="detail-header">
+    <a href="#get_retract_id/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">get_retract_id/3</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="has_any/1">
+  <div class="detail-header">
+    <a href="#has_any/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">has_any/1</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="has_chat_marker/1">
+  <div class="detail-header">
+    <a href="#has_chat_marker/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">has_chat_marker/1</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="has_full_text_search/2">
+  <div class="detail-header">
+    <a href="#has_full_text_search/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">has_full_text_search/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_mam_utils.has_full_text_search/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="has_message_retraction/2">
+  <div class="detail-header">
+    <a href="#has_message_retraction/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">has_message_retraction/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_mam_utils.has_message_retraction/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="is_archivable_message/4">
+  <div class="detail-header">
+    <a href="#is_archivable_message/4" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">is_archivable_message/4</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_mam_utils.is_archivable_message/4</pre>
+      </div>
+
+In order to be archived, the message must be of type &quot;normal&quot;, &quot;chat&quot; or &quot;groupchat&quot;. It also must include a body or chat marker, as long as it doesn't include &quot;result&quot;, &quot;delay&quot; or &quot;no-store&quot; elements.  </section>
+</section>
+<section class="detail" id="is_arcid_elem_for/3">
+  <div class="detail-header">
+    <a href="#is_arcid_elem_for/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">is_arcid_elem_for/3</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_mam_utils.is_arcid_elem_for/3</pre>
+      </div>
+
+Return true, if the first element points on <code>By</code>.  </section>
+</section>
+<section class="detail" id="is_complete_result_page/4">
+  <div class="detail-header">
+    <a href="#is_complete_result_page/4" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">is_complete_result_page/4</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_mam_utils.is_complete_result_page/4</pre>
+      </div>
+
+<p>Returns true, if the current page is the final one in the result set. If there are more pages with messages, than this function returns false.</p><p>PageSize - maximum number of messages extracted in one lookup. TotalCount - total number of messages in the Result Set. Result Set - is subset of all messages in user's archive, in a specified time period. MessageRows - stuff we are about to send to the user. Params - lookup parameters, coming from mam_iq module.</p><p>TotalCount and Offset can be undefined, in case we use IsSimple=true. IsSimple=true tells the server not to do heavy <code>SELECT COUNT(*)</code> queries.</p>TODO It is possible to set complete flag WITH IsSimple=true, if we select one extra message from archive, but don't send it to the client. It's the most efficient way to query archive, if the client side does not care about the total number of messages and if it's stateless (i.e. web interface).  </section>
+</section>
+<section class="detail" id="is_jid_element/1">
+  <div class="detail-header">
+    <a href="#is_jid_element/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">is_jid_element/1</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="is_jid_in_user_roster/2">
+  <div class="detail-header">
+    <a href="#is_jid_in_user_roster/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">is_jid_in_user_roster/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_mam_utils.is_jid_in_user_roster/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="is_mam_namespace/1">
+  <div class="detail-header">
+    <a href="#is_mam_namespace/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">is_mam_namespace/1</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="is_mam_result_message/1">
+  <div class="detail-header">
+    <a href="#is_mam_result_message/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">is_mam_result_message/1</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="is_most_recent_page/4">
+  <div class="detail-header">
+    <a href="#is_most_recent_page/4" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">is_most_recent_page/4</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_mam_utils.is_most_recent_page/4</pre>
+      </div>
+
+Returns true, if the current page contains the most recent messages. If there are some more recent messages in archive, this function returns false.  </section>
+</section>
+<section class="detail" id="is_policy_violation/4">
+  <div class="detail-header">
+    <a href="#is_policy_violation/4" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">is_policy_violation/4</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="is_valid_message/4">
+  <div class="detail-header">
+    <a href="#is_valid_message/4" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">is_valid_message/4</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="is_valid_message_type/3">
+  <div class="detail-header">
+    <a href="#is_valid_message_type/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">is_valid_message_type/3</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="is_x_user_element/1">
+  <div class="detail-header">
+    <a href="#is_x_user_element/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">is_x_user_element/1</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="jid_to_opt_binary/2">
+  <div class="detail-header">
+    <a href="#jid_to_opt_binary/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">jid_to_opt_binary/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_mam_utils.jid_to_opt_binary/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="make_fin_element/4">
+  <div class="detail-header">
+    <a href="#make_fin_element/4" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">make_fin_element/4</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_mam_utils.make_fin_element/4</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="mam_features/0">
+  <div class="detail-header">
+    <a href="#mam_features/0" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">mam_features/0</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="maybe_add_arcid_elems/4">
+  <div class="detail-header">
+    <a href="#maybe_add_arcid_elems/4" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">maybe_add_arcid_elems/4</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_mam_utils.maybe_add_arcid_elems/4</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="maybe_encode_compact_uuid/2">
+  <div class="detail-header">
+    <a href="#maybe_encode_compact_uuid/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">maybe_encode_compact_uuid/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_mam_utils.maybe_encode_compact_uuid/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="maybe_external_binary_to_mess_id/1">
+  <div class="detail-header">
+    <a href="#maybe_external_binary_to_mess_id/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">maybe_external_binary_to_mess_id/1</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_mam_utils.maybe_external_binary_to_mess_id/1</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="maybe_get_result_namespace/1">
+  <div class="detail-header">
+    <a href="#maybe_get_result_namespace/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">maybe_get_result_namespace/1</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="maybe_integer/2">
+  <div class="detail-header">
+    <a href="#maybe_integer/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">maybe_integer/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_mam_utils.maybe_integer/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="maybe_last/1">
+  <div class="detail-header">
+    <a href="#maybe_last/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">maybe_last/1</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_mam_utils.maybe_last/1</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="maybe_log_deprecation/1">
+  <div class="detail-header">
+    <a href="#maybe_log_deprecation/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">maybe_log_deprecation/1</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="maybe_max/2">
+  <div class="detail-header">
+    <a href="#maybe_max/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">maybe_max/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_mam_utils.maybe_max/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="maybe_microseconds/1">
+  <div class="detail-header">
+    <a href="#maybe_microseconds/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">maybe_microseconds/1</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_mam_utils.maybe_microseconds/1</pre>
+          <pre>mod_mam_utils.maybe_microseconds/1</pre>
+      </div>
+
+<p>Return a unix timestamp in microseconds.</p>&quot;maybe&quot; means, that the function may return <code>undefined</code>.  </section>
+</section>
+<section class="detail" id="maybe_min/2">
+  <div class="detail-header">
+    <a href="#maybe_min/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">maybe_min/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_mam_utils.maybe_min/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="maybe_next_id/1">
+  <div class="detail-header">
+    <a href="#maybe_next_id/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">maybe_next_id/1</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_mam_utils.maybe_next_id/1</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="maybe_previous_id/1">
+  <div class="detail-header">
+    <a href="#maybe_previous_id/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">maybe_previous_id/1</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_mam_utils.maybe_previous_id/1</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="maybe_set_client_xmlns/2">
+  <div class="detail-header">
+    <a href="#maybe_set_client_xmlns/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">maybe_set_client_xmlns/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_mam_utils.maybe_set_client_xmlns/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="mess_id_to_external_binary/1">
+  <div class="detail-header">
+    <a href="#mess_id_to_external_binary/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">mess_id_to_external_binary/1</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_mam_utils.mess_id_to_external_binary/1</pre>
+      </div>
+
+Encode a message ID to pass it to the user.  </section>
+</section>
+<section class="detail" id="message_form/3">
+  <div class="detail-header">
+    <a href="#message_form/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">message_form/3</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_mam_utils.message_form/3</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="message_form_fields/3">
+  <div class="detail-header">
+    <a href="#message_form_fields/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">message_form_fields/3</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="normalize_search_text/1">
+  <div class="detail-header">
+    <a href="#normalize_search_text/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">normalize_search_text/1</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_mam_utils.normalize_search_text/1</pre>
+      </div>
+
+Normalize given text to improve text search in some MAM backends. This normalization involves making text all lowercase, replacing some word separators ([, .:;-?!]) with given one (by default &quot;%&quot;) and removing all unicode characters that are considered non-alphanumerical. For example, text: &quot;My cat, was eaten by: my dog?!? Why...?!?&quot; will be normalized as: &quot;my%cat%was%eaten%by%my%dog%why&quot;  </section>
+</section>
+<section class="detail" id="normalize_search_text/2">
+  <div class="detail-header">
+    <a href="#normalize_search_text/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">normalize_search_text/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_mam_utils.normalize_search_text/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="packet_to_search_body/3">
+  <div class="detail-header">
+    <a href="#packet_to_search_body/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">packet_to_search_body/3</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_mam_utils.packet_to_search_body/3</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="packet_to_x_user_jid/1">
+  <div class="detail-header">
+    <a href="#packet_to_x_user_jid/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">packet_to_x_user_jid/1</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_mam_utils.packet_to_x_user_jid/1</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="parse_jid_list/2">
+  <div class="detail-header">
+    <a href="#parse_jid_list/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">parse_jid_list/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_mam_utils.parse_jid_list/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="parse_prefs/1">
+  <div class="detail-header">
+    <a href="#parse_prefs/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">parse_prefs/1</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_mam_utils.parse_prefs/1</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="replace_arcid_elem/4">
+  <div class="detail-header">
+    <a href="#replace_arcid_elem/4" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">replace_arcid_elem/4</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_mam_utils.replace_arcid_elem/4</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="replace_from_attribute/2">
+  <div class="detail-header">
+    <a href="#replace_from_attribute/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">replace_from_attribute/2</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="replace_x_user_element/4">
+  <div class="detail-header">
+    <a href="#replace_x_user_element/4" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">replace_x_user_element/4</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_mam_utils.replace_x_user_element/4</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="result/4">
+  <div class="detail-header">
+    <a href="#result/4" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">result/4</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_mam_utils.result/4</pre>
+      </div>
+
+Generates tag <code>&lt;result /&gt;</code>. This element will be added in each forwarded message.  </section>
+</section>
+<section class="detail" id="result_prefs/4">
+  <div class="detail-header">
+    <a href="#result_prefs/4" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">result_prefs/4</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_mam_utils.result_prefs/4</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="result_query/2">
+  <div class="detail-header">
+    <a href="#result_query/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">result_query/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_mam_utils.result_query/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="result_set/4">
+  <div class="detail-header">
+    <a href="#result_set/4" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">result_set/4</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_mam_utils.result_set/4</pre>
+      </div>
+
+<p>Generates <code>&lt;set /&gt;</code> tag.</p>This element will be added into &quot;iq/query&quot;.  </section>
+</section>
+<section class="detail" id="retracted_element/1">
+  <div class="detail-header">
+    <a href="#retracted_element/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">retracted_element/1</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="retraction_features/2">
+  <div class="detail-header">
+    <a href="#retraction_features/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">retraction_features/2</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="rsm_ns_binary/0">
+  <div class="detail-header">
+    <a href="#rsm_ns_binary/0" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">rsm_ns_binary/0</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="send_message/3">
+  <div class="detail-header">
+    <a href="#send_message/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">send_message/3</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_mam_utils.send_message/3</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="skip_bad_jids/1">
+  <div class="detail-header">
+    <a href="#skip_bad_jids/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">skip_bad_jids/1</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="success_sql_execute/3">
+  <div class="detail-header">
+    <a href="#success_sql_execute/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">success_sql_execute/3</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_mam_utils.success_sql_execute/3</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="success_sql_query/2">
+  <div class="detail-header">
+    <a href="#success_sql_query/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">success_sql_query/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_mam_utils.success_sql_query/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="tag_id/2">
+  <div class="detail-header">
+    <a href="#tag_id/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">tag_id/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_mam_utils.tag_id/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="tombstone/2">
+  <div class="detail-header">
+    <a href="#tombstone/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">tombstone/2</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="undefined_to_empty/1">
+  <div class="detail-header">
+    <a href="#undefined_to_empty/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">undefined_to_empty/1</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="valid_behavior/1">
+  <div class="detail-header">
+    <a href="#valid_behavior/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">valid_behavior/1</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_mam_utils.valid_behavior/1</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="wait_shaper/3">
+  <div class="detail-header">
+    <a href="#wait_shaper/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">wait_shaper/3</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_mam_utils.wait_shaper/3</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="wrap_message/6">
+  <div class="detail-header">
+    <a href="#wrap_message/6" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">wrap_message/6</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_mam_utils.wrap_message/6</pre>
+      </div>
+
+Forms <code>&lt;forwarded/&gt;</code> element, according to the XEP.  </section>
+</section>
+<section class="detail" id="wrap_message/7">
+  <div class="detail-header">
+    <a href="#wrap_message/7" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">wrap_message/7</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_mam_utils.wrap_message/7</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="wrapper_id/0">
+  <div class="detail-header">
+    <a href="#wrapper_id/0" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">wrapper_id/0</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_mam_utils.wrapper_id/0</pre>
+      </div>
+
+Returns a UUIDv4 canonical form binary.  </section>
+</section>
+<section class="detail" id="x_user_item/3">
+  <div class="detail-header">
+    <a href="#x_user_item/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">x_user_item/3</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+          </div>
+        </section>
+      <footer class="footer">
+        <p>
+          <span class="line">
+            Built using
+            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener">ExDoc</a> (v0.23.0) for the
+            <a href="https://elixir-lang.org" title="Elixir" target="_blank">Elixir programming language</a>.
+          </span>
+          <span class="line">
+            Designed by
+            <a href="https://twitter.com/dignifiedquire" target="_blank" rel="noopener" title="@dignifiedquire">Friedel Ziegelmayer</a>.
+          </span>
+        </p>
+        <p>
+            <a href="api-reference.html" title="API reference" class="line footer-button">API Reference</a>
+          <button class="line footer-button display-shortcuts-help">
+            Display keyboard shortcuts
+          </button>
+          <button class="line footer-button night-mode-toggle">
+            Toggle night mode
+          </button>
+          <button class="line footer-button display-quick-switch">
+            Go to a HexDocs package
+          </button>
+          <button class="line footer-button tooltips-toggle">
+            <span class="tooltips-option-disable">Disable tooltips</span>
+            <span class="tooltips-option-enable">Enable tooltips</span>
+          </button>
+        </p>
+      </footer>
+    </div>
+  </div>
+</section>
+</div>
+  </body>
+</html>

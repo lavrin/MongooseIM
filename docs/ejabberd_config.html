@@ -1,0 +1,1535 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.23.0">
+    <meta name="project" content="MongooseIM v4.0.1">
+    <title>ejabberd_config — MongooseIM v4.0.1</title>
+    <link rel="stylesheet" href="dist/erlang-8a5f731dbc512bf6261b.css" />
+    <script src="dist/sidebar_items-38e40981d8.js"></script>
+      <script src="docs_config.js"></script>
+    <script async src="dist/app-60a0c9f10e9e52eae31f.js"></script>
+  </head>
+  <body data-type="modules">
+    <script>try { if(localStorage.getItem('night-mode') === 'true') document.body.className += ' night-mode'; } catch (e) { }</script>
+<div class="main">
+
+<button class="sidebar-button sidebar-toggle">
+  <span class="icon-menu" title="Collapse/expand sidebar"></span>
+</button>
+
+<section class="sidebar">
+  <form class="sidebar-search" action="search.html">
+    <button type="submit" class="search-button" aria-label="Submit Search">
+      <span class="icon-search" aria-hidden="true" title="Submit search"></span>
+    </button>
+    <button type="button" tabindex="-1" class="search-close-button" aria-label="Cancel Search">
+      <span class="icon-cross" aria-hidden="true" title="Cancel search"></span>
+    </button>
+    <label class="search-label">
+      <input name="q" type="text" id="search-list" class="search-input" placeholder="Search..." aria-label="Input your search terms" autocomplete="off" />
+    </label>
+  </form>
+
+  <div class="autocomplete">
+    <div class="autocomplete-results">
+    </div>
+  </div>
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectDetails">
+      <a href="mongooseim.html" class="sidebar-projectName">
+MongooseIM      </a>
+      <strong class="sidebar-projectVersion">
+        v4.0.1
+      </strong>
+    </div>
+  </div>
+
+  <ul class="sidebar-listNav">
+    <li><a id="extras-list" href="#full-list">Pages</a></li>
+
+      <li><a id="modules-list" href="#full-list">Modules</a></li>
+
+  </ul>
+  <div class="gradient"></div>
+  <ul id="full-list" class="sidebar-fullList"></ul>
+</section>
+
+<section class="content">
+  <div class="content-outer">
+    <div id="content" class="content-inner">
+
+      <h1>
+        ejabberd_config <small class="app-vsn">(MongooseIM v4.0.1)</small>
+      </h1>
+
+
+
+        <section id="summary" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#summary">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+            Summary
+          </h1>
+  <div class="summary-types summary">
+    <h2>
+      <a href="#types">Types</a>
+    </h2>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:compare_result/0">compare_result()</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:host/0">host()</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:key/0">key()</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:state/0">state()</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:value/0">value()</a>
+  </div>
+</div>
+  </div>
+  <div class="summary-functions summary">
+    <h2>
+      <a href="#functions">Functions</a>
+    </h2>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#add_global_option/2">add_global_option/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#add_local_option/2">add_local_option/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#add_virtual_host/1">add_virtual_host/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#all_cluster_nodes/0">all_cluster_nodes/0</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#apply_reload_changes/4">apply_reload_changes/4</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#apply_reloading_change/1">apply_reloading_change/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#assert_config_reloaded/1">assert_config_reloaded/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#assert_local_config_reloaded/0">assert_local_config_reloaded/0</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#assert_required_files_exist/1">assert_required_files_exist/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#clean_acls_opts/0">clean_acls_opts/0</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#clean_global_opts/0">clean_global_opts/0</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#clean_local_opts/0">clean_local_opts/0</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#compute_config_file_version/0">compute_config_file_version/0</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#compute_loaded_config_version/0">compute_loaded_config_version/0</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#config_info/0">config_info/0</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#config_state/0">config_state/0</a>
+  </div>
+    <div class="summary-synopsis">Returns configs on disc and in memory for this node. This function prepares all state data to pass into pure code part (i.e. mongoose_config_parser and mongoose_config_reload).</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#config_states/0">config_states/0</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#config_states/1">config_states/1</a>
+  </div>
+    <div class="summary-synopsis">Returns config states from all nodes in cluster State from the local node comes as head of a list</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#del_local_option/1">del_local_option/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#do_reload_cluster/1">do_reload_cluster/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#do_set_opts/1">do_set_opts/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#dump_reload_state/2">dump_reload_state/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#dump_reload_state_filename/0">dump_reload_state_filename/0</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#get_categorized_options/0">get_categorized_options/0</a>
+  </div>
+    <div class="summary-synopsis">Returns current all options in memory, grouped by category.</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#get_config_path/0">get_config_path/0</a>
+  </div>
+    <div class="summary-synopsis">Get the filename of the ejabberd configuration file. The filename can be specified with: erl -config &quot;/path/to/mongooseim.toml&quot;. It can also be specified with the environment variable EJABBERD_CONFIG_PATH. If not specified, the default value 'mongooseim.toml' is assumed.</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#get_global_config/0">get_global_config/0</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#get_global_option/1">get_global_option/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#get_host_local_config/0">get_host_local_config/0</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#get_local_config/0">get_local_config/0</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#get_local_option/1">get_local_option/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#get_local_option/2">get_local_option/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#get_local_option_or_default/2">get_local_option_or_default/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#get_vh_by_auth_method/1">get_vh_by_auth_method/1</a>
+  </div>
+    <div class="summary-synopsis">Return the list of hosts handled by a given module</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#handle_config_add/1">handle_config_add/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#handle_config_change/1">handle_config_change/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#handle_config_del/1">handle_config_del/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#handle_local_config_add/1">handle_local_config_add/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#handle_local_config_change/1">handle_local_config_change/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#handle_local_config_del/1">handle_local_config_del/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#handle_local_hosts_config_add/1">handle_local_hosts_config_add/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#handle_local_hosts_config_change/1">handle_local_hosts_config_change/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#handle_local_hosts_config_del/1">handle_local_hosts_config_del/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#handle_table_does_not_exist_error/1">handle_table_does_not_exist_error/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#is_mongooseim_node/1">is_mongooseim_node/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#load_file/1">load_file/1</a>
+  </div>
+    <div class="summary-synopsis">Load the ejabberd configuration file. It also includes additional configuration files and replaces macros. This function will crash if finds some error in the configuration file.</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#maybe_clean_acls_opts/1">maybe_clean_acls_opts/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#maybe_clean_global_opts/1">maybe_clean_global_opts/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#maybe_clean_local_opts/1">maybe_clean_local_opts/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#methods_to_auth_modules/1">methods_to_auth_modules/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#missing_files/1">missing_files/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#other_cluster_nodes/0">other_cluster_nodes/0</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#print_flat_config/0">print_flat_config/0</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#reload_cluster/0">reload_cluster/0</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#reload_cluster_dryrun/0">reload_cluster_dryrun/0</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#reload_config/1">reload_config/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#reload_listeners/1">reload_listeners/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#reload_local/0">reload_local/0</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#reload_local_config/1">reload_local_config/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#reload_local_hosts_config/1">reload_local_hosts_config/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#reload_nodes/3">reload_nodes/3</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#remove_virtual_host/1">remove_virtual_host/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#set_opts/1">set_opts/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#start/0">start/0</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#state_to_missing_and_required_files/1">state_to_missing_and_required_files/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#try_reload_cluster/2">try_reload_cluster/2</a>
+  </div>
+</div>
+  </div>
+        </section>
+
+        <section id="types" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#types">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+Types          </h1>
+          <div class="types-list">
+<section class="detail" id="t:compare_result/0">
+  <div class="detail-header">
+    <a href="#t:compare_result/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">compare_result()</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>t:ejabberd_config.compare_result/0</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="t:host/0">
+  <div class="detail-header">
+    <a href="#t:host/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">host()</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>t:ejabberd_config.host/0</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="t:key/0">
+  <div class="detail-header">
+    <a href="#t:key/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">key()</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>t:ejabberd_config.key/0</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="t:state/0">
+  <div class="detail-header">
+    <a href="#t:state/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">state()</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>t:ejabberd_config.state/0</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="t:value/0">
+  <div class="detail-header">
+    <a href="#t:value/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">value()</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>t:ejabberd_config.value/0</pre>
+      </div>
+
+  </section>
+</section>
+          </div>
+        </section>
+        <section id="functions" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#functions">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+Functions          </h1>
+          <div class="functions-list">
+<section class="detail" id="add_global_option/2">
+  <div class="detail-header">
+    <a href="#add_global_option/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">add_global_option/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>ejabberd_config.add_global_option/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="add_local_option/2">
+  <div class="detail-header">
+    <a href="#add_local_option/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">add_local_option/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>ejabberd_config.add_local_option/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="add_virtual_host/1">
+  <div class="detail-header">
+    <a href="#add_virtual_host/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">add_virtual_host/1</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>ejabberd_config.add_virtual_host/1</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="all_cluster_nodes/0">
+  <div class="detail-header">
+    <a href="#all_cluster_nodes/0" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">all_cluster_nodes/0</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="apply_reload_changes/4">
+  <div class="detail-header">
+    <a href="#apply_reload_changes/4" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">apply_reload_changes/4</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="apply_reloading_change/1">
+  <div class="detail-header">
+    <a href="#apply_reloading_change/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">apply_reloading_change/1</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="assert_config_reloaded/1">
+  <div class="detail-header">
+    <a href="#assert_config_reloaded/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">assert_config_reloaded/1</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="assert_local_config_reloaded/0">
+  <div class="detail-header">
+    <a href="#assert_local_config_reloaded/0" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">assert_local_config_reloaded/0</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="assert_required_files_exist/1">
+  <div class="detail-header">
+    <a href="#assert_required_files_exist/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">assert_required_files_exist/1</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="clean_acls_opts/0">
+  <div class="detail-header">
+    <a href="#clean_acls_opts/0" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">clean_acls_opts/0</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="clean_global_opts/0">
+  <div class="detail-header">
+    <a href="#clean_global_opts/0" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">clean_global_opts/0</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="clean_local_opts/0">
+  <div class="detail-header">
+    <a href="#clean_local_opts/0" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">clean_local_opts/0</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="compute_config_file_version/0">
+  <div class="detail-header">
+    <a href="#compute_config_file_version/0" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">compute_config_file_version/0</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="compute_loaded_config_version/0">
+  <div class="detail-header">
+    <a href="#compute_loaded_config_version/0" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">compute_loaded_config_version/0</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="config_info/0">
+  <div class="detail-header">
+    <a href="#config_info/0" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">config_info/0</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="config_state/0">
+  <div class="detail-header">
+    <a href="#config_state/0" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">config_state/0</h1>
+  </div>
+
+  <section class="docstring">
+
+Returns configs on disc and in memory for this node. This function prepares all state data to pass into pure code part (i.e. mongoose_config_parser and mongoose_config_reload).  </section>
+</section>
+<section class="detail" id="config_states/0">
+  <div class="detail-header">
+    <a href="#config_states/0" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">config_states/0</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="config_states/1">
+  <div class="detail-header">
+    <a href="#config_states/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">config_states/1</h1>
+  </div>
+
+  <section class="docstring">
+
+Returns config states from all nodes in cluster State from the local node comes as head of a list  </section>
+</section>
+<section class="detail" id="del_local_option/1">
+  <div class="detail-header">
+    <a href="#del_local_option/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">del_local_option/1</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>ejabberd_config.del_local_option/1</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="do_reload_cluster/1">
+  <div class="detail-header">
+    <a href="#do_reload_cluster/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">do_reload_cluster/1</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="do_set_opts/1">
+  <div class="detail-header">
+    <a href="#do_set_opts/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">do_set_opts/1</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>ejabberd_config.do_set_opts/1</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="dump_reload_state/2">
+  <div class="detail-header">
+    <a href="#dump_reload_state/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">dump_reload_state/2</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="dump_reload_state_filename/0">
+  <div class="detail-header">
+    <a href="#dump_reload_state_filename/0" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">dump_reload_state_filename/0</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="get_categorized_options/0">
+  <div class="detail-header">
+    <a href="#get_categorized_options/0" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">get_categorized_options/0</h1>
+  </div>
+
+  <section class="docstring">
+
+Returns current all options in memory, grouped by category.  </section>
+</section>
+<section class="detail" id="get_config_path/0">
+  <div class="detail-header">
+    <a href="#get_config_path/0" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">get_config_path/0</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>ejabberd_config.get_config_path/0</pre>
+      </div>
+
+Get the filename of the ejabberd configuration file. The filename can be specified with: erl -config &quot;/path/to/mongooseim.toml&quot;. It can also be specified with the environment variable EJABBERD_CONFIG_PATH. If not specified, the default value 'mongooseim.toml' is assumed.  </section>
+</section>
+<section class="detail" id="get_global_config/0">
+  <div class="detail-header">
+    <a href="#get_global_config/0" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">get_global_config/0</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>ejabberd_config.get_global_config/0</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="get_global_option/1">
+  <div class="detail-header">
+    <a href="#get_global_option/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">get_global_option/1</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>ejabberd_config.get_global_option/1</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="get_host_local_config/0">
+  <div class="detail-header">
+    <a href="#get_host_local_config/0" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">get_host_local_config/0</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>ejabberd_config.get_host_local_config/0</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="get_local_config/0">
+  <div class="detail-header">
+    <a href="#get_local_config/0" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">get_local_config/0</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>ejabberd_config.get_local_config/0</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="get_local_option/1">
+  <div class="detail-header">
+    <a href="#get_local_option/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">get_local_option/1</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>ejabberd_config.get_local_option/1</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="get_local_option/2">
+  <div class="detail-header">
+    <a href="#get_local_option/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">get_local_option/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>ejabberd_config.get_local_option/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="get_local_option_or_default/2">
+  <div class="detail-header">
+    <a href="#get_local_option_or_default/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">get_local_option_or_default/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>ejabberd_config.get_local_option_or_default/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="get_vh_by_auth_method/1">
+  <div class="detail-header">
+    <a href="#get_vh_by_auth_method/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">get_vh_by_auth_method/1</h1>
+  </div>
+
+  <section class="docstring">
+
+Return the list of hosts handled by a given module  </section>
+</section>
+<section class="detail" id="handle_config_add/1">
+  <div class="detail-header">
+    <a href="#handle_config_add/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">handle_config_add/1</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="handle_config_change/1">
+  <div class="detail-header">
+    <a href="#handle_config_change/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">handle_config_change/1</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="handle_config_del/1">
+  <div class="detail-header">
+    <a href="#handle_config_del/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">handle_config_del/1</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="handle_local_config_add/1">
+  <div class="detail-header">
+    <a href="#handle_local_config_add/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">handle_local_config_add/1</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="handle_local_config_change/1">
+  <div class="detail-header">
+    <a href="#handle_local_config_change/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">handle_local_config_change/1</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="handle_local_config_del/1">
+  <div class="detail-header">
+    <a href="#handle_local_config_del/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">handle_local_config_del/1</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="handle_local_hosts_config_add/1">
+  <div class="detail-header">
+    <a href="#handle_local_hosts_config_add/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">handle_local_hosts_config_add/1</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="handle_local_hosts_config_change/1">
+  <div class="detail-header">
+    <a href="#handle_local_hosts_config_change/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">handle_local_hosts_config_change/1</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="handle_local_hosts_config_del/1">
+  <div class="detail-header">
+    <a href="#handle_local_hosts_config_del/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">handle_local_hosts_config_del/1</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="handle_table_does_not_exist_error/1">
+  <div class="detail-header">
+    <a href="#handle_table_does_not_exist_error/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">handle_table_does_not_exist_error/1</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="is_mongooseim_node/1">
+  <div class="detail-header">
+    <a href="#is_mongooseim_node/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">is_mongooseim_node/1</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>ejabberd_config.is_mongooseim_node/1</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="load_file/1">
+  <div class="detail-header">
+    <a href="#load_file/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">load_file/1</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>ejabberd_config.load_file/1</pre>
+      </div>
+
+Load the ejabberd configuration file. It also includes additional configuration files and replaces macros. This function will crash if finds some error in the configuration file.  </section>
+</section>
+<section class="detail" id="maybe_clean_acls_opts/1">
+  <div class="detail-header">
+    <a href="#maybe_clean_acls_opts/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">maybe_clean_acls_opts/1</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="maybe_clean_global_opts/1">
+  <div class="detail-header">
+    <a href="#maybe_clean_global_opts/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">maybe_clean_global_opts/1</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="maybe_clean_local_opts/1">
+  <div class="detail-header">
+    <a href="#maybe_clean_local_opts/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">maybe_clean_local_opts/1</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="methods_to_auth_modules/1">
+  <div class="detail-header">
+    <a href="#methods_to_auth_modules/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">methods_to_auth_modules/1</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="missing_files/1">
+  <div class="detail-header">
+    <a href="#missing_files/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">missing_files/1</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="other_cluster_nodes/0">
+  <div class="detail-header">
+    <a href="#other_cluster_nodes/0" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">other_cluster_nodes/0</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>ejabberd_config.other_cluster_nodes/0</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="print_flat_config/0">
+  <div class="detail-header">
+    <a href="#print_flat_config/0" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">print_flat_config/0</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="reload_cluster/0">
+  <div class="detail-header">
+    <a href="#reload_cluster/0" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">reload_cluster/0</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>ejabberd_config.reload_cluster/0</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="reload_cluster_dryrun/0">
+  <div class="detail-header">
+    <a href="#reload_cluster_dryrun/0" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">reload_cluster_dryrun/0</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>ejabberd_config.reload_cluster_dryrun/0</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="reload_config/1">
+  <div class="detail-header">
+    <a href="#reload_config/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">reload_config/1</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>ejabberd_config.reload_config/1</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="reload_listeners/1">
+  <div class="detail-header">
+    <a href="#reload_listeners/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">reload_listeners/1</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>ejabberd_config.reload_listeners/1</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="reload_local/0">
+  <div class="detail-header">
+    <a href="#reload_local/0" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">reload_local/0</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>ejabberd_config.reload_local/0</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="reload_local_config/1">
+  <div class="detail-header">
+    <a href="#reload_local_config/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">reload_local_config/1</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>ejabberd_config.reload_local_config/1</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="reload_local_hosts_config/1">
+  <div class="detail-header">
+    <a href="#reload_local_hosts_config/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">reload_local_hosts_config/1</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>ejabberd_config.reload_local_hosts_config/1</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="reload_nodes/3">
+  <div class="detail-header">
+    <a href="#reload_nodes/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">reload_nodes/3</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="remove_virtual_host/1">
+  <div class="detail-header">
+    <a href="#remove_virtual_host/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">remove_virtual_host/1</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>ejabberd_config.remove_virtual_host/1</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="set_opts/1">
+  <div class="detail-header">
+    <a href="#set_opts/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">set_opts/1</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>ejabberd_config.set_opts/1</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="start/0">
+  <div class="detail-header">
+    <a href="#start/0" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">start/0</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>ejabberd_config.start/0</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="state_to_missing_and_required_files/1">
+  <div class="detail-header">
+    <a href="#state_to_missing_and_required_files/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">state_to_missing_and_required_files/1</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="try_reload_cluster/2">
+  <div class="detail-header">
+    <a href="#try_reload_cluster/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">try_reload_cluster/2</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+          </div>
+        </section>
+      <footer class="footer">
+        <p>
+          <span class="line">
+            Built using
+            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener">ExDoc</a> (v0.23.0) for the
+            <a href="https://elixir-lang.org" title="Elixir" target="_blank">Elixir programming language</a>.
+          </span>
+          <span class="line">
+            Designed by
+            <a href="https://twitter.com/dignifiedquire" target="_blank" rel="noopener" title="@dignifiedquire">Friedel Ziegelmayer</a>.
+          </span>
+        </p>
+        <p>
+            <a href="api-reference.html" title="API reference" class="line footer-button">API Reference</a>
+          <button class="line footer-button display-shortcuts-help">
+            Display keyboard shortcuts
+          </button>
+          <button class="line footer-button night-mode-toggle">
+            Toggle night mode
+          </button>
+          <button class="line footer-button display-quick-switch">
+            Go to a HexDocs package
+          </button>
+          <button class="line footer-button tooltips-toggle">
+            <span class="tooltips-option-disable">Disable tooltips</span>
+            <span class="tooltips-option-enable">Enable tooltips</span>
+          </button>
+        </p>
+      </footer>
+    </div>
+  </div>
+</section>
+</div>
+  </body>
+</html>

@@ -1,0 +1,2098 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.23.0">
+    <meta name="project" content="MongooseIM v4.0.1">
+    <title>API Reference — MongooseIM v4.0.1</title>
+    <link rel="stylesheet" href="dist/erlang-8a5f731dbc512bf6261b.css" />
+    <script src="dist/sidebar_items-38e40981d8.js"></script>
+      <script src="docs_config.js"></script>
+    <script async src="dist/app-60a0c9f10e9e52eae31f.js"></script>
+  </head>
+  <body data-type="extras">
+    <script>try { if(localStorage.getItem('night-mode') === 'true') document.body.className += ' night-mode'; } catch (e) { }</script>
+<div class="main">
+
+<button class="sidebar-button sidebar-toggle">
+  <span class="icon-menu" title="Collapse/expand sidebar"></span>
+</button>
+
+<section class="sidebar">
+  <form class="sidebar-search" action="search.html">
+    <button type="submit" class="search-button" aria-label="Submit Search">
+      <span class="icon-search" aria-hidden="true" title="Submit search"></span>
+    </button>
+    <button type="button" tabindex="-1" class="search-close-button" aria-label="Cancel Search">
+      <span class="icon-cross" aria-hidden="true" title="Cancel search"></span>
+    </button>
+    <label class="search-label">
+      <input name="q" type="text" id="search-list" class="search-input" placeholder="Search..." aria-label="Input your search terms" autocomplete="off" />
+    </label>
+  </form>
+
+  <div class="autocomplete">
+    <div class="autocomplete-results">
+    </div>
+  </div>
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectDetails">
+      <a href="mongooseim.html" class="sidebar-projectName">
+MongooseIM      </a>
+      <strong class="sidebar-projectVersion">
+        v4.0.1
+      </strong>
+    </div>
+  </div>
+
+  <ul class="sidebar-listNav">
+    <li><a id="extras-list" href="#full-list">Pages</a></li>
+
+      <li><a id="modules-list" href="#full-list">Modules</a></li>
+
+  </ul>
+  <div class="gradient"></div>
+  <ul id="full-list" class="sidebar-fullList"></ul>
+</section>
+
+<section class="content">
+  <div class="content-outer">
+    <div id="content" class="content-inner">
+
+<h1>
+  API Reference <small class="app-vsn">MongooseIM v4.0.1</small>
+</h1>
+
+  <section class="details-list">
+    <h2 id="modules" class="section-heading">
+  <a href="#modules" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Modules
+</h2>
+
+    <div class="summary">
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="acl.html">acl</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="adhoc.html">adhoc</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="amp.html">amp</a>
+  </div>
+    <div class="summary-synopsis">Models and business logic for XEP-0079: Advanced Message Processing This work was sponsored by Grindr LLC</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="amp_resolver.html">amp_resolver</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="amp_strategy.html">amp_strategy</a>
+  </div>
+    <div class="summary-synopsis">This module is responsible for determining the server's strategy for a particular message. (See XEP section 2.2.2 &quot;Determine Default Action&quot;) This work was sponsored by Grindr LLC</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="aws_signature_v4.html">aws_signature_v4</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="backend_module.html">backend_module</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="cert_utils.html">cert_utils</a>
+  </div>
+    <div class="summary-synopsis">a dedicated module to provide SSL certificate parsing functionality.</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="cyrsasl.html">cyrsasl</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="cyrsasl_anonymous.html">cyrsasl_anonymous</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="cyrsasl_digest.html">cyrsasl_digest</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="cyrsasl_external.html">cyrsasl_external</a>
+  </div>
+    <div class="summary-synopsis"><p>SASL EXTERNAL implementation (XEP178)</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="cyrsasl_external_verification.html">cyrsasl_external_verification</a>
+  </div>
+    <div class="summary-synopsis"><p>cyrsasl external verification backend</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="cyrsasl_oauth.html">cyrsasl_oauth</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="cyrsasl_plain.html">cyrsasl_plain</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="cyrsasl_scram.html">cyrsasl_scram</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="cyrsasl_scram_sha1.html">cyrsasl_scram_sha1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="cyrsasl_scram_sha1_plus.html">cyrsasl_scram_sha1_plus</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="cyrsasl_scram_sha224.html">cyrsasl_scram_sha224</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="cyrsasl_scram_sha224_plus.html">cyrsasl_scram_sha224_plus</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="cyrsasl_scram_sha256.html">cyrsasl_scram_sha256</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="cyrsasl_scram_sha256_plus.html">cyrsasl_scram_sha256_plus</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="cyrsasl_scram_sha384.html">cyrsasl_scram_sha384</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="cyrsasl_scram_sha384_plus.html">cyrsasl_scram_sha384_plus</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="cyrsasl_scram_sha512.html">cyrsasl_scram_sha512</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="cyrsasl_scram_sha512_plus.html">cyrsasl_scram_sha512_plus</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="dynamic_compile.html">dynamic_compile</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="ejabberd.html">ejabberd</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="ejabberd_admin.html">ejabberd_admin</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="ejabberd_app.html">ejabberd_app</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="ejabberd_auth.html">ejabberd_auth</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="ejabberd_auth_anonymous.html">ejabberd_auth_anonymous</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="ejabberd_auth_dummy.html">ejabberd_auth_dummy</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="ejabberd_auth_external.html">ejabberd_auth_external</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="ejabberd_auth_http.html">ejabberd_auth_http</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="ejabberd_auth_internal.html">ejabberd_auth_internal</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="ejabberd_auth_jwt.html">ejabberd_auth_jwt</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="ejabberd_auth_ldap.html">ejabberd_auth_ldap</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="ejabberd_auth_pki.html">ejabberd_auth_pki</a>
+  </div>
+    <div class="summary-synopsis"><p>demo PKI auth backend.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="ejabberd_auth_rdbms.html">ejabberd_auth_rdbms</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="ejabberd_auth_riak.html">ejabberd_auth_riak</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="ejabberd_c2s.html">ejabberd_c2s</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="ejabberd_c2s_state.html">ejabberd_c2s_state</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="ejabberd_commands.html">ejabberd_commands</a>
+  </div>
+    <div class="summary-synopsis"><p>Management of ejabberd commands.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="ejabberd_config.html">ejabberd_config</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="ejabberd_ctl.html">ejabberd_ctl</a>
+  </div>
+    <div class="summary-synopsis"><p>Management of mongooseimctl commands and frontend to ejabberd commands.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="ejabberd_gen_auth.html">ejabberd_gen_auth</a>
+  </div>
+    <div class="summary-synopsis">Generic behaviour for Authentication modules</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="ejabberd_gen_mam_archive.html">ejabberd_gen_mam_archive</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="ejabberd_gen_mam_prefs.html">ejabberd_gen_mam_prefs</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="ejabberd_gen_sm.html">ejabberd_gen_sm</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="ejabberd_hooks.html">ejabberd_hooks</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="ejabberd_listener.html">ejabberd_listener</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="ejabberd_local.html">ejabberd_local</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="ejabberd_node_id.html">ejabberd_node_id</a>
+  </div>
+    <div class="summary-synopsis">Allocates unique ids for each node.</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="ejabberd_rdbms.html">ejabberd_rdbms</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="ejabberd_receiver.html">ejabberd_receiver</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="ejabberd_router.html">ejabberd_router</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="ejabberd_s2s.html">ejabberd_s2s</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="ejabberd_s2s_in.html">ejabberd_s2s_in</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="ejabberd_s2s_out.html">ejabberd_s2s_out</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="ejabberd_service.html">ejabberd_service</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="ejabberd_shaper_sup.html">ejabberd_shaper_sup</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="ejabberd_sm.html">ejabberd_sm</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="ejabberd_sm_backend_sup.html">ejabberd_sm_backend_sup</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="ejabberd_sm_mnesia.html">ejabberd_sm_mnesia</a>
+  </div>
+    <div class="summary-synopsis">Implementation of Mnesia-based session manager</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="ejabberd_sm_redis.html">ejabberd_sm_redis</a>
+  </div>
+    <div class="summary-synopsis">Implementation of Redis-based session manager</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="ejabberd_socket.html">ejabberd_socket</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="ejabberd_sup.html">ejabberd_sup</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="ejabberd_tls.html">ejabberd_tls</a>
+  </div>
+    <div class="summary-synopsis"><p>this module provides general TLS interface for MongooseIM.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="ejabberd_tmp_sup.html">ejabberd_tmp_sup</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="ejabberd_users.html">ejabberd_users</a>
+  </div>
+    <div class="summary-synopsis">Stores info about non-anonymous users using Mnesia table.</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="ejabberd_zlib.html">ejabberd_zlib</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="eldap_filter.html">eldap_filter</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="eldap_filter_yecc.html">eldap_filter_yecc</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="eldap_pool.html">eldap_pool</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="eldap_utils.html">eldap_utils</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="extauth.html">extauth</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="gdpr.html">gdpr</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="gen_iq_handler.html">gen_iq_handler</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="gen_mod.html">gen_mod</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="gen_mod_deps.html">gen_mod_deps</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="jingle_sip_helper.html">jingle_sip_helper</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="jlib.html">jlib</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="just_tls.html">just_tls</a>
+  </div>
+    <div class="summary-synopsis">TLS backend based on standard Erlang's SSL application</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mam_iq.html">mam_iq</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mam_jid.html">mam_jid</a>
+  </div>
+    <div class="summary-synopsis"><p>Encoder and decoder for MAM JIDs</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mam_jid_mini.html">mam_jid_mini</a>
+  </div>
+    <div class="summary-synopsis">Encoding and decoding using user's JID for compressing</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mam_jid_rfc.html">mam_jid_rfc</a>
+  </div>
+    <div class="summary-synopsis">Encoding and decoding using encoding described in XMPP RFC specification</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mam_message.html">mam_message</a>
+  </div>
+    <div class="summary-synopsis"><p>Encoder and decoder for MAM messages</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mam_message_compressed_eterm.html">mam_message_compressed_eterm</a>
+  </div>
+    <div class="summary-synopsis">Encoding and decoding messages using internal erlang format and zlib</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mam_message_eterm.html">mam_message_eterm</a>
+  </div>
+    <div class="summary-synopsis">Encoding and decoding messages using internal erlang format</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mam_message_xml.html">mam_message_xml</a>
+  </div>
+    <div class="summary-synopsis">Encoding and decoding messages using exml library</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mod_adhoc.html">mod_adhoc</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mod_amp.html">mod_amp</a>
+  </div>
+    <div class="summary-synopsis">MongooseIM/Ejabberd module for (a subset of) XEP-0079 support. This work was sponsored by Grindr LLC</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mod_auth_token.html">mod_auth_token</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mod_auth_token_rdbms.html">mod_auth_token_rdbms</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mod_aws_sns.html">mod_aws_sns</a>
+  </div>
+    <div class="summary-synopsis">Amazon SNS notifications. This module gathers all message send by users and all presence changes and publishes those events to AWS SNS.</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mod_blocking.html">mod_blocking</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mod_bosh.html">mod_bosh</a>
+  </div>
+    <div class="summary-synopsis">Cowboy based BOSH support for MongooseIM</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mod_bosh_mnesia.html">mod_bosh_mnesia</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mod_bosh_socket.html">mod_bosh_socket</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mod_caps.html">mod_caps</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mod_carboncopy.html">mod_carboncopy</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mod_commands.html">mod_commands</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mod_cowboy.html">mod_cowboy</a>
+  </div>
+    <div class="summary-synopsis"><p>HTTP routing layer for MongooseIM's Cowboy listener</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mod_csi.html">mod_csi</a>
+  </div>
+    <div class="summary-synopsis"><p>Client State Indication.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mod_disco.html">mod_disco</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mod_event_pusher.html">mod_event_pusher</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mod_event_pusher_hook_translator.html">mod_event_pusher_hook_translator</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mod_event_pusher_http.html">mod_event_pusher_http</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mod_event_pusher_http_defaults.html">mod_event_pusher_http_defaults</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mod_event_pusher_push.html">mod_event_pusher_push</a>
+  </div>
+    <div class="summary-synopsis">Implementation of XEP-0357</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mod_event_pusher_push_mnesia.html">mod_event_pusher_push_mnesia</a>
+  </div>
+    <div class="summary-synopsis">Mnesia backend for mod_event_pusher_push.</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mod_event_pusher_push_plugin_defaults.html">mod_event_pusher_push_plugin_defaults</a>
+  </div>
+    <div class="summary-synopsis">Default plugin module for mod_event_pusher_push. This module allows for some dynamic customizations.</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mod_event_pusher_push_plugin_enhanced.html">mod_event_pusher_push_plugin_enhanced</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mod_event_pusher_push_rdbms.html">mod_event_pusher_push_rdbms</a>
+  </div>
+    <div class="summary-synopsis">RDBMS backend for mod_event_pusher_push.</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mod_event_pusher_rabbit.html">mod_event_pusher_rabbit</a>
+  </div>
+    <div class="summary-synopsis">Backend for <code>mod_event_pusher</code> that supports RabbitMQ integration.</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mod_event_pusher_sns.html">mod_event_pusher_sns</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mod_event_pusher_sns_defaults.html">mod_event_pusher_sns_defaults</a>
+  </div>
+    <div class="summary-synopsis">Plugin module defining default custom behaviour for AWS SNS notifications.</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mod_extdisco.html">mod_extdisco</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mod_global_distrib.html">mod_global_distrib</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mod_global_distrib_bounce.html">mod_global_distrib_bounce</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mod_global_distrib_connection.html">mod_global_distrib_connection</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mod_global_distrib_disco.html">mod_global_distrib_disco</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mod_global_distrib_hosts_refresher.html">mod_global_distrib_hosts_refresher</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mod_global_distrib_mapping.html">mod_global_distrib_mapping</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mod_global_distrib_mapping_redis.html">mod_global_distrib_mapping_redis</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mod_global_distrib_outgoing_conns_sup.html">mod_global_distrib_outgoing_conns_sup</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mod_global_distrib_receiver.html">mod_global_distrib_receiver</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mod_global_distrib_sender.html">mod_global_distrib_sender</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mod_global_distrib_server_mgr.html">mod_global_distrib_server_mgr</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mod_global_distrib_server_sup.html">mod_global_distrib_server_sup</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mod_global_distrib_transport.html">mod_global_distrib_transport</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mod_global_distrib_utils.html">mod_global_distrib_utils</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mod_global_distrib_worker.html">mod_global_distrib_worker</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mod_global_distrib_worker_sup.html">mod_global_distrib_worker_sup</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mod_http_upload.html">mod_http_upload</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mod_http_upload_s3.html">mod_http_upload_s3</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mod_inbox.html">mod_inbox</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mod_inbox_muc.html">mod_inbox_muc</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mod_inbox_muclight.html">mod_inbox_muclight</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mod_inbox_one2one.html">mod_inbox_one2one</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mod_inbox_rdbms.html">mod_inbox_rdbms</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mod_inbox_rdbms_mssql.html">mod_inbox_rdbms_mssql</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mod_inbox_rdbms_mysql.html">mod_inbox_rdbms_mysql</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mod_inbox_rdbms_pgsql.html">mod_inbox_rdbms_pgsql</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mod_inbox_utils.html">mod_inbox_utils</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mod_jingle_sip_backend.html">mod_jingle_sip_backend</a>
+  </div>
+    <div class="summary-synopsis">Backend module for mod_jingle_sip</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mod_keystore.html">mod_keystore</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mod_keystore_mnesia.html">mod_keystore_mnesia</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mod_last.html">mod_last</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mod_last_mnesia.html">mod_last_mnesia</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mod_last_rdbms.html">mod_last_rdbms</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mod_last_riak.html">mod_last_riak</a>
+  </div>
+    <div class="summary-synopsis"><p>Riak backend for last activity XEP</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mod_mam.html">mod_mam</a>
+  </div>
+    <div class="summary-synopsis"><p>XEP-0313: Message Archive Management</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mod_mam_cache_user.html">mod_mam_cache_user</a>
+  </div>
+    <div class="summary-synopsis"><p>Stores cache using ETS-table. This module is a proxy for <code>mod_mam_rdbms_user</code> (it should be started).</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mod_mam_cassandra_arch.html">mod_mam_cassandra_arch</a>
+  </div>
+    <div class="summary-synopsis">RDBMS backend for Message Archive Management.</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mod_mam_cassandra_prefs.html">mod_mam_cassandra_prefs</a>
+  </div>
+    <div class="summary-synopsis">A backend for storing MAM preferencies using Cassandra.</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mod_mam_elasticsearch_arch.html">mod_mam_elasticsearch_arch</a>
+  </div>
+    <div class="summary-synopsis">ElasticSearch backend for Message Archive Management for one-to-one messages. ------------------------------------------------------------------</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mod_mam_meta.html">mod_mam_meta</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mod_mam_mnesia_prefs.html">mod_mam_mnesia_prefs</a>
+  </div>
+    <div class="summary-synopsis"><p>A backend for storing MAM preferencies using Mnesia.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mod_mam_muc.html">mod_mam_muc</a>
+  </div>
+    <div class="summary-synopsis"><p>XEP-0313: Message Archive Management</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mod_mam_muc_cache_user.html">mod_mam_muc_cache_user</a>
+  </div>
+    <div class="summary-synopsis"><p>Stores cache using ETS-table (special version for MUC). This module is a proxy for <code>mod_mam_rdbms_user</code> (it should be started).</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mod_mam_muc_cassandra_arch.html">mod_mam_muc_cassandra_arch</a>
+  </div>
+    <div class="summary-synopsis">RDBMS backend for Message Archive Management.</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mod_mam_muc_elasticsearch_arch.html">mod_mam_muc_elasticsearch_arch</a>
+  </div>
+    <div class="summary-synopsis">ElasticSearch backend for Message Archive Management for group messages. ------------------------------------------------------------------</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mod_mam_muc_rdbms_arch.html">mod_mam_muc_rdbms_arch</a>
+  </div>
+    <div class="summary-synopsis">A backend for storing messages from MUC rooms using RDBMS.</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mod_mam_muc_rdbms_async_pool_writer.html">mod_mam_muc_rdbms_async_pool_writer</a>
+  </div>
+    <div class="summary-synopsis">Collect messages and flush them into the database.</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mod_mam_params.html">mod_mam_params</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mod_mam_rdbms_arch.html">mod_mam_rdbms_arch</a>
+  </div>
+    <div class="summary-synopsis">RDBMS backend for Message Archive Management.</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mod_mam_rdbms_async_pool_writer.html">mod_mam_rdbms_async_pool_writer</a>
+  </div>
+    <div class="summary-synopsis"><p>Collect messages and flush them into the database.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mod_mam_rdbms_prefs.html">mod_mam_rdbms_prefs</a>
+  </div>
+    <div class="summary-synopsis">A backend for storing MAM preferencies using RDBMS.</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mod_mam_rdbms_user.html">mod_mam_rdbms_user</a>
+  </div>
+    <div class="summary-synopsis"><p>Assigns archive integer identifiers (multihost version).</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mod_mam_riak_timed_arch_yz.html">mod_mam_riak_timed_arch_yz</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mod_mam_sup.html">mod_mam_sup</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mod_mam_utils.html">mod_mam_utils</a>
+  </div>
+    <div class="summary-synopsis">General functions for MAM.</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mod_muc.html">mod_muc</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mod_muc_commands.html">mod_muc_commands</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mod_muc_db.html">mod_muc_db</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mod_muc_db_mnesia.html">mod_muc_db_mnesia</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mod_muc_db_rdbms.html">mod_muc_db_rdbms</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mod_muc_iq.html">mod_muc_iq</a>
+  </div>
+    <div class="summary-synopsis">Stores a table of custom IQ-handlers for mod_muc_room.</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mod_muc_light.html">mod_muc_light</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mod_muc_light_codec_legacy.html">mod_muc_light_codec_legacy</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mod_muc_light_codec_modern.html">mod_muc_light_codec_modern</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mod_muc_light_commands.html">mod_muc_light_commands</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mod_muc_light_db.html">mod_muc_light_db</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mod_muc_light_db_mnesia.html">mod_muc_light_db_mnesia</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mod_muc_light_db_rdbms.html">mod_muc_light_db_rdbms</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mod_muc_light_db_rdbms_sql.html">mod_muc_light_db_rdbms_sql</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mod_muc_light_room.html">mod_muc_light_room</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mod_muc_light_room_config.html">mod_muc_light_room_config</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mod_muc_light_utils.html">mod_muc_light_utils</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mod_muc_log.html">mod_muc_log</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mod_muc_room.html">mod_muc_room</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mod_offline.html">mod_offline</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mod_offline_chatmarkers.html">mod_offline_chatmarkers</a>
+  </div>
+    <div class="summary-synopsis"><p>This module optimizes offline storage for chat markers in the next way</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mod_offline_chatmarkers_rdbms.html">mod_offline_chatmarkers_rdbms</a>
+  </div>
+    <div class="summary-synopsis">RDBMS backend for mod_offline_chatmarkers module.</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mod_offline_mnesia.html">mod_offline_mnesia</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mod_offline_rdbms.html">mod_offline_rdbms</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mod_offline_riak.html">mod_offline_riak</a>
+  </div>
+    <div class="summary-synopsis"><p>Riak backend for last activity XEP</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mod_offline_stub.html">mod_offline_stub</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mod_ping.html">mod_ping</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mod_privacy.html">mod_privacy</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mod_privacy_mnesia.html">mod_privacy_mnesia</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mod_privacy_rdbms.html">mod_privacy_rdbms</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mod_privacy_riak.html">mod_privacy_riak</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mod_private.html">mod_private</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mod_private_mnesia.html">mod_private_mnesia</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mod_private_rdbms.html">mod_private_rdbms</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mod_private_riak.html">mod_private_riak</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mod_pubsub.html">mod_pubsub</a>
+  </div>
+    <div class="summary-synopsis">The module mod_pubsub is the core of the PubSub extension. It relies on PubSub plugins for a large part of its functions.</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mod_pubsub_cache.html">mod_pubsub_cache</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mod_pubsub_cache_mnesia.html">mod_pubsub_cache_mnesia</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mod_pubsub_cache_rdbms.html">mod_pubsub_cache_rdbms</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mod_pubsub_db.html">mod_pubsub_db</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mod_pubsub_db_mnesia.html">mod_pubsub_db_mnesia</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mod_pubsub_db_rdbms.html">mod_pubsub_db_rdbms</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mod_pubsub_db_rdbms_sql.html">mod_pubsub_db_rdbms_sql</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mod_push_service_mongoosepush.html">mod_push_service_mongoosepush</a>
+  </div>
+    <div class="summary-synopsis">Adapter for MongoosePush service.</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mod_register.html">mod_register</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mod_revproxy.html">mod_revproxy</a>
+  </div>
+    <div class="summary-synopsis">HTTP(S) reverse proxy for MongooseIM's Cowboy listener</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mod_roster.html">mod_roster</a>
+  </div>
+    <div class="summary-synopsis"><p>Roster management (Mnesia storage).</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mod_roster_mnesia.html">mod_roster_mnesia</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mod_roster_rdbms.html">mod_roster_rdbms</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mod_roster_riak.html">mod_roster_riak</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mod_shared_roster_ldap.html">mod_shared_roster_ldap</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mod_sic.html">mod_sic</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mod_smart_markers.html">mod_smart_markers</a>
+  </div>
+    <div class="summary-synopsis"><p>This module implements storage of the latest chat markers sent by the users. This can be used to optimize mod_offline functionality, or to implement custom fetching protocol and avoid storage of chat markers in MAM.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mod_smart_markers_rdbms.html">mod_smart_markers_rdbms</a>
+  </div>
+    <div class="summary-synopsis">RDBMS backend for mod_smart_markers</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mod_stream_management.html">mod_stream_management</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mod_t.html">mod_t</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mod_t_rdbms.html">mod_t_rdbms</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mod_time.html">mod_time</a>
+  </div>
+    <div class="summary-synopsis">XEP-0202: Entity Time</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mod_vcard.html">mod_vcard</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mod_vcard_ldap.html">mod_vcard_ldap</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mod_vcard_mnesia.html">mod_vcard_mnesia</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mod_vcard_rdbms.html">mod_vcard_rdbms</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mod_vcard_riak.html">mod_vcard_riak</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mod_version.html">mod_version</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mod_websockets.html">mod_websockets</a>
+  </div>
+    <div class="summary-synopsis">Module providing support for websockets in MongooseIM</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mongoose_acc.html">mongoose_acc</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mongoose_amqp.html">mongoose_amqp</a>
+  </div>
+    <div class="summary-synopsis">This module provides an API for dealing with AMQP operations.</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mongoose_api.html">mongoose_api</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mongoose_api_admin.html">mongoose_api_admin</a>
+  </div>
+    <div class="summary-synopsis">MongooseIM REST HTTP API for administration. This module implements cowboy REST callbacks and passes the requests on to the http api backend module.</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mongoose_api_client.html">mongoose_api_client</a>
+  </div>
+    <div class="summary-synopsis">MongooseIM REST HTTP API for clients. This module implements cowboy REST callbacks and passes the requests on to the http api backend module. It provides also client authorization mechanism</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mongoose_api_common.html">mongoose_api_common</a>
+  </div>
+    <div class="summary-synopsis"><p>MongooseIM REST API backend</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mongoose_api_format.html">mongoose_api_format</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mongoose_api_json.html">mongoose_api_json</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mongoose_api_metrics.html">mongoose_api_metrics</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mongoose_api_users.html">mongoose_api_users</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mongoose_api_xml.html">mongoose_api_xml</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mongoose_bin.html">mongoose_bin</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mongoose_cassandra.html">mongoose_cassandra</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mongoose_cassandra_pool.html">mongoose_cassandra_pool</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mongoose_cassandra_worker.html">mongoose_cassandra_worker</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mongoose_cleaner.html">mongoose_cleaner</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mongoose_client_api.html">mongoose_client_api</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mongoose_client_api_contacts.html">mongoose_client_api_contacts</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mongoose_client_api_contacts_doc.html">mongoose_client_api_contacts_doc</a>
+  </div>
+    <div class="summary-synopsis">This module provided documentation of MongooseIM client REST API Contacts: /api/contacts/[:jid]</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mongoose_client_api_messages.html">mongoose_client_api_messages</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mongoose_client_api_messages_doc.html">mongoose_client_api_messages_doc</a>
+  </div>
+    <div class="summary-synopsis">This module provided documentation of MongooseIM client REST API Messages: /api/messages/[:with] This module can be used as base template for other custom REST API documentation</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mongoose_client_api_rooms.html">mongoose_client_api_rooms</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mongoose_client_api_rooms_config.html">mongoose_client_api_rooms_config</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mongoose_client_api_rooms_config_doc.html">mongoose_client_api_rooms_config_doc</a>
+  </div>
+    <div class="summary-synopsis">This module provided documentation of MongooseIM client REST API Rooms: /api/rooms/[:id]/config</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mongoose_client_api_rooms_doc.html">mongoose_client_api_rooms_doc</a>
+  </div>
+    <div class="summary-synopsis">This module provided documentation of MongooseIM client REST API Rooms: /api/rooms/[:id]</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mongoose_client_api_rooms_messages.html">mongoose_client_api_rooms_messages</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mongoose_client_api_rooms_messages_doc.html">mongoose_client_api_rooms_messages_doc</a>
+  </div>
+    <div class="summary-synopsis">This module provided documentation of MongooseIM client REST API Rooms: /api/rooms/[:id]/messages</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mongoose_client_api_rooms_users.html">mongoose_client_api_rooms_users</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mongoose_client_api_rooms_users_doc.html">mongoose_client_api_rooms_users_doc</a>
+  </div>
+    <div class="summary-synopsis">This module provided documentation of MongooseIM client REST API Rooms: /api/rooms/:id/users/[:user]</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mongoose_client_api_sse.html">mongoose_client_api_sse</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mongoose_cluster.html">mongoose_cluster</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mongoose_cluster_id.html">mongoose_cluster_id</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mongoose_config_flat.html">mongoose_config_flat</a>
+  </div>
+    <div class="summary-synopsis"><p>Pure flat config logic. No ets table manipulations, no Mnesia, no starting modules, no file reading here. Everything here is safe, side effect free. OK, logging is possible, but keep it to minimum.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mongoose_config_helper.html">mongoose_config_helper</a>
+  </div>
+    <div class="summary-synopsis">Helper functions to play with options in the shell.</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mongoose_config_parser.html">mongoose_config_parser</a>
+  </div>
+    <div class="summary-synopsis">Parsing and processing of MongooseIM config files - parser backends: 'cfg' and 'toml' - config state management</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mongoose_config_parser_cfg.html">mongoose_config_parser_cfg</a>
+  </div>
+    <div class="summary-synopsis">Config parsing and processing for the 'cfg' format</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mongoose_config_parser_toml.html">mongoose_config_parser_toml</a>
+  </div>
+    <div class="summary-synopsis">Config parsing and processing for the TOML format</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mongoose_config_reload.html">mongoose_config_reload</a>
+  </div>
+    <div class="summary-synopsis">Pure config reloading logic. No ets table manipulations, no Mnesia, no starting modules, no file reading here. Everything here is safe, side effect free. OK, logging is possible, but keep it to minimum.</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mongoose_config_terms.html">mongoose_config_terms</a>
+  </div>
+    <div class="summary-synopsis">Parsing of the 'cfg' file to Erlang terms</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mongoose_config_utils.html">mongoose_config_utils</a>
+  </div>
+    <div class="summary-synopsis">Short functions useful for config file manipulations. This stuff can be pure, but most likely not. It's for generic functions.</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mongoose_config_validator_toml.html">mongoose_config_validator_toml</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mongoose_cover_helper.html">mongoose_cover_helper</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mongoose_deprecations.html">mongoose_deprecations</a>
+  </div>
+    <div class="summary-synopsis">This module is responsible for initialising and stopping stuff needed to handle different deprecation warinings as well as for exposing API for loging these deprecations. It checks whether a specific deprecation warning is not exceeding given frequency of logging.</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mongoose_elasticsearch.html">mongoose_elasticsearch</a>
+  </div>
+    <div class="summary-synopsis">Provides functions to interact with ElasticSearch cluster via HTTP API. ------------------------------------------------------------------</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mongoose_fips.html">mongoose_fips</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mongoose_flatlog_formatter.html">mongoose_flatlog_formatter</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mongoose_hooks.html">mongoose_hooks</a>
+  </div>
+    <div class="summary-synopsis"><p>Hooks wrapper providing clear specifications for a hook caller.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mongoose_http_client.html">mongoose_http_client</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mongoose_iq.html">mongoose_iq</a>
+  </div>
+    <div class="summary-synopsis"><p>Functions to work with iq record.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mongoose_json_formatter.html">mongoose_json_formatter</a>
+  </div>
+    <div class="summary-synopsis">A module formatting logger reports into JSON objects.</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mongoose_ldap_worker.html">mongoose_ldap_worker</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mongoose_lib.html">mongoose_lib</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mongoose_local_delivery.html">mongoose_local_delivery</a>
+  </div>
+    <div class="summary-synopsis">Completes delivery to local recipient or a component; called by main routing chain if it finds a handler to direct the message to.</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mongoose_log_filter.html">mongoose_log_filter</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mongoose_logs.html">mongoose_logs</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mongoose_mam_id.html">mongoose_mam_id</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mongoose_metrics.html">mongoose_metrics</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mongoose_metrics_hooks.html">mongoose_metrics_hooks</a>
+  </div>
+    <div class="summary-synopsis">MongooseIM hooks for general metrics</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mongoose_metrics_mam_hooks.html">mongoose_metrics_mam_hooks</a>
+  </div>
+    <div class="summary-synopsis">MAM hooks for general metrics</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mongoose_metrics_probe.html">mongoose_metrics_probe</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mongoose_metrics_probe_queues.html">mongoose_metrics_probe_queues</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mongoose_metrics_probe_tcp.html">mongoose_metrics_probe_tcp</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mongoose_module_metrics.html">mongoose_module_metrics</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mongoose_packet_handler.html">mongoose_packet_handler</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mongoose_privacy.html">mongoose_privacy</a>
+  </div>
+    <div class="summary-synopsis">Generic functions for checking packet against privacy rules. Works by calling 'privacy_check_packet' hooks to which various handlers might be attached.</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mongoose_rabbit_worker.html">mongoose_rabbit_worker</a>
+  </div>
+    <div class="summary-synopsis">Generic RabbitMQ worker. The module is responsible for interacting with RabbitMQ server. Worker holds its own AMQP connection and channel in its state.</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mongoose_rdbms_mysql.html">mongoose_rdbms_mysql</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mongoose_rdbms_odbc.html">mongoose_rdbms_odbc</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mongoose_rdbms_pgsql.html">mongoose_rdbms_pgsql</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mongoose_rdbms_pgsql_codec_boolean.html">mongoose_rdbms_pgsql_codec_boolean</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mongoose_redis.html">mongoose_redis</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mongoose_riak.html">mongoose_riak</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mongoose_router_external.html">mongoose_router_external</a>
+  </div>
+    <div class="summary-synopsis">Part of a routing chain; checks if there is an external component registered for the domain and directs the message there if there is, otherwise just passes it on.</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mongoose_router_external_localnode.html">mongoose_router_external_localnode</a>
+  </div>
+    <div class="summary-synopsis">Part of a routing chain; checks if there is an external component registered for the domain on this node and directs the message there if there is, otherwise just passes it on.</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mongoose_router_global.html">mongoose_router_global</a>
+  </div>
+    <div class="summary-synopsis">Part of a routing chain; does only filtering - uses hooks to check if the message should be routed at all. This one should be the first module in chain.</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mongoose_router_localdomain.html">mongoose_router_localdomain</a>
+  </div>
+    <div class="summary-synopsis">Part of a routing chain: searches for a route registered for the domain, forwards the messge there, or passes on.</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mongoose_scram.html">mongoose_scram</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mongoose_service.html">mongoose_service</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mongoose_session.html">mongoose_session</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mongoose_subhosts.html">mongoose_subhosts</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mongoose_system_metrics_collector.html">mongoose_system_metrics_collector</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mongoose_system_metrics_file.html">mongoose_system_metrics_file</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mongoose_system_metrics_sender.html">mongoose_system_metrics_sender</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mongoose_tcp_listener.html">mongoose_tcp_listener</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mongoose_transport.html">mongoose_transport</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mongoose_udp_listener.html">mongoose_udp_listener</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mongoose_wpool.html">mongoose_wpool</a>
+  </div>
+    <div class="summary-synopsis">This is here because there are pool options which have to be given when calling the pool (selection strategy, timeout), while we want to set it once for the pool and not worry about them later, hence additional storage.</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mongoose_wpool_cassandra.html">mongoose_wpool_cassandra</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mongoose_wpool_elastic.html">mongoose_wpool_elastic</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mongoose_wpool_generic.html">mongoose_wpool_generic</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mongoose_wpool_http.html">mongoose_wpool_http</a>
+  </div>
+    <div class="summary-synopsis">options and defaults: * server - (required) * path_prefix - &quot;&quot; * request_timeout - 2000, * http_opts - [] % passed to fusco</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mongoose_wpool_ldap.html">mongoose_wpool_ldap</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mongoose_wpool_mgr.html">mongoose_wpool_mgr</a>
+  </div>
+    <div class="summary-synopsis">This gen_server is responsible for starting and restarting pools of given type ==============================================================================</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mongoose_wpool_rabbit.html">mongoose_wpool_rabbit</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mongoose_wpool_rdbms.html">mongoose_wpool_rdbms</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mongoose_wpool_redis.html">mongoose_wpool_redis</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mongoose_wpool_riak.html">mongoose_wpool_riak</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mongoose_wpool_sup.html">mongoose_wpool_sup</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mongoose_wpool_type_sup.html">mongoose_wpool_type_sup</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mongoose_xmpp_errors.html">mongoose_xmpp_errors</a>
+  </div>
+    <div class="summary-synopsis">The functions in this module were previously defined as macros in jlib.hrl</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="mongooseim.html">mongooseim</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="monitored_map.html">monitored_map</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="node_dag.html">node_dag</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="node_flat.html">node_flat</a>
+  </div>
+    <div class="summary-synopsis">The module node_flat is the default PubSub plugin.<p>It is used as a default for all unknown PubSub node type. It can serve as a developer basis and reference to build its own custom pubsub node types.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="node_hometree.html">node_hometree</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="node_pep.html">node_pep</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="node_push.html">node_push</a>
+  </div>
+    <div class="summary-synopsis">Node implementation that proxies all published items to <code>push_notification</code> hook.</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="nodetree_dag.html">nodetree_dag</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="nodetree_tree.html">nodetree_tree</a>
+  </div>
+    <div class="summary-synopsis">The module nodetree_tree is the default PubSub node tree plugin.<p>It is used as a default for all unknown PubSub node type. It can serve as a developer basis and reference to build its own custom pubsub node tree types.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="p1_fsm_old.html">p1_fsm_old</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="pubsub_form_utils.html">pubsub_form_utils</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="pubsub_index.html">pubsub_index</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="rdbms_queries.html">rdbms_queries</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="rdbms_queries_mssql.html">rdbms_queries_mssql</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="safely.html">safely</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="service_admin_extra.html">service_admin_extra</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="service_admin_extra_accounts.html">service_admin_extra_accounts</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="service_admin_extra_gdpr.html">service_admin_extra_gdpr</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="service_admin_extra_last.html">service_admin_extra_last</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="service_admin_extra_node.html">service_admin_extra_node</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="service_admin_extra_private.html">service_admin_extra_private</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="service_admin_extra_roster.html">service_admin_extra_roster</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="service_admin_extra_sessions.html">service_admin_extra_sessions</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="service_admin_extra_srg.html">service_admin_extra_srg</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="service_admin_extra_stanza.html">service_admin_extra_stanza</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="service_admin_extra_stats.html">service_admin_extra_stats</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="service_admin_extra_upload.html">service_admin_extra_upload</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="service_admin_extra_vcard.html">service_admin_extra_vcard</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="service_mongoose_system_metrics.html">service_mongoose_system_metrics</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="sha.html">sha</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="shaper.html">shaper</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="shaper_srv.html">shaper_srv</a>
+  </div>
+    <div class="summary-synopsis">Shared shapers.</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="stream_management_stale_h.html">stream_management_stale_h</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="translate.html">translate</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="xml.html">xml</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="xmpp_router.html">xmpp_router</a>
+  </div>
+    <div class="summary-synopsis"><p>A behaviour which should be used by all modules being used in a routing pipeline. The pipeline, manage by ejabberd_router:route func, calls filter and route for each successful module.</p></div>
+</div>
+    </div>
+  </section>
+
+      <footer class="footer">
+        <p>
+          <span class="line">
+            Built using
+            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener">ExDoc</a> (v0.23.0) for the
+            <a href="https://elixir-lang.org" title="Elixir" target="_blank">Elixir programming language</a>.
+          </span>
+          <span class="line">
+            Designed by
+            <a href="https://twitter.com/dignifiedquire" target="_blank" rel="noopener" title="@dignifiedquire">Friedel Ziegelmayer</a>.
+          </span>
+        </p>
+        <p>
+            <a href="api-reference.html" title="API reference" class="line footer-button">API Reference</a>
+          <button class="line footer-button display-shortcuts-help">
+            Display keyboard shortcuts
+          </button>
+          <button class="line footer-button night-mode-toggle">
+            Toggle night mode
+          </button>
+          <button class="line footer-button display-quick-switch">
+            Go to a HexDocs package
+          </button>
+          <button class="line footer-button tooltips-toggle">
+            <span class="tooltips-option-disable">Disable tooltips</span>
+            <span class="tooltips-option-enable">Enable tooltips</span>
+          </button>
+        </p>
+      </footer>
+    </div>
+  </div>
+</section>
+</div>
+  </body>
+</html>

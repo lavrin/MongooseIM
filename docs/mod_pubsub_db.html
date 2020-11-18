@@ -1,0 +1,1131 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.23.0">
+    <meta name="project" content="MongooseIM v4.0.1">
+    <title>mod_pubsub_db — MongooseIM v4.0.1</title>
+    <link rel="stylesheet" href="dist/erlang-8a5f731dbc512bf6261b.css" />
+    <script src="dist/sidebar_items-38e40981d8.js"></script>
+      <script src="docs_config.js"></script>
+    <script async src="dist/app-60a0c9f10e9e52eae31f.js"></script>
+  </head>
+  <body data-type="modules">
+    <script>try { if(localStorage.getItem('night-mode') === 'true') document.body.className += ' night-mode'; } catch (e) { }</script>
+<div class="main">
+
+<button class="sidebar-button sidebar-toggle">
+  <span class="icon-menu" title="Collapse/expand sidebar"></span>
+</button>
+
+<section class="sidebar">
+  <form class="sidebar-search" action="search.html">
+    <button type="submit" class="search-button" aria-label="Submit Search">
+      <span class="icon-search" aria-hidden="true" title="Submit search"></span>
+    </button>
+    <button type="button" tabindex="-1" class="search-close-button" aria-label="Cancel Search">
+      <span class="icon-cross" aria-hidden="true" title="Cancel search"></span>
+    </button>
+    <label class="search-label">
+      <input name="q" type="text" id="search-list" class="search-input" placeholder="Search..." aria-label="Input your search terms" autocomplete="off" />
+    </label>
+  </form>
+
+  <div class="autocomplete">
+    <div class="autocomplete-results">
+    </div>
+  </div>
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectDetails">
+      <a href="mongooseim.html" class="sidebar-projectName">
+MongooseIM      </a>
+      <strong class="sidebar-projectVersion">
+        v4.0.1
+      </strong>
+    </div>
+  </div>
+
+  <ul class="sidebar-listNav">
+    <li><a id="extras-list" href="#full-list">Pages</a></li>
+
+      <li><a id="modules-list" href="#full-list">Modules</a></li>
+
+  </ul>
+  <div class="gradient"></div>
+  <ul id="full-list" class="sidebar-fullList"></ul>
+</section>
+
+<section class="content">
+  <div class="content-outer">
+    <div id="content" class="content-inner">
+
+      <h1>
+        mod_pubsub_db <small>behaviour</small> <small class="app-vsn">(MongooseIM v4.0.1)</small>
+      </h1>
+
+
+
+        <section id="summary" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#summary">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+            Summary
+          </h1>
+  <div class="summary-functions summary">
+    <h2>
+      <a href="#functions">Functions</a>
+    </h2>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#db_error/3">db_error/3</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#extra_debug_fun/1">extra_debug_fun/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#sanitize_reason/1">sanitize_reason/1</a>
+  </div>
+</div>
+  </div>
+  <div class="summary-callbacks summary">
+    <h2>
+      <a href="#callbacks">Callbacks</a>
+    </h2>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#c:add_item/3">add_item(nidx, jID, pubSubItem)</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#c:add_subscription/5">add_subscription(nidx, jID, sub, subId, subOpts)</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#c:create_node/2">create_node(nidx, owner)</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#c:del_item/2">del_item(nidx, itemId)</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#c:del_items/2">del_items(nidx, list)</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#c:del_node/1">del_node(nidx)</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#c:delete_all_subscriptions/2">delete_all_subscriptions(nidx, jID)</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#c:delete_node/1">delete_node(node)</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#c:delete_subscription/3">delete_subscription(nidx, jID, subId)</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#c:delete_user_subscriptions/1">delete_user_subscriptions(jID)</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#c:dirty/2">dirty(fun, errorDebug)</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#c:find_node_by_id/1">find_node_by_id(nidx)</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#c:find_node_by_name/2">find_node_by_name(key, node)</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#c:find_nodes_by_affiliated_user/1">find_nodes_by_affiliated_user(jID)</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#c:find_nodes_by_key/1">find_nodes_by_key(key)</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#c:get_affiliation/2">get_affiliation(nidx, jID)</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#c:get_idxs_of_own_nodes_with_pending_subs/1">get_idxs_of_own_nodes_with_pending_subs(jID)</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#c:get_item/2">get_item(nidx, itemId)</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#c:get_items/2">get_items(nidx, arg2)</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#c:get_node_entity_subscriptions/2">get_node_entity_subscriptions(nidx, jID)</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#c:get_node_subscriptions/1">get_node_subscriptions(nidx)</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#c:get_parentnodes_tree/2">get_parentnodes_tree(key, node)</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#c:get_state/2">get_state(nidx, jID)</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#c:get_states/1">get_states(nidx)</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#c:get_states_by_bare/1">get_states_by_bare(jID)</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#c:get_states_by_bare_and_full/1">get_states_by_bare_and_full(jID)</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#c:get_states_by_lus/1">get_states_by_lus(jID)</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#c:get_subnodes/2">get_subnodes(key, node)</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#c:get_subnodes_tree/2">get_subnodes_tree(key, node)</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#c:get_user_nodes/2">get_user_nodes(lUser, lServer)</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#c:get_user_payloads/2">get_user_payloads(lUser, lServer)</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#c:get_user_subscriptions/2">get_user_subscriptions(lUser, lServer)</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#c:remove_all_items/1">remove_all_items(nidx)</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#c:remove_items/3">remove_items(nidx, jID, itemIds)</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#c:set_affiliation/3">set_affiliation(nidx, jID, affiliation)</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#c:set_item/1">set_item(item)</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#c:set_node/1">set_node(node)</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#c:set_subscription_opts/4">set_subscription_opts(nidx, jID, subId, opts)</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#c:start/0">start()</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#c:stop/0">stop()</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#c:transaction/2">transaction(fun, errorDebug)</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#c:update_subscription/4">update_subscription(nidx, jID, subscription, subId)</a>
+  </div>
+</div>
+  </div>
+        </section>
+
+        <section id="functions" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#functions">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+Functions          </h1>
+          <div class="functions-list">
+<section class="detail" id="db_error/3">
+  <div class="detail-header">
+    <a href="#db_error/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">db_error/3</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_pubsub_db.db_error/3</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="extra_debug_fun/1">
+  <div class="detail-header">
+    <a href="#extra_debug_fun/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">extra_debug_fun/1</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_pubsub_db.extra_debug_fun/1</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="sanitize_reason/1">
+  <div class="detail-header">
+    <a href="#sanitize_reason/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">sanitize_reason/1</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+          </div>
+        </section>
+        <section id="callbacks" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#callbacks">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+Callbacks          </h1>
+          <div class="callbacks-list">
+<section class="detail" id="c:add_item/3">
+  <div class="detail-header">
+    <a href="#c:add_item/3" class="detail-link" title="Link to this callback">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this callback</span>
+    </a>
+    <h1 class="signature">add_item(nidx, jID, pubSubItem)</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>c:mod_pubsub_db.add_item/3</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="c:add_subscription/5">
+  <div class="detail-header">
+    <a href="#c:add_subscription/5" class="detail-link" title="Link to this callback">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this callback</span>
+    </a>
+    <h1 class="signature">add_subscription(nidx, jID, sub, subId, subOpts)</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>c:mod_pubsub_db.add_subscription/5</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="c:create_node/2">
+  <div class="detail-header">
+    <a href="#c:create_node/2" class="detail-link" title="Link to this callback">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this callback</span>
+    </a>
+    <h1 class="signature">create_node(nidx, owner)</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>c:mod_pubsub_db.create_node/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="c:del_item/2">
+  <div class="detail-header">
+    <a href="#c:del_item/2" class="detail-link" title="Link to this callback">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this callback</span>
+    </a>
+    <h1 class="signature">del_item(nidx, itemId)</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>c:mod_pubsub_db.del_item/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="c:del_items/2">
+  <div class="detail-header">
+    <a href="#c:del_items/2" class="detail-link" title="Link to this callback">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this callback</span>
+    </a>
+    <h1 class="signature">del_items(nidx, list)</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>c:mod_pubsub_db.del_items/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="c:del_node/1">
+  <div class="detail-header">
+    <a href="#c:del_node/1" class="detail-link" title="Link to this callback">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this callback</span>
+    </a>
+    <h1 class="signature">del_node(nidx)</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>c:mod_pubsub_db.del_node/1</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="c:delete_all_subscriptions/2">
+  <div class="detail-header">
+    <a href="#c:delete_all_subscriptions/2" class="detail-link" title="Link to this callback">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this callback</span>
+    </a>
+    <h1 class="signature">delete_all_subscriptions(nidx, jID)</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>c:mod_pubsub_db.delete_all_subscriptions/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="c:delete_node/1">
+  <div class="detail-header">
+    <a href="#c:delete_node/1" class="detail-link" title="Link to this callback">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this callback</span>
+    </a>
+    <h1 class="signature">delete_node(node)</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>c:mod_pubsub_db.delete_node/1</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="c:delete_subscription/3">
+  <div class="detail-header">
+    <a href="#c:delete_subscription/3" class="detail-link" title="Link to this callback">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this callback</span>
+    </a>
+    <h1 class="signature">delete_subscription(nidx, jID, subId)</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>c:mod_pubsub_db.delete_subscription/3</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="c:delete_user_subscriptions/1">
+  <div class="detail-header">
+    <a href="#c:delete_user_subscriptions/1" class="detail-link" title="Link to this callback">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this callback</span>
+    </a>
+    <h1 class="signature">delete_user_subscriptions(jID)</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>c:mod_pubsub_db.delete_user_subscriptions/1</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="c:dirty/2">
+  <div class="detail-header">
+    <a href="#c:dirty/2" class="detail-link" title="Link to this callback">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this callback</span>
+    </a>
+    <h1 class="signature">dirty(fun, errorDebug)</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>c:mod_pubsub_db.dirty/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="c:find_node_by_id/1">
+  <div class="detail-header">
+    <a href="#c:find_node_by_id/1" class="detail-link" title="Link to this callback">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this callback</span>
+    </a>
+    <h1 class="signature">find_node_by_id(nidx)</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>c:mod_pubsub_db.find_node_by_id/1</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="c:find_node_by_name/2">
+  <div class="detail-header">
+    <a href="#c:find_node_by_name/2" class="detail-link" title="Link to this callback">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this callback</span>
+    </a>
+    <h1 class="signature">find_node_by_name(key, node)</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>c:mod_pubsub_db.find_node_by_name/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="c:find_nodes_by_affiliated_user/1">
+  <div class="detail-header">
+    <a href="#c:find_nodes_by_affiliated_user/1" class="detail-link" title="Link to this callback">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this callback</span>
+    </a>
+    <h1 class="signature">find_nodes_by_affiliated_user(jID)</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>c:mod_pubsub_db.find_nodes_by_affiliated_user/1</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="c:find_nodes_by_key/1">
+  <div class="detail-header">
+    <a href="#c:find_nodes_by_key/1" class="detail-link" title="Link to this callback">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this callback</span>
+    </a>
+    <h1 class="signature">find_nodes_by_key(key)</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>c:mod_pubsub_db.find_nodes_by_key/1</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="c:get_affiliation/2">
+  <div class="detail-header">
+    <a href="#c:get_affiliation/2" class="detail-link" title="Link to this callback">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this callback</span>
+    </a>
+    <h1 class="signature">get_affiliation(nidx, jID)</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>c:mod_pubsub_db.get_affiliation/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="c:get_idxs_of_own_nodes_with_pending_subs/1">
+  <div class="detail-header">
+    <a href="#c:get_idxs_of_own_nodes_with_pending_subs/1" class="detail-link" title="Link to this callback">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this callback</span>
+    </a>
+    <h1 class="signature">get_idxs_of_own_nodes_with_pending_subs(jID)</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>c:mod_pubsub_db.get_idxs_of_own_nodes_with_pending_subs/1</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="c:get_item/2">
+  <div class="detail-header">
+    <a href="#c:get_item/2" class="detail-link" title="Link to this callback">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this callback</span>
+    </a>
+    <h1 class="signature">get_item(nidx, itemId)</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>c:mod_pubsub_db.get_item/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="c:get_items/2">
+  <div class="detail-header">
+    <a href="#c:get_items/2" class="detail-link" title="Link to this callback">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this callback</span>
+    </a>
+    <h1 class="signature">get_items(nidx, arg2)</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>c:mod_pubsub_db.get_items/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="c:get_node_entity_subscriptions/2">
+  <div class="detail-header">
+    <a href="#c:get_node_entity_subscriptions/2" class="detail-link" title="Link to this callback">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this callback</span>
+    </a>
+    <h1 class="signature">get_node_entity_subscriptions(nidx, jID)</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>c:mod_pubsub_db.get_node_entity_subscriptions/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="c:get_node_subscriptions/1">
+  <div class="detail-header">
+    <a href="#c:get_node_subscriptions/1" class="detail-link" title="Link to this callback">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this callback</span>
+    </a>
+    <h1 class="signature">get_node_subscriptions(nidx)</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>c:mod_pubsub_db.get_node_subscriptions/1</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="c:get_parentnodes_tree/2">
+  <div class="detail-header">
+    <a href="#c:get_parentnodes_tree/2" class="detail-link" title="Link to this callback">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this callback</span>
+    </a>
+    <h1 class="signature">get_parentnodes_tree(key, node)</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>c:mod_pubsub_db.get_parentnodes_tree/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="c:get_state/2">
+  <div class="detail-header">
+    <a href="#c:get_state/2" class="detail-link" title="Link to this callback">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this callback</span>
+    </a>
+    <h1 class="signature">get_state(nidx, jID)</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>c:mod_pubsub_db.get_state/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="c:get_states/1">
+  <div class="detail-header">
+    <a href="#c:get_states/1" class="detail-link" title="Link to this callback">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this callback</span>
+    </a>
+    <h1 class="signature">get_states(nidx)</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>c:mod_pubsub_db.get_states/1</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="c:get_states_by_bare/1">
+  <div class="detail-header">
+    <a href="#c:get_states_by_bare/1" class="detail-link" title="Link to this callback">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this callback</span>
+    </a>
+    <h1 class="signature">get_states_by_bare(jID)</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>c:mod_pubsub_db.get_states_by_bare/1</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="c:get_states_by_bare_and_full/1">
+  <div class="detail-header">
+    <a href="#c:get_states_by_bare_and_full/1" class="detail-link" title="Link to this callback">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this callback</span>
+    </a>
+    <h1 class="signature">get_states_by_bare_and_full(jID)</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>c:mod_pubsub_db.get_states_by_bare_and_full/1</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="c:get_states_by_lus/1">
+  <div class="detail-header">
+    <a href="#c:get_states_by_lus/1" class="detail-link" title="Link to this callback">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this callback</span>
+    </a>
+    <h1 class="signature">get_states_by_lus(jID)</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>c:mod_pubsub_db.get_states_by_lus/1</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="c:get_subnodes/2">
+  <div class="detail-header">
+    <a href="#c:get_subnodes/2" class="detail-link" title="Link to this callback">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this callback</span>
+    </a>
+    <h1 class="signature">get_subnodes(key, node)</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>c:mod_pubsub_db.get_subnodes/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="c:get_subnodes_tree/2">
+  <div class="detail-header">
+    <a href="#c:get_subnodes_tree/2" class="detail-link" title="Link to this callback">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this callback</span>
+    </a>
+    <h1 class="signature">get_subnodes_tree(key, node)</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>c:mod_pubsub_db.get_subnodes_tree/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="c:get_user_nodes/2">
+  <div class="detail-header">
+    <a href="#c:get_user_nodes/2" class="detail-link" title="Link to this callback">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this callback</span>
+    </a>
+    <h1 class="signature">get_user_nodes(lUser, lServer)</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>c:mod_pubsub_db.get_user_nodes/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="c:get_user_payloads/2">
+  <div class="detail-header">
+    <a href="#c:get_user_payloads/2" class="detail-link" title="Link to this callback">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this callback</span>
+    </a>
+    <h1 class="signature">get_user_payloads(lUser, lServer)</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>c:mod_pubsub_db.get_user_payloads/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="c:get_user_subscriptions/2">
+  <div class="detail-header">
+    <a href="#c:get_user_subscriptions/2" class="detail-link" title="Link to this callback">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this callback</span>
+    </a>
+    <h1 class="signature">get_user_subscriptions(lUser, lServer)</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>c:mod_pubsub_db.get_user_subscriptions/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="c:remove_all_items/1">
+  <div class="detail-header">
+    <a href="#c:remove_all_items/1" class="detail-link" title="Link to this callback">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this callback</span>
+    </a>
+    <h1 class="signature">remove_all_items(nidx)</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>c:mod_pubsub_db.remove_all_items/1</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="c:remove_items/3">
+  <div class="detail-header">
+    <a href="#c:remove_items/3" class="detail-link" title="Link to this callback">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this callback</span>
+    </a>
+    <h1 class="signature">remove_items(nidx, jID, itemIds)</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>c:mod_pubsub_db.remove_items/3</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="c:set_affiliation/3">
+  <div class="detail-header">
+    <a href="#c:set_affiliation/3" class="detail-link" title="Link to this callback">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this callback</span>
+    </a>
+    <h1 class="signature">set_affiliation(nidx, jID, affiliation)</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>c:mod_pubsub_db.set_affiliation/3</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="c:set_item/1">
+  <div class="detail-header">
+    <a href="#c:set_item/1" class="detail-link" title="Link to this callback">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this callback</span>
+    </a>
+    <h1 class="signature">set_item(item)</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>c:mod_pubsub_db.set_item/1</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="c:set_node/1">
+  <div class="detail-header">
+    <a href="#c:set_node/1" class="detail-link" title="Link to this callback">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this callback</span>
+    </a>
+    <h1 class="signature">set_node(node)</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>c:mod_pubsub_db.set_node/1</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="c:set_subscription_opts/4">
+  <div class="detail-header">
+    <a href="#c:set_subscription_opts/4" class="detail-link" title="Link to this callback">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this callback</span>
+    </a>
+    <h1 class="signature">set_subscription_opts(nidx, jID, subId, opts)</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>c:mod_pubsub_db.set_subscription_opts/4</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="c:start/0">
+  <div class="detail-header">
+    <a href="#c:start/0" class="detail-link" title="Link to this callback">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this callback</span>
+    </a>
+    <h1 class="signature">start()</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>c:mod_pubsub_db.start/0</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="c:stop/0">
+  <div class="detail-header">
+    <a href="#c:stop/0" class="detail-link" title="Link to this callback">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this callback</span>
+    </a>
+    <h1 class="signature">stop()</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>c:mod_pubsub_db.stop/0</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="c:transaction/2">
+  <div class="detail-header">
+    <a href="#c:transaction/2" class="detail-link" title="Link to this callback">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this callback</span>
+    </a>
+    <h1 class="signature">transaction(fun, errorDebug)</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>c:mod_pubsub_db.transaction/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="c:update_subscription/4">
+  <div class="detail-header">
+    <a href="#c:update_subscription/4" class="detail-link" title="Link to this callback">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this callback</span>
+    </a>
+    <h1 class="signature">update_subscription(nidx, jID, subscription, subId)</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>c:mod_pubsub_db.update_subscription/4</pre>
+      </div>
+
+  </section>
+</section>
+          </div>
+        </section>
+      <footer class="footer">
+        <p>
+          <span class="line">
+            Built using
+            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener">ExDoc</a> (v0.23.0) for the
+            <a href="https://elixir-lang.org" title="Elixir" target="_blank">Elixir programming language</a>.
+          </span>
+          <span class="line">
+            Designed by
+            <a href="https://twitter.com/dignifiedquire" target="_blank" rel="noopener" title="@dignifiedquire">Friedel Ziegelmayer</a>.
+          </span>
+        </p>
+        <p>
+            <a href="api-reference.html" title="API reference" class="line footer-button">API Reference</a>
+          <button class="line footer-button display-shortcuts-help">
+            Display keyboard shortcuts
+          </button>
+          <button class="line footer-button night-mode-toggle">
+            Toggle night mode
+          </button>
+          <button class="line footer-button display-quick-switch">
+            Go to a HexDocs package
+          </button>
+          <button class="line footer-button tooltips-toggle">
+            <span class="tooltips-option-disable">Disable tooltips</span>
+            <span class="tooltips-option-enable">Enable tooltips</span>
+          </button>
+        </p>
+      </footer>
+    </div>
+  </div>
+</section>
+</div>
+  </body>
+</html>

@@ -1,0 +1,3053 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.23.0">
+    <meta name="project" content="MongooseIM v4.0.1">
+    <title>mongoose_hooks — MongooseIM v4.0.1</title>
+    <link rel="stylesheet" href="dist/erlang-8a5f731dbc512bf6261b.css" />
+    <script src="dist/sidebar_items-38e40981d8.js"></script>
+      <script src="docs_config.js"></script>
+    <script async src="dist/app-60a0c9f10e9e52eae31f.js"></script>
+  </head>
+  <body data-type="modules">
+    <script>try { if(localStorage.getItem('night-mode') === 'true') document.body.className += ' night-mode'; } catch (e) { }</script>
+<div class="main">
+
+<button class="sidebar-button sidebar-toggle">
+  <span class="icon-menu" title="Collapse/expand sidebar"></span>
+</button>
+
+<section class="sidebar">
+  <form class="sidebar-search" action="search.html">
+    <button type="submit" class="search-button" aria-label="Submit Search">
+      <span class="icon-search" aria-hidden="true" title="Submit search"></span>
+    </button>
+    <button type="button" tabindex="-1" class="search-close-button" aria-label="Cancel Search">
+      <span class="icon-cross" aria-hidden="true" title="Cancel search"></span>
+    </button>
+    <label class="search-label">
+      <input name="q" type="text" id="search-list" class="search-input" placeholder="Search..." aria-label="Input your search terms" autocomplete="off" />
+    </label>
+  </form>
+
+  <div class="autocomplete">
+    <div class="autocomplete-results">
+    </div>
+  </div>
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectDetails">
+      <a href="mongooseim.html" class="sidebar-projectName">
+MongooseIM      </a>
+      <strong class="sidebar-projectVersion">
+        v4.0.1
+      </strong>
+    </div>
+  </div>
+
+  <ul class="sidebar-listNav">
+    <li><a id="extras-list" href="#full-list">Pages</a></li>
+
+      <li><a id="modules-list" href="#full-list">Modules</a></li>
+
+  </ul>
+  <div class="gradient"></div>
+  <ul id="full-list" class="sidebar-fullList"></ul>
+</section>
+
+<section class="content">
+  <div class="content-outer">
+    <div id="content" class="content-inner">
+
+      <h1>
+        mongoose_hooks <small class="app-vsn">(MongooseIM v4.0.1)</small>
+      </h1>
+
+
+        <section id="moduledoc">
+<p>Hooks wrapper providing clear specifications for a hook caller.</p>Every hook has its own function in this module with specs as accurate as possible. This helps to have a static analysis of the hooks callers to make sure they pass the expected arguments.        </section>
+
+        <section id="summary" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#summary">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+            Summary
+          </h1>
+  <div class="summary-functions summary">
+    <h2>
+      <a href="#functions">Functions</a>
+    </h2>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#adhoc_local_items/5">adhoc_local_items/5</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#adhoc_sm_items/5">adhoc_sm_items/5</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#amp_check_condition/4">amp_check_condition/4</a>
+  </div>
+    <div class="summary-synopsis">The <code>amp_check_condition</code> hook is called to determine whether the AMP strategy matches the given AMP rule.</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#amp_check_packet/4">amp_check_packet/4</a>
+  </div>
+    <div class="summary-synopsis">The <code>amp_check_packet</code> hook is called when one wants to check a message against amp rules. Calling it may result in <code>mod_amp</code> taking actions according to the rules and the event (i.e. notify the sender).</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#amp_determine_strategy/6">amp_determine_strategy/6</a>
+  </div>
+    <div class="summary-synopsis">The <code>amp_determine_strategy</code> hook is called when checking to determine which strategy will be chosen when executing AMP rules.</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#amp_error_action_triggered/2">amp_error_action_triggered/2</a>
+  </div>
+    <div class="summary-synopsis">The <code>amp_error_action_triggered</code> hook is called to inform that the <code>error</code> action has been triggered.</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#amp_notify_action_triggered/2">amp_notify_action_triggered/2</a>
+  </div>
+    <div class="summary-synopsis">The <code>amp_notify_action_triggered</code> hook is called to inform that the <code>notify</code> action has been triggered.</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#amp_verify_support/3">amp_verify_support/3</a>
+  </div>
+    <div class="summary-synopsis">The <code>amp_verify_support</code> hook is called when checking whether the host supports given AMP rules.</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#anonymous_purge_hook/3">anonymous_purge_hook/3</a>
+  </div>
+    <div class="summary-synopsis">The <code>anonymous_purge_hook</code> hook is called when anonymous user's data is removed.</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#auth_failed/2">auth_failed/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#c2s_broadcast_recipients/6">c2s_broadcast_recipients/6</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#c2s_filter_packet/6">c2s_filter_packet/6</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#c2s_preprocessing_hook/3">c2s_preprocessing_hook/3</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#c2s_presence_in/5">c2s_presence_in/5</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#c2s_remote_hook/5">c2s_remote_hook/5</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#c2s_stream_features/2">c2s_stream_features/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#c2s_unauthenticated_iq/4">c2s_unauthenticated_iq/4</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#c2s_update_presence/2">c2s_update_presence/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#can_access_identity/4">can_access_identity/4</a>
+  </div>
+    <div class="summary-synopsis">The <code>can_access_identity</code> hook is called to determine if a given user can see the real identity of the people in a room.</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#can_access_room/4">can_access_room/4</a>
+  </div>
+    <div class="summary-synopsis">The <code>can_access_room</code> hook is called to determine if a given user can access a room.</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#caps_add/6">caps_add/6</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#caps_recognised/5">caps_recognised/5</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#caps_update/6">caps_update/6</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#check_bl_c2s/2">check_bl_c2s/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#disco_info/5">disco_info/5</a>
+  </div>
+    <div class="summary-synopsis"><code>disco_info</code> hook is called to extract information about the server.</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#disco_local_features/6">disco_local_features/6</a>
+  </div>
+    <div class="summary-synopsis"><code>disco_local_features</code> hook is called to extract features offered by the server.</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#disco_local_identity/6">disco_local_identity/6</a>
+  </div>
+    <div class="summary-synopsis"><code>disco_local_identity</code> hook is called to get the identity of the server.</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#disco_local_items/6">disco_local_items/6</a>
+  </div>
+    <div class="summary-synopsis"><code>disco_local_items</code> hook is called to extract items associated with the server.</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#disco_sm_features/6">disco_sm_features/6</a>
+  </div>
+    <div class="summary-synopsis"><code>disco_sm_features</code> hook is called to get the features of the client when a discovery IQ gets to session management.</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#disco_sm_identity/6">disco_sm_identity/6</a>
+  </div>
+    <div class="summary-synopsis"><code>disco_sm_identity</code> hook is called to get the identity of the client when a discovery IQ gets to session management.</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#disco_sm_items/6">disco_sm_items/6</a>
+  </div>
+    <div class="summary-synopsis"><code>disco_sm_items</code> hook is called to get the items associated with the client when a discovery IQ gets to session management.</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#ejabberd_ctl_process/2">ejabberd_ctl_process/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#failed_to_store_message/2">failed_to_store_message/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#filter_local_packet/2">filter_local_packet/2</a>
+  </div>
+    <div class="summary-synopsis">The <code>filter_local_packet</code> hook is called to filter out stanzas routed with <code>mongoose_local_delivery</code>.</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#filter_packet/1">filter_packet/1</a>
+  </div>
+    <div class="summary-synopsis">The <code>filter_packet</code> hook is called to filter out stanzas routed with <code>mongoose_router_global</code>.</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#filter_room_packet/3">filter_room_packet/3</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#find_s2s_bridge/3">find_s2s_bridge/3</a>
+  </div>
+    <div class="summary-synopsis"><code>find_s2s_bridge</code> hook is called to find a s2s bridge to a foreign protocol when opening a socket to a different XMPP server fails.</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#forbidden_session_hook/3">forbidden_session_hook/3</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#forget_room/4">forget_room/4</a>
+  </div>
+    <div class="summary-synopsis">The <code>forget_room</code> hook is called when a room is removed from the database.</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#get_key/3">get_key/3</a>
+  </div>
+    <div class="summary-synopsis">The <code>get_key</code> hook is called to extract a key from <code>mod_keystore</code>.</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#get_mam_muc_gdpr_data/3">get_mam_muc_gdpr_data/3</a>
+  </div>
+    <div class="summary-synopsis"><code>get_mam_muc_gdpr_data</code> hook is called to provide a user's archive for GDPR purposes.</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#get_mam_pm_gdpr_data/3">get_mam_pm_gdpr_data/3</a>
+  </div>
+    <div class="summary-synopsis"><code>get_mam_pm_gdpr_data</code> hook is called to provide a user's archive for GDPR purposes.</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#get_personal_data/3">get_personal_data/3</a>
+  </div>
+    <div class="summary-synopsis"><code>get_personal_data</code> hook is called to retrieve a user's personal data for GDPR purposes.</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#host_config_update/4">host_config_update/4</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#inbox_unread_count/3">inbox_unread_count/3</a>
+  </div>
+    <div class="summary-synopsis">The <code>inbox_unread_count</code> hook is called to get the number of unread messages in the inbox for a user.</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#invitation_sent/7">invitation_sent/7</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#is_muc_room_owner/4">is_muc_room_owner/4</a>
+  </div>
+    <div class="summary-synopsis"><p>The <code>is_muc_room_owner</code> hooks is called to determine if a given user is a room's owner.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#join_room/6">join_room/6</a>
+  </div>
+    <div class="summary-synopsis">The <code>join_room</code> hook is called when a user joins a MUC room.</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#leave_room/6">leave_room/6</a>
+  </div>
+    <div class="summary-synopsis">The <code>leave_room</code> hook is called when a user joins a MUC room.</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#local_send_to_resource_hook/5">local_send_to_resource_hook/5</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#mam_archive_id/3">mam_archive_id/3</a>
+  </div>
+    <div class="summary-synopsis"><p>The <code>mam_archive_id</code> hook is called to determine the id of an archive for a particular user or entity. The hook handler is expected to accept the following arguments: * Acc with an initial value of <code>undefined</code>, * Host as passed in the <code>HooksServer</code> variable, * OwnerJID,</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#mam_archive_message/3">mam_archive_message/3</a>
+  </div>
+    <div class="summary-synopsis">The <code>mam_archive_message</code> hook is called in order to store the message in the archive.</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#mam_archive_size/4">mam_archive_size/4</a>
+  </div>
+    <div class="summary-synopsis">The <code>mam_archive_size</code> hook is called to determine the size of the archive for a given JID</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#mam_get_behaviour/5">mam_get_behaviour/5</a>
+  </div>
+    <div class="summary-synopsis">The <code>mam_get_behaviour</code> hooks is called to determine if a message should be archived or not based on a given pair of JIDs.</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#mam_get_prefs/4">mam_get_prefs/4</a>
+  </div>
+    <div class="summary-synopsis">The <code>mam_get_prefs</code> hook is called to read the archive settings for a given user.</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#mam_lookup_messages/3">mam_lookup_messages/3</a>
+  </div>
+    <div class="summary-synopsis">The <code>mam_lookup_messages</code> hook is to retrieve archived messages for given search parameters.</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#mam_muc_archive_id/3">mam_muc_archive_id/3</a>
+  </div>
+    <div class="summary-synopsis"><p>The <code>mam_muc_archive_id</code> hook is called to determine the archive ID for a particular room. The hook handler is expected to accept the following arguments: * Acc with initial value <code>undefined</code>, * Host as passed in <code>HooksServer</code> variable, * OwnerJID,</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#mam_muc_archive_message/3">mam_muc_archive_message/3</a>
+  </div>
+    <div class="summary-synopsis">The <code>mam_muc_archive_message</code> hook is called in order to store the MUC message in the archive.</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#mam_muc_archive_size/4">mam_muc_archive_size/4</a>
+  </div>
+    <div class="summary-synopsis">The <code>mam_muc_archive_size</code> hook is called to determine the archive's size for a given room.</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#mam_muc_flush_messages/3">mam_muc_flush_messages/3</a>
+  </div>
+    <div class="summary-synopsis">The <code>mam_muc_flush_messages</code> hook is run after the async bulk write happens for MUC messages despite the result of the write.</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#mam_muc_get_behaviour/5">mam_muc_get_behaviour/5</a>
+  </div>
+    <div class="summary-synopsis">The <code>mam_muc_get_behaviour</code> hooks is called to determine if a message should be archived or not based on the given room and user JIDs.</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#mam_muc_get_prefs/4">mam_muc_get_prefs/4</a>
+  </div>
+    <div class="summary-synopsis">The <code>mam_muc_get_prefs</code> hook is called to read the archive settings for a given room.</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#mam_muc_lookup_messages/3">mam_muc_lookup_messages/3</a>
+  </div>
+    <div class="summary-synopsis">The <code>mam_muc_lookup_messages</code> hook is to retrieve archived MUC messages for any given search parameters.</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#mam_muc_remove_archive/4">mam_muc_remove_archive/4</a>
+  </div>
+    <div class="summary-synopsis">The <code>mam_muc_remove_archive</code> hook is called in order to remove the entire archive for a particular user.</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#mam_muc_set_prefs/7">mam_muc_set_prefs/7</a>
+  </div>
+    <div class="summary-synopsis"><p>The <code>mam_muc_set_prefs</code> hook is called to set a room's archive preferences.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#mam_remove_archive/4">mam_remove_archive/4</a>
+  </div>
+    <div class="summary-synopsis">The <code>mam_remove_archive</code> hook is called in order to remove the entire archive for a particular user.</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#mam_set_prefs/7">mam_set_prefs/7</a>
+  </div>
+    <div class="summary-synopsis"><p>The <code>mam_set_prefs</code> hook is called to set a user's archive preferences.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#mod_global_distrib_known_recipient/5">mod_global_distrib_known_recipient/5</a>
+  </div>
+    <div class="summary-synopsis">The <code>mod_global_distrib_known_recipient</code> hook is called when the recipient is known to <code>global_distrib</code>.</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#mod_global_distrib_unknown_recipient/2">mod_global_distrib_unknown_recipient/2</a>
+  </div>
+    <div class="summary-synopsis">The <code>mod_global_distrib_unknown_recipient</code> hook is called when the recipient is unknown to <code>global_distrib</code>.</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#muc_room_pid/3">muc_room_pid/3</a>
+  </div>
+    <div class="summary-synopsis">The <code>muc_room_pid</code> hooks is called to get the pid for a given room's JID</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#offline_groupchat_message_hook/5">offline_groupchat_message_hook/5</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#offline_message_hook/5">offline_message_hook/5</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#packet_to_component/3">packet_to_component/3</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#presence_probe_hook/5">presence_probe_hook/5</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#privacy_check_packet/6">privacy_check_packet/6</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#privacy_get_user_list/3">privacy_get_user_list/3</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#privacy_iq_get/6">privacy_iq_get/6</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#privacy_iq_set/5">privacy_iq_set/5</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#privacy_updated_list/4">privacy_updated_list/4</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#pubsub_create_node/6">pubsub_create_node/6</a>
+  </div>
+    <div class="summary-synopsis">The <code>pubsub_create_node</code> hook is called to inform that a pubsub node is created.</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#pubsub_delete_node/5">pubsub_delete_node/5</a>
+  </div>
+    <div class="summary-synopsis">The <code>pubsub_delete_node</code> hook is called to inform that a pubsub node is deleted.</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#pubsub_publish_item/7">pubsub_publish_item/7</a>
+  </div>
+    <div class="summary-synopsis">The <code>pubsub_publish_item</code> hook is called to inform that a pubsub item is published.</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#push_notifications/4">push_notifications/4</a>
+  </div>
+    <div class="summary-synopsis">The <code>push_notifications</code> hook is called to push notifications.</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#register_command/2">register_command/2</a>
+  </div>
+    <div class="summary-synopsis">The <code>register_command</code> hook is called when a command is registered in <code>mongoose_commands</code>.</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#register_subhost/3">register_subhost/3</a>
+  </div>
+    <div class="summary-synopsis">The <code>register_subhost</code> hook is called when a component is registered for ejabberd_router.</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#register_user/3">register_user/3</a>
+  </div>
+    <div class="summary-synopsis">The <code>register_user</code> hook is called when a user is successfully registered in an authentication backend.</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#remove_user/3">remove_user/3</a>
+  </div>
+    <div class="summary-synopsis">The <code>remove_user</code> hook is called when a user is removed.</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#resend_offline_messages_hook/3">resend_offline_messages_hook/3</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#rest_user_send_packet/5">rest_user_send_packet/5</a>
+  </div>
+    <div class="summary-synopsis">The <code>rest_user_send_packet</code> hook is called when a user sends a message using the REST API.</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#room_packet/6">room_packet/6</a>
+  </div>
+    <div class="summary-synopsis">The <code>room_packet</code> hook is called when a message is added to room's history.</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#room_send_packet/3">room_send_packet/3</a>
+  </div>
+    <div class="summary-synopsis">The <code>room_send_packet</code> hook is called when a message is sent to a room.</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#roster_get/4">roster_get/4</a>
+  </div>
+    <div class="summary-synopsis">The <code>roster_get</code> hook is called to extract a user's roster.</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#roster_get_jid_info/4">roster_get_jid_info/4</a>
+  </div>
+    <div class="summary-synopsis"><p>The <code>roster_get_jid_info</code> hook is called to determine the subscription state between a given pair of users. The hook handlers need to expect following arguments: * Acc with an initial value of {none, []}, * LUser, a stringprepd username part of the roster's owner, * LServer, a stringprepd server part of the roster's owner (same value as HookServer), * RemoteBareJID, a bare JID of the other user.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#roster_get_subscription_lists/3">roster_get_subscription_lists/3</a>
+  </div>
+    <div class="summary-synopsis">The <code>roster_get_subscription_lists</code> hook is called to extract user's subscription list.</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#roster_get_versioning_feature/2">roster_get_versioning_feature/2</a>
+  </div>
+    <div class="summary-synopsis">The <code>roster_get_versioning_feature</code> hook is called to determine if roster versioning is enabled.</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#roster_groups/2">roster_groups/2</a>
+  </div>
+    <div class="summary-synopsis">The <code>roster_groups</code> hook is called to extract roster groups.</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#roster_in_subscription/7">roster_in_subscription/7</a>
+  </div>
+    <div class="summary-synopsis">The <code>roster_in_subscription</code> hook is called to determine if a subscription presence is routed to a user.</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#roster_out_subscription/5">roster_out_subscription/5</a>
+  </div>
+    <div class="summary-synopsis">The <code>roster_out_subscription</code> hook is called when a user sends out subscription.</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#roster_process_item/2">roster_process_item/2</a>
+  </div>
+    <div class="summary-synopsis">The <code>roster_process_item</code> hook is called when a user's roster is set.</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#roster_push/4">roster_push/4</a>
+  </div>
+    <div class="summary-synopsis">The <code>roster_push</code> hook is called when a roster item is being pushed and roster versioning is not enabled.</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#roster_set/5">roster_set/5</a>
+  </div>
+    <div class="summary-synopsis">The <code>roster_set</code> hook is called when a user's roster is set through an IQ.</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#s2s_allow_host/3">s2s_allow_host/3</a>
+  </div>
+    <div class="summary-synopsis"><p><code>s2s_allow_host</code> hook is called to check whether a server should be allowed to be connected to.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#s2s_connect_hook/3">s2s_connect_hook/3</a>
+  </div>
+    <div class="summary-synopsis"><code>s2s_connect_hook</code> hook is called when a s2s connection is established.</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#s2s_receive_packet/2">s2s_receive_packet/2</a>
+  </div>
+    <div class="summary-synopsis"><code>s2s_receive_packet</code> hook is called when an incoming stanza is routed by the server.</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#s2s_send_packet/5">s2s_send_packet/5</a>
+  </div>
+    <div class="summary-synopsis"><code>s2s_send_packet</code> hook is called when a message is routed.</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#s2s_stream_features/2">s2s_stream_features/2</a>
+  </div>
+    <div class="summary-synopsis"><code>s2s_stream_features</code> hook is used to extract the stream management features supported by the server.</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#session_cleanup/5">session_cleanup/5</a>
+  </div>
+    <div class="summary-synopsis">The <code>session_cleanup</code> hook is called when sm backend cleans up a user's session.</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#session_opening_allowed_for_user/3">session_opening_allowed_for_user/3</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#set_presence_hook/5">set_presence_hook/5</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#set_vcard/4">set_vcard/4</a>
+  </div>
+    <div class="summary-synopsis">The <code>set_vcard</code> hook is called when the caller wants to set the VCard.</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#sm_broadcast/6">sm_broadcast/6</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#sm_filter_offline_message/5">sm_filter_offline_message/5</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#sm_register_connection_hook/4">sm_register_connection_hook/4</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#sm_remove_connection_hook/6">sm_remove_connection_hook/6</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#unacknowledged_message/3">unacknowledged_message/3</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#unregister_command/2">unregister_command/2</a>
+  </div>
+    <div class="summary-synopsis">The <code>unregister_command</code> hook is called when a command is unregistered from <code>mongoose_commands</code>.</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#unregister_subhost/2">unregister_subhost/2</a>
+  </div>
+    <div class="summary-synopsis">The <code>unregister_subhost</code> hook is called when a component is unregistered from ejabberd_router.</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#unset_presence_hook/5">unset_presence_hook/5</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#update_inbox_for_muc/2">update_inbox_for_muc/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#user_available_hook/3">user_available_hook/3</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#user_ping_response/5">user_ping_response/5</a>
+  </div>
+    <div class="summary-synopsis">The <code>user_ping_response</code> hook is called when a user responds to a ping.</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#user_ping_timeout/3">user_ping_timeout/3</a>
+  </div>
+    <div class="summary-synopsis">The <code>user_ping_timeout</code> hook is called when there is a timeout when waiting for a ping response from a user.</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#user_receive_packet/6">user_receive_packet/6</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#user_send_packet/5">user_send_packet/5</a>
+  </div>
+    <div class="summary-synopsis">A hook called when a user sends an XMPP stanza. The hook's handler is expected to accept four parameters: <code>Acc</code>, <code>From</code>, <code>To</code> and <code>Packet</code> The arguments and the return value types correspond to the following spec.</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#user_sent_keep_alive/2">user_sent_keep_alive/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#vcard_set/4">vcard_set/4</a>
+  </div>
+    <div class="summary-synopsis">The <code>vcard_set</code> hook is called to inform that the vcard has been set in mod_vcard backend.</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#xmpp_bounce_message/2">xmpp_bounce_message/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#xmpp_send_element/3">xmpp_send_element/3</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#xmpp_stanza_dropped/5">xmpp_stanza_dropped/5</a>
+  </div>
+    <div class="summary-synopsis">The <code>xmpp_stanza_dropped</code> hook is called to inform that an xmpp stanza has been dropped.</div>
+</div>
+  </div>
+        </section>
+
+        <section id="functions" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#functions">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+Functions          </h1>
+          <div class="functions-list">
+<section class="detail" id="adhoc_local_items/5">
+  <div class="detail-header">
+    <a href="#adhoc_local_items/5" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">adhoc_local_items/5</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_hooks.adhoc_local_items/5</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="adhoc_sm_items/5">
+  <div class="detail-header">
+    <a href="#adhoc_sm_items/5" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">adhoc_sm_items/5</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_hooks.adhoc_sm_items/5</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="amp_check_condition/4">
+  <div class="detail-header">
+    <a href="#amp_check_condition/4" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">amp_check_condition/4</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_hooks.amp_check_condition/4</pre>
+      </div>
+
+The <code>amp_check_condition</code> hook is called to determine whether the AMP strategy matches the given AMP rule.  </section>
+</section>
+<section class="detail" id="amp_check_packet/4">
+  <div class="detail-header">
+    <a href="#amp_check_packet/4" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">amp_check_packet/4</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_hooks.amp_check_packet/4</pre>
+      </div>
+
+The <code>amp_check_packet</code> hook is called when one wants to check a message against amp rules. Calling it may result in <code>mod_amp</code> taking actions according to the rules and the event (i.e. notify the sender).  </section>
+</section>
+<section class="detail" id="amp_determine_strategy/6">
+  <div class="detail-header">
+    <a href="#amp_determine_strategy/6" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">amp_determine_strategy/6</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_hooks.amp_determine_strategy/6</pre>
+      </div>
+
+The <code>amp_determine_strategy</code> hook is called when checking to determine which strategy will be chosen when executing AMP rules.  </section>
+</section>
+<section class="detail" id="amp_error_action_triggered/2">
+  <div class="detail-header">
+    <a href="#amp_error_action_triggered/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">amp_error_action_triggered/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_hooks.amp_error_action_triggered/2</pre>
+      </div>
+
+The <code>amp_error_action_triggered</code> hook is called to inform that the <code>error</code> action has been triggered.  </section>
+</section>
+<section class="detail" id="amp_notify_action_triggered/2">
+  <div class="detail-header">
+    <a href="#amp_notify_action_triggered/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">amp_notify_action_triggered/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_hooks.amp_notify_action_triggered/2</pre>
+      </div>
+
+The <code>amp_notify_action_triggered</code> hook is called to inform that the <code>notify</code> action has been triggered.  </section>
+</section>
+<section class="detail" id="amp_verify_support/3">
+  <div class="detail-header">
+    <a href="#amp_verify_support/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">amp_verify_support/3</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_hooks.amp_verify_support/3</pre>
+      </div>
+
+The <code>amp_verify_support</code> hook is called when checking whether the host supports given AMP rules.  </section>
+</section>
+<section class="detail" id="anonymous_purge_hook/3">
+  <div class="detail-header">
+    <a href="#anonymous_purge_hook/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">anonymous_purge_hook/3</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_hooks.anonymous_purge_hook/3</pre>
+      </div>
+
+The <code>anonymous_purge_hook</code> hook is called when anonymous user's data is removed.  </section>
+</section>
+<section class="detail" id="auth_failed/2">
+  <div class="detail-header">
+    <a href="#auth_failed/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">auth_failed/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_hooks.auth_failed/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="c2s_broadcast_recipients/6">
+  <div class="detail-header">
+    <a href="#c2s_broadcast_recipients/6" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">c2s_broadcast_recipients/6</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_hooks.c2s_broadcast_recipients/6</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="c2s_filter_packet/6">
+  <div class="detail-header">
+    <a href="#c2s_filter_packet/6" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">c2s_filter_packet/6</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_hooks.c2s_filter_packet/6</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="c2s_preprocessing_hook/3">
+  <div class="detail-header">
+    <a href="#c2s_preprocessing_hook/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">c2s_preprocessing_hook/3</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_hooks.c2s_preprocessing_hook/3</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="c2s_presence_in/5">
+  <div class="detail-header">
+    <a href="#c2s_presence_in/5" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">c2s_presence_in/5</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_hooks.c2s_presence_in/5</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="c2s_remote_hook/5">
+  <div class="detail-header">
+    <a href="#c2s_remote_hook/5" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">c2s_remote_hook/5</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_hooks.c2s_remote_hook/5</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="c2s_stream_features/2">
+  <div class="detail-header">
+    <a href="#c2s_stream_features/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">c2s_stream_features/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_hooks.c2s_stream_features/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="c2s_unauthenticated_iq/4">
+  <div class="detail-header">
+    <a href="#c2s_unauthenticated_iq/4" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">c2s_unauthenticated_iq/4</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_hooks.c2s_unauthenticated_iq/4</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="c2s_update_presence/2">
+  <div class="detail-header">
+    <a href="#c2s_update_presence/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">c2s_update_presence/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_hooks.c2s_update_presence/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="can_access_identity/4">
+  <div class="detail-header">
+    <a href="#can_access_identity/4" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">can_access_identity/4</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_hooks.can_access_identity/4</pre>
+      </div>
+
+The <code>can_access_identity</code> hook is called to determine if a given user can see the real identity of the people in a room.  </section>
+</section>
+<section class="detail" id="can_access_room/4">
+  <div class="detail-header">
+    <a href="#can_access_room/4" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">can_access_room/4</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_hooks.can_access_room/4</pre>
+      </div>
+
+The <code>can_access_room</code> hook is called to determine if a given user can access a room.  </section>
+</section>
+<section class="detail" id="caps_add/6">
+  <div class="detail-header">
+    <a href="#caps_add/6" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">caps_add/6</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_hooks.caps_add/6</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="caps_recognised/5">
+  <div class="detail-header">
+    <a href="#caps_recognised/5" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">caps_recognised/5</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_hooks.caps_recognised/5</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="caps_update/6">
+  <div class="detail-header">
+    <a href="#caps_update/6" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">caps_update/6</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_hooks.caps_update/6</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="check_bl_c2s/2">
+  <div class="detail-header">
+    <a href="#check_bl_c2s/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">check_bl_c2s/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_hooks.check_bl_c2s/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="disco_info/5">
+  <div class="detail-header">
+    <a href="#disco_info/5" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">disco_info/5</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_hooks.disco_info/5</pre>
+      </div>
+
+<code>disco_info</code> hook is called to extract information about the server.  </section>
+</section>
+<section class="detail" id="disco_local_features/6">
+  <div class="detail-header">
+    <a href="#disco_local_features/6" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">disco_local_features/6</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_hooks.disco_local_features/6</pre>
+      </div>
+
+<code>disco_local_features</code> hook is called to extract features offered by the server.  </section>
+</section>
+<section class="detail" id="disco_local_identity/6">
+  <div class="detail-header">
+    <a href="#disco_local_identity/6" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">disco_local_identity/6</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_hooks.disco_local_identity/6</pre>
+      </div>
+
+<code>disco_local_identity</code> hook is called to get the identity of the server.  </section>
+</section>
+<section class="detail" id="disco_local_items/6">
+  <div class="detail-header">
+    <a href="#disco_local_items/6" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">disco_local_items/6</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_hooks.disco_local_items/6</pre>
+      </div>
+
+<code>disco_local_items</code> hook is called to extract items associated with the server.  </section>
+</section>
+<section class="detail" id="disco_sm_features/6">
+  <div class="detail-header">
+    <a href="#disco_sm_features/6" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">disco_sm_features/6</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_hooks.disco_sm_features/6</pre>
+      </div>
+
+<code>disco_sm_features</code> hook is called to get the features of the client when a discovery IQ gets to session management.  </section>
+</section>
+<section class="detail" id="disco_sm_identity/6">
+  <div class="detail-header">
+    <a href="#disco_sm_identity/6" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">disco_sm_identity/6</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_hooks.disco_sm_identity/6</pre>
+      </div>
+
+<code>disco_sm_identity</code> hook is called to get the identity of the client when a discovery IQ gets to session management.  </section>
+</section>
+<section class="detail" id="disco_sm_items/6">
+  <div class="detail-header">
+    <a href="#disco_sm_items/6" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">disco_sm_items/6</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_hooks.disco_sm_items/6</pre>
+      </div>
+
+<code>disco_sm_items</code> hook is called to get the items associated with the client when a discovery IQ gets to session management.  </section>
+</section>
+<section class="detail" id="ejabberd_ctl_process/2">
+  <div class="detail-header">
+    <a href="#ejabberd_ctl_process/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">ejabberd_ctl_process/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_hooks.ejabberd_ctl_process/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="failed_to_store_message/2">
+  <div class="detail-header">
+    <a href="#failed_to_store_message/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">failed_to_store_message/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_hooks.failed_to_store_message/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="filter_local_packet/2">
+  <div class="detail-header">
+    <a href="#filter_local_packet/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">filter_local_packet/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_hooks.filter_local_packet/2</pre>
+      </div>
+
+The <code>filter_local_packet</code> hook is called to filter out stanzas routed with <code>mongoose_local_delivery</code>.  </section>
+</section>
+<section class="detail" id="filter_packet/1">
+  <div class="detail-header">
+    <a href="#filter_packet/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">filter_packet/1</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_hooks.filter_packet/1</pre>
+      </div>
+
+The <code>filter_packet</code> hook is called to filter out stanzas routed with <code>mongoose_router_global</code>.  </section>
+</section>
+<section class="detail" id="filter_room_packet/3">
+  <div class="detail-header">
+    <a href="#filter_room_packet/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">filter_room_packet/3</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_hooks.filter_room_packet/3</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="find_s2s_bridge/3">
+  <div class="detail-header">
+    <a href="#find_s2s_bridge/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">find_s2s_bridge/3</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_hooks.find_s2s_bridge/3</pre>
+      </div>
+
+<code>find_s2s_bridge</code> hook is called to find a s2s bridge to a foreign protocol when opening a socket to a different XMPP server fails.  </section>
+</section>
+<section class="detail" id="forbidden_session_hook/3">
+  <div class="detail-header">
+    <a href="#forbidden_session_hook/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">forbidden_session_hook/3</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_hooks.forbidden_session_hook/3</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="forget_room/4">
+  <div class="detail-header">
+    <a href="#forget_room/4" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">forget_room/4</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_hooks.forget_room/4</pre>
+      </div>
+
+The <code>forget_room</code> hook is called when a room is removed from the database.  </section>
+</section>
+<section class="detail" id="get_key/3">
+  <div class="detail-header">
+    <a href="#get_key/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">get_key/3</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_hooks.get_key/3</pre>
+      </div>
+
+The <code>get_key</code> hook is called to extract a key from <code>mod_keystore</code>.  </section>
+</section>
+<section class="detail" id="get_mam_muc_gdpr_data/3">
+  <div class="detail-header">
+    <a href="#get_mam_muc_gdpr_data/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">get_mam_muc_gdpr_data/3</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_hooks.get_mam_muc_gdpr_data/3</pre>
+      </div>
+
+<code>get_mam_muc_gdpr_data</code> hook is called to provide a user's archive for GDPR purposes.  </section>
+</section>
+<section class="detail" id="get_mam_pm_gdpr_data/3">
+  <div class="detail-header">
+    <a href="#get_mam_pm_gdpr_data/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">get_mam_pm_gdpr_data/3</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_hooks.get_mam_pm_gdpr_data/3</pre>
+      </div>
+
+<code>get_mam_pm_gdpr_data</code> hook is called to provide a user's archive for GDPR purposes.  </section>
+</section>
+<section class="detail" id="get_personal_data/3">
+  <div class="detail-header">
+    <a href="#get_personal_data/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">get_personal_data/3</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_hooks.get_personal_data/3</pre>
+      </div>
+
+<code>get_personal_data</code> hook is called to retrieve a user's personal data for GDPR purposes.  </section>
+</section>
+<section class="detail" id="host_config_update/4">
+  <div class="detail-header">
+    <a href="#host_config_update/4" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">host_config_update/4</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_hooks.host_config_update/4</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="inbox_unread_count/3">
+  <div class="detail-header">
+    <a href="#inbox_unread_count/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">inbox_unread_count/3</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_hooks.inbox_unread_count/3</pre>
+      </div>
+
+The <code>inbox_unread_count</code> hook is called to get the number of unread messages in the inbox for a user.  </section>
+</section>
+<section class="detail" id="invitation_sent/7">
+  <div class="detail-header">
+    <a href="#invitation_sent/7" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">invitation_sent/7</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_hooks.invitation_sent/7</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="is_muc_room_owner/4">
+  <div class="detail-header">
+    <a href="#is_muc_room_owner/4" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">is_muc_room_owner/4</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_hooks.is_muc_room_owner/4</pre>
+      </div>
+
+<p>The <code>is_muc_room_owner</code> hooks is called to determine if a given user is a room's owner.</p>The hook's handler needs to expect the following arguments <code>Acc</code>, <code>Room</code>, <code>User</code>. The arguments and the return value types correspond to the following spec.  </section>
+</section>
+<section class="detail" id="join_room/6">
+  <div class="detail-header">
+    <a href="#join_room/6" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">join_room/6</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_hooks.join_room/6</pre>
+      </div>
+
+The <code>join_room</code> hook is called when a user joins a MUC room.  </section>
+</section>
+<section class="detail" id="leave_room/6">
+  <div class="detail-header">
+    <a href="#leave_room/6" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">leave_room/6</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_hooks.leave_room/6</pre>
+      </div>
+
+The <code>leave_room</code> hook is called when a user joins a MUC room.  </section>
+</section>
+<section class="detail" id="local_send_to_resource_hook/5">
+  <div class="detail-header">
+    <a href="#local_send_to_resource_hook/5" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">local_send_to_resource_hook/5</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_hooks.local_send_to_resource_hook/5</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="mam_archive_id/3">
+  <div class="detail-header">
+    <a href="#mam_archive_id/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">mam_archive_id/3</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_hooks.mam_archive_id/3</pre>
+      </div>
+
+<p>The <code>mam_archive_id</code> hook is called to determine the id of an archive for a particular user or entity. The hook handler is expected to accept the following arguments: * Acc with an initial value of <code>undefined</code>, * Host as passed in the <code>HooksServer</code> variable, * OwnerJID,</p><p>and to return an integer value corresponding to the given owner's archive.</p>If a MAM backend doesn't support or doesn't require archive IDs, <code>undefined</code> may be returned.  </section>
+</section>
+<section class="detail" id="mam_archive_message/3">
+  <div class="detail-header">
+    <a href="#mam_archive_message/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">mam_archive_message/3</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_hooks.mam_archive_message/3</pre>
+      </div>
+
+The <code>mam_archive_message</code> hook is called in order to store the message in the archive.  </section>
+</section>
+<section class="detail" id="mam_archive_size/4">
+  <div class="detail-header">
+    <a href="#mam_archive_size/4" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">mam_archive_size/4</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_hooks.mam_archive_size/4</pre>
+      </div>
+
+The <code>mam_archive_size</code> hook is called to determine the size of the archive for a given JID  </section>
+</section>
+<section class="detail" id="mam_get_behaviour/5">
+  <div class="detail-header">
+    <a href="#mam_get_behaviour/5" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">mam_get_behaviour/5</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_hooks.mam_get_behaviour/5</pre>
+      </div>
+
+The <code>mam_get_behaviour</code> hooks is called to determine if a message should be archived or not based on a given pair of JIDs.  </section>
+</section>
+<section class="detail" id="mam_get_prefs/4">
+  <div class="detail-header">
+    <a href="#mam_get_prefs/4" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">mam_get_prefs/4</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_hooks.mam_get_prefs/4</pre>
+      </div>
+
+The <code>mam_get_prefs</code> hook is called to read the archive settings for a given user.  </section>
+</section>
+<section class="detail" id="mam_lookup_messages/3">
+  <div class="detail-header">
+    <a href="#mam_lookup_messages/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">mam_lookup_messages/3</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_hooks.mam_lookup_messages/3</pre>
+      </div>
+
+The <code>mam_lookup_messages</code> hook is to retrieve archived messages for given search parameters.  </section>
+</section>
+<section class="detail" id="mam_muc_archive_id/3">
+  <div class="detail-header">
+    <a href="#mam_muc_archive_id/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">mam_muc_archive_id/3</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_hooks.mam_muc_archive_id/3</pre>
+      </div>
+
+<p>The <code>mam_muc_archive_id</code> hook is called to determine the archive ID for a particular room. The hook handler is expected to accept the following arguments: * Acc with initial value <code>undefined</code>, * Host as passed in <code>HooksServer</code> variable, * OwnerJID,</p><p>and return an integer value corresponding to the given owner's archive.</p>If a MAM backend doesn't support or doesn't require archive IDs, <code>undefined</code> may be returned.  </section>
+</section>
+<section class="detail" id="mam_muc_archive_message/3">
+  <div class="detail-header">
+    <a href="#mam_muc_archive_message/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">mam_muc_archive_message/3</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_hooks.mam_muc_archive_message/3</pre>
+      </div>
+
+The <code>mam_muc_archive_message</code> hook is called in order to store the MUC message in the archive.  </section>
+</section>
+<section class="detail" id="mam_muc_archive_size/4">
+  <div class="detail-header">
+    <a href="#mam_muc_archive_size/4" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">mam_muc_archive_size/4</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_hooks.mam_muc_archive_size/4</pre>
+      </div>
+
+The <code>mam_muc_archive_size</code> hook is called to determine the archive's size for a given room.  </section>
+</section>
+<section class="detail" id="mam_muc_flush_messages/3">
+  <div class="detail-header">
+    <a href="#mam_muc_flush_messages/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">mam_muc_flush_messages/3</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_hooks.mam_muc_flush_messages/3</pre>
+      </div>
+
+The <code>mam_muc_flush_messages</code> hook is run after the async bulk write happens for MUC messages despite the result of the write.  </section>
+</section>
+<section class="detail" id="mam_muc_get_behaviour/5">
+  <div class="detail-header">
+    <a href="#mam_muc_get_behaviour/5" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">mam_muc_get_behaviour/5</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_hooks.mam_muc_get_behaviour/5</pre>
+      </div>
+
+The <code>mam_muc_get_behaviour</code> hooks is called to determine if a message should be archived or not based on the given room and user JIDs.  </section>
+</section>
+<section class="detail" id="mam_muc_get_prefs/4">
+  <div class="detail-header">
+    <a href="#mam_muc_get_prefs/4" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">mam_muc_get_prefs/4</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_hooks.mam_muc_get_prefs/4</pre>
+      </div>
+
+The <code>mam_muc_get_prefs</code> hook is called to read the archive settings for a given room.  </section>
+</section>
+<section class="detail" id="mam_muc_lookup_messages/3">
+  <div class="detail-header">
+    <a href="#mam_muc_lookup_messages/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">mam_muc_lookup_messages/3</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_hooks.mam_muc_lookup_messages/3</pre>
+      </div>
+
+The <code>mam_muc_lookup_messages</code> hook is to retrieve archived MUC messages for any given search parameters.  </section>
+</section>
+<section class="detail" id="mam_muc_remove_archive/4">
+  <div class="detail-header">
+    <a href="#mam_muc_remove_archive/4" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">mam_muc_remove_archive/4</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_hooks.mam_muc_remove_archive/4</pre>
+      </div>
+
+The <code>mam_muc_remove_archive</code> hook is called in order to remove the entire archive for a particular user.  </section>
+</section>
+<section class="detail" id="mam_muc_set_prefs/7">
+  <div class="detail-header">
+    <a href="#mam_muc_set_prefs/7" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">mam_muc_set_prefs/7</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_hooks.mam_muc_set_prefs/7</pre>
+      </div>
+
+<p>The <code>mam_muc_set_prefs</code> hook is called to set a room's archive preferences.</p>It's possible to set which JIDs are always or never allowed in the archive  </section>
+</section>
+<section class="detail" id="mam_remove_archive/4">
+  <div class="detail-header">
+    <a href="#mam_remove_archive/4" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">mam_remove_archive/4</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_hooks.mam_remove_archive/4</pre>
+      </div>
+
+The <code>mam_remove_archive</code> hook is called in order to remove the entire archive for a particular user.  </section>
+</section>
+<section class="detail" id="mam_set_prefs/7">
+  <div class="detail-header">
+    <a href="#mam_set_prefs/7" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">mam_set_prefs/7</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_hooks.mam_set_prefs/7</pre>
+      </div>
+
+<p>The <code>mam_set_prefs</code> hook is called to set a user's archive preferences.</p>It's possible to set which JIDs are always or never allowed in the archive  </section>
+</section>
+<section class="detail" id="mod_global_distrib_known_recipient/5">
+  <div class="detail-header">
+    <a href="#mod_global_distrib_known_recipient/5" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">mod_global_distrib_known_recipient/5</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_hooks.mod_global_distrib_known_recipient/5</pre>
+      </div>
+
+The <code>mod_global_distrib_known_recipient</code> hook is called when the recipient is known to <code>global_distrib</code>.  </section>
+</section>
+<section class="detail" id="mod_global_distrib_unknown_recipient/2">
+  <div class="detail-header">
+    <a href="#mod_global_distrib_unknown_recipient/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">mod_global_distrib_unknown_recipient/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_hooks.mod_global_distrib_unknown_recipient/2</pre>
+      </div>
+
+The <code>mod_global_distrib_unknown_recipient</code> hook is called when the recipient is unknown to <code>global_distrib</code>.  </section>
+</section>
+<section class="detail" id="muc_room_pid/3">
+  <div class="detail-header">
+    <a href="#muc_room_pid/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">muc_room_pid/3</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_hooks.muc_room_pid/3</pre>
+      </div>
+
+The <code>muc_room_pid</code> hooks is called to get the pid for a given room's JID  </section>
+</section>
+<section class="detail" id="offline_groupchat_message_hook/5">
+  <div class="detail-header">
+    <a href="#offline_groupchat_message_hook/5" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">offline_groupchat_message_hook/5</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_hooks.offline_groupchat_message_hook/5</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="offline_message_hook/5">
+  <div class="detail-header">
+    <a href="#offline_message_hook/5" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">offline_message_hook/5</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_hooks.offline_message_hook/5</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="packet_to_component/3">
+  <div class="detail-header">
+    <a href="#packet_to_component/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">packet_to_component/3</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_hooks.packet_to_component/3</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="presence_probe_hook/5">
+  <div class="detail-header">
+    <a href="#presence_probe_hook/5" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">presence_probe_hook/5</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_hooks.presence_probe_hook/5</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="privacy_check_packet/6">
+  <div class="detail-header">
+    <a href="#privacy_check_packet/6" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">privacy_check_packet/6</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_hooks.privacy_check_packet/6</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="privacy_get_user_list/3">
+  <div class="detail-header">
+    <a href="#privacy_get_user_list/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">privacy_get_user_list/3</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_hooks.privacy_get_user_list/3</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="privacy_iq_get/6">
+  <div class="detail-header">
+    <a href="#privacy_iq_get/6" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">privacy_iq_get/6</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_hooks.privacy_iq_get/6</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="privacy_iq_set/5">
+  <div class="detail-header">
+    <a href="#privacy_iq_set/5" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">privacy_iq_set/5</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_hooks.privacy_iq_set/5</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="privacy_updated_list/4">
+  <div class="detail-header">
+    <a href="#privacy_updated_list/4" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">privacy_updated_list/4</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_hooks.privacy_updated_list/4</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="pubsub_create_node/6">
+  <div class="detail-header">
+    <a href="#pubsub_create_node/6" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">pubsub_create_node/6</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_hooks.pubsub_create_node/6</pre>
+      </div>
+
+The <code>pubsub_create_node</code> hook is called to inform that a pubsub node is created.  </section>
+</section>
+<section class="detail" id="pubsub_delete_node/5">
+  <div class="detail-header">
+    <a href="#pubsub_delete_node/5" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">pubsub_delete_node/5</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_hooks.pubsub_delete_node/5</pre>
+      </div>
+
+The <code>pubsub_delete_node</code> hook is called to inform that a pubsub node is deleted.  </section>
+</section>
+<section class="detail" id="pubsub_publish_item/7">
+  <div class="detail-header">
+    <a href="#pubsub_publish_item/7" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">pubsub_publish_item/7</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_hooks.pubsub_publish_item/7</pre>
+      </div>
+
+The <code>pubsub_publish_item</code> hook is called to inform that a pubsub item is published.  </section>
+</section>
+<section class="detail" id="push_notifications/4">
+  <div class="detail-header">
+    <a href="#push_notifications/4" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">push_notifications/4</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_hooks.push_notifications/4</pre>
+      </div>
+
+The <code>push_notifications</code> hook is called to push notifications.  </section>
+</section>
+<section class="detail" id="register_command/2">
+  <div class="detail-header">
+    <a href="#register_command/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">register_command/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_hooks.register_command/2</pre>
+      </div>
+
+The <code>register_command</code> hook is called when a command is registered in <code>mongoose_commands</code>.  </section>
+</section>
+<section class="detail" id="register_subhost/3">
+  <div class="detail-header">
+    <a href="#register_subhost/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">register_subhost/3</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_hooks.register_subhost/3</pre>
+      </div>
+
+The <code>register_subhost</code> hook is called when a component is registered for ejabberd_router.  </section>
+</section>
+<section class="detail" id="register_user/3">
+  <div class="detail-header">
+    <a href="#register_user/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">register_user/3</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_hooks.register_user/3</pre>
+      </div>
+
+The <code>register_user</code> hook is called when a user is successfully registered in an authentication backend.  </section>
+</section>
+<section class="detail" id="remove_user/3">
+  <div class="detail-header">
+    <a href="#remove_user/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">remove_user/3</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_hooks.remove_user/3</pre>
+      </div>
+
+The <code>remove_user</code> hook is called when a user is removed.  </section>
+</section>
+<section class="detail" id="resend_offline_messages_hook/3">
+  <div class="detail-header">
+    <a href="#resend_offline_messages_hook/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">resend_offline_messages_hook/3</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_hooks.resend_offline_messages_hook/3</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="rest_user_send_packet/5">
+  <div class="detail-header">
+    <a href="#rest_user_send_packet/5" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">rest_user_send_packet/5</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_hooks.rest_user_send_packet/5</pre>
+      </div>
+
+The <code>rest_user_send_packet</code> hook is called when a user sends a message using the REST API.  </section>
+</section>
+<section class="detail" id="room_packet/6">
+  <div class="detail-header">
+    <a href="#room_packet/6" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">room_packet/6</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_hooks.room_packet/6</pre>
+      </div>
+
+The <code>room_packet</code> hook is called when a message is added to room's history.  </section>
+</section>
+<section class="detail" id="room_send_packet/3">
+  <div class="detail-header">
+    <a href="#room_send_packet/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">room_send_packet/3</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_hooks.room_send_packet/3</pre>
+      </div>
+
+The <code>room_send_packet</code> hook is called when a message is sent to a room.  </section>
+</section>
+<section class="detail" id="roster_get/4">
+  <div class="detail-header">
+    <a href="#roster_get/4" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">roster_get/4</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_hooks.roster_get/4</pre>
+      </div>
+
+The <code>roster_get</code> hook is called to extract a user's roster.  </section>
+</section>
+<section class="detail" id="roster_get_jid_info/4">
+  <div class="detail-header">
+    <a href="#roster_get_jid_info/4" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">roster_get_jid_info/4</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_hooks.roster_get_jid_info/4</pre>
+      </div>
+
+<p>The <code>roster_get_jid_info</code> hook is called to determine the subscription state between a given pair of users. The hook handlers need to expect following arguments: * Acc with an initial value of {none, []}, * LUser, a stringprepd username part of the roster's owner, * LServer, a stringprepd server part of the roster's owner (same value as HookServer), * RemoteBareJID, a bare JID of the other user.</p>The arguments and the return value types correspond to the following spec.  </section>
+</section>
+<section class="detail" id="roster_get_subscription_lists/3">
+  <div class="detail-header">
+    <a href="#roster_get_subscription_lists/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">roster_get_subscription_lists/3</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_hooks.roster_get_subscription_lists/3</pre>
+      </div>
+
+The <code>roster_get_subscription_lists</code> hook is called to extract user's subscription list.  </section>
+</section>
+<section class="detail" id="roster_get_versioning_feature/2">
+  <div class="detail-header">
+    <a href="#roster_get_versioning_feature/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">roster_get_versioning_feature/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_hooks.roster_get_versioning_feature/2</pre>
+      </div>
+
+The <code>roster_get_versioning_feature</code> hook is called to determine if roster versioning is enabled.  </section>
+</section>
+<section class="detail" id="roster_groups/2">
+  <div class="detail-header">
+    <a href="#roster_groups/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">roster_groups/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_hooks.roster_groups/2</pre>
+      </div>
+
+The <code>roster_groups</code> hook is called to extract roster groups.  </section>
+</section>
+<section class="detail" id="roster_in_subscription/7">
+  <div class="detail-header">
+    <a href="#roster_in_subscription/7" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">roster_in_subscription/7</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_hooks.roster_in_subscription/7</pre>
+      </div>
+
+The <code>roster_in_subscription</code> hook is called to determine if a subscription presence is routed to a user.  </section>
+</section>
+<section class="detail" id="roster_out_subscription/5">
+  <div class="detail-header">
+    <a href="#roster_out_subscription/5" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">roster_out_subscription/5</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_hooks.roster_out_subscription/5</pre>
+      </div>
+
+The <code>roster_out_subscription</code> hook is called when a user sends out subscription.  </section>
+</section>
+<section class="detail" id="roster_process_item/2">
+  <div class="detail-header">
+    <a href="#roster_process_item/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">roster_process_item/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_hooks.roster_process_item/2</pre>
+      </div>
+
+The <code>roster_process_item</code> hook is called when a user's roster is set.  </section>
+</section>
+<section class="detail" id="roster_push/4">
+  <div class="detail-header">
+    <a href="#roster_push/4" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">roster_push/4</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_hooks.roster_push/4</pre>
+      </div>
+
+The <code>roster_push</code> hook is called when a roster item is being pushed and roster versioning is not enabled.  </section>
+</section>
+<section class="detail" id="roster_set/5">
+  <div class="detail-header">
+    <a href="#roster_set/5" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">roster_set/5</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_hooks.roster_set/5</pre>
+      </div>
+
+The <code>roster_set</code> hook is called when a user's roster is set through an IQ.  </section>
+</section>
+<section class="detail" id="s2s_allow_host/3">
+  <div class="detail-header">
+    <a href="#s2s_allow_host/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">s2s_allow_host/3</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_hooks.s2s_allow_host/3</pre>
+      </div>
+
+<p><code>s2s_allow_host</code> hook is called to check whether a server should be allowed to be connected to.</p>A handler can decide that a server should not be allowed and pass this information to the caller.  </section>
+</section>
+<section class="detail" id="s2s_connect_hook/3">
+  <div class="detail-header">
+    <a href="#s2s_connect_hook/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">s2s_connect_hook/3</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_hooks.s2s_connect_hook/3</pre>
+      </div>
+
+<code>s2s_connect_hook</code> hook is called when a s2s connection is established.  </section>
+</section>
+<section class="detail" id="s2s_receive_packet/2">
+  <div class="detail-header">
+    <a href="#s2s_receive_packet/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">s2s_receive_packet/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_hooks.s2s_receive_packet/2</pre>
+      </div>
+
+<code>s2s_receive_packet</code> hook is called when an incoming stanza is routed by the server.  </section>
+</section>
+<section class="detail" id="s2s_send_packet/5">
+  <div class="detail-header">
+    <a href="#s2s_send_packet/5" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">s2s_send_packet/5</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_hooks.s2s_send_packet/5</pre>
+      </div>
+
+<code>s2s_send_packet</code> hook is called when a message is routed.  </section>
+</section>
+<section class="detail" id="s2s_stream_features/2">
+  <div class="detail-header">
+    <a href="#s2s_stream_features/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">s2s_stream_features/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_hooks.s2s_stream_features/2</pre>
+      </div>
+
+<code>s2s_stream_features</code> hook is used to extract the stream management features supported by the server.  </section>
+</section>
+<section class="detail" id="session_cleanup/5">
+  <div class="detail-header">
+    <a href="#session_cleanup/5" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">session_cleanup/5</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_hooks.session_cleanup/5</pre>
+      </div>
+
+The <code>session_cleanup</code> hook is called when sm backend cleans up a user's session.  </section>
+</section>
+<section class="detail" id="session_opening_allowed_for_user/3">
+  <div class="detail-header">
+    <a href="#session_opening_allowed_for_user/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">session_opening_allowed_for_user/3</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_hooks.session_opening_allowed_for_user/3</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="set_presence_hook/5">
+  <div class="detail-header">
+    <a href="#set_presence_hook/5" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">set_presence_hook/5</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_hooks.set_presence_hook/5</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="set_vcard/4">
+  <div class="detail-header">
+    <a href="#set_vcard/4" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">set_vcard/4</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_hooks.set_vcard/4</pre>
+      </div>
+
+The <code>set_vcard</code> hook is called when the caller wants to set the VCard.  </section>
+</section>
+<section class="detail" id="sm_broadcast/6">
+  <div class="detail-header">
+    <a href="#sm_broadcast/6" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">sm_broadcast/6</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_hooks.sm_broadcast/6</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="sm_filter_offline_message/5">
+  <div class="detail-header">
+    <a href="#sm_filter_offline_message/5" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">sm_filter_offline_message/5</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_hooks.sm_filter_offline_message/5</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="sm_register_connection_hook/4">
+  <div class="detail-header">
+    <a href="#sm_register_connection_hook/4" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">sm_register_connection_hook/4</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_hooks.sm_register_connection_hook/4</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="sm_remove_connection_hook/6">
+  <div class="detail-header">
+    <a href="#sm_remove_connection_hook/6" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">sm_remove_connection_hook/6</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_hooks.sm_remove_connection_hook/6</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="unacknowledged_message/3">
+  <div class="detail-header">
+    <a href="#unacknowledged_message/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">unacknowledged_message/3</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_hooks.unacknowledged_message/3</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="unregister_command/2">
+  <div class="detail-header">
+    <a href="#unregister_command/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">unregister_command/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_hooks.unregister_command/2</pre>
+      </div>
+
+The <code>unregister_command</code> hook is called when a command is unregistered from <code>mongoose_commands</code>.  </section>
+</section>
+<section class="detail" id="unregister_subhost/2">
+  <div class="detail-header">
+    <a href="#unregister_subhost/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">unregister_subhost/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_hooks.unregister_subhost/2</pre>
+      </div>
+
+The <code>unregister_subhost</code> hook is called when a component is unregistered from ejabberd_router.  </section>
+</section>
+<section class="detail" id="unset_presence_hook/5">
+  <div class="detail-header">
+    <a href="#unset_presence_hook/5" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">unset_presence_hook/5</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_hooks.unset_presence_hook/5</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="update_inbox_for_muc/2">
+  <div class="detail-header">
+    <a href="#update_inbox_for_muc/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">update_inbox_for_muc/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_hooks.update_inbox_for_muc/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="user_available_hook/3">
+  <div class="detail-header">
+    <a href="#user_available_hook/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">user_available_hook/3</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_hooks.user_available_hook/3</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="user_ping_response/5">
+  <div class="detail-header">
+    <a href="#user_ping_response/5" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">user_ping_response/5</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_hooks.user_ping_response/5</pre>
+      </div>
+
+The <code>user_ping_response</code> hook is called when a user responds to a ping.  </section>
+</section>
+<section class="detail" id="user_ping_timeout/3">
+  <div class="detail-header">
+    <a href="#user_ping_timeout/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">user_ping_timeout/3</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_hooks.user_ping_timeout/3</pre>
+      </div>
+
+The <code>user_ping_timeout</code> hook is called when there is a timeout when waiting for a ping response from a user.  </section>
+</section>
+<section class="detail" id="user_receive_packet/6">
+  <div class="detail-header">
+    <a href="#user_receive_packet/6" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">user_receive_packet/6</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_hooks.user_receive_packet/6</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="user_send_packet/5">
+  <div class="detail-header">
+    <a href="#user_send_packet/5" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">user_send_packet/5</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_hooks.user_send_packet/5</pre>
+      </div>
+
+A hook called when a user sends an XMPP stanza. The hook's handler is expected to accept four parameters: <code>Acc</code>, <code>From</code>, <code>To</code> and <code>Packet</code> The arguments and the return value types correspond to the following spec.  </section>
+</section>
+<section class="detail" id="user_sent_keep_alive/2">
+  <div class="detail-header">
+    <a href="#user_sent_keep_alive/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">user_sent_keep_alive/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_hooks.user_sent_keep_alive/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="vcard_set/4">
+  <div class="detail-header">
+    <a href="#vcard_set/4" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">vcard_set/4</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_hooks.vcard_set/4</pre>
+      </div>
+
+The <code>vcard_set</code> hook is called to inform that the vcard has been set in mod_vcard backend.  </section>
+</section>
+<section class="detail" id="xmpp_bounce_message/2">
+  <div class="detail-header">
+    <a href="#xmpp_bounce_message/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">xmpp_bounce_message/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_hooks.xmpp_bounce_message/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="xmpp_send_element/3">
+  <div class="detail-header">
+    <a href="#xmpp_send_element/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">xmpp_send_element/3</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_hooks.xmpp_send_element/3</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="xmpp_stanza_dropped/5">
+  <div class="detail-header">
+    <a href="#xmpp_stanza_dropped/5" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">xmpp_stanza_dropped/5</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_hooks.xmpp_stanza_dropped/5</pre>
+      </div>
+
+The <code>xmpp_stanza_dropped</code> hook is called to inform that an xmpp stanza has been dropped.  </section>
+</section>
+          </div>
+        </section>
+      <footer class="footer">
+        <p>
+          <span class="line">
+            Built using
+            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener">ExDoc</a> (v0.23.0) for the
+            <a href="https://elixir-lang.org" title="Elixir" target="_blank">Elixir programming language</a>.
+          </span>
+          <span class="line">
+            Designed by
+            <a href="https://twitter.com/dignifiedquire" target="_blank" rel="noopener" title="@dignifiedquire">Friedel Ziegelmayer</a>.
+          </span>
+        </p>
+        <p>
+            <a href="api-reference.html" title="API reference" class="line footer-button">API Reference</a>
+          <button class="line footer-button display-shortcuts-help">
+            Display keyboard shortcuts
+          </button>
+          <button class="line footer-button night-mode-toggle">
+            Toggle night mode
+          </button>
+          <button class="line footer-button display-quick-switch">
+            Go to a HexDocs package
+          </button>
+          <button class="line footer-button tooltips-toggle">
+            <span class="tooltips-option-disable">Disable tooltips</span>
+            <span class="tooltips-option-enable">Enable tooltips</span>
+          </button>
+        </p>
+      </footer>
+    </div>
+  </div>
+</section>
+</div>
+  </body>
+</html>

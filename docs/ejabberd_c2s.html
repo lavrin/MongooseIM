@@ -1,0 +1,5122 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.23.0">
+    <meta name="project" content="MongooseIM v4.0.1">
+    <title>ejabberd_c2s — MongooseIM v4.0.1</title>
+    <link rel="stylesheet" href="dist/erlang-8a5f731dbc512bf6261b.css" />
+    <script src="dist/sidebar_items-38e40981d8.js"></script>
+      <script src="docs_config.js"></script>
+    <script async src="dist/app-60a0c9f10e9e52eae31f.js"></script>
+  </head>
+  <body data-type="modules">
+    <script>try { if(localStorage.getItem('night-mode') === 'true') document.body.className += ' night-mode'; } catch (e) { }</script>
+<div class="main">
+
+<button class="sidebar-button sidebar-toggle">
+  <span class="icon-menu" title="Collapse/expand sidebar"></span>
+</button>
+
+<section class="sidebar">
+  <form class="sidebar-search" action="search.html">
+    <button type="submit" class="search-button" aria-label="Submit Search">
+      <span class="icon-search" aria-hidden="true" title="Submit search"></span>
+    </button>
+    <button type="button" tabindex="-1" class="search-close-button" aria-label="Cancel Search">
+      <span class="icon-cross" aria-hidden="true" title="Cancel search"></span>
+    </button>
+    <label class="search-label">
+      <input name="q" type="text" id="search-list" class="search-input" placeholder="Search..." aria-label="Input your search terms" autocomplete="off" />
+    </label>
+  </form>
+
+  <div class="autocomplete">
+    <div class="autocomplete-results">
+    </div>
+  </div>
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectDetails">
+      <a href="mongooseim.html" class="sidebar-projectName">
+MongooseIM      </a>
+      <strong class="sidebar-projectVersion">
+        v4.0.1
+      </strong>
+    </div>
+  </div>
+
+  <ul class="sidebar-listNav">
+    <li><a id="extras-list" href="#full-list">Pages</a></li>
+
+      <li><a id="modules-list" href="#full-list">Modules</a></li>
+
+  </ul>
+  <div class="gradient"></div>
+  <ul id="full-list" class="sidebar-fullList"></ul>
+</section>
+
+<section class="content">
+  <div class="content-outer">
+    <div id="content" class="content-inner">
+
+      <h1>
+        ejabberd_c2s <small class="app-vsn">(MongooseIM v4.0.1)</small>
+      </h1>
+
+
+
+        <section id="summary" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#summary">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+            Summary
+          </h1>
+  <div class="summary-types summary">
+    <h2>
+      <a href="#types">Types</a>
+    </h2>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:authenticated_state/0">authenticated_state()</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:aux_key/0">aux_key()</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:aux_value/0">aux_value()</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:blocking_type/0">blocking_type()</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:broadcast/0">broadcast()</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:broadcast_result/0">broadcast_result()</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:broadcast_type/0">broadcast_type()</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:conntype/0">conntype()</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:debug_presences/0">debug_presences()</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:fsm_return/0">fsm_return()</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:jid_set/0">jid_set()</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:pack_tree/0">pack_tree()</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:packet/0">packet()</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:routing_result/0">routing_result()</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:routing_result_atom/0">routing_result_atom()</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:state/0">state()</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:statename/0">statename()</a>
+  </div>
+</div>
+  </div>
+  <div class="summary-functions summary">
+    <h2>
+      <a href="#functions">Functions</a>
+    </h2>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#add_timestamp/3">add_timestamp/3</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#am_i_available_to/3">am_i_available_to/3</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#am_i_subscribed_to_presence/3">am_i_subscribed_to_presence/3</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#blocking_presence_to_contacts/3">blocking_presence_to_contacts/3</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#blocking_push_to_resources/3">blocking_push_to_resources/3</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#bounce_csi_buffer/1">bounce_csi_buffer/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#bounce_messages/1">bounce_messages/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#buffer_out_stanza/3">buffer_out_stanza/3</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#c2s_stream_error/2">c2s_stream_error/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#calc_to_drop/2">calc_to_drop/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#can_use_tls/3">can_use_tls/3</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#can_use_zlib_compression/2">can_use_zlib_compression/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#change_shaper/2">change_shaper/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#check_compression_auth/3">check_compression_auth/3</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#check_compression_method/3">check_compression_method/3</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#check_from/2">check_from/2</a>
+  </div>
+    <div class="summary-synopsis">Check from attributes.</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#check_incoming_accum_for_conflicts/2">check_incoming_accum_for_conflicts/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#check_privacy_and_route/2">check_privacy_and_route/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#check_privacy_and_route/3">check_privacy_and_route/3</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#check_privacy_and_route_or_ignore/6">check_privacy_and_route_or_ignore/6</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#check_privacy_and_route_probe/5">check_privacy_and_route_probe/5</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#code_change/4">code_change/4</a>
+  </div>
+    <div class="summary-synopsis"><p>Callback implementation for <code class="inline">c::p1_fsm_old.code_change/4</code>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#compress_setup_failed/0">compress_setup_failed/0</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#compress_unsupported_method/0">compress_unsupported_method/0</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#compressed/0">compressed/0</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#compression_zlib/0">compression_zlib/0</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#default_language/0">default_language/0</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#default_replaced_wait_timeout/0">default_replaced_wait_timeout/0</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#defer_resource_constraint_check/1">defer_resource_constraint_check/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#del_aux_field/2">del_aux_field/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#determine_features/2">determine_features/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#do_handle_ack/5">do_handle_ack/5</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#do_handover_session/2">do_handover_session/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#do_open_session/3">do_open_session/3</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#do_open_session_common/3">do_open_session_common/3</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#do_resume_session/4">do_resume_session/4</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#do_send_element/2">do_send_element/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#drop_last/2">drop_last/2</a>
+  </div>
+    <div class="summary-synopsis">Drop last N elements from List. It's not an error if N &gt; length(List). The actual number of dropped elements and an empty list is returned.</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#element_to_origin_accum/2">element_to_origin_accum/2</a>
+  </div>
+    <div class="summary-synopsis">This function is executed when c2s receives a stanza from TCP connection.</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#enable_stream_resumption/1">enable_stream_resumption/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#filter_mechanism/2">filter_mechanism/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#finish_state/3">finish_state/3</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#fix_message_from_user/2">fix_message_from_user/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#flush_csi_buffer/1">flush_csi_buffer/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#flush_messages/1">flush_messages/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#flush_messages/2">flush_messages/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#flush_or_buffer_packets/1">flush_or_buffer_packets/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#flush_stream_mgmt_buffer/1">flush_stream_mgmt_buffer/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#fsm_limit_opts/1">fsm_limit_opts/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#fsm_next_state/2">fsm_next_state/2</a>
+  </div>
+    <div class="summary-synopsis">fsm_next_state: Generate the next_state FSM tuple with different timeout, depending on the future state</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#fsm_next_state_gc/2">fsm_next_state_gc/2</a>
+  </div>
+    <div class="summary-synopsis">fsm_next_state_gc: Garbage collect the process heap to make use of the newly packed StateData structure.</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#fsm_next_state_pack/2">fsm_next_state_pack/2</a>
+  </div>
+    <div class="summary-synopsis">fsm_next_state_pack: Pack the StateData structure to improve sharing.</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#fsm_reply/3">fsm_reply/3</a>
+  </div>
+    <div class="summary-synopsis">fsm_reply: Generate the reply FSM tuple with different timeout, depending on the future state</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#generate_random_resource/0">generate_random_resource/0</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#get_ack_freq/0">get_ack_freq/0</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#get_aux_field/2">get_aux_field/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#get_buffer_max/0">get_buffer_max/0</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#get_conn_type/1">get_conn_type/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#get_info/1">get_info/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#get_msg/1">get_msg/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#get_peer_cert/1">get_peer_cert/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#get_presence/1">get_presence/1</a>
+  </div>
+    <div class="summary-synopsis">Return Username, Resource and presence information</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#get_priority_from_presence/1">get_priority_from_presence/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#get_replaced_wait_timeout/1">get_replaced_wait_timeout/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#get_resume_timeout/0">get_resume_timeout/0</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#get_showtag/1">get_showtag/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#get_statustag/1">get_statustag/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#get_subscribed/1">get_subscribed/1</a>
+  </div>
+    <div class="summary-synopsis">Return list of all available resources of contacts,</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#get_subscription/2">get_subscription/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#get_xml_lang/1">get_xml_lang/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#handle_broadcast_result/4">handle_broadcast_result/4</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#handle_event/3">handle_event/3</a>
+  </div>
+    <div class="summary-synopsis"><p>Callback implementation for <code class="inline">c::p1_fsm_old.handle_event/3</code>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#handle_incoming_message/3">handle_incoming_message/3</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#handle_info/3">handle_info/3</a>
+  </div>
+    <div class="summary-synopsis"><p>Callback implementation for <code class="inline">c::p1_fsm_old.handle_info/3</code>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#handle_routed/5">handle_routed/5</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#handle_routed_available_presence/4">handle_routed_available_presence/4</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#handle_routed_broadcast/3">handle_routed_broadcast/3</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#handle_routed_iq/4">handle_routed_iq/4</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#handle_routed_iq/5">handle_routed_iq/5</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#handle_routed_presence/4">handle_routed_presence/4</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#handle_sasl_step/2">handle_sasl_step/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#handle_sasl_success/2">handle_sasl_success/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#handle_stream_start/2">handle_stream_start/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#handle_sync_event/4">handle_sync_event/4</a>
+  </div>
+    <div class="summary-synopsis"><p>Callback implementation for <code class="inline">c::p1_fsm_old.handle_sync_event/4</code>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#handover_session/2">handover_session/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#hibernate/0">hibernate/0</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#hook_enabled_features/1">hook_enabled_features/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#increment_sm_counter/2">increment_sm_counter/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#increment_sm_incoming/1">increment_sm_incoming/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#init/1">init/1</a>
+  </div>
+    <div class="summary-synopsis"><p>Callback implementation for <code class="inline">c::p1_fsm_old.init/1</code>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#invisible_to/3">invisible_to/3</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#is_buffer_full/2">is_buffer_full/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#is_channel_binding_supported/1">is_channel_binding_supported/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#is_fast_tls_configured/2">is_fast_tls_configured/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#is_ip_blacklisted/1">is_ip_blacklisted/1</a>
+  </div>
+    <div class="summary-synopsis">Used by c2s blacklist plugins</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#is_subscribed_to_my_presence/2">is_subscribed_to_my_presence/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#is_subscribed_to_my_presence/3">is_subscribed_to_my_presence/3</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#lowcase_and_bare/1">lowcase_and_bare/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#make_available_to/3">make_available_to/3</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#make_c2s_info/1">make_c2s_info/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#maybe_activate_session/2">maybe_activate_session/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#maybe_add_cert/2">maybe_add_cert/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#maybe_add_timestamp/3">maybe_add_timestamp/3</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#maybe_compress_feature/2">maybe_compress_feature/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#maybe_csi_inactive_optimisation/3">maybe_csi_inactive_optimisation/3</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#maybe_do_compress/3">maybe_do_compress/3</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#maybe_enable_stream_mgmt/3">maybe_enable_stream_mgmt/3</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#maybe_enter_resume_session/1">maybe_enter_resume_session/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#maybe_enter_resume_session/2">maybe_enter_resume_session/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#maybe_hibernate/1">maybe_hibernate/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#maybe_inactivate_session/2">maybe_inactivate_session/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#maybe_increment_sm_incoming/2">maybe_increment_sm_incoming/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#maybe_notify_unacknowledged_msg/2">maybe_notify_unacknowledged_msg/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#maybe_open_session/2">maybe_open_session/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#maybe_resume_session/3">maybe_resume_session/3</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#maybe_roster_versioning_feature/1">maybe_roster_versioning_feature/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#maybe_sasl_mechanisms/1">maybe_sasl_mechanisms/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#maybe_send_ack_request/2">maybe_send_ack_request/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#maybe_send_element_from_server_jid_safe/2">maybe_send_element_from_server_jid_safe/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#maybe_send_element_from_server_jid_safe/3">maybe_send_element_from_server_jid_safe/3</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#maybe_send_sm_ack/5">maybe_send_sm_ack/5</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#maybe_send_trailer_safe/1">maybe_send_trailer_safe/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#maybe_text_tag/1">maybe_text_tag/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#maybe_unexpected_sm_request/3">maybe_unexpected_sm_request/3</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#maybe_update_presence/3">maybe_update_presence/3</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#mechanism/1">mechanism/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#merge_state/2">merge_state/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#new_id/0">new_id/0</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#notify_unacknowledged_messages/1">notify_unacknowledged_messages/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#notify_unacknowledged_msg/2">notify_unacknowledged_msg/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#notify_unacknowledged_msg_if_in_resume_state/2">notify_unacknowledged_msg_if_in_resume_state/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#open_session_allowed_hook/2">open_session_allowed_hook/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#pack/1">pack/1</a>
+  </div>
+    <div class="summary-synopsis">Try to reduce the heap footprint of the four presence sets by ensuring that we re-use strings and Jids wherever possible.</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#pack_jid_set/2">pack_jid_set/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#pack_jids/3">pack_jids/3</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#pack_string/2">pack_string/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#peerip/2">peerip/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#preprocess_and_ship/5">preprocess_and_ship/5</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#presence_broadcast/3">presence_broadcast/3</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#presence_broadcast_first/4">presence_broadcast_first/4</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#presence_broadcast_to_trusted/6">presence_broadcast_to_trusted/6</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#presence_track/2">presence_track/2</a>
+  </div>
+    <div class="summary-synopsis">User sends a directed presence packet</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#presence_update/3">presence_update/3</a>
+  </div>
+    <div class="summary-synopsis">User updates his presence (non-directed presence packet)</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#presence_update_to_available/4">presence_update_to_available/4</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#presence_update_to_available/7">presence_update_to_available/7</a>
+  </div>
+    <div class="summary-synopsis">the first one is run when presence changes from unavailable to anything else</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#print_state/1">print_state/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#privacy_check_packet/4">privacy_check_packet/4</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#privacy_check_packet/5">privacy_check_packet/5</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#privacy_check_packet/6">privacy_check_packet/6</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#privacy_list_push_iq/1">privacy_list_push_iq/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#process_incoming_stanza/5">process_incoming_stanza/5</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#process_incoming_stanza_with_conflict_check/5">process_incoming_stanza_with_conflict_check/5</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#process_outgoing_stanza/2">process_outgoing_stanza/2</a>
+  </div>
+    <div class="summary-synopsis">Process packets sent by user (coming from user on c2s XMPP connection) eventually it should return {mongoose_acc:t(), fsm_return()} so that the accumulator comes back whence it originated</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#process_outgoing_stanza/4">process_outgoing_stanza/4</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#process_presence_probe/4">process_presence_probe/4</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#process_presence_subscription_and_route/3">process_presence_subscription_and_route/3</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#process_privacy_iq/3">process_privacy_iq/3</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#process_privacy_iq/4">process_privacy_iq/4</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#process_unauthenticated_stanza/2">process_unauthenticated_stanza/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#re_route_packets/1">re_route_packets/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#remove_session_info/3">remove_session_info/3</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#reroute_unacked_messages/2">reroute_unacked_messages/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#resend_csi_buffer/1">resend_csi_buffer/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#resend_offline_message/6">resend_offline_message/6</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#resend_offline_messages/2">resend_offline_messages/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#resend_subscription_requests/2">resend_subscription_requests/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#response_iq_deny/4">response_iq_deny/4</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#response_negative/5">response_negative/5</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#result_to_amp_event/1">result_to_amp_event/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#resume_session/2">resume_session/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#resume_session/3">resume_session/3</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#roster_change/4">roster_change/4</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#run_remote_hook/3">run_remote_hook/3</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#run_remote_hook_after/4">run_remote_hook_after/4</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#sasl_challenge_stanza/1">sasl_challenge_stanza/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#sasl_failure_stanza/1">sasl_failure_stanza/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#sasl_success_stanza/1">sasl_success_stanza/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#send_and_maybe_buffer_stanza/3">send_and_maybe_buffer_stanza/3</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#send_and_maybe_buffer_stanza_no_ack/3">send_and_maybe_buffer_stanza_no_ack/3</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#send_back_error/4">send_back_error/4</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#send_element/3">send_element/3</a>
+  </div>
+    <div class="summary-synopsis">This is the termination point - from here stanza is sent to the user</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#send_element_from_server_jid/2">send_element_from_server_jid/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#send_element_from_server_jid/3">send_element_from_server_jid/3</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#send_filtered/5">send_filtered/5</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#send_header/4">send_header/4</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#send_text/2">send_text/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#send_trailer/1">send_trailer/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#send_unavail_if_newly_blocked/4">send_unavail_if_newly_blocked/4</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#send_unavail_if_newly_blocked/6">send_unavail_if_newly_blocked/6</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#session_established/2">session_established/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#session_established/3">session_established/3</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#set_aux_field/3">set_aux_field/3</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#ship_to_local_user/3">ship_to_local_user/3</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#should_close_session/1">should_close_session/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#should_retransmit_last_presence/3">should_retransmit_last_presence/3</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#sm_handled_count_too_high_stanza/2">sm_handled_count_too_high_stanza/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#socket_type/0">socket_type/0</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#specifically_visible_to/2">specifically_visible_to/2</a>
+  </div>
+    <div class="summary-synopsis">Is generally invisible, but visible to a particular resource?</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#start/2">start/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#start_link/2">start_link/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#starttls_stanza/1">starttls_stanza/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#stop/1">stop/1</a>
+  </div>
+    <div class="summary-synopsis">Stops the session gracefully, entering resume state if applicable</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#store_session_info/3">store_session_info/3</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#stream_features/1">stream_features/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#stream_mgmt_ack/1">stream_mgmt_ack/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#stream_mgmt_enabled/0">stream_mgmt_enabled/0</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#stream_mgmt_enabled/1">stream_mgmt_enabled/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#stream_mgmt_failed/1">stream_mgmt_failed/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#stream_mgmt_failed/2">stream_mgmt_failed/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#stream_mgmt_handle_ack/3">stream_mgmt_handle_ack/3</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#stream_mgmt_parse_h/1">stream_mgmt_parse_h/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#stream_mgmt_request/0">stream_mgmt_request/0</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#stream_mgmt_resumed/2">stream_mgmt_resumed/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#stream_start_by_protocol_version/2">stream_start_by_protocol_version/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#stream_start_error/2">stream_start_error/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#stream_start_features_after_auth/1">stream_start_features_after_auth/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#stream_start_features_before_auth/1">stream_start_features_before_auth/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#stream_start_negotiate_features/1">stream_start_negotiate_features/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#strip_c2s_fields/1">strip_c2s_fields/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#terminate/4">terminate/4</a>
+  </div>
+    <div class="summary-synopsis"><p>Callback implementation for <code class="inline">c::p1_fsm_old.terminate/4</code>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#terminate_session/2">terminate_session/2</a>
+  </div>
+    <div class="summary-synopsis">terminates the session immediately and unconditionally, sending the user a stream conflict error specifying the reason</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#terminate_when_tls_required_but_not_enabled/4">terminate_when_tls_required_but_not_enabled/4</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#timestamp_xml/2">timestamp_xml/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#tls_proceed/0">tls_proceed/0</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#update_priority/4">update_priority/4</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#update_stanza/4">update_stanza/4</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#user_allowed/2">user_allowed/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#verify_opts/1">verify_opts/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#wait_for_feature_after_auth/2">wait_for_feature_after_auth/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#wait_for_feature_before_auth/2">wait_for_feature_before_auth/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#wait_for_sasl_response/2">wait_for_sasl_response/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#wait_for_session_or_sm/2">wait_for_session_or_sm/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#wait_for_stream/2">wait_for_stream/2</a>
+  </div>
+</div>
+  </div>
+        </section>
+
+        <section id="types" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#types">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+Types          </h1>
+          <div class="types-list">
+<section class="detail" id="t:authenticated_state/0">
+  <div class="detail-header">
+    <a href="#t:authenticated_state/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">authenticated_state()</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>t:ejabberd_c2s.authenticated_state/0</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="t:aux_key/0">
+  <div class="detail-header">
+    <a href="#t:aux_key/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">aux_key()</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>t:ejabberd_c2s.aux_key/0</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="t:aux_value/0">
+  <div class="detail-header">
+    <a href="#t:aux_value/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">aux_value()</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>t:ejabberd_c2s.aux_value/0</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="t:blocking_type/0">
+  <div class="detail-header">
+    <a href="#t:blocking_type/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">blocking_type()</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>t:ejabberd_c2s.blocking_type/0</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="t:broadcast/0">
+  <div class="detail-header">
+    <a href="#t:broadcast/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">broadcast()</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>t:ejabberd_c2s.broadcast/0</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="t:broadcast_result/0">
+  <div class="detail-header">
+    <a href="#t:broadcast_result/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">broadcast_result()</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>t:ejabberd_c2s.broadcast_result/0</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="t:broadcast_type/0">
+  <div class="detail-header">
+    <a href="#t:broadcast_type/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">broadcast_type()</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>t:ejabberd_c2s.broadcast_type/0</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="t:conntype/0">
+  <div class="detail-header">
+    <a href="#t:conntype/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">conntype()</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>t:ejabberd_c2s.conntype/0</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="t:debug_presences/0">
+  <div class="detail-header">
+    <a href="#t:debug_presences/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">debug_presences()</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>t:ejabberd_c2s.debug_presences/0</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="t:fsm_return/0">
+  <div class="detail-header">
+    <a href="#t:fsm_return/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">fsm_return()</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>t:ejabberd_c2s.fsm_return/0</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="t:jid_set/0">
+  <div class="detail-header">
+    <a href="#t:jid_set/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">jid_set()</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>t:ejabberd_c2s.jid_set/0</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="t:pack_tree/0">
+  <div class="detail-header">
+    <a href="#t:pack_tree/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">pack_tree()</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>t:ejabberd_c2s.pack_tree/0</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="t:packet/0">
+  <div class="detail-header">
+    <a href="#t:packet/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">packet()</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>t:ejabberd_c2s.packet/0</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="t:routing_result/0">
+  <div class="detail-header">
+    <a href="#t:routing_result/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">routing_result()</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>t:ejabberd_c2s.routing_result/0</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="t:routing_result_atom/0">
+  <div class="detail-header">
+    <a href="#t:routing_result_atom/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">routing_result_atom()</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>t:ejabberd_c2s.routing_result_atom/0</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="t:state/0">
+  <div class="detail-header">
+    <a href="#t:state/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">state()</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>t:ejabberd_c2s.state/0</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="t:statename/0">
+  <div class="detail-header">
+    <a href="#t:statename/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">statename()</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>t:ejabberd_c2s.statename/0</pre>
+      </div>
+
+  </section>
+</section>
+          </div>
+        </section>
+        <section id="functions" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#functions">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+Functions          </h1>
+          <div class="functions-list">
+<section class="detail" id="add_timestamp/3">
+  <div class="detail-header">
+    <a href="#add_timestamp/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">add_timestamp/3</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="am_i_available_to/3">
+  <div class="detail-header">
+    <a href="#am_i_available_to/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">am_i_available_to/3</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="am_i_subscribed_to_presence/3">
+  <div class="detail-header">
+    <a href="#am_i_subscribed_to_presence/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">am_i_subscribed_to_presence/3</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="blocking_presence_to_contacts/3">
+  <div class="detail-header">
+    <a href="#blocking_presence_to_contacts/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">blocking_presence_to_contacts/3</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>ejabberd_c2s.blocking_presence_to_contacts/3</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="blocking_push_to_resources/3">
+  <div class="detail-header">
+    <a href="#blocking_push_to_resources/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">blocking_push_to_resources/3</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>ejabberd_c2s.blocking_push_to_resources/3</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="bounce_csi_buffer/1">
+  <div class="detail-header">
+    <a href="#bounce_csi_buffer/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">bounce_csi_buffer/1</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="bounce_messages/1">
+  <div class="detail-header">
+    <a href="#bounce_messages/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">bounce_messages/1</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>ejabberd_c2s.bounce_messages/1</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="buffer_out_stanza/3">
+  <div class="detail-header">
+    <a href="#buffer_out_stanza/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">buffer_out_stanza/3</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>ejabberd_c2s.buffer_out_stanza/3</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="c2s_stream_error/2">
+  <div class="detail-header">
+    <a href="#c2s_stream_error/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">c2s_stream_error/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>ejabberd_c2s.c2s_stream_error/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="calc_to_drop/2">
+  <div class="detail-header">
+    <a href="#calc_to_drop/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">calc_to_drop/2</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="can_use_tls/3">
+  <div class="detail-header">
+    <a href="#can_use_tls/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">can_use_tls/3</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="can_use_zlib_compression/2">
+  <div class="detail-header">
+    <a href="#can_use_zlib_compression/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">can_use_zlib_compression/2</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="change_shaper/2">
+  <div class="detail-header">
+    <a href="#change_shaper/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">change_shaper/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>ejabberd_c2s.change_shaper/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="check_compression_auth/3">
+  <div class="detail-header">
+    <a href="#check_compression_auth/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">check_compression_auth/3</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="check_compression_method/3">
+  <div class="detail-header">
+    <a href="#check_compression_method/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">check_compression_method/3</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="check_from/2">
+  <div class="detail-header">
+    <a href="#check_from/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">check_from/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>ejabberd_c2s.check_from/2</pre>
+      </div>
+
+Check from attributes.  </section>
+</section>
+<section class="detail" id="check_incoming_accum_for_conflicts/2">
+  <div class="detail-header">
+    <a href="#check_incoming_accum_for_conflicts/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">check_incoming_accum_for_conflicts/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>ejabberd_c2s.check_incoming_accum_for_conflicts/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="check_privacy_and_route/2">
+  <div class="detail-header">
+    <a href="#check_privacy_and_route/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">check_privacy_and_route/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>ejabberd_c2s.check_privacy_and_route/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="check_privacy_and_route/3">
+  <div class="detail-header">
+    <a href="#check_privacy_and_route/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">check_privacy_and_route/3</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>ejabberd_c2s.check_privacy_and_route/3</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="check_privacy_and_route_or_ignore/6">
+  <div class="detail-header">
+    <a href="#check_privacy_and_route_or_ignore/6" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">check_privacy_and_route_or_ignore/6</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>ejabberd_c2s.check_privacy_and_route_or_ignore/6</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="check_privacy_and_route_probe/5">
+  <div class="detail-header">
+    <a href="#check_privacy_and_route_probe/5" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">check_privacy_and_route_probe/5</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>ejabberd_c2s.check_privacy_and_route_probe/5</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="code_change/4">
+  <div class="detail-header">
+    <a href="#code_change/4" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">code_change/4</h1>
+  </div>
+
+  <section class="docstring">
+
+<p>Callback implementation for <code class="inline">c::p1_fsm_old.code_change/4</code>.</p>  </section>
+</section>
+<section class="detail" id="compress_setup_failed/0">
+  <div class="detail-header">
+    <a href="#compress_setup_failed/0" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">compress_setup_failed/0</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="compress_unsupported_method/0">
+  <div class="detail-header">
+    <a href="#compress_unsupported_method/0" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">compress_unsupported_method/0</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="compressed/0">
+  <div class="detail-header">
+    <a href="#compressed/0" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">compressed/0</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="compression_zlib/0">
+  <div class="detail-header">
+    <a href="#compression_zlib/0" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">compression_zlib/0</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="default_language/0">
+  <div class="detail-header">
+    <a href="#default_language/0" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">default_language/0</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="default_replaced_wait_timeout/0">
+  <div class="detail-header">
+    <a href="#default_replaced_wait_timeout/0" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">default_replaced_wait_timeout/0</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="defer_resource_constraint_check/1">
+  <div class="detail-header">
+    <a href="#defer_resource_constraint_check/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">defer_resource_constraint_check/1</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="del_aux_field/2">
+  <div class="detail-header">
+    <a href="#del_aux_field/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">del_aux_field/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>ejabberd_c2s.del_aux_field/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="determine_features/2">
+  <div class="detail-header">
+    <a href="#determine_features/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">determine_features/2</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="do_handle_ack/5">
+  <div class="detail-header">
+    <a href="#do_handle_ack/5" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">do_handle_ack/5</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="do_handover_session/2">
+  <div class="detail-header">
+    <a href="#do_handover_session/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">do_handover_session/2</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="do_open_session/3">
+  <div class="detail-header">
+    <a href="#do_open_session/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">do_open_session/3</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>ejabberd_c2s.do_open_session/3</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="do_open_session_common/3">
+  <div class="detail-header">
+    <a href="#do_open_session_common/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">do_open_session_common/3</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="do_resume_session/4">
+  <div class="detail-header">
+    <a href="#do_resume_session/4" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">do_resume_session/4</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>ejabberd_c2s.do_resume_session/4</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="do_send_element/2">
+  <div class="detail-header">
+    <a href="#do_send_element/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">do_send_element/2</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="drop_last/2">
+  <div class="detail-header">
+    <a href="#drop_last/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">drop_last/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>ejabberd_c2s.drop_last/2</pre>
+      </div>
+
+Drop last N elements from List. It's not an error if N &gt; length(List). The actual number of dropped elements and an empty list is returned.  </section>
+</section>
+<section class="detail" id="element_to_origin_accum/2">
+  <div class="detail-header">
+    <a href="#element_to_origin_accum/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">element_to_origin_accum/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>ejabberd_c2s.element_to_origin_accum/2</pre>
+      </div>
+
+This function is executed when c2s receives a stanza from TCP connection.  </section>
+</section>
+<section class="detail" id="enable_stream_resumption/1">
+  <div class="detail-header">
+    <a href="#enable_stream_resumption/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">enable_stream_resumption/1</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="filter_mechanism/2">
+  <div class="detail-header">
+    <a href="#filter_mechanism/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">filter_mechanism/2</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="finish_state/3">
+  <div class="detail-header">
+    <a href="#finish_state/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">finish_state/3</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="fix_message_from_user/2">
+  <div class="detail-header">
+    <a href="#fix_message_from_user/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">fix_message_from_user/2</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="flush_csi_buffer/1">
+  <div class="detail-header">
+    <a href="#flush_csi_buffer/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">flush_csi_buffer/1</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>ejabberd_c2s.flush_csi_buffer/1</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="flush_messages/1">
+  <div class="detail-header">
+    <a href="#flush_messages/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">flush_messages/1</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>ejabberd_c2s.flush_messages/1</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="flush_messages/2">
+  <div class="detail-header">
+    <a href="#flush_messages/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">flush_messages/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>ejabberd_c2s.flush_messages/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="flush_or_buffer_packets/1">
+  <div class="detail-header">
+    <a href="#flush_or_buffer_packets/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">flush_or_buffer_packets/1</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="flush_stream_mgmt_buffer/1">
+  <div class="detail-header">
+    <a href="#flush_stream_mgmt_buffer/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">flush_stream_mgmt_buffer/1</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="fsm_limit_opts/1">
+  <div class="detail-header">
+    <a href="#fsm_limit_opts/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">fsm_limit_opts/1</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="fsm_next_state/2">
+  <div class="detail-header">
+    <a href="#fsm_next_state/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">fsm_next_state/2</h1>
+  </div>
+
+  <section class="docstring">
+
+fsm_next_state: Generate the next_state FSM tuple with different timeout, depending on the future state  </section>
+</section>
+<section class="detail" id="fsm_next_state_gc/2">
+  <div class="detail-header">
+    <a href="#fsm_next_state_gc/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">fsm_next_state_gc/2</h1>
+  </div>
+
+  <section class="docstring">
+
+fsm_next_state_gc: Garbage collect the process heap to make use of the newly packed StateData structure.  </section>
+</section>
+<section class="detail" id="fsm_next_state_pack/2">
+  <div class="detail-header">
+    <a href="#fsm_next_state_pack/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">fsm_next_state_pack/2</h1>
+  </div>
+
+  <section class="docstring">
+
+fsm_next_state_pack: Pack the StateData structure to improve sharing.  </section>
+</section>
+<section class="detail" id="fsm_reply/3">
+  <div class="detail-header">
+    <a href="#fsm_reply/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">fsm_reply/3</h1>
+  </div>
+
+  <section class="docstring">
+
+fsm_reply: Generate the reply FSM tuple with different timeout, depending on the future state  </section>
+</section>
+<section class="detail" id="generate_random_resource/0">
+  <div class="detail-header">
+    <a href="#generate_random_resource/0" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">generate_random_resource/0</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>ejabberd_c2s.generate_random_resource/0</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="get_ack_freq/0">
+  <div class="detail-header">
+    <a href="#get_ack_freq/0" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">get_ack_freq/0</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>ejabberd_c2s.get_ack_freq/0</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="get_aux_field/2">
+  <div class="detail-header">
+    <a href="#get_aux_field/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">get_aux_field/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>ejabberd_c2s.get_aux_field/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="get_buffer_max/0">
+  <div class="detail-header">
+    <a href="#get_buffer_max/0" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">get_buffer_max/0</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>ejabberd_c2s.get_buffer_max/0</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="get_conn_type/1">
+  <div class="detail-header">
+    <a href="#get_conn_type/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">get_conn_type/1</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>ejabberd_c2s.get_conn_type/1</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="get_info/1">
+  <div class="detail-header">
+    <a href="#get_info/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">get_info/1</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="get_msg/1">
+  <div class="detail-header">
+    <a href="#get_msg/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">get_msg/1</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="get_peer_cert/1">
+  <div class="detail-header">
+    <a href="#get_peer_cert/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">get_peer_cert/1</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>ejabberd_c2s.get_peer_cert/1</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="get_presence/1">
+  <div class="detail-header">
+    <a href="#get_presence/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">get_presence/1</h1>
+  </div>
+
+  <section class="docstring">
+
+Return Username, Resource and presence information  </section>
+</section>
+<section class="detail" id="get_priority_from_presence/1">
+  <div class="detail-header">
+    <a href="#get_priority_from_presence/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">get_priority_from_presence/1</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>ejabberd_c2s.get_priority_from_presence/1</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="get_replaced_wait_timeout/1">
+  <div class="detail-header">
+    <a href="#get_replaced_wait_timeout/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">get_replaced_wait_timeout/1</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="get_resume_timeout/0">
+  <div class="detail-header">
+    <a href="#get_resume_timeout/0" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">get_resume_timeout/0</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>ejabberd_c2s.get_resume_timeout/0</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="get_showtag/1">
+  <div class="detail-header">
+    <a href="#get_showtag/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">get_showtag/1</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="get_statustag/1">
+  <div class="detail-header">
+    <a href="#get_statustag/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">get_statustag/1</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="get_subscribed/1">
+  <div class="detail-header">
+    <a href="#get_subscribed/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">get_subscribed/1</h1>
+  </div>
+
+  <section class="docstring">
+
+Return list of all available resources of contacts,  </section>
+</section>
+<section class="detail" id="get_subscription/2">
+  <div class="detail-header">
+    <a href="#get_subscription/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">get_subscription/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>ejabberd_c2s.get_subscription/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="get_xml_lang/1">
+  <div class="detail-header">
+    <a href="#get_xml_lang/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">get_xml_lang/1</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="handle_broadcast_result/4">
+  <div class="detail-header">
+    <a href="#handle_broadcast_result/4" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">handle_broadcast_result/4</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>ejabberd_c2s.handle_broadcast_result/4</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="handle_event/3">
+  <div class="detail-header">
+    <a href="#handle_event/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">handle_event/3</h1>
+  </div>
+
+  <section class="docstring">
+
+<p>Callback implementation for <code class="inline">c::p1_fsm_old.handle_event/3</code>.</p>  </section>
+</section>
+<section class="detail" id="handle_incoming_message/3">
+  <div class="detail-header">
+    <a href="#handle_incoming_message/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">handle_incoming_message/3</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="handle_info/3">
+  <div class="detail-header">
+    <a href="#handle_info/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">handle_info/3</h1>
+  </div>
+
+  <section class="docstring">
+
+<p>Callback implementation for <code class="inline">c::p1_fsm_old.handle_info/3</code>.</p>  </section>
+</section>
+<section class="detail" id="handle_routed/5">
+  <div class="detail-header">
+    <a href="#handle_routed/5" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">handle_routed/5</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="handle_routed_available_presence/4">
+  <div class="detail-header">
+    <a href="#handle_routed_available_presence/4" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">handle_routed_available_presence/4</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>ejabberd_c2s.handle_routed_available_presence/4</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="handle_routed_broadcast/3">
+  <div class="detail-header">
+    <a href="#handle_routed_broadcast/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">handle_routed_broadcast/3</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>ejabberd_c2s.handle_routed_broadcast/3</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="handle_routed_iq/4">
+  <div class="detail-header">
+    <a href="#handle_routed_iq/4" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">handle_routed_iq/4</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>ejabberd_c2s.handle_routed_iq/4</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="handle_routed_iq/5">
+  <div class="detail-header">
+    <a href="#handle_routed_iq/5" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">handle_routed_iq/5</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>ejabberd_c2s.handle_routed_iq/5</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="handle_routed_presence/4">
+  <div class="detail-header">
+    <a href="#handle_routed_presence/4" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">handle_routed_presence/4</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>ejabberd_c2s.handle_routed_presence/4</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="handle_sasl_step/2">
+  <div class="detail-header">
+    <a href="#handle_sasl_step/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">handle_sasl_step/2</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="handle_sasl_success/2">
+  <div class="detail-header">
+    <a href="#handle_sasl_success/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">handle_sasl_success/2</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="handle_stream_start/2">
+  <div class="detail-header">
+    <a href="#handle_stream_start/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">handle_stream_start/2</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="handle_sync_event/4">
+  <div class="detail-header">
+    <a href="#handle_sync_event/4" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">handle_sync_event/4</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>ejabberd_c2s.handle_sync_event/4</pre>
+      </div>
+
+<p>Callback implementation for <code class="inline">c::p1_fsm_old.handle_sync_event/4</code>.</p>  </section>
+</section>
+<section class="detail" id="handover_session/2">
+  <div class="detail-header">
+    <a href="#handover_session/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">handover_session/2</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="hibernate/0">
+  <div class="detail-header">
+    <a href="#hibernate/0" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">hibernate/0</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>ejabberd_c2s.hibernate/0</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="hook_enabled_features/1">
+  <div class="detail-header">
+    <a href="#hook_enabled_features/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">hook_enabled_features/1</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="increment_sm_counter/2">
+  <div class="detail-header">
+    <a href="#increment_sm_counter/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">increment_sm_counter/2</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="increment_sm_incoming/1">
+  <div class="detail-header">
+    <a href="#increment_sm_incoming/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">increment_sm_incoming/1</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="init/1">
+  <div class="detail-header">
+    <a href="#init/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">init/1</h1>
+  </div>
+
+  <section class="docstring">
+
+<p>Callback implementation for <code class="inline">c::p1_fsm_old.init/1</code>.</p>  </section>
+</section>
+<section class="detail" id="invisible_to/3">
+  <div class="detail-header">
+    <a href="#invisible_to/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">invisible_to/3</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="is_buffer_full/2">
+  <div class="detail-header">
+    <a href="#is_buffer_full/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">is_buffer_full/2</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="is_channel_binding_supported/1">
+  <div class="detail-header">
+    <a href="#is_channel_binding_supported/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">is_channel_binding_supported/1</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="is_fast_tls_configured/2">
+  <div class="detail-header">
+    <a href="#is_fast_tls_configured/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">is_fast_tls_configured/2</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="is_ip_blacklisted/1">
+  <div class="detail-header">
+    <a href="#is_ip_blacklisted/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">is_ip_blacklisted/1</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>ejabberd_c2s.is_ip_blacklisted/1</pre>
+      </div>
+
+Used by c2s blacklist plugins  </section>
+</section>
+<section class="detail" id="is_subscribed_to_my_presence/2">
+  <div class="detail-header">
+    <a href="#is_subscribed_to_my_presence/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">is_subscribed_to_my_presence/2</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="is_subscribed_to_my_presence/3">
+  <div class="detail-header">
+    <a href="#is_subscribed_to_my_presence/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">is_subscribed_to_my_presence/3</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="lowcase_and_bare/1">
+  <div class="detail-header">
+    <a href="#lowcase_and_bare/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">lowcase_and_bare/1</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="make_available_to/3">
+  <div class="detail-header">
+    <a href="#make_available_to/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">make_available_to/3</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="make_c2s_info/1">
+  <div class="detail-header">
+    <a href="#make_c2s_info/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">make_c2s_info/1</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="maybe_activate_session/2">
+  <div class="detail-header">
+    <a href="#maybe_activate_session/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">maybe_activate_session/2</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="maybe_add_cert/2">
+  <div class="detail-header">
+    <a href="#maybe_add_cert/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">maybe_add_cert/2</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="maybe_add_timestamp/3">
+  <div class="detail-header">
+    <a href="#maybe_add_timestamp/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">maybe_add_timestamp/3</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="maybe_compress_feature/2">
+  <div class="detail-header">
+    <a href="#maybe_compress_feature/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">maybe_compress_feature/2</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="maybe_csi_inactive_optimisation/3">
+  <div class="detail-header">
+    <a href="#maybe_csi_inactive_optimisation/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">maybe_csi_inactive_optimisation/3</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>ejabberd_c2s.maybe_csi_inactive_optimisation/3</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="maybe_do_compress/3">
+  <div class="detail-header">
+    <a href="#maybe_do_compress/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">maybe_do_compress/3</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="maybe_enable_stream_mgmt/3">
+  <div class="detail-header">
+    <a href="#maybe_enable_stream_mgmt/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">maybe_enable_stream_mgmt/3</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="maybe_enter_resume_session/1">
+  <div class="detail-header">
+    <a href="#maybe_enter_resume_session/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">maybe_enter_resume_session/1</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="maybe_enter_resume_session/2">
+  <div class="detail-header">
+    <a href="#maybe_enter_resume_session/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">maybe_enter_resume_session/2</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="maybe_hibernate/1">
+  <div class="detail-header">
+    <a href="#maybe_hibernate/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">maybe_hibernate/1</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>ejabberd_c2s.maybe_hibernate/1</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="maybe_inactivate_session/2">
+  <div class="detail-header">
+    <a href="#maybe_inactivate_session/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">maybe_inactivate_session/2</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="maybe_increment_sm_incoming/2">
+  <div class="detail-header">
+    <a href="#maybe_increment_sm_incoming/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">maybe_increment_sm_incoming/2</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="maybe_notify_unacknowledged_msg/2">
+  <div class="detail-header">
+    <a href="#maybe_notify_unacknowledged_msg/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">maybe_notify_unacknowledged_msg/2</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="maybe_open_session/2">
+  <div class="detail-header">
+    <a href="#maybe_open_session/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">maybe_open_session/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>ejabberd_c2s.maybe_open_session/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="maybe_resume_session/3">
+  <div class="detail-header">
+    <a href="#maybe_resume_session/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">maybe_resume_session/3</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="maybe_roster_versioning_feature/1">
+  <div class="detail-header">
+    <a href="#maybe_roster_versioning_feature/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">maybe_roster_versioning_feature/1</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="maybe_sasl_mechanisms/1">
+  <div class="detail-header">
+    <a href="#maybe_sasl_mechanisms/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">maybe_sasl_mechanisms/1</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="maybe_send_ack_request/2">
+  <div class="detail-header">
+    <a href="#maybe_send_ack_request/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">maybe_send_ack_request/2</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="maybe_send_element_from_server_jid_safe/2">
+  <div class="detail-header">
+    <a href="#maybe_send_element_from_server_jid_safe/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">maybe_send_element_from_server_jid_safe/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>ejabberd_c2s.maybe_send_element_from_server_jid_safe/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="maybe_send_element_from_server_jid_safe/3">
+  <div class="detail-header">
+    <a href="#maybe_send_element_from_server_jid_safe/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">maybe_send_element_from_server_jid_safe/3</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>ejabberd_c2s.maybe_send_element_from_server_jid_safe/3</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="maybe_send_sm_ack/5">
+  <div class="detail-header">
+    <a href="#maybe_send_sm_ack/5" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">maybe_send_sm_ack/5</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="maybe_send_trailer_safe/1">
+  <div class="detail-header">
+    <a href="#maybe_send_trailer_safe/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">maybe_send_trailer_safe/1</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>ejabberd_c2s.maybe_send_trailer_safe/1</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="maybe_text_tag/1">
+  <div class="detail-header">
+    <a href="#maybe_text_tag/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">maybe_text_tag/1</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="maybe_unexpected_sm_request/3">
+  <div class="detail-header">
+    <a href="#maybe_unexpected_sm_request/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">maybe_unexpected_sm_request/3</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="maybe_update_presence/3">
+  <div class="detail-header">
+    <a href="#maybe_update_presence/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">maybe_update_presence/3</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="mechanism/1">
+  <div class="detail-header">
+    <a href="#mechanism/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">mechanism/1</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="merge_state/2">
+  <div class="detail-header">
+    <a href="#merge_state/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">merge_state/2</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="new_id/0">
+  <div class="detail-header">
+    <a href="#new_id/0" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">new_id/0</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>ejabberd_c2s.new_id/0</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="notify_unacknowledged_messages/1">
+  <div class="detail-header">
+    <a href="#notify_unacknowledged_messages/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">notify_unacknowledged_messages/1</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="notify_unacknowledged_msg/2">
+  <div class="detail-header">
+    <a href="#notify_unacknowledged_msg/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">notify_unacknowledged_msg/2</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="notify_unacknowledged_msg_if_in_resume_state/2">
+  <div class="detail-header">
+    <a href="#notify_unacknowledged_msg_if_in_resume_state/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">notify_unacknowledged_msg_if_in_resume_state/2</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="open_session_allowed_hook/2">
+  <div class="detail-header">
+    <a href="#open_session_allowed_hook/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">open_session_allowed_hook/2</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="pack/1">
+  <div class="detail-header">
+    <a href="#pack/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">pack/1</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>ejabberd_c2s.pack/1</pre>
+      </div>
+
+Try to reduce the heap footprint of the four presence sets by ensuring that we re-use strings and Jids wherever possible.  </section>
+</section>
+<section class="detail" id="pack_jid_set/2">
+  <div class="detail-header">
+    <a href="#pack_jid_set/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">pack_jid_set/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>ejabberd_c2s.pack_jid_set/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="pack_jids/3">
+  <div class="detail-header">
+    <a href="#pack_jids/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">pack_jids/3</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>ejabberd_c2s.pack_jids/3</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="pack_string/2">
+  <div class="detail-header">
+    <a href="#pack_string/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">pack_string/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>ejabberd_c2s.pack_string/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="peerip/2">
+  <div class="detail-header">
+    <a href="#peerip/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">peerip/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>ejabberd_c2s.peerip/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="preprocess_and_ship/5">
+  <div class="detail-header">
+    <a href="#preprocess_and_ship/5" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">preprocess_and_ship/5</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>ejabberd_c2s.preprocess_and_ship/5</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="presence_broadcast/3">
+  <div class="detail-header">
+    <a href="#presence_broadcast/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">presence_broadcast/3</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>ejabberd_c2s.presence_broadcast/3</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="presence_broadcast_first/4">
+  <div class="detail-header">
+    <a href="#presence_broadcast_first/4" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">presence_broadcast_first/4</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>ejabberd_c2s.presence_broadcast_first/4</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="presence_broadcast_to_trusted/6">
+  <div class="detail-header">
+    <a href="#presence_broadcast_to_trusted/6" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">presence_broadcast_to_trusted/6</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>ejabberd_c2s.presence_broadcast_to_trusted/6</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="presence_track/2">
+  <div class="detail-header">
+    <a href="#presence_track/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">presence_track/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>ejabberd_c2s.presence_track/2</pre>
+      </div>
+
+User sends a directed presence packet  </section>
+</section>
+<section class="detail" id="presence_update/3">
+  <div class="detail-header">
+    <a href="#presence_update/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">presence_update/3</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>ejabberd_c2s.presence_update/3</pre>
+      </div>
+
+User updates his presence (non-directed presence packet)  </section>
+</section>
+<section class="detail" id="presence_update_to_available/4">
+  <div class="detail-header">
+    <a href="#presence_update_to_available/4" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">presence_update_to_available/4</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>ejabberd_c2s.presence_update_to_available/4</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="presence_update_to_available/7">
+  <div class="detail-header">
+    <a href="#presence_update_to_available/7" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">presence_update_to_available/7</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>ejabberd_c2s.presence_update_to_available/7</pre>
+      </div>
+
+the first one is run when presence changes from unavailable to anything else  </section>
+</section>
+<section class="detail" id="print_state/1">
+  <div class="detail-header">
+    <a href="#print_state/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">print_state/1</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>ejabberd_c2s.print_state/1</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="privacy_check_packet/4">
+  <div class="detail-header">
+    <a href="#privacy_check_packet/4" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">privacy_check_packet/4</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>ejabberd_c2s.privacy_check_packet/4</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="privacy_check_packet/5">
+  <div class="detail-header">
+    <a href="#privacy_check_packet/5" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">privacy_check_packet/5</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>ejabberd_c2s.privacy_check_packet/5</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="privacy_check_packet/6">
+  <div class="detail-header">
+    <a href="#privacy_check_packet/6" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">privacy_check_packet/6</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>ejabberd_c2s.privacy_check_packet/6</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="privacy_list_push_iq/1">
+  <div class="detail-header">
+    <a href="#privacy_list_push_iq/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">privacy_list_push_iq/1</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="process_incoming_stanza/5">
+  <div class="detail-header">
+    <a href="#process_incoming_stanza/5" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">process_incoming_stanza/5</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="process_incoming_stanza_with_conflict_check/5">
+  <div class="detail-header">
+    <a href="#process_incoming_stanza_with_conflict_check/5" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">process_incoming_stanza_with_conflict_check/5</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="process_outgoing_stanza/2">
+  <div class="detail-header">
+    <a href="#process_outgoing_stanza/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">process_outgoing_stanza/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>ejabberd_c2s.process_outgoing_stanza/2</pre>
+      </div>
+
+Process packets sent by user (coming from user on c2s XMPP connection) eventually it should return {mongoose_acc:t(), fsm_return()} so that the accumulator comes back whence it originated  </section>
+</section>
+<section class="detail" id="process_outgoing_stanza/4">
+  <div class="detail-header">
+    <a href="#process_outgoing_stanza/4" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">process_outgoing_stanza/4</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="process_presence_probe/4">
+  <div class="detail-header">
+    <a href="#process_presence_probe/4" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">process_presence_probe/4</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>ejabberd_c2s.process_presence_probe/4</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="process_presence_subscription_and_route/3">
+  <div class="detail-header">
+    <a href="#process_presence_subscription_and_route/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">process_presence_subscription_and_route/3</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>ejabberd_c2s.process_presence_subscription_and_route/3</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="process_privacy_iq/3">
+  <div class="detail-header">
+    <a href="#process_privacy_iq/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">process_privacy_iq/3</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>ejabberd_c2s.process_privacy_iq/3</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="process_privacy_iq/4">
+  <div class="detail-header">
+    <a href="#process_privacy_iq/4" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">process_privacy_iq/4</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>ejabberd_c2s.process_privacy_iq/4</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="process_unauthenticated_stanza/2">
+  <div class="detail-header">
+    <a href="#process_unauthenticated_stanza/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">process_unauthenticated_stanza/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>ejabberd_c2s.process_unauthenticated_stanza/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="re_route_packets/1">
+  <div class="detail-header">
+    <a href="#re_route_packets/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">re_route_packets/1</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="remove_session_info/3">
+  <div class="detail-header">
+    <a href="#remove_session_info/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">remove_session_info/3</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="reroute_unacked_messages/2">
+  <div class="detail-header">
+    <a href="#reroute_unacked_messages/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">reroute_unacked_messages/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>ejabberd_c2s.reroute_unacked_messages/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="resend_csi_buffer/1">
+  <div class="detail-header">
+    <a href="#resend_csi_buffer/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">resend_csi_buffer/1</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="resend_offline_message/6">
+  <div class="detail-header">
+    <a href="#resend_offline_message/6" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">resend_offline_message/6</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="resend_offline_messages/2">
+  <div class="detail-header">
+    <a href="#resend_offline_messages/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">resend_offline_messages/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>ejabberd_c2s.resend_offline_messages/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="resend_subscription_requests/2">
+  <div class="detail-header">
+    <a href="#resend_subscription_requests/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">resend_subscription_requests/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>ejabberd_c2s.resend_subscription_requests/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="response_iq_deny/4">
+  <div class="detail-header">
+    <a href="#response_iq_deny/4" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">response_iq_deny/4</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="response_negative/5">
+  <div class="detail-header">
+    <a href="#response_negative/5" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">response_negative/5</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="result_to_amp_event/1">
+  <div class="detail-header">
+    <a href="#result_to_amp_event/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">result_to_amp_event/1</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="resume_session/2">
+  <div class="detail-header">
+    <a href="#resume_session/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">resume_session/2</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="resume_session/3">
+  <div class="detail-header">
+    <a href="#resume_session/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">resume_session/3</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="roster_change/4">
+  <div class="detail-header">
+    <a href="#roster_change/4" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">roster_change/4</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>ejabberd_c2s.roster_change/4</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="run_remote_hook/3">
+  <div class="detail-header">
+    <a href="#run_remote_hook/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">run_remote_hook/3</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="run_remote_hook_after/4">
+  <div class="detail-header">
+    <a href="#run_remote_hook_after/4" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">run_remote_hook_after/4</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="sasl_challenge_stanza/1">
+  <div class="detail-header">
+    <a href="#sasl_challenge_stanza/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">sasl_challenge_stanza/1</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>ejabberd_c2s.sasl_challenge_stanza/1</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="sasl_failure_stanza/1">
+  <div class="detail-header">
+    <a href="#sasl_failure_stanza/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">sasl_failure_stanza/1</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>ejabberd_c2s.sasl_failure_stanza/1</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="sasl_success_stanza/1">
+  <div class="detail-header">
+    <a href="#sasl_success_stanza/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">sasl_success_stanza/1</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>ejabberd_c2s.sasl_success_stanza/1</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="send_and_maybe_buffer_stanza/3">
+  <div class="detail-header">
+    <a href="#send_and_maybe_buffer_stanza/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">send_and_maybe_buffer_stanza/3</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>ejabberd_c2s.send_and_maybe_buffer_stanza/3</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="send_and_maybe_buffer_stanza_no_ack/3">
+  <div class="detail-header">
+    <a href="#send_and_maybe_buffer_stanza_no_ack/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">send_and_maybe_buffer_stanza_no_ack/3</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>ejabberd_c2s.send_and_maybe_buffer_stanza_no_ack/3</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="send_back_error/4">
+  <div class="detail-header">
+    <a href="#send_back_error/4" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">send_back_error/4</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="send_element/3">
+  <div class="detail-header">
+    <a href="#send_element/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">send_element/3</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>ejabberd_c2s.send_element/3</pre>
+      </div>
+
+This is the termination point - from here stanza is sent to the user  </section>
+</section>
+<section class="detail" id="send_element_from_server_jid/2">
+  <div class="detail-header">
+    <a href="#send_element_from_server_jid/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">send_element_from_server_jid/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>ejabberd_c2s.send_element_from_server_jid/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="send_element_from_server_jid/3">
+  <div class="detail-header">
+    <a href="#send_element_from_server_jid/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">send_element_from_server_jid/3</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>ejabberd_c2s.send_element_from_server_jid/3</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="send_filtered/5">
+  <div class="detail-header">
+    <a href="#send_filtered/5" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">send_filtered/5</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="send_header/4">
+  <div class="detail-header">
+    <a href="#send_header/4" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">send_header/4</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>ejabberd_c2s.send_header/4</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="send_text/2">
+  <div class="detail-header">
+    <a href="#send_text/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">send_text/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>ejabberd_c2s.send_text/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="send_trailer/1">
+  <div class="detail-header">
+    <a href="#send_trailer/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">send_trailer/1</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="send_unavail_if_newly_blocked/4">
+  <div class="detail-header">
+    <a href="#send_unavail_if_newly_blocked/4" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">send_unavail_if_newly_blocked/4</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="send_unavail_if_newly_blocked/6">
+  <div class="detail-header">
+    <a href="#send_unavail_if_newly_blocked/6" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">send_unavail_if_newly_blocked/6</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="session_established/2">
+  <div class="detail-header">
+    <a href="#session_established/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">session_established/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>ejabberd_c2s.session_established/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="session_established/3">
+  <div class="detail-header">
+    <a href="#session_established/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">session_established/3</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="set_aux_field/3">
+  <div class="detail-header">
+    <a href="#set_aux_field/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">set_aux_field/3</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>ejabberd_c2s.set_aux_field/3</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="ship_to_local_user/3">
+  <div class="detail-header">
+    <a href="#ship_to_local_user/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">ship_to_local_user/3</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>ejabberd_c2s.ship_to_local_user/3</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="should_close_session/1">
+  <div class="detail-header">
+    <a href="#should_close_session/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">should_close_session/1</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="should_retransmit_last_presence/3">
+  <div class="detail-header">
+    <a href="#should_retransmit_last_presence/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">should_retransmit_last_presence/3</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="sm_handled_count_too_high_stanza/2">
+  <div class="detail-header">
+    <a href="#sm_handled_count_too_high_stanza/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">sm_handled_count_too_high_stanza/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>ejabberd_c2s.sm_handled_count_too_high_stanza/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="socket_type/0">
+  <div class="detail-header">
+    <a href="#socket_type/0" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">socket_type/0</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="specifically_visible_to/2">
+  <div class="detail-header">
+    <a href="#specifically_visible_to/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">specifically_visible_to/2</h1>
+  </div>
+
+  <section class="docstring">
+
+Is generally invisible, but visible to a particular resource?  </section>
+</section>
+<section class="detail" id="start/2">
+  <div class="detail-header">
+    <a href="#start/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">start/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>ejabberd_c2s.start/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="start_link/2">
+  <div class="detail-header">
+    <a href="#start_link/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">start_link/2</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="starttls_stanza/1">
+  <div class="detail-header">
+    <a href="#starttls_stanza/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">starttls_stanza/1</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="stop/1">
+  <div class="detail-header">
+    <a href="#stop/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">stop/1</h1>
+  </div>
+
+  <section class="docstring">
+
+Stops the session gracefully, entering resume state if applicable  </section>
+</section>
+<section class="detail" id="store_session_info/3">
+  <div class="detail-header">
+    <a href="#store_session_info/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">store_session_info/3</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="stream_features/1">
+  <div class="detail-header">
+    <a href="#stream_features/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">stream_features/1</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="stream_mgmt_ack/1">
+  <div class="detail-header">
+    <a href="#stream_mgmt_ack/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">stream_mgmt_ack/1</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="stream_mgmt_enabled/0">
+  <div class="detail-header">
+    <a href="#stream_mgmt_enabled/0" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">stream_mgmt_enabled/0</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="stream_mgmt_enabled/1">
+  <div class="detail-header">
+    <a href="#stream_mgmt_enabled/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">stream_mgmt_enabled/1</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="stream_mgmt_failed/1">
+  <div class="detail-header">
+    <a href="#stream_mgmt_failed/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">stream_mgmt_failed/1</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="stream_mgmt_failed/2">
+  <div class="detail-header">
+    <a href="#stream_mgmt_failed/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">stream_mgmt_failed/2</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="stream_mgmt_handle_ack/3">
+  <div class="detail-header">
+    <a href="#stream_mgmt_handle_ack/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">stream_mgmt_handle_ack/3</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="stream_mgmt_parse_h/1">
+  <div class="detail-header">
+    <a href="#stream_mgmt_parse_h/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">stream_mgmt_parse_h/1</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="stream_mgmt_request/0">
+  <div class="detail-header">
+    <a href="#stream_mgmt_request/0" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">stream_mgmt_request/0</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="stream_mgmt_resumed/2">
+  <div class="detail-header">
+    <a href="#stream_mgmt_resumed/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">stream_mgmt_resumed/2</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="stream_start_by_protocol_version/2">
+  <div class="detail-header">
+    <a href="#stream_start_by_protocol_version/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">stream_start_by_protocol_version/2</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="stream_start_error/2">
+  <div class="detail-header">
+    <a href="#stream_start_error/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">stream_start_error/2</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="stream_start_features_after_auth/1">
+  <div class="detail-header">
+    <a href="#stream_start_features_after_auth/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">stream_start_features_after_auth/1</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="stream_start_features_before_auth/1">
+  <div class="detail-header">
+    <a href="#stream_start_features_before_auth/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">stream_start_features_before_auth/1</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="stream_start_negotiate_features/1">
+  <div class="detail-header">
+    <a href="#stream_start_negotiate_features/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">stream_start_negotiate_features/1</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="strip_c2s_fields/1">
+  <div class="detail-header">
+    <a href="#strip_c2s_fields/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">strip_c2s_fields/1</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>ejabberd_c2s.strip_c2s_fields/1</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="terminate/4">
+  <div class="detail-header">
+    <a href="#terminate/4" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">terminate/4</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>ejabberd_c2s.terminate/4</pre>
+      </div>
+
+<p>Callback implementation for <code class="inline">c::p1_fsm_old.terminate/4</code>.</p>  </section>
+</section>
+<section class="detail" id="terminate_session/2">
+  <div class="detail-header">
+    <a href="#terminate_session/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">terminate_session/2</h1>
+  </div>
+
+  <section class="docstring">
+
+terminates the session immediately and unconditionally, sending the user a stream conflict error specifying the reason  </section>
+</section>
+<section class="detail" id="terminate_when_tls_required_but_not_enabled/4">
+  <div class="detail-header">
+    <a href="#terminate_when_tls_required_but_not_enabled/4" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">terminate_when_tls_required_but_not_enabled/4</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="timestamp_xml/2">
+  <div class="detail-header">
+    <a href="#timestamp_xml/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">timestamp_xml/2</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="tls_proceed/0">
+  <div class="detail-header">
+    <a href="#tls_proceed/0" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">tls_proceed/0</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="update_priority/4">
+  <div class="detail-header">
+    <a href="#update_priority/4" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">update_priority/4</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>ejabberd_c2s.update_priority/4</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="update_stanza/4">
+  <div class="detail-header">
+    <a href="#update_stanza/4" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">update_stanza/4</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>ejabberd_c2s.update_stanza/4</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="user_allowed/2">
+  <div class="detail-header">
+    <a href="#user_allowed/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">user_allowed/2</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="verify_opts/1">
+  <div class="detail-header">
+    <a href="#verify_opts/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">verify_opts/1</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="wait_for_feature_after_auth/2">
+  <div class="detail-header">
+    <a href="#wait_for_feature_after_auth/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">wait_for_feature_after_auth/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>ejabberd_c2s.wait_for_feature_after_auth/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="wait_for_feature_before_auth/2">
+  <div class="detail-header">
+    <a href="#wait_for_feature_before_auth/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">wait_for_feature_before_auth/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>ejabberd_c2s.wait_for_feature_before_auth/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="wait_for_sasl_response/2">
+  <div class="detail-header">
+    <a href="#wait_for_sasl_response/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">wait_for_sasl_response/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>ejabberd_c2s.wait_for_sasl_response/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="wait_for_session_or_sm/2">
+  <div class="detail-header">
+    <a href="#wait_for_session_or_sm/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">wait_for_session_or_sm/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>ejabberd_c2s.wait_for_session_or_sm/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="wait_for_stream/2">
+  <div class="detail-header">
+    <a href="#wait_for_stream/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">wait_for_stream/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>ejabberd_c2s.wait_for_stream/2</pre>
+      </div>
+
+  </section>
+</section>
+          </div>
+        </section>
+      <footer class="footer">
+        <p>
+          <span class="line">
+            Built using
+            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener">ExDoc</a> (v0.23.0) for the
+            <a href="https://elixir-lang.org" title="Elixir" target="_blank">Elixir programming language</a>.
+          </span>
+          <span class="line">
+            Designed by
+            <a href="https://twitter.com/dignifiedquire" target="_blank" rel="noopener" title="@dignifiedquire">Friedel Ziegelmayer</a>.
+          </span>
+        </p>
+        <p>
+            <a href="api-reference.html" title="API reference" class="line footer-button">API Reference</a>
+          <button class="line footer-button display-shortcuts-help">
+            Display keyboard shortcuts
+          </button>
+          <button class="line footer-button night-mode-toggle">
+            Toggle night mode
+          </button>
+          <button class="line footer-button display-quick-switch">
+            Go to a HexDocs package
+          </button>
+          <button class="line footer-button tooltips-toggle">
+            <span class="tooltips-option-disable">Disable tooltips</span>
+            <span class="tooltips-option-enable">Enable tooltips</span>
+          </button>
+        </p>
+      </footer>
+    </div>
+  </div>
+</section>
+</div>
+  </body>
+</html>

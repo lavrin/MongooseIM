@@ -1,0 +1,1083 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.23.0">
+    <meta name="project" content="MongooseIM v4.0.1">
+    <title>node_flat — MongooseIM v4.0.1</title>
+    <link rel="stylesheet" href="dist/erlang-8a5f731dbc512bf6261b.css" />
+    <script src="dist/sidebar_items-38e40981d8.js"></script>
+      <script src="docs_config.js"></script>
+    <script async src="dist/app-60a0c9f10e9e52eae31f.js"></script>
+  </head>
+  <body data-type="modules">
+    <script>try { if(localStorage.getItem('night-mode') === 'true') document.body.className += ' night-mode'; } catch (e) { }</script>
+<div class="main">
+
+<button class="sidebar-button sidebar-toggle">
+  <span class="icon-menu" title="Collapse/expand sidebar"></span>
+</button>
+
+<section class="sidebar">
+  <form class="sidebar-search" action="search.html">
+    <button type="submit" class="search-button" aria-label="Submit Search">
+      <span class="icon-search" aria-hidden="true" title="Submit search"></span>
+    </button>
+    <button type="button" tabindex="-1" class="search-close-button" aria-label="Cancel Search">
+      <span class="icon-cross" aria-hidden="true" title="Cancel search"></span>
+    </button>
+    <label class="search-label">
+      <input name="q" type="text" id="search-list" class="search-input" placeholder="Search..." aria-label="Input your search terms" autocomplete="off" />
+    </label>
+  </form>
+
+  <div class="autocomplete">
+    <div class="autocomplete-results">
+    </div>
+  </div>
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectDetails">
+      <a href="mongooseim.html" class="sidebar-projectName">
+MongooseIM      </a>
+      <strong class="sidebar-projectVersion">
+        v4.0.1
+      </strong>
+    </div>
+  </div>
+
+  <ul class="sidebar-listNav">
+    <li><a id="extras-list" href="#full-list">Pages</a></li>
+
+      <li><a id="modules-list" href="#full-list">Modules</a></li>
+
+  </ul>
+  <div class="gradient"></div>
+  <ul id="full-list" class="sidebar-fullList"></ul>
+</section>
+
+<section class="content">
+  <div class="content-outer">
+    <div id="content" class="content-inner">
+
+      <h1>
+        node_flat <small class="app-vsn">(MongooseIM v4.0.1)</small>
+      </h1>
+
+
+        <section id="moduledoc">
+The module node_flat is the default PubSub plugin.<p>It is used as a default for all unknown PubSub node type. It can serve as a developer basis and reference to build its own custom pubsub node types.</p><p>PubSub plugin nodes are using the <a orig-tag="a" href="gen_node" rel="https://erlang.org/doc/link/seeerl"><code>gen_node</code></a> behaviour.</p>        </section>
+
+        <section id="summary" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#summary">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+            Summary
+          </h1>
+  <div class="summary-types summary">
+    <h2>
+      <a href="#types">Types</a>
+    </h2>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:accessModel/0">accessModel()</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:affiliation/0">affiliation()</a>
+  </div>
+</div>
+  </div>
+  <div class="summary-functions summary">
+    <h2>
+      <a href="#functions">Functions</a>
+    </h2>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#access_model_to_subscription/1">access_model_to_subscription/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#authenticate_unsubscribe/4">authenticate_unsubscribe/4</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#authorize_get_item/5">authorize_get_item/5</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#authorize_subscription/7">authorize_subscription/7</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#based_on/0">based_on/0</a>
+  </div>
+    <div class="summary-synopsis"><p>Callback implementation for <code class="inline">c::gen_pubsub_node.based_on/0</code>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#can_fetch_item/2">can_fetch_item/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#create_node/2">create_node/2</a>
+  </div>
+    <div class="summary-synopsis"><p>Callback implementation for <code class="inline">c::gen_pubsub_node.create_node/2</code>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#create_node_permission/6">create_node_permission/6</a>
+  </div>
+    <div class="summary-synopsis">Checks if the current user has the permission to create the requested node<p>In flat node, any unused node name is allowed. The access parameter is also checked. This parameter depends on the value of the access_createnode ACL value in ejabberd config file.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#del_item/2">del_item/2</a>
+  </div>
+    <div class="summary-synopsis"><p>Delete an item from database.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#del_items/2">del_items/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#delete_foreign_item/3">delete_foreign_item/3</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#delete_item/4">delete_item/4</a>
+  </div>
+    <div class="summary-synopsis"><p>Triggers item deletion.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#delete_node/1">delete_node/1</a>
+  </div>
+    <div class="summary-synopsis"><p>Callback implementation for <code class="inline">c::gen_pubsub_node.delete_node/1</code>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#features/0">features/0</a>
+  </div>
+    <div class="summary-synopsis"><p>Callback implementation for <code class="inline">c::gen_pubsub_node.features/0</code>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#get_affiliation/2">get_affiliation/2</a>
+  </div>
+    <div class="summary-synopsis"><p>Callback implementation for <code class="inline">c::gen_pubsub_node.get_affiliation/2</code>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#get_entity_affiliations/2">get_entity_affiliations/2</a>
+  </div>
+    <div class="summary-synopsis"><p>Callback implementation for <code class="inline">c::gen_pubsub_node.get_entity_affiliations/2</code>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#get_entity_subscriptions/2">get_entity_subscriptions/2</a>
+  </div>
+    <div class="summary-synopsis"><p>Callback implementation for <code class="inline">c::gen_pubsub_node.get_entity_subscriptions/2</code>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#get_entity_subscriptions_loop/3">get_entity_subscriptions_loop/3</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#get_item/2">get_item/2</a>
+  </div>
+    <div class="summary-synopsis"><p>Returns an item (one item list), given its reference.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#get_item/7">get_item/7</a>
+  </div>
+    <div class="summary-synopsis"><p>Callback implementation for <code class="inline">c::gen_pubsub_node.get_item/7</code>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#get_item_name/3">get_item_name/3</a>
+  </div>
+    <div class="summary-synopsis"><p>Callback implementation for <code class="inline">c::gen_pubsub_node.get_item_name/3</code>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#get_items/3">get_items/3</a>
+  </div>
+    <div class="summary-synopsis">Returns the list of stored items for a given node.<p>For the default PubSub module, items are stored in Mnesia database.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#get_items_if_authorised/3">get_items_if_authorised/3</a>
+  </div>
+    <div class="summary-synopsis"><p>Callback implementation for <code class="inline">c::gen_pubsub_node.get_items_if_authorised/3</code>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#get_node_affiliations/1">get_node_affiliations/1</a>
+  </div>
+    <div class="summary-synopsis"><p>Callback implementation for <code class="inline">c::gen_pubsub_node.get_node_affiliations/1</code>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#get_node_subscriptions/1">get_node_subscriptions/1</a>
+  </div>
+    <div class="summary-synopsis"><p>Callback implementation for <code class="inline">c::gen_pubsub_node.get_node_subscriptions/1</code>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#get_pending_nodes/2">get_pending_nodes/2</a>
+  </div>
+    <div class="summary-synopsis"><p>Returns a list of Owner's nodes on Host with pending subscriptions.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#get_permition/5">get_permition/5</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#get_subscriptions/2">get_subscriptions/2</a>
+  </div>
+    <div class="summary-synopsis"><p>Callback implementation for <code class="inline">c::gen_pubsub_node.get_subscriptions/2</code>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#init/3">init/3</a>
+  </div>
+    <div class="summary-synopsis"><p>Callback implementation for <code class="inline">c::gen_pubsub_node.init/3</code>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#is_subscribed/1">is_subscribed/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#make_pubsub_item/8">make_pubsub_item/8</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#make_subid/0">make_subid/0</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#node_to_path/1">node_to_path/1</a>
+  </div>
+    <div class="summary-synopsis"><p>Return the path of the node. In flat it's just node id.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#options/0">options/0</a>
+  </div>
+    <div class="summary-synopsis"><p>Callback implementation for <code class="inline">c::gen_pubsub_node.options/0</code>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#path_to_node/1">path_to_node/1</a>
+  </div>
+    <div class="summary-synopsis"><p>Callback implementation for <code class="inline">c::gen_pubsub_node.path_to_node/1</code>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#publish_item/9">publish_item/9</a>
+  </div>
+    <div class="summary-synopsis"><p>Publishes the item passed as parameter.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#purge_node/2">purge_node/2</a>
+  </div>
+    <div class="summary-synopsis"><p>Callback implementation for <code class="inline">c::gen_pubsub_node.purge_node/2</code>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#remove_extra_items/3">remove_extra_items/3</a>
+  </div>
+    <div class="summary-synopsis"><p>This function is used to remove extra items, most notably when the maximum number of items has been reached.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#remove_user/2">remove_user/2</a>
+  </div>
+    <div class="summary-synopsis"><p>Callback implementation for <code class="inline">c::gen_pubsub_node.remove_user/2</code>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#remove_user_by_affiliation_and_node/2">remove_user_by_affiliation_and_node/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#set_affiliation/3">set_affiliation/3</a>
+  </div>
+    <div class="summary-synopsis"><p>Callback implementation for <code class="inline">c::gen_pubsub_node.set_affiliation/3</code>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#set_item/1">set_item/1</a>
+  </div>
+    <div class="summary-synopsis"><p>Write an item into database.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#set_subscriptions/4">set_subscriptions/4</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#should_delete_when_owner_removed/0">should_delete_when_owner_removed/0</a>
+  </div>
+    <div class="summary-synopsis"><p>Callback implementation for <code class="inline">c::gen_pubsub_node.should_delete_when_owner_removed/0</code>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#subscribe_node/8">subscribe_node/8</a>
+  </div>
+    <div class="summary-synopsis"><p>Accepts or rejects subcription requests on a PubSub node.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#terminate/2">terminate/2</a>
+  </div>
+    <div class="summary-synopsis"><p>Callback implementation for <code class="inline">c::gen_pubsub_node.terminate/2</code>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#unsubscribe_node/4">unsubscribe_node/4</a>
+  </div>
+    <div class="summary-synopsis"><p>Unsubscribe the Subscriber from the Node.</p></div>
+</div>
+  </div>
+        </section>
+
+        <section id="types" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#types">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+Types          </h1>
+          <div class="types-list">
+<section class="detail" id="t:accessModel/0">
+  <div class="detail-header">
+    <a href="#t:accessModel/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">accessModel()</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>t:node_flat.accessModel/0</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="t:affiliation/0">
+  <div class="detail-header">
+    <a href="#t:affiliation/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">affiliation()</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>t:node_flat.affiliation/0</pre>
+      </div>
+
+  </section>
+</section>
+          </div>
+        </section>
+        <section id="functions" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#functions">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+Functions          </h1>
+          <div class="functions-list">
+<section class="detail" id="access_model_to_subscription/1">
+  <div class="detail-header">
+    <a href="#access_model_to_subscription/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">access_model_to_subscription/1</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>node_flat.access_model_to_subscription/1</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="authenticate_unsubscribe/4">
+  <div class="detail-header">
+    <a href="#authenticate_unsubscribe/4" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">authenticate_unsubscribe/4</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="authorize_get_item/5">
+  <div class="detail-header">
+    <a href="#authorize_get_item/5" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">authorize_get_item/5</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="authorize_subscription/7">
+  <div class="detail-header">
+    <a href="#authorize_subscription/7" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">authorize_subscription/7</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>node_flat.authorize_subscription/7</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="based_on/0">
+  <div class="detail-header">
+    <a href="#based_on/0" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">based_on/0</h1>
+  </div>
+
+  <section class="docstring">
+
+<p>Callback implementation for <code class="inline">c::gen_pubsub_node.based_on/0</code>.</p>  </section>
+</section>
+<section class="detail" id="can_fetch_item/2">
+  <div class="detail-header">
+    <a href="#can_fetch_item/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">can_fetch_item/2</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="create_node/2">
+  <div class="detail-header">
+    <a href="#create_node/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">create_node/2</h1>
+  </div>
+
+  <section class="docstring">
+
+<p>Callback implementation for <code class="inline">c::gen_pubsub_node.create_node/2</code>.</p>  </section>
+</section>
+<section class="detail" id="create_node_permission/6">
+  <div class="detail-header">
+    <a href="#create_node_permission/6" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">create_node_permission/6</h1>
+  </div>
+
+  <section class="docstring">
+
+Checks if the current user has the permission to create the requested node<p>In flat node, any unused node name is allowed. The access parameter is also checked. This parameter depends on the value of the access_createnode ACL value in ejabberd config file.</p>  </section>
+</section>
+<section class="detail" id="del_item/2">
+  <div class="detail-header">
+    <a href="#del_item/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">del_item/2</h1>
+  </div>
+
+  <section class="docstring">
+
+<p>Delete an item from database.</p>  </section>
+</section>
+<section class="detail" id="del_items/2">
+  <div class="detail-header">
+    <a href="#del_items/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">del_items/2</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="delete_foreign_item/3">
+  <div class="detail-header">
+    <a href="#delete_foreign_item/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">delete_foreign_item/3</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="delete_item/4">
+  <div class="detail-header">
+    <a href="#delete_item/4" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">delete_item/4</h1>
+  </div>
+
+  <section class="docstring">
+
+<p>Triggers item deletion.</p><p>Default plugin: The user performing the deletion must be the node owner or a publisher, or PublishModel being open.</p>  </section>
+</section>
+<section class="detail" id="delete_node/1">
+  <div class="detail-header">
+    <a href="#delete_node/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">delete_node/1</h1>
+  </div>
+
+  <section class="docstring">
+
+<p>Callback implementation for <code class="inline">c::gen_pubsub_node.delete_node/1</code>.</p>  </section>
+</section>
+<section class="detail" id="features/0">
+  <div class="detail-header">
+    <a href="#features/0" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">features/0</h1>
+  </div>
+
+  <section class="docstring">
+
+<p>Callback implementation for <code class="inline">c::gen_pubsub_node.features/0</code>.</p>  </section>
+</section>
+<section class="detail" id="get_affiliation/2">
+  <div class="detail-header">
+    <a href="#get_affiliation/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">get_affiliation/2</h1>
+  </div>
+
+  <section class="docstring">
+
+<p>Callback implementation for <code class="inline">c::gen_pubsub_node.get_affiliation/2</code>.</p>  </section>
+</section>
+<section class="detail" id="get_entity_affiliations/2">
+  <div class="detail-header">
+    <a href="#get_entity_affiliations/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">get_entity_affiliations/2</h1>
+  </div>
+
+  <section class="docstring">
+
+<p>Callback implementation for <code class="inline">c::gen_pubsub_node.get_entity_affiliations/2</code>.</p>  </section>
+</section>
+<section class="detail" id="get_entity_subscriptions/2">
+  <div class="detail-header">
+    <a href="#get_entity_subscriptions/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">get_entity_subscriptions/2</h1>
+  </div>
+
+  <section class="docstring">
+
+<p>Callback implementation for <code class="inline">c::gen_pubsub_node.get_entity_subscriptions/2</code>.</p>  </section>
+</section>
+<section class="detail" id="get_entity_subscriptions_loop/3">
+  <div class="detail-header">
+    <a href="#get_entity_subscriptions_loop/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">get_entity_subscriptions_loop/3</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="get_item/2">
+  <div class="detail-header">
+    <a href="#get_item/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">get_item/2</h1>
+  </div>
+
+  <section class="docstring">
+
+<p>Returns an item (one item list), given its reference.</p>  </section>
+</section>
+<section class="detail" id="get_item/7">
+  <div class="detail-header">
+    <a href="#get_item/7" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">get_item/7</h1>
+  </div>
+
+  <section class="docstring">
+
+<p>Callback implementation for <code class="inline">c::gen_pubsub_node.get_item/7</code>.</p>  </section>
+</section>
+<section class="detail" id="get_item_name/3">
+  <div class="detail-header">
+    <a href="#get_item_name/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">get_item_name/3</h1>
+  </div>
+
+  <section class="docstring">
+
+<p>Callback implementation for <code class="inline">c::gen_pubsub_node.get_item_name/3</code>.</p>  </section>
+</section>
+<section class="detail" id="get_items/3">
+  <div class="detail-header">
+    <a href="#get_items/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">get_items/3</h1>
+  </div>
+
+  <section class="docstring">
+
+Returns the list of stored items for a given node.<p>For the default PubSub module, items are stored in Mnesia database.</p><p>We can consider that the pubsub_item table have been created by the main mod_pubsub module.</p><p>PubSub plugins can store the items where they wants (for example in a relational database), or they can even decide not to persist any items.</p>  </section>
+</section>
+<section class="detail" id="get_items_if_authorised/3">
+  <div class="detail-header">
+    <a href="#get_items_if_authorised/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">get_items_if_authorised/3</h1>
+  </div>
+
+  <section class="docstring">
+
+<p>Callback implementation for <code class="inline">c::gen_pubsub_node.get_items_if_authorised/3</code>.</p>  </section>
+</section>
+<section class="detail" id="get_node_affiliations/1">
+  <div class="detail-header">
+    <a href="#get_node_affiliations/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">get_node_affiliations/1</h1>
+  </div>
+
+  <section class="docstring">
+
+<p>Callback implementation for <code class="inline">c::gen_pubsub_node.get_node_affiliations/1</code>.</p>  </section>
+</section>
+<section class="detail" id="get_node_subscriptions/1">
+  <div class="detail-header">
+    <a href="#get_node_subscriptions/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">get_node_subscriptions/1</h1>
+  </div>
+
+  <section class="docstring">
+
+<p>Callback implementation for <code class="inline">c::gen_pubsub_node.get_node_subscriptions/1</code>.</p>  </section>
+</section>
+<section class="detail" id="get_pending_nodes/2">
+  <div class="detail-header">
+    <a href="#get_pending_nodes/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">get_pending_nodes/2</h1>
+  </div>
+
+  <section class="docstring">
+
+<p>Returns a list of Owner's nodes on Host with pending subscriptions.</p>  </section>
+</section>
+<section class="detail" id="get_permition/5">
+  <div class="detail-header">
+    <a href="#get_permition/5" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">get_permition/5</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="get_subscriptions/2">
+  <div class="detail-header">
+    <a href="#get_subscriptions/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">get_subscriptions/2</h1>
+  </div>
+
+  <section class="docstring">
+
+<p>Callback implementation for <code class="inline">c::gen_pubsub_node.get_subscriptions/2</code>.</p>  </section>
+</section>
+<section class="detail" id="init/3">
+  <div class="detail-header">
+    <a href="#init/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">init/3</h1>
+  </div>
+
+  <section class="docstring">
+
+<p>Callback implementation for <code class="inline">c::gen_pubsub_node.init/3</code>.</p>  </section>
+</section>
+<section class="detail" id="is_subscribed/1">
+  <div class="detail-header">
+    <a href="#is_subscribed/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">is_subscribed/1</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="make_pubsub_item/8">
+  <div class="detail-header">
+    <a href="#make_pubsub_item/8" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">make_pubsub_item/8</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="make_subid/0">
+  <div class="detail-header">
+    <a href="#make_subid/0" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">make_subid/0</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="node_to_path/1">
+  <div class="detail-header">
+    <a href="#node_to_path/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">node_to_path/1</h1>
+  </div>
+
+  <section class="docstring">
+
+<p>Return the path of the node. In flat it's just node id.</p>  </section>
+</section>
+<section class="detail" id="options/0">
+  <div class="detail-header">
+    <a href="#options/0" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">options/0</h1>
+  </div>
+
+  <section class="docstring">
+
+<p>Callback implementation for <code class="inline">c::gen_pubsub_node.options/0</code>.</p>  </section>
+</section>
+<section class="detail" id="path_to_node/1">
+  <div class="detail-header">
+    <a href="#path_to_node/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">path_to_node/1</h1>
+  </div>
+
+  <section class="docstring">
+
+<p>Callback implementation for <code class="inline">c::gen_pubsub_node.path_to_node/1</code>.</p>  </section>
+</section>
+<section class="detail" id="publish_item/9">
+  <div class="detail-header">
+    <a href="#publish_item/9" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">publish_item/9</h1>
+  </div>
+
+  <section class="docstring">
+
+<p>Publishes the item passed as parameter.</p><p>The mechanism works as follow:<ul><li>The main PubSub module prepares the item to publish and passes the result of the preparation as a <a orig-tag="a" href="mod_pubsub#pubsubItem/0" rel="https://erlang.org/doc/link/seetype"><code>mod_pubsub:pubsubItem()</code></a> record.</li><li>This function gets the prepared record and several other parameters and can decide to:<ul><li>reject the publication;</li><li>allow the publication as is, letting the main module perform the database persistance;</li><li>allow the publication, modifying the record. The main module will store the modified record;</li><li>allow it, but perform the needed persistance operations.</li></ul></li></ul></p><p>The selected behaviour depends on the return parameter:<ul><li>{error, Reason}: an iq error result will be return. No publication is actually performed.</li><li>true: Publication operation is allowed, based on the unmodified record passed in parameter Item. If the Item parameter contains an error, no subscription will actually be performed.</li><li>{true, Item}: Publication operation is allowed, but the <a orig-tag="a" href="mod_pubsub#pubsubItem/0" rel="https://erlang.org/doc/link/seetype"><code>mod_pubsub:pubsubItem()</code></a> record returned replaces the value passed in parameter Item. The persistance will be performed by the main module.</li><li>{true, done}: Publication operation is allowed, but the <a orig-tag="a" href="mod_pubsub#pubsubItem/0" rel="https://erlang.org/doc/link/seetype"><code>mod_pubsub:pubsubItem()</code></a> will be considered as already stored and no further persistance operation will be performed. This case is used, when the plugin module is doing the persistance by itself or when it want to completly disable persistance.</li></ul></p><p>In the default plugin module, the record is unchanged.</p>  </section>
+</section>
+<section class="detail" id="purge_node/2">
+  <div class="detail-header">
+    <a href="#purge_node/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">purge_node/2</h1>
+  </div>
+
+  <section class="docstring">
+
+<p>Callback implementation for <code class="inline">c::gen_pubsub_node.purge_node/2</code>.</p>  </section>
+</section>
+<section class="detail" id="remove_extra_items/3">
+  <div class="detail-header">
+    <a href="#remove_extra_items/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">remove_extra_items/3</h1>
+  </div>
+
+  <section class="docstring">
+
+<p>This function is used to remove extra items, most notably when the maximum number of items has been reached.</p><p>This function is used internally by the core PubSub module, as no permission check is performed.</p><p>In the default plugin module, the oldest items are removed, but other rules can be used.</p><p>If another PubSub plugin wants to delegate the item removal (and if the plugin is using the default pubsub storage), it can implements this function like this:<pre>     remove_extra_items(Nidx, MaxItems, ItemIds) -&gt;
+            node_default:remove_extra_items(Nidx, MaxItems, ItemIds).</pre></p>  </section>
+</section>
+<section class="detail" id="remove_user/2">
+  <div class="detail-header">
+    <a href="#remove_user/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">remove_user/2</h1>
+  </div>
+
+  <section class="docstring">
+
+<p>Callback implementation for <code class="inline">c::gen_pubsub_node.remove_user/2</code>.</p>  </section>
+</section>
+<section class="detail" id="remove_user_by_affiliation_and_node/2">
+  <div class="detail-header">
+    <a href="#remove_user_by_affiliation_and_node/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">remove_user_by_affiliation_and_node/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>node_flat.remove_user_by_affiliation_and_node/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="set_affiliation/3">
+  <div class="detail-header">
+    <a href="#set_affiliation/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">set_affiliation/3</h1>
+  </div>
+
+  <section class="docstring">
+
+<p>Callback implementation for <code class="inline">c::gen_pubsub_node.set_affiliation/3</code>.</p>  </section>
+</section>
+<section class="detail" id="set_item/1">
+  <div class="detail-header">
+    <a href="#set_item/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">set_item/1</h1>
+  </div>
+
+  <section class="docstring">
+
+<p>Write an item into database.</p>  </section>
+</section>
+<section class="detail" id="set_subscriptions/4">
+  <div class="detail-header">
+    <a href="#set_subscriptions/4" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">set_subscriptions/4</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="should_delete_when_owner_removed/0">
+  <div class="detail-header">
+    <a href="#should_delete_when_owner_removed/0" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">should_delete_when_owner_removed/0</h1>
+  </div>
+
+  <section class="docstring">
+
+<p>Callback implementation for <code class="inline">c::gen_pubsub_node.should_delete_when_owner_removed/0</code>.</p>  </section>
+</section>
+<section class="detail" id="subscribe_node/8">
+  <div class="detail-header">
+    <a href="#subscribe_node/8" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">subscribe_node/8</h1>
+  </div>
+
+  <section class="docstring">
+
+<p>Accepts or rejects subcription requests on a PubSub node.</p><p>The mechanism works as follow:<ul><li>The main PubSub module prepares the subscription and passes the result of the preparation as a record.</li><li>This function gets the prepared record and several other parameters and can decide to:<ul><li>reject the subscription;</li><li>allow it as is, letting the main module perform the database persistance;</li><li>allow it, modifying the record. The main module will store the modified record;</li><li>allow it, but perform the needed persistance operations.</li></ul></li></ul></p><p>The selected behaviour depends on the return parameter:<ul><li>{error, Reason}: an IQ error result will be returned. No subscription will actually be performed.</li><li>true: Subscribe operation is allowed, based on the unmodified record passed in parameter SubscribeResult. If this parameter contains an error, no subscription will be performed.</li><li>{true, PubsubState}: Subscribe operation is allowed, but the <a orig-tag="a" href="mod_pubsub#pubsubState/0" rel="https://erlang.org/doc/link/seetype"><code>mod_pubsub:pubsubState()</code></a> record returned replaces the value passed in parameter SubscribeResult.</li><li>{true, done}: Subscribe operation is allowed, but the <a orig-tag="a" href="mod_pubsub#pubsubState/0" rel="https://erlang.org/doc/link/seetype"><code>mod_pubsub:pubsubState()</code></a> will be considered as already stored and no further persistance operation will be performed. This case is used, when the plugin module is doing the persistance by itself or when it want to completly disable persistance.</li></ul></p><p>In the default plugin module, the record is unchanged.</p>  </section>
+</section>
+<section class="detail" id="terminate/2">
+  <div class="detail-header">
+    <a href="#terminate/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">terminate/2</h1>
+  </div>
+
+  <section class="docstring">
+
+<p>Callback implementation for <code class="inline">c::gen_pubsub_node.terminate/2</code>.</p>  </section>
+</section>
+<section class="detail" id="unsubscribe_node/4">
+  <div class="detail-header">
+    <a href="#unsubscribe_node/4" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">unsubscribe_node/4</h1>
+  </div>
+
+  <section class="docstring">
+
+<p>Unsubscribe the Subscriber from the Node.</p>  </section>
+</section>
+          </div>
+        </section>
+      <footer class="footer">
+        <p>
+          <span class="line">
+            Built using
+            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener">ExDoc</a> (v0.23.0) for the
+            <a href="https://elixir-lang.org" title="Elixir" target="_blank">Elixir programming language</a>.
+          </span>
+          <span class="line">
+            Designed by
+            <a href="https://twitter.com/dignifiedquire" target="_blank" rel="noopener" title="@dignifiedquire">Friedel Ziegelmayer</a>.
+          </span>
+        </p>
+        <p>
+            <a href="api-reference.html" title="API reference" class="line footer-button">API Reference</a>
+          <button class="line footer-button display-shortcuts-help">
+            Display keyboard shortcuts
+          </button>
+          <button class="line footer-button night-mode-toggle">
+            Toggle night mode
+          </button>
+          <button class="line footer-button display-quick-switch">
+            Go to a HexDocs package
+          </button>
+          <button class="line footer-button tooltips-toggle">
+            <span class="tooltips-option-disable">Disable tooltips</span>
+            <span class="tooltips-option-enable">Enable tooltips</span>
+          </button>
+        </p>
+      </footer>
+    </div>
+  </div>
+</section>
+</div>
+  </body>
+</html>

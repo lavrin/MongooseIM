@@ -1,0 +1,1462 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.23.0">
+    <meta name="project" content="MongooseIM v4.0.1">
+    <title>ejabberd_s2s_out — MongooseIM v4.0.1</title>
+    <link rel="stylesheet" href="dist/erlang-8a5f731dbc512bf6261b.css" />
+    <script src="dist/sidebar_items-38e40981d8.js"></script>
+      <script src="docs_config.js"></script>
+    <script async src="dist/app-60a0c9f10e9e52eae31f.js"></script>
+  </head>
+  <body data-type="modules">
+    <script>try { if(localStorage.getItem('night-mode') === 'true') document.body.className += ' night-mode'; } catch (e) { }</script>
+<div class="main">
+
+<button class="sidebar-button sidebar-toggle">
+  <span class="icon-menu" title="Collapse/expand sidebar"></span>
+</button>
+
+<section class="sidebar">
+  <form class="sidebar-search" action="search.html">
+    <button type="submit" class="search-button" aria-label="Submit Search">
+      <span class="icon-search" aria-hidden="true" title="Submit search"></span>
+    </button>
+    <button type="button" tabindex="-1" class="search-close-button" aria-label="Cancel Search">
+      <span class="icon-cross" aria-hidden="true" title="Cancel search"></span>
+    </button>
+    <label class="search-label">
+      <input name="q" type="text" id="search-list" class="search-input" placeholder="Search..." aria-label="Input your search terms" autocomplete="off" />
+    </label>
+  </form>
+
+  <div class="autocomplete">
+    <div class="autocomplete-results">
+    </div>
+  </div>
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectDetails">
+      <a href="mongooseim.html" class="sidebar-projectName">
+MongooseIM      </a>
+      <strong class="sidebar-projectVersion">
+        v4.0.1
+      </strong>
+    </div>
+  </div>
+
+  <ul class="sidebar-listNav">
+    <li><a id="extras-list" href="#full-list">Pages</a></li>
+
+      <li><a id="modules-list" href="#full-list">Modules</a></li>
+
+  </ul>
+  <div class="gradient"></div>
+  <ul id="full-list" class="sidebar-fullList"></ul>
+</section>
+
+<section class="content">
+  <div class="content-outer">
+    <div id="content" class="content-inner">
+
+      <h1>
+        ejabberd_s2s_out <small class="app-vsn">(MongooseIM v4.0.1)</small>
+      </h1>
+
+
+
+        <section id="summary" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#summary">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+            Summary
+          </h1>
+  <div class="summary-types summary">
+    <h2>
+      <a href="#types">Types</a>
+    </h2>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:element_queue/0">element_queue()</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:fsm_return/0">fsm_return()</a>
+  </div>
+    <div class="summary-synopsis">-define(DBGFSM, true).</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:state/0">state()</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:statename/0">statename()</a>
+  </div>
+    <div class="summary-synopsis">FSM handler return value</div>
+</div>
+  </div>
+  <div class="summary-functions summary">
+    <h2>
+      <a href="#functions">Functions</a>
+    </h2>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#bounce_element/3">bounce_element/3</a>
+  </div>
+    <div class="summary-synopsis">Bounce a single message (xmlel)</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#bounce_messages/1">bounce_messages/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#bounce_queue/2">bounce_queue/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#calc_addr_index/1">calc_addr_index/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#cancel_timer/1">cancel_timer/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#code_change/4">code_change/4</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#do_get_predefined_addresses/1">do_get_predefined_addresses/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#fsm_limit_opts/0">fsm_limit_opts/0</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#get_acc_with_new_sext/3">get_acc_with_new_sext/3</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#get_acc_with_new_tls/3">get_acc_with_new_tls/3</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#get_addr_list/1">get_addr_list/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#get_addr_port/1">get_addr_port/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#get_addrs/2">get_addrs/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#get_max_retry_delay/0">get_max_retry_delay/0</a>
+  </div>
+    <div class="summary-synopsis">Get the maximum allowed delay for retry to reconnect (in milliseconds). The default value is 5 minutes. The option {s2s_max_retry_delay, Seconds} can be used (in seconds).</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#get_predefined_addresses/1">get_predefined_addresses/1</a>
+  </div>
+    <div class="summary-synopsis">Get IPs predefined for a given s2s domain in the configuration</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#get_timeout_interval/1">get_timeout_interval/1</a>
+  </div>
+    <div class="summary-synopsis">Calculate timeout depending on which state we are in: Can return integer &gt; 0 | infinity</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#get_tls_opts_with_certfile/1">get_tls_opts_with_certfile/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#get_tls_opts_with_ciphers/1">get_tls_opts_with_ciphers/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#handle_event/3">handle_event/3</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#handle_info/3">handle_info/3</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#handle_parsed_features/1">handle_parsed_features/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#handle_sync_event/4">handle_sync_event/4</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#init/1">init/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#is_verify_res/1">is_verify_res/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#log_s2s_out/4">log_s2s_out/4</a>
+  </div>
+    <div class="summary-synopsis">Human readable S2S logging: Log only new outgoing connections as INFO Do not log dialback</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#new_id/0">new_id/0</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#open_socket/2">open_socket/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#open_socket1/2">open_socket1/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#open_socket2/3">open_socket2/3</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#outgoing_s2s_families/0">outgoing_s2s_families/0</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#outgoing_s2s_port/0">outgoing_s2s_port/0</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#outgoing_s2s_timeout/0">outgoing_s2s_timeout/0</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#print_state/1">print_state/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#relay_to_bridge/2">relay_to_bridge/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#remove_addr_index/1">remove_addr_index/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#reopen_socket/2">reopen_socket/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#send_db_request/1">send_db_request/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#send_element/2">send_element/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#send_element/3">send_element/3</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#send_event/3">send_event/3</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#send_queue/2">send_queue/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#send_text/2">send_text/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#srv_lookup/1">srv_lookup/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#srv_lookup/3">srv_lookup/3</a>
+  </div>
+    <div class="summary-synopsis">XXX - this behaviour is suboptimal in the case that the domain has a &quot;_xmpp-server._tcp.&quot; but not a &quot;_jabber._tcp.&quot; record and we don't get a DNS reply for the &quot;_xmpp-server._tcp.&quot; lookup. In this case we'll give up when we get the &quot;_jabber._tcp.&quot; nxdomain reply.</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#start/3">start/3</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#start_connection/1">start_connection/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#start_link/3">start_link/3</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#stop_connection/1">stop_connection/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#stream_established/2">stream_established/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#terminate/3">terminate/3</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#terminate_if_waiting_delay/2">terminate_if_waiting_delay/2</a>
+  </div>
+    <div class="summary-synopsis">Terminate s2s_out connections that are in state wait_before_retry</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#test_get_addr_port/1">test_get_addr_port/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#wait_before_reconnect/1">wait_before_reconnect/1</a>
+  </div>
+    <div class="summary-synopsis">This function is intended to be called at the end of a state function that want to wait for a reconnect delay before stopping.</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#wait_before_retry/2">wait_before_retry/2</a>
+  </div>
+    <div class="summary-synopsis">This state is use to avoid reconnecting to often to bad sockets</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#wait_for_auth_result/2">wait_for_auth_result/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#wait_for_features/2">wait_for_features/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#wait_for_starttls_proceed/2">wait_for_starttls_proceed/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#wait_for_stream/2">wait_for_stream/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#wait_for_validation/2">wait_for_validation/2</a>
+  </div>
+</div>
+  </div>
+        </section>
+
+        <section id="types" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#types">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+Types          </h1>
+          <div class="types-list">
+<section class="detail" id="t:element_queue/0">
+  <div class="detail-header">
+    <a href="#t:element_queue/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">element_queue()</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>t:ejabberd_s2s_out.element_queue/0</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="t:fsm_return/0">
+  <div class="detail-header">
+    <a href="#t:fsm_return/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">fsm_return()</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>t:ejabberd_s2s_out.fsm_return/0</pre>
+      </div>
+
+-define(DBGFSM, true).  </section>
+</section>
+<section class="detail" id="t:state/0">
+  <div class="detail-header">
+    <a href="#t:state/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">state()</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>t:ejabberd_s2s_out.state/0</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="t:statename/0">
+  <div class="detail-header">
+    <a href="#t:statename/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">statename()</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>t:ejabberd_s2s_out.statename/0</pre>
+      </div>
+
+FSM handler return value  </section>
+</section>
+          </div>
+        </section>
+        <section id="functions" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#functions">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+Functions          </h1>
+          <div class="functions-list">
+<section class="detail" id="bounce_element/3">
+  <div class="detail-header">
+    <a href="#bounce_element/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">bounce_element/3</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>ejabberd_s2s_out.bounce_element/3</pre>
+      </div>
+
+Bounce a single message (xmlel)  </section>
+</section>
+<section class="detail" id="bounce_messages/1">
+  <div class="detail-header">
+    <a href="#bounce_messages/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">bounce_messages/1</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>ejabberd_s2s_out.bounce_messages/1</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="bounce_queue/2">
+  <div class="detail-header">
+    <a href="#bounce_queue/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">bounce_queue/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>ejabberd_s2s_out.bounce_queue/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="calc_addr_index/1">
+  <div class="detail-header">
+    <a href="#calc_addr_index/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">calc_addr_index/1</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="cancel_timer/1">
+  <div class="detail-header">
+    <a href="#cancel_timer/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">cancel_timer/1</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>ejabberd_s2s_out.cancel_timer/1</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="code_change/4">
+  <div class="detail-header">
+    <a href="#code_change/4" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">code_change/4</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="do_get_predefined_addresses/1">
+  <div class="detail-header">
+    <a href="#do_get_predefined_addresses/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">do_get_predefined_addresses/1</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>ejabberd_s2s_out.do_get_predefined_addresses/1</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="fsm_limit_opts/0">
+  <div class="detail-header">
+    <a href="#fsm_limit_opts/0" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">fsm_limit_opts/0</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>ejabberd_s2s_out.fsm_limit_opts/0</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="get_acc_with_new_sext/3">
+  <div class="detail-header">
+    <a href="#get_acc_with_new_sext/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">get_acc_with_new_sext/3</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="get_acc_with_new_tls/3">
+  <div class="detail-header">
+    <a href="#get_acc_with_new_tls/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">get_acc_with_new_tls/3</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="get_addr_list/1">
+  <div class="detail-header">
+    <a href="#get_addr_list/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">get_addr_list/1</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>ejabberd_s2s_out.get_addr_list/1</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="get_addr_port/1">
+  <div class="detail-header">
+    <a href="#get_addr_port/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">get_addr_port/1</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>ejabberd_s2s_out.get_addr_port/1</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="get_addrs/2">
+  <div class="detail-header">
+    <a href="#get_addrs/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">get_addrs/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>ejabberd_s2s_out.get_addrs/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="get_max_retry_delay/0">
+  <div class="detail-header">
+    <a href="#get_max_retry_delay/0" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">get_max_retry_delay/0</h1>
+  </div>
+
+  <section class="docstring">
+
+Get the maximum allowed delay for retry to reconnect (in milliseconds). The default value is 5 minutes. The option {s2s_max_retry_delay, Seconds} can be used (in seconds).  </section>
+</section>
+<section class="detail" id="get_predefined_addresses/1">
+  <div class="detail-header">
+    <a href="#get_predefined_addresses/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">get_predefined_addresses/1</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>ejabberd_s2s_out.get_predefined_addresses/1</pre>
+      </div>
+
+Get IPs predefined for a given s2s domain in the configuration  </section>
+</section>
+<section class="detail" id="get_timeout_interval/1">
+  <div class="detail-header">
+    <a href="#get_timeout_interval/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">get_timeout_interval/1</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>ejabberd_s2s_out.get_timeout_interval/1</pre>
+      </div>
+
+Calculate timeout depending on which state we are in: Can return integer &gt; 0 | infinity  </section>
+</section>
+<section class="detail" id="get_tls_opts_with_certfile/1">
+  <div class="detail-header">
+    <a href="#get_tls_opts_with_certfile/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">get_tls_opts_with_certfile/1</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="get_tls_opts_with_ciphers/1">
+  <div class="detail-header">
+    <a href="#get_tls_opts_with_ciphers/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">get_tls_opts_with_ciphers/1</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="handle_event/3">
+  <div class="detail-header">
+    <a href="#handle_event/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">handle_event/3</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="handle_info/3">
+  <div class="detail-header">
+    <a href="#handle_info/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">handle_info/3</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="handle_parsed_features/1">
+  <div class="detail-header">
+    <a href="#handle_parsed_features/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">handle_parsed_features/1</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="handle_sync_event/4">
+  <div class="detail-header">
+    <a href="#handle_sync_event/4" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">handle_sync_event/4</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="init/1">
+  <div class="detail-header">
+    <a href="#init/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">init/1</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>ejabberd_s2s_out.init/1</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="is_verify_res/1">
+  <div class="detail-header">
+    <a href="#is_verify_res/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">is_verify_res/1</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>ejabberd_s2s_out.is_verify_res/1</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="log_s2s_out/4">
+  <div class="detail-header">
+    <a href="#log_s2s_out/4" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">log_s2s_out/4</h1>
+  </div>
+
+  <section class="docstring">
+
+Human readable S2S logging: Log only new outgoing connections as INFO Do not log dialback  </section>
+</section>
+<section class="detail" id="new_id/0">
+  <div class="detail-header">
+    <a href="#new_id/0" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">new_id/0</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>ejabberd_s2s_out.new_id/0</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="open_socket/2">
+  <div class="detail-header">
+    <a href="#open_socket/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">open_socket/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>ejabberd_s2s_out.open_socket/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="open_socket1/2">
+  <div class="detail-header">
+    <a href="#open_socket1/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">open_socket1/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>ejabberd_s2s_out.open_socket1/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="open_socket2/3">
+  <div class="detail-header">
+    <a href="#open_socket2/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">open_socket2/3</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>ejabberd_s2s_out.open_socket2/3</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="outgoing_s2s_families/0">
+  <div class="detail-header">
+    <a href="#outgoing_s2s_families/0" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">outgoing_s2s_families/0</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>ejabberd_s2s_out.outgoing_s2s_families/0</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="outgoing_s2s_port/0">
+  <div class="detail-header">
+    <a href="#outgoing_s2s_port/0" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">outgoing_s2s_port/0</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>ejabberd_s2s_out.outgoing_s2s_port/0</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="outgoing_s2s_timeout/0">
+  <div class="detail-header">
+    <a href="#outgoing_s2s_timeout/0" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">outgoing_s2s_timeout/0</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>ejabberd_s2s_out.outgoing_s2s_timeout/0</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="print_state/1">
+  <div class="detail-header">
+    <a href="#print_state/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">print_state/1</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="relay_to_bridge/2">
+  <div class="detail-header">
+    <a href="#relay_to_bridge/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">relay_to_bridge/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>ejabberd_s2s_out.relay_to_bridge/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="remove_addr_index/1">
+  <div class="detail-header">
+    <a href="#remove_addr_index/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">remove_addr_index/1</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="reopen_socket/2">
+  <div class="detail-header">
+    <a href="#reopen_socket/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">reopen_socket/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>ejabberd_s2s_out.reopen_socket/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="send_db_request/1">
+  <div class="detail-header">
+    <a href="#send_db_request/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">send_db_request/1</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>ejabberd_s2s_out.send_db_request/1</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="send_element/2">
+  <div class="detail-header">
+    <a href="#send_element/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">send_element/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>ejabberd_s2s_out.send_element/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="send_element/3">
+  <div class="detail-header">
+    <a href="#send_element/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">send_element/3</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>ejabberd_s2s_out.send_element/3</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="send_event/3">
+  <div class="detail-header">
+    <a href="#send_event/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">send_event/3</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="send_queue/2">
+  <div class="detail-header">
+    <a href="#send_queue/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">send_queue/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>ejabberd_s2s_out.send_queue/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="send_text/2">
+  <div class="detail-header">
+    <a href="#send_text/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">send_text/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>ejabberd_s2s_out.send_text/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="srv_lookup/1">
+  <div class="detail-header">
+    <a href="#srv_lookup/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">srv_lookup/1</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>ejabberd_s2s_out.srv_lookup/1</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="srv_lookup/3">
+  <div class="detail-header">
+    <a href="#srv_lookup/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">srv_lookup/3</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>ejabberd_s2s_out.srv_lookup/3</pre>
+      </div>
+
+XXX - this behaviour is suboptimal in the case that the domain has a &quot;_xmpp-server._tcp.&quot; but not a &quot;_jabber._tcp.&quot; record and we don't get a DNS reply for the &quot;_xmpp-server._tcp.&quot; lookup. In this case we'll give up when we get the &quot;_jabber._tcp.&quot; nxdomain reply.  </section>
+</section>
+<section class="detail" id="start/3">
+  <div class="detail-header">
+    <a href="#start/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">start/3</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>ejabberd_s2s_out.start/3</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="start_connection/1">
+  <div class="detail-header">
+    <a href="#start_connection/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">start_connection/1</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="start_link/3">
+  <div class="detail-header">
+    <a href="#start_link/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">start_link/3</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>ejabberd_s2s_out.start_link/3</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="stop_connection/1">
+  <div class="detail-header">
+    <a href="#stop_connection/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">stop_connection/1</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="stream_established/2">
+  <div class="detail-header">
+    <a href="#stream_established/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">stream_established/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>ejabberd_s2s_out.stream_established/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="terminate/3">
+  <div class="detail-header">
+    <a href="#terminate/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">terminate/3</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="terminate_if_waiting_delay/2">
+  <div class="detail-header">
+    <a href="#terminate_if_waiting_delay/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">terminate_if_waiting_delay/2</h1>
+  </div>
+
+  <section class="docstring">
+
+Terminate s2s_out connections that are in state wait_before_retry  </section>
+</section>
+<section class="detail" id="test_get_addr_port/1">
+  <div class="detail-header">
+    <a href="#test_get_addr_port/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">test_get_addr_port/1</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="wait_before_reconnect/1">
+  <div class="detail-header">
+    <a href="#wait_before_reconnect/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">wait_before_reconnect/1</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>ejabberd_s2s_out.wait_before_reconnect/1</pre>
+      </div>
+
+This function is intended to be called at the end of a state function that want to wait for a reconnect delay before stopping.  </section>
+</section>
+<section class="detail" id="wait_before_retry/2">
+  <div class="detail-header">
+    <a href="#wait_before_retry/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">wait_before_retry/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>ejabberd_s2s_out.wait_before_retry/2</pre>
+      </div>
+
+This state is use to avoid reconnecting to often to bad sockets  </section>
+</section>
+<section class="detail" id="wait_for_auth_result/2">
+  <div class="detail-header">
+    <a href="#wait_for_auth_result/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">wait_for_auth_result/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>ejabberd_s2s_out.wait_for_auth_result/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="wait_for_features/2">
+  <div class="detail-header">
+    <a href="#wait_for_features/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">wait_for_features/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>ejabberd_s2s_out.wait_for_features/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="wait_for_starttls_proceed/2">
+  <div class="detail-header">
+    <a href="#wait_for_starttls_proceed/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">wait_for_starttls_proceed/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>ejabberd_s2s_out.wait_for_starttls_proceed/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="wait_for_stream/2">
+  <div class="detail-header">
+    <a href="#wait_for_stream/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">wait_for_stream/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>ejabberd_s2s_out.wait_for_stream/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="wait_for_validation/2">
+  <div class="detail-header">
+    <a href="#wait_for_validation/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">wait_for_validation/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>ejabberd_s2s_out.wait_for_validation/2</pre>
+      </div>
+
+  </section>
+</section>
+          </div>
+        </section>
+      <footer class="footer">
+        <p>
+          <span class="line">
+            Built using
+            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener">ExDoc</a> (v0.23.0) for the
+            <a href="https://elixir-lang.org" title="Elixir" target="_blank">Elixir programming language</a>.
+          </span>
+          <span class="line">
+            Designed by
+            <a href="https://twitter.com/dignifiedquire" target="_blank" rel="noopener" title="@dignifiedquire">Friedel Ziegelmayer</a>.
+          </span>
+        </p>
+        <p>
+            <a href="api-reference.html" title="API reference" class="line footer-button">API Reference</a>
+          <button class="line footer-button display-shortcuts-help">
+            Display keyboard shortcuts
+          </button>
+          <button class="line footer-button night-mode-toggle">
+            Toggle night mode
+          </button>
+          <button class="line footer-button display-quick-switch">
+            Go to a HexDocs package
+          </button>
+          <button class="line footer-button tooltips-toggle">
+            <span class="tooltips-option-disable">Disable tooltips</span>
+            <span class="tooltips-option-enable">Enable tooltips</span>
+          </button>
+        </p>
+      </footer>
+    </div>
+  </div>
+</section>
+</div>
+  </body>
+</html>

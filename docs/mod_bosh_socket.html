@@ -1,0 +1,2001 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.23.0">
+    <meta name="project" content="MongooseIM v4.0.1">
+    <title>mod_bosh_socket — MongooseIM v4.0.1</title>
+    <link rel="stylesheet" href="dist/erlang-8a5f731dbc512bf6261b.css" />
+    <script src="dist/sidebar_items-38e40981d8.js"></script>
+      <script src="docs_config.js"></script>
+    <script async src="dist/app-60a0c9f10e9e52eae31f.js"></script>
+  </head>
+  <body data-type="modules">
+    <script>try { if(localStorage.getItem('night-mode') === 'true') document.body.className += ' night-mode'; } catch (e) { }</script>
+<div class="main">
+
+<button class="sidebar-button sidebar-toggle">
+  <span class="icon-menu" title="Collapse/expand sidebar"></span>
+</button>
+
+<section class="sidebar">
+  <form class="sidebar-search" action="search.html">
+    <button type="submit" class="search-button" aria-label="Submit Search">
+      <span class="icon-search" aria-hidden="true" title="Submit search"></span>
+    </button>
+    <button type="button" tabindex="-1" class="search-close-button" aria-label="Cancel Search">
+      <span class="icon-cross" aria-hidden="true" title="Cancel search"></span>
+    </button>
+    <label class="search-label">
+      <input name="q" type="text" id="search-list" class="search-input" placeholder="Search..." aria-label="Input your search terms" autocomplete="off" />
+    </label>
+  </form>
+
+  <div class="autocomplete">
+    <div class="autocomplete-results">
+    </div>
+  </div>
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectDetails">
+      <a href="mongooseim.html" class="sidebar-projectName">
+MongooseIM      </a>
+      <strong class="sidebar-projectVersion">
+        v4.0.1
+      </strong>
+    </div>
+  </div>
+
+  <ul class="sidebar-listNav">
+    <li><a id="extras-list" href="#full-list">Pages</a></li>
+
+      <li><a id="modules-list" href="#full-list">Modules</a></li>
+
+  </ul>
+  <div class="gradient"></div>
+  <ul id="full-list" class="sidebar-fullList"></ul>
+</section>
+
+<section class="content">
+  <div class="content-outer">
+    <div id="content" class="content-inner">
+
+      <h1>
+        mod_bosh_socket <small class="app-vsn">(MongooseIM v4.0.1)</small>
+      </h1>
+
+
+
+        <section id="summary" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#summary">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+            Summary
+          </h1>
+  <div class="summary-types summary">
+    <h2>
+      <a href="#types">Types</a>
+    </h2>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:cached_response/0">cached_response()</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:fsm_return/0">fsm_return()</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:rid/0">rid()</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:state/0">state()</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:statename/0">statename()</a>
+  </div>
+</div>
+  </div>
+  <div class="summary-functions summary">
+    <h2>
+      <a href="#functions">Functions</a>
+    </h2>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#add_handler/2">add_handler/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#bosh_body/1">bosh_body/1</a>
+  </div>
+    <div class="summary-synopsis">Bosh body for an ordinary stream element(s).</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#bosh_stream_end_body/0">bosh_stream_end_body/0</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#bosh_stream_start_body/2">bosh_stream_start_body/2</a>
+  </div>
+    <div class="summary-synopsis">Bosh body for a session creation response.</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#bosh_unwrap/3">bosh_unwrap/3</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#bosh_wrap/3">bosh_wrap/3</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#cache_response/2">cache_response/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#cache_up_to/2">cache_up_to/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#cancel_inactivity_timer/1">cancel_inactivity_timer/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#change_shaper/2">change_shaper/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#close/1">close/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#closing/2">closing/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#closing/3">closing/3</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#code_change/4">code_change/4</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#compress/1">compress/1</a>
+  </div>
+    <div class="summary-synopsis">Should be negotiated on HTTP level.</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#compress/3">compress/3</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#determine_next_state/3">determine_next_state/3</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#determine_report_action/4">determine_report_action/4</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#forward_to_c2s/2">forward_to_c2s/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#get_attr/3">get_attr/3</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#get_cached_responses/1">get_cached_responses/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#get_client_acks/1">get_client_acks/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#get_client_acks/4">get_client_acks/4</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#get_handlers/1">get_handlers/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#get_maxpause/0">get_maxpause/0</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#get_peer_certificate/1">get_peer_certificate/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#get_pending/1">get_pending/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#get_sockmod/1">get_sockmod/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#handle_request/2">handle_request/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#handle_stream_event/4">handle_stream_event/4</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#ignore_undefined/1">ignore_undefined/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#inactivity/1">inactivity/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#is_acceptable_rid/2">is_acceptable_rid/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#is_expected_rid/2">is_expected_rid/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#is_stream_event/1">is_stream_event/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#is_stream_prefix/1">is_stream_prefix/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#is_valid_ack/2">is_valid_ack/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#last_processed/2">last_processed/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#ls/2">ls/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#maxpause/1">maxpause/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#maybe_ack/2">maybe_ack/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#maybe_add/2">maybe_add/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#maybe_add_default_ns/1">maybe_add_default_ns/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#maybe_add_default_ns_to_children/1">maybe_add_default_ns_to_children/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#maybe_add_handler/3">maybe_add_handler/3</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#maybe_diff/2">maybe_diff/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#maybe_is_retransmission/3">maybe_is_retransmission/3</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#maybe_report/1">maybe_report/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#maybe_send_report/1">maybe_send_report/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#maybe_stream_prefix/2">maybe_stream_prefix/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#maybe_trim_cache/2">maybe_trim_cache/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#monitor/1">monitor/1</a>
+  </div>
+    <div class="summary-synopsis"><p>Callback implementation for <code class="inline">c::mongoose_transport.monitor/1</code>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#normal/2">normal/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#normal/3">normal/3</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#pause/2">pause/2</a>
+  </div>
+    <div class="summary-synopsis">TODO: no handler for this call is present! No check for violating maxpause is made when calling this!</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#peername/1">peername/1</a>
+  </div>
+    <div class="summary-synopsis"><p>Callback implementation for <code class="inline">c::mongoose_transport.peername/1</code>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#pick_handler/1">pick_handler/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#process_acked_stream_event/3">process_acked_stream_event/3</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#process_deferred_events/2">process_deferred_events/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#process_pause_event/2">process_pause_event/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#process_stream_event/4">process_stream_event/4</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#resend_cached/2">resend_cached/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#return_surplus_handlers/2">return_surplus_handlers/2</a>
+  </div>
+    <div class="summary-synopsis">Keep in mind the hardcoding for hold == 1.</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#rid/2">rid/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#schedule_report/2">schedule_report/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#send/2">send/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#send_or_store/2">send_or_store/2</a>
+  </div>
+    <div class="summary-synopsis">Send data to the client if a request handler is available, that matches next RID. Otherwise, store for sending later.</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#send_to_handler/2">send_to_handler/2</a>
+  </div>
+    <div class="summary-synopsis">send_to_handler() assumes that Handlers is not empty! Be sure that's the case if calling it.</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#send_to_handler/3">send_to_handler/3</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#send_wrapped_to_handler/3">send_wrapped_to_handler/3</a>
+  </div>
+    <div class="summary-synopsis">This is the most specific variant of send_to_handler() and the *only one* actually performing a send to the cowboy_loop_handler serving a HTTP request.</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#send_xml/2">send_xml/2</a>
+  </div>
+    <div class="summary-synopsis"><p>Callback implementation for <code class="inline">c::mongoose_transport.send_xml/2</code>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#server_ack/2">server_ack/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#set_client_acks/2">set_client_acks/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#setup_inactivity_timer/1">setup_inactivity_timer/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#start/3">start/3</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#start_link/3">start_link/3</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#start_supervisor/0">start_supervisor/0</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#starttls/2">starttls/2</a>
+  </div>
+    <div class="summary-synopsis">Should be negotiated on HTTP level.</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#starttls/3">starttls/3</a>
+  </div>
+    <div class="summary-synopsis"><p>Callback implementation for <code class="inline">c::mongoose_transport.starttls/3</code>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#store/2">store/2</a>
+  </div>
+    <div class="summary-synopsis">Store data for sending later.</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#stream_start/2">stream_start/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#terminate/3">terminate/3</a>
+  </div>
+</div>
+  </div>
+        </section>
+
+        <section id="types" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#types">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+Types          </h1>
+          <div class="types-list">
+<section class="detail" id="t:cached_response/0">
+  <div class="detail-header">
+    <a href="#t:cached_response/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">cached_response()</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>t:mod_bosh_socket.cached_response/0</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="t:fsm_return/0">
+  <div class="detail-header">
+    <a href="#t:fsm_return/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">fsm_return()</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>t:mod_bosh_socket.fsm_return/0</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="t:rid/0">
+  <div class="detail-header">
+    <a href="#t:rid/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">rid()</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>t:mod_bosh_socket.rid/0</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="t:state/0">
+  <div class="detail-header">
+    <a href="#t:state/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">state()</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>t:mod_bosh_socket.state/0</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="t:statename/0">
+  <div class="detail-header">
+    <a href="#t:statename/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">statename()</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>t:mod_bosh_socket.statename/0</pre>
+      </div>
+
+  </section>
+</section>
+          </div>
+        </section>
+        <section id="functions" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#functions">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+Functions          </h1>
+          <div class="functions-list">
+<section class="detail" id="add_handler/2">
+  <div class="detail-header">
+    <a href="#add_handler/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">add_handler/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_bosh_socket.add_handler/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="bosh_body/1">
+  <div class="detail-header">
+    <a href="#bosh_body/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">bosh_body/1</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_bosh_socket.bosh_body/1</pre>
+      </div>
+
+Bosh body for an ordinary stream element(s).  </section>
+</section>
+<section class="detail" id="bosh_stream_end_body/0">
+  <div class="detail-header">
+    <a href="#bosh_stream_end_body/0" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">bosh_stream_end_body/0</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_bosh_socket.bosh_stream_end_body/0</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="bosh_stream_start_body/2">
+  <div class="detail-header">
+    <a href="#bosh_stream_start_body/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">bosh_stream_start_body/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_bosh_socket.bosh_stream_start_body/2</pre>
+      </div>
+
+Bosh body for a session creation response.  </section>
+</section>
+<section class="detail" id="bosh_unwrap/3">
+  <div class="detail-header">
+    <a href="#bosh_unwrap/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">bosh_unwrap/3</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_bosh_socket.bosh_unwrap/3</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="bosh_wrap/3">
+  <div class="detail-header">
+    <a href="#bosh_wrap/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">bosh_wrap/3</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_bosh_socket.bosh_wrap/3</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="cache_response/2">
+  <div class="detail-header">
+    <a href="#cache_response/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">cache_response/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_bosh_socket.cache_response/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="cache_up_to/2">
+  <div class="detail-header">
+    <a href="#cache_up_to/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">cache_up_to/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_bosh_socket.cache_up_to/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="cancel_inactivity_timer/1">
+  <div class="detail-header">
+    <a href="#cancel_inactivity_timer/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">cancel_inactivity_timer/1</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_bosh_socket.cancel_inactivity_timer/1</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="change_shaper/2">
+  <div class="detail-header">
+    <a href="#change_shaper/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">change_shaper/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_bosh_socket.change_shaper/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="close/1">
+  <div class="detail-header">
+    <a href="#close/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">close/1</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_bosh_socket.close/1</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="closing/2">
+  <div class="detail-header">
+    <a href="#closing/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">closing/2</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="closing/3">
+  <div class="detail-header">
+    <a href="#closing/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">closing/3</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="code_change/4">
+  <div class="detail-header">
+    <a href="#code_change/4" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">code_change/4</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="compress/1">
+  <div class="detail-header">
+    <a href="#compress/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">compress/1</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_bosh_socket.compress/1</pre>
+      </div>
+
+Should be negotiated on HTTP level.  </section>
+</section>
+<section class="detail" id="compress/3">
+  <div class="detail-header">
+    <a href="#compress/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">compress/3</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_bosh_socket.compress/3</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="determine_next_state/3">
+  <div class="detail-header">
+    <a href="#determine_next_state/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">determine_next_state/3</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="determine_report_action/4">
+  <div class="detail-header">
+    <a href="#determine_report_action/4" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">determine_report_action/4</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_bosh_socket.determine_report_action/4</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="forward_to_c2s/2">
+  <div class="detail-header">
+    <a href="#forward_to_c2s/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">forward_to_c2s/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_bosh_socket.forward_to_c2s/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="get_attr/3">
+  <div class="detail-header">
+    <a href="#get_attr/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">get_attr/3</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_bosh_socket.get_attr/3</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="get_cached_responses/1">
+  <div class="detail-header">
+    <a href="#get_cached_responses/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">get_cached_responses/1</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_bosh_socket.get_cached_responses/1</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="get_client_acks/1">
+  <div class="detail-header">
+    <a href="#get_client_acks/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">get_client_acks/1</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_bosh_socket.get_client_acks/1</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="get_client_acks/4">
+  <div class="detail-header">
+    <a href="#get_client_acks/4" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">get_client_acks/4</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_bosh_socket.get_client_acks/4</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="get_handlers/1">
+  <div class="detail-header">
+    <a href="#get_handlers/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">get_handlers/1</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="get_maxpause/0">
+  <div class="detail-header">
+    <a href="#get_maxpause/0" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">get_maxpause/0</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="get_peer_certificate/1">
+  <div class="detail-header">
+    <a href="#get_peer_certificate/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">get_peer_certificate/1</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_bosh_socket.get_peer_certificate/1</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="get_pending/1">
+  <div class="detail-header">
+    <a href="#get_pending/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">get_pending/1</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="get_sockmod/1">
+  <div class="detail-header">
+    <a href="#get_sockmod/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">get_sockmod/1</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_bosh_socket.get_sockmod/1</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="handle_request/2">
+  <div class="detail-header">
+    <a href="#handle_request/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">handle_request/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_bosh_socket.handle_request/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="handle_stream_event/4">
+  <div class="detail-header">
+    <a href="#handle_stream_event/4" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">handle_stream_event/4</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="ignore_undefined/1">
+  <div class="detail-header">
+    <a href="#ignore_undefined/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">ignore_undefined/1</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="inactivity/1">
+  <div class="detail-header">
+    <a href="#inactivity/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">inactivity/1</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_bosh_socket.inactivity/1</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="is_acceptable_rid/2">
+  <div class="detail-header">
+    <a href="#is_acceptable_rid/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">is_acceptable_rid/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_bosh_socket.is_acceptable_rid/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="is_expected_rid/2">
+  <div class="detail-header">
+    <a href="#is_expected_rid/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">is_expected_rid/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_bosh_socket.is_expected_rid/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="is_stream_event/1">
+  <div class="detail-header">
+    <a href="#is_stream_event/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">is_stream_event/1</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_bosh_socket.is_stream_event/1</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="is_stream_prefix/1">
+  <div class="detail-header">
+    <a href="#is_stream_prefix/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">is_stream_prefix/1</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="is_valid_ack/2">
+  <div class="detail-header">
+    <a href="#is_valid_ack/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">is_valid_ack/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_bosh_socket.is_valid_ack/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="last_processed/2">
+  <div class="detail-header">
+    <a href="#last_processed/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">last_processed/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_bosh_socket.last_processed/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="ls/2">
+  <div class="detail-header">
+    <a href="#ls/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">ls/2</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="maxpause/1">
+  <div class="detail-header">
+    <a href="#maxpause/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">maxpause/1</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_bosh_socket.maxpause/1</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="maybe_ack/2">
+  <div class="detail-header">
+    <a href="#maybe_ack/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">maybe_ack/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_bosh_socket.maybe_ack/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="maybe_add/2">
+  <div class="detail-header">
+    <a href="#maybe_add/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">maybe_add/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_bosh_socket.maybe_add/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="maybe_add_default_ns/1">
+  <div class="detail-header">
+    <a href="#maybe_add_default_ns/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">maybe_add_default_ns/1</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="maybe_add_default_ns_to_children/1">
+  <div class="detail-header">
+    <a href="#maybe_add_default_ns_to_children/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">maybe_add_default_ns_to_children/1</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="maybe_add_handler/3">
+  <div class="detail-header">
+    <a href="#maybe_add_handler/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">maybe_add_handler/3</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_bosh_socket.maybe_add_handler/3</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="maybe_diff/2">
+  <div class="detail-header">
+    <a href="#maybe_diff/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">maybe_diff/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_bosh_socket.maybe_diff/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="maybe_is_retransmission/3">
+  <div class="detail-header">
+    <a href="#maybe_is_retransmission/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">maybe_is_retransmission/3</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_bosh_socket.maybe_is_retransmission/3</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="maybe_report/1">
+  <div class="detail-header">
+    <a href="#maybe_report/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">maybe_report/1</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_bosh_socket.maybe_report/1</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="maybe_send_report/1">
+  <div class="detail-header">
+    <a href="#maybe_send_report/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">maybe_send_report/1</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_bosh_socket.maybe_send_report/1</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="maybe_stream_prefix/2">
+  <div class="detail-header">
+    <a href="#maybe_stream_prefix/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">maybe_stream_prefix/2</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="maybe_trim_cache/2">
+  <div class="detail-header">
+    <a href="#maybe_trim_cache/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">maybe_trim_cache/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_bosh_socket.maybe_trim_cache/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="monitor/1">
+  <div class="detail-header">
+    <a href="#monitor/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">monitor/1</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_bosh_socket.monitor/1</pre>
+      </div>
+
+<p>Callback implementation for <code class="inline">c::mongoose_transport.monitor/1</code>.</p>  </section>
+</section>
+<section class="detail" id="normal/2">
+  <div class="detail-header">
+    <a href="#normal/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">normal/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_bosh_socket.normal/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="normal/3">
+  <div class="detail-header">
+    <a href="#normal/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">normal/3</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="pause/2">
+  <div class="detail-header">
+    <a href="#pause/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">pause/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_bosh_socket.pause/2</pre>
+      </div>
+
+TODO: no handler for this call is present! No check for violating maxpause is made when calling this!  </section>
+</section>
+<section class="detail" id="peername/1">
+  <div class="detail-header">
+    <a href="#peername/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">peername/1</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_bosh_socket.peername/1</pre>
+      </div>
+
+<p>Callback implementation for <code class="inline">c::mongoose_transport.peername/1</code>.</p>  </section>
+</section>
+<section class="detail" id="pick_handler/1">
+  <div class="detail-header">
+    <a href="#pick_handler/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">pick_handler/1</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_bosh_socket.pick_handler/1</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="process_acked_stream_event/3">
+  <div class="detail-header">
+    <a href="#process_acked_stream_event/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">process_acked_stream_event/3</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_bosh_socket.process_acked_stream_event/3</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="process_deferred_events/2">
+  <div class="detail-header">
+    <a href="#process_deferred_events/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">process_deferred_events/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_bosh_socket.process_deferred_events/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="process_pause_event/2">
+  <div class="detail-header">
+    <a href="#process_pause_event/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">process_pause_event/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_bosh_socket.process_pause_event/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="process_stream_event/4">
+  <div class="detail-header">
+    <a href="#process_stream_event/4" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">process_stream_event/4</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_bosh_socket.process_stream_event/4</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="resend_cached/2">
+  <div class="detail-header">
+    <a href="#resend_cached/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">resend_cached/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_bosh_socket.resend_cached/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="return_surplus_handlers/2">
+  <div class="detail-header">
+    <a href="#return_surplus_handlers/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">return_surplus_handlers/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_bosh_socket.return_surplus_handlers/2</pre>
+      </div>
+
+Keep in mind the hardcoding for hold == 1.  </section>
+</section>
+<section class="detail" id="rid/2">
+  <div class="detail-header">
+    <a href="#rid/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">rid/2</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="schedule_report/2">
+  <div class="detail-header">
+    <a href="#schedule_report/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">schedule_report/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_bosh_socket.schedule_report/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="send/2">
+  <div class="detail-header">
+    <a href="#send/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">send/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_bosh_socket.send/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="send_or_store/2">
+  <div class="detail-header">
+    <a href="#send_or_store/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">send_or_store/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_bosh_socket.send_or_store/2</pre>
+      </div>
+
+Send data to the client if a request handler is available, that matches next RID. Otherwise, store for sending later.  </section>
+</section>
+<section class="detail" id="send_to_handler/2">
+  <div class="detail-header">
+    <a href="#send_to_handler/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">send_to_handler/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_bosh_socket.send_to_handler/2</pre>
+      </div>
+
+send_to_handler() assumes that Handlers is not empty! Be sure that's the case if calling it.  </section>
+</section>
+<section class="detail" id="send_to_handler/3">
+  <div class="detail-header">
+    <a href="#send_to_handler/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">send_to_handler/3</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_bosh_socket.send_to_handler/3</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="send_wrapped_to_handler/3">
+  <div class="detail-header">
+    <a href="#send_wrapped_to_handler/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">send_wrapped_to_handler/3</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_bosh_socket.send_wrapped_to_handler/3</pre>
+      </div>
+
+This is the most specific variant of send_to_handler() and the *only one* actually performing a send to the cowboy_loop_handler serving a HTTP request.  </section>
+</section>
+<section class="detail" id="send_xml/2">
+  <div class="detail-header">
+    <a href="#send_xml/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">send_xml/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_bosh_socket.send_xml/2</pre>
+      </div>
+
+<p>Callback implementation for <code class="inline">c::mongoose_transport.send_xml/2</code>.</p>  </section>
+</section>
+<section class="detail" id="server_ack/2">
+  <div class="detail-header">
+    <a href="#server_ack/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">server_ack/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_bosh_socket.server_ack/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="set_client_acks/2">
+  <div class="detail-header">
+    <a href="#set_client_acks/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">set_client_acks/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_bosh_socket.set_client_acks/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="setup_inactivity_timer/1">
+  <div class="detail-header">
+    <a href="#setup_inactivity_timer/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">setup_inactivity_timer/1</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_bosh_socket.setup_inactivity_timer/1</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="start/3">
+  <div class="detail-header">
+    <a href="#start/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">start/3</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_bosh_socket.start/3</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="start_link/3">
+  <div class="detail-header">
+    <a href="#start_link/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">start_link/3</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_bosh_socket.start_link/3</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="start_supervisor/0">
+  <div class="detail-header">
+    <a href="#start_supervisor/0" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">start_supervisor/0</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="starttls/2">
+  <div class="detail-header">
+    <a href="#starttls/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">starttls/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_bosh_socket.starttls/2</pre>
+      </div>
+
+Should be negotiated on HTTP level.  </section>
+</section>
+<section class="detail" id="starttls/3">
+  <div class="detail-header">
+    <a href="#starttls/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">starttls/3</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_bosh_socket.starttls/3</pre>
+      </div>
+
+<p>Callback implementation for <code class="inline">c::mongoose_transport.starttls/3</code>.</p>  </section>
+</section>
+<section class="detail" id="store/2">
+  <div class="detail-header">
+    <a href="#store/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">store/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_bosh_socket.store/2</pre>
+      </div>
+
+Store data for sending later.  </section>
+</section>
+<section class="detail" id="stream_start/2">
+  <div class="detail-header">
+    <a href="#stream_start/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">stream_start/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_bosh_socket.stream_start/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="terminate/3">
+  <div class="detail-header">
+    <a href="#terminate/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">terminate/3</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+          </div>
+        </section>
+      <footer class="footer">
+        <p>
+          <span class="line">
+            Built using
+            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener">ExDoc</a> (v0.23.0) for the
+            <a href="https://elixir-lang.org" title="Elixir" target="_blank">Elixir programming language</a>.
+          </span>
+          <span class="line">
+            Designed by
+            <a href="https://twitter.com/dignifiedquire" target="_blank" rel="noopener" title="@dignifiedquire">Friedel Ziegelmayer</a>.
+          </span>
+        </p>
+        <p>
+            <a href="api-reference.html" title="API reference" class="line footer-button">API Reference</a>
+          <button class="line footer-button display-shortcuts-help">
+            Display keyboard shortcuts
+          </button>
+          <button class="line footer-button night-mode-toggle">
+            Toggle night mode
+          </button>
+          <button class="line footer-button display-quick-switch">
+            Go to a HexDocs package
+          </button>
+          <button class="line footer-button tooltips-toggle">
+            <span class="tooltips-option-disable">Disable tooltips</span>
+            <span class="tooltips-option-enable">Enable tooltips</span>
+          </button>
+        </p>
+      </footer>
+    </div>
+  </div>
+</section>
+</div>
+  </body>
+</html>

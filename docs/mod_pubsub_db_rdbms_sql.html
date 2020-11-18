@@ -1,0 +1,1294 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.23.0">
+    <meta name="project" content="MongooseIM v4.0.1">
+    <title>mod_pubsub_db_rdbms_sql — MongooseIM v4.0.1</title>
+    <link rel="stylesheet" href="dist/erlang-8a5f731dbc512bf6261b.css" />
+    <script src="dist/sidebar_items-38e40981d8.js"></script>
+      <script src="docs_config.js"></script>
+    <script async src="dist/app-60a0c9f10e9e52eae31f.js"></script>
+  </head>
+  <body data-type="modules">
+    <script>try { if(localStorage.getItem('night-mode') === 'true') document.body.className += ' night-mode'; } catch (e) { }</script>
+<div class="main">
+
+<button class="sidebar-button sidebar-toggle">
+  <span class="icon-menu" title="Collapse/expand sidebar"></span>
+</button>
+
+<section class="sidebar">
+  <form class="sidebar-search" action="search.html">
+    <button type="submit" class="search-button" aria-label="Submit Search">
+      <span class="icon-search" aria-hidden="true" title="Submit search"></span>
+    </button>
+    <button type="button" tabindex="-1" class="search-close-button" aria-label="Cancel Search">
+      <span class="icon-cross" aria-hidden="true" title="Cancel search"></span>
+    </button>
+    <label class="search-label">
+      <input name="q" type="text" id="search-list" class="search-input" placeholder="Search..." aria-label="Input your search terms" autocomplete="off" />
+    </label>
+  </form>
+
+  <div class="autocomplete">
+    <div class="autocomplete-results">
+    </div>
+  </div>
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectDetails">
+      <a href="mongooseim.html" class="sidebar-projectName">
+MongooseIM      </a>
+      <strong class="sidebar-projectVersion">
+        v4.0.1
+      </strong>
+    </div>
+  </div>
+
+  <ul class="sidebar-listNav">
+    <li><a id="extras-list" href="#full-list">Pages</a></li>
+
+      <li><a id="modules-list" href="#full-list">Modules</a></li>
+
+  </ul>
+  <div class="gradient"></div>
+  <ul id="full-list" class="sidebar-fullList"></ul>
+</section>
+
+<section class="content">
+  <div class="content-outer">
+    <div id="content" class="content-inner">
+
+      <h1>
+        mod_pubsub_db_rdbms_sql <small class="app-vsn">(MongooseIM v4.0.1)</small>
+      </h1>
+
+
+
+        <section id="summary" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#summary">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+            Summary
+          </h1>
+  <div class="summary-functions summary">
+    <h2>
+      <a href="#functions">Functions</a>
+    </h2>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#common_node_insert/5">common_node_insert/5</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#convert_sql_nidx/1">convert_sql_nidx/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#del_item/2">del_item/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#del_items/2">del_items/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#del_parents/1">del_parents/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#delete_affiliation/3">delete_affiliation/3</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#delete_all_affiliations/1">delete_all_affiliations/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#delete_all_items/1">delete_all_items/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#delete_all_subscriptions/1">delete_all_subscriptions/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#delete_all_subscriptions/4">delete_all_subscriptions/4</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#delete_item/4">delete_item/4</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#delete_node/2">delete_node/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#delete_node_entity_items/3">delete_node_entity_items/3</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#delete_subscription/5">delete_subscription/5</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#delete_user_subscriptions/2">delete_user_subscriptions/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#esc_int/1">esc_int/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#esc_string/1">esc_string/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#get_affiliation/3">get_affiliation/3</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#get_affiliation_rows/1">get_affiliation_rows/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#get_affiliation_rows/2">get_affiliation_rows/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#get_entity_items/3">get_entity_items/3</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#get_idxs_of_own_nodes_with_pending_subs/2">get_idxs_of_own_nodes_with_pending_subs/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#get_item/2">get_item/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#get_item_rows/1">get_item_rows/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#get_item_rows/2">get_item_rows/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#get_items/2">get_items/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#get_node_entity_subs/4">get_node_entity_subs/4</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#get_node_subs/1">get_node_subs/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#get_subscriptions_rows/1">get_subscriptions_rows/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#get_subscriptions_rows/2">get_subscriptions_rows/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#get_subscriptions_rows/3">get_subscriptions_rows/3</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#get_user_items/2">get_user_items/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#get_user_subscriptions/2">get_user_subscriptions/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#insert_pubsub_node/5">insert_pubsub_node/5</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#insert_subscription/7">insert_subscription/7</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#item_columns/0">item_columns/0</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#maybe_item_ids_filter/1">maybe_item_ids_filter/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#maybe_result_limit/1">maybe_result_limit/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#parent_row/2">parent_row/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#pubsub_node_fields/0">pubsub_node_fields/0</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#pubsub_node_fields/1">pubsub_node_fields/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#select_node_by_id/1">select_node_by_id/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#select_node_by_key_and_name/2">select_node_by_key_and_name/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#select_nodes_by_affiliated_user/2">select_nodes_by_affiliated_user/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#select_nodes_by_key/1">select_nodes_by_key/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#select_nodes_by_key_and_names_in_list_with_children/2">select_nodes_by_key_and_names_in_list_with_children/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#select_nodes_by_key_and_names_in_list_with_parents/2">select_nodes_by_key_and_names_in_list_with_parents/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#select_nodes_by_owner/1">select_nodes_by_owner/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#select_nodes_in_list_with_key/2">select_nodes_in_list_with_key/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#select_subnodes/2">select_subnodes/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#set_parents/2">set_parents/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#sql_node_insert/6">sql_node_insert/6</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#sql_node_update/4">sql_node_update/4</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#update_pubsub_node/4">update_pubsub_node/4</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#update_subscription/6">update_subscription/6</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#update_subscription_opts/6">update_subscription_opts/6</a>
+  </div>
+</div>
+  </div>
+        </section>
+
+        <section id="functions" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#functions">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+Functions          </h1>
+          <div class="functions-list">
+<section class="detail" id="common_node_insert/5">
+  <div class="detail-header">
+    <a href="#common_node_insert/5" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">common_node_insert/5</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="convert_sql_nidx/1">
+  <div class="detail-header">
+    <a href="#convert_sql_nidx/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">convert_sql_nidx/1</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="del_item/2">
+  <div class="detail-header">
+    <a href="#del_item/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">del_item/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_pubsub_db_rdbms_sql.del_item/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="del_items/2">
+  <div class="detail-header">
+    <a href="#del_items/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">del_items/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_pubsub_db_rdbms_sql.del_items/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="del_parents/1">
+  <div class="detail-header">
+    <a href="#del_parents/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">del_parents/1</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="delete_affiliation/3">
+  <div class="detail-header">
+    <a href="#delete_affiliation/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">delete_affiliation/3</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_pubsub_db_rdbms_sql.delete_affiliation/3</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="delete_all_affiliations/1">
+  <div class="detail-header">
+    <a href="#delete_all_affiliations/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">delete_all_affiliations/1</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_pubsub_db_rdbms_sql.delete_all_affiliations/1</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="delete_all_items/1">
+  <div class="detail-header">
+    <a href="#delete_all_items/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">delete_all_items/1</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_pubsub_db_rdbms_sql.delete_all_items/1</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="delete_all_subscriptions/1">
+  <div class="detail-header">
+    <a href="#delete_all_subscriptions/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">delete_all_subscriptions/1</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_pubsub_db_rdbms_sql.delete_all_subscriptions/1</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="delete_all_subscriptions/4">
+  <div class="detail-header">
+    <a href="#delete_all_subscriptions/4" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">delete_all_subscriptions/4</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_pubsub_db_rdbms_sql.delete_all_subscriptions/4</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="delete_item/4">
+  <div class="detail-header">
+    <a href="#delete_item/4" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">delete_item/4</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_pubsub_db_rdbms_sql.delete_item/4</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="delete_node/2">
+  <div class="detail-header">
+    <a href="#delete_node/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">delete_node/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_pubsub_db_rdbms_sql.delete_node/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="delete_node_entity_items/3">
+  <div class="detail-header">
+    <a href="#delete_node_entity_items/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">delete_node_entity_items/3</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_pubsub_db_rdbms_sql.delete_node_entity_items/3</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="delete_subscription/5">
+  <div class="detail-header">
+    <a href="#delete_subscription/5" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">delete_subscription/5</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_pubsub_db_rdbms_sql.delete_subscription/5</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="delete_user_subscriptions/2">
+  <div class="detail-header">
+    <a href="#delete_user_subscriptions/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">delete_user_subscriptions/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_pubsub_db_rdbms_sql.delete_user_subscriptions/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="esc_int/1">
+  <div class="detail-header">
+    <a href="#esc_int/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">esc_int/1</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="esc_string/1">
+  <div class="detail-header">
+    <a href="#esc_string/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">esc_string/1</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="get_affiliation/3">
+  <div class="detail-header">
+    <a href="#get_affiliation/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">get_affiliation/3</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_pubsub_db_rdbms_sql.get_affiliation/3</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="get_affiliation_rows/1">
+  <div class="detail-header">
+    <a href="#get_affiliation_rows/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">get_affiliation_rows/1</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_pubsub_db_rdbms_sql.get_affiliation_rows/1</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="get_affiliation_rows/2">
+  <div class="detail-header">
+    <a href="#get_affiliation_rows/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">get_affiliation_rows/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_pubsub_db_rdbms_sql.get_affiliation_rows/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="get_entity_items/3">
+  <div class="detail-header">
+    <a href="#get_entity_items/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">get_entity_items/3</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_pubsub_db_rdbms_sql.get_entity_items/3</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="get_idxs_of_own_nodes_with_pending_subs/2">
+  <div class="detail-header">
+    <a href="#get_idxs_of_own_nodes_with_pending_subs/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">get_idxs_of_own_nodes_with_pending_subs/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_pubsub_db_rdbms_sql.get_idxs_of_own_nodes_with_pending_subs/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="get_item/2">
+  <div class="detail-header">
+    <a href="#get_item/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">get_item/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_pubsub_db_rdbms_sql.get_item/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="get_item_rows/1">
+  <div class="detail-header">
+    <a href="#get_item_rows/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">get_item_rows/1</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_pubsub_db_rdbms_sql.get_item_rows/1</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="get_item_rows/2">
+  <div class="detail-header">
+    <a href="#get_item_rows/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">get_item_rows/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_pubsub_db_rdbms_sql.get_item_rows/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="get_items/2">
+  <div class="detail-header">
+    <a href="#get_items/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">get_items/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_pubsub_db_rdbms_sql.get_items/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="get_node_entity_subs/4">
+  <div class="detail-header">
+    <a href="#get_node_entity_subs/4" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">get_node_entity_subs/4</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_pubsub_db_rdbms_sql.get_node_entity_subs/4</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="get_node_subs/1">
+  <div class="detail-header">
+    <a href="#get_node_subs/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">get_node_subs/1</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_pubsub_db_rdbms_sql.get_node_subs/1</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="get_subscriptions_rows/1">
+  <div class="detail-header">
+    <a href="#get_subscriptions_rows/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">get_subscriptions_rows/1</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_pubsub_db_rdbms_sql.get_subscriptions_rows/1</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="get_subscriptions_rows/2">
+  <div class="detail-header">
+    <a href="#get_subscriptions_rows/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">get_subscriptions_rows/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_pubsub_db_rdbms_sql.get_subscriptions_rows/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="get_subscriptions_rows/3">
+  <div class="detail-header">
+    <a href="#get_subscriptions_rows/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">get_subscriptions_rows/3</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_pubsub_db_rdbms_sql.get_subscriptions_rows/3</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="get_user_items/2">
+  <div class="detail-header">
+    <a href="#get_user_items/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">get_user_items/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_pubsub_db_rdbms_sql.get_user_items/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="get_user_subscriptions/2">
+  <div class="detail-header">
+    <a href="#get_user_subscriptions/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">get_user_subscriptions/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_pubsub_db_rdbms_sql.get_user_subscriptions/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="insert_pubsub_node/5">
+  <div class="detail-header">
+    <a href="#insert_pubsub_node/5" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">insert_pubsub_node/5</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="insert_subscription/7">
+  <div class="detail-header">
+    <a href="#insert_subscription/7" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">insert_subscription/7</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_pubsub_db_rdbms_sql.insert_subscription/7</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="item_columns/0">
+  <div class="detail-header">
+    <a href="#item_columns/0" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">item_columns/0</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="maybe_item_ids_filter/1">
+  <div class="detail-header">
+    <a href="#maybe_item_ids_filter/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">maybe_item_ids_filter/1</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="maybe_result_limit/1">
+  <div class="detail-header">
+    <a href="#maybe_result_limit/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">maybe_result_limit/1</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="parent_row/2">
+  <div class="detail-header">
+    <a href="#parent_row/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">parent_row/2</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="pubsub_node_fields/0">
+  <div class="detail-header">
+    <a href="#pubsub_node_fields/0" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">pubsub_node_fields/0</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="pubsub_node_fields/1">
+  <div class="detail-header">
+    <a href="#pubsub_node_fields/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">pubsub_node_fields/1</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="select_node_by_id/1">
+  <div class="detail-header">
+    <a href="#select_node_by_id/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">select_node_by_id/1</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_pubsub_db_rdbms_sql.select_node_by_id/1</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="select_node_by_key_and_name/2">
+  <div class="detail-header">
+    <a href="#select_node_by_key_and_name/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">select_node_by_key_and_name/2</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="select_nodes_by_affiliated_user/2">
+  <div class="detail-header">
+    <a href="#select_nodes_by_affiliated_user/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">select_nodes_by_affiliated_user/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_pubsub_db_rdbms_sql.select_nodes_by_affiliated_user/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="select_nodes_by_key/1">
+  <div class="detail-header">
+    <a href="#select_nodes_by_key/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">select_nodes_by_key/1</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_pubsub_db_rdbms_sql.select_nodes_by_key/1</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="select_nodes_by_key_and_names_in_list_with_children/2">
+  <div class="detail-header">
+    <a href="#select_nodes_by_key_and_names_in_list_with_children/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">select_nodes_by_key_and_names_in_list_with_children/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_pubsub_db_rdbms_sql.select_nodes_by_key_and_names_in_list_with_children/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="select_nodes_by_key_and_names_in_list_with_parents/2">
+  <div class="detail-header">
+    <a href="#select_nodes_by_key_and_names_in_list_with_parents/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">select_nodes_by_key_and_names_in_list_with_parents/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_pubsub_db_rdbms_sql.select_nodes_by_key_and_names_in_list_with_parents/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="select_nodes_by_owner/1">
+  <div class="detail-header">
+    <a href="#select_nodes_by_owner/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">select_nodes_by_owner/1</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_pubsub_db_rdbms_sql.select_nodes_by_owner/1</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="select_nodes_in_list_with_key/2">
+  <div class="detail-header">
+    <a href="#select_nodes_in_list_with_key/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">select_nodes_in_list_with_key/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_pubsub_db_rdbms_sql.select_nodes_in_list_with_key/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="select_subnodes/2">
+  <div class="detail-header">
+    <a href="#select_subnodes/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">select_subnodes/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_pubsub_db_rdbms_sql.select_subnodes/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="set_parents/2">
+  <div class="detail-header">
+    <a href="#set_parents/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">set_parents/2</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="sql_node_insert/6">
+  <div class="detail-header">
+    <a href="#sql_node_insert/6" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">sql_node_insert/6</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="sql_node_update/4">
+  <div class="detail-header">
+    <a href="#sql_node_update/4" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">sql_node_update/4</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="update_pubsub_node/4">
+  <div class="detail-header">
+    <a href="#update_pubsub_node/4" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">update_pubsub_node/4</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="update_subscription/6">
+  <div class="detail-header">
+    <a href="#update_subscription/6" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">update_subscription/6</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_pubsub_db_rdbms_sql.update_subscription/6</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="update_subscription_opts/6">
+  <div class="detail-header">
+    <a href="#update_subscription_opts/6" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">update_subscription_opts/6</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_pubsub_db_rdbms_sql.update_subscription_opts/6</pre>
+      </div>
+
+  </section>
+</section>
+          </div>
+        </section>
+      <footer class="footer">
+        <p>
+          <span class="line">
+            Built using
+            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener">ExDoc</a> (v0.23.0) for the
+            <a href="https://elixir-lang.org" title="Elixir" target="_blank">Elixir programming language</a>.
+          </span>
+          <span class="line">
+            Designed by
+            <a href="https://twitter.com/dignifiedquire" target="_blank" rel="noopener" title="@dignifiedquire">Friedel Ziegelmayer</a>.
+          </span>
+        </p>
+        <p>
+            <a href="api-reference.html" title="API reference" class="line footer-button">API Reference</a>
+          <button class="line footer-button display-shortcuts-help">
+            Display keyboard shortcuts
+          </button>
+          <button class="line footer-button night-mode-toggle">
+            Toggle night mode
+          </button>
+          <button class="line footer-button display-quick-switch">
+            Go to a HexDocs package
+          </button>
+          <button class="line footer-button tooltips-toggle">
+            <span class="tooltips-option-disable">Disable tooltips</span>
+            <span class="tooltips-option-enable">Enable tooltips</span>
+          </button>
+        </p>
+      </footer>
+    </div>
+  </div>
+</section>
+</div>
+  </body>
+</html>

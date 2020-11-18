@@ -1,0 +1,4004 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.23.0">
+    <meta name="project" content="MongooseIM v4.0.1">
+    <title>mongoose_config_parser_toml — MongooseIM v4.0.1</title>
+    <link rel="stylesheet" href="dist/erlang-8a5f731dbc512bf6261b.css" />
+    <script src="dist/sidebar_items-38e40981d8.js"></script>
+      <script src="docs_config.js"></script>
+    <script async src="dist/app-60a0c9f10e9e52eae31f.js"></script>
+  </head>
+  <body data-type="modules">
+    <script>try { if(localStorage.getItem('night-mode') === 'true') document.body.className += ' night-mode'; } catch (e) { }</script>
+<div class="main">
+
+<button class="sidebar-button sidebar-toggle">
+  <span class="icon-menu" title="Collapse/expand sidebar"></span>
+</button>
+
+<section class="sidebar">
+  <form class="sidebar-search" action="search.html">
+    <button type="submit" class="search-button" aria-label="Submit Search">
+      <span class="icon-search" aria-hidden="true" title="Submit search"></span>
+    </button>
+    <button type="button" tabindex="-1" class="search-close-button" aria-label="Cancel Search">
+      <span class="icon-cross" aria-hidden="true" title="Cancel search"></span>
+    </button>
+    <label class="search-label">
+      <input name="q" type="text" id="search-list" class="search-input" placeholder="Search..." aria-label="Input your search terms" autocomplete="off" />
+    </label>
+  </form>
+
+  <div class="autocomplete">
+    <div class="autocomplete-results">
+    </div>
+  </div>
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectDetails">
+      <a href="mongooseim.html" class="sidebar-projectName">
+MongooseIM      </a>
+      <strong class="sidebar-projectVersion">
+        v4.0.1
+      </strong>
+    </div>
+  </div>
+
+  <ul class="sidebar-listNav">
+    <li><a id="extras-list" href="#full-list">Pages</a></li>
+
+      <li><a id="modules-list" href="#full-list">Modules</a></li>
+
+  </ul>
+  <div class="gradient"></div>
+  <ul id="full-list" class="sidebar-fullList"></ul>
+</section>
+
+<section class="content">
+  <div class="content-outer">
+    <div id="content" class="content-inner">
+
+      <h1>
+        mongoose_config_parser_toml <small class="app-vsn">(MongooseIM v4.0.1)</small>
+      </h1>
+
+
+        <section id="moduledoc">
+Config parsing and processing for the TOML format        </section>
+
+        <section id="summary" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#summary">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+            Summary
+          </h1>
+  <div class="summary-types summary">
+    <h2>
+      <a href="#types">Types</a>
+    </h2>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:config/0">config()</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:config_error/0">config_error()</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:config_list/0">config_list()</a>
+  </div>
+    <div class="summary-synopsis">see HOST_F</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:option/0">option()</a>
+  </div>
+    <div class="summary-synopsis">a part of a config value OR a list of them, may contain config errors</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:override/0">override()</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:path/0">path()</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:toml_key/0">toml_key()</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:toml_section/0">toml_section()</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:toml_value/0">toml_value()</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:top_level_option/0">top_level_option()</a>
+  </div>
+</div>
+  </div>
+  <div class="summary-functions summary">
+    <h2>
+      <a href="#functions">Functions</a>
+    </h2>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#access_rule_value/1">access_rule_value/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#acl_data/1">acl_data/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#acl_keys/0">acl_keys/0</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#auth_anonymous_option/2">auth_anonymous_option/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#auth_external_option/2">auth_external_option/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#auth_http_option/2">auth_http_option/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#auth_jwt_option/2">auth_jwt_option/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#auth_jwt_secret/2">auth_jwt_secret/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#auth_ldap_dn_filter/2">auth_ldap_dn_filter/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#auth_ldap_local_filter/2">auth_ldap_local_filter/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#auth_ldap_option/2">auth_ldap_option/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#auth_ldap_uids/2">auth_ldap_uids/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#auth_option/2">auth_option/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#auth_riak_option/2">auth_riak_option/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#b2a/1">b2a/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#b2l/1">b2l/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#build_state/3">build_state/3</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#c2s_listener_opt/2">c2s_listener_opt/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#c2s_tls_option/2">c2s_tls_option/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#cassandra_option/2">cassandra_option/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#cassandra_server/2">cassandra_server/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#connection_options/2">connection_options/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#cowboy_module/2">cowboy_module/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#cowboy_module_options/2">cowboy_module_options/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#cowboy_protocol_opt/2">cowboy_protocol_opt/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#cowboy_transport_opt/2">cowboy_transport_opt/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#ctl_access_arg_restriction/2">ctl_access_arg_restriction/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#ctl_access_commands/2">ctl_access_commands/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#ctl_access_rule/2">ctl_access_rule/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#defined_or_false/2">defined_or_false/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#elastic_option/2">elastic_option/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#ensure_keys/2">ensure_keys/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#error_fields/1">error_fields/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#error_text/1">error_text/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#extract/2">extract/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#extract_errors/1">extract_errors/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#extract_items/2">extract_items/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#fast_tls_option/2">fast_tls_option/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#find_acl/3">find_acl/3</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#format_global_distrib_bounce/1">format_global_distrib_bounce/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#format_global_distrib_tls/1">format_global_distrib_tls/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#get_hosts/1">get_hosts/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#handle/2">handle/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#handle_step/2">handle_step/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#handler/1">handler/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#handler_for_host/1">handler_for_host/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#host/1">host/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#http_listener_opt/2">http_listener_opt/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#http_option/2">http_option/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#https_option/2">https_option/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#int_or_infinity/1">int_or_infinity/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#iqdisc_value/2">iqdisc_value/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#is_inner_auth_opt/1">is_inner_auth_opt/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#item_key/2">item_key/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#just_tls_verify_fun/2">just_tls_verify_fun/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#key/3">key/3</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#ldap_option/2">ldap_option/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#limit_keys/2">limit_keys/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#listener_module/1">listener_module/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#listener_opt/2">listener_opt/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#listener_portip/1">listener_portip/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#listener_tls_opts/2">listener_tls_opts/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#mod_auth_token_validity_periods/2">mod_auth_token_validity_periods/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#mod_disco_server_info/2">mod_disco_server_info/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#mod_event_pusher_backend_http/2">mod_event_pusher_backend_http/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#mod_event_pusher_backend_http_opts/2">mod_event_pusher_backend_http_opts/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#mod_event_pusher_backend_push/2">mod_event_pusher_backend_push/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#mod_event_pusher_backend_push_opts/2">mod_event_pusher_backend_push_opts/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#mod_event_pusher_backend_rabbit/2">mod_event_pusher_backend_rabbit/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#mod_event_pusher_backend_rabbit_opts/2">mod_event_pusher_backend_rabbit_opts/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#mod_event_pusher_backend_sns/2">mod_event_pusher_backend_sns/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#mod_event_pusher_backend_sns_opts/2">mod_event_pusher_backend_sns_opts/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#mod_event_pusher_rabbit_msg_ex/2">mod_event_pusher_rabbit_msg_ex/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#mod_event_pusher_rabbit_presence_ex/2">mod_event_pusher_rabbit_presence_ex/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#mod_extdisco_service/2">mod_extdisco_service/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#mod_global_distrib_bounce/2">mod_global_distrib_bounce/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#mod_global_distrib_cache/2">mod_global_distrib_cache/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#mod_global_distrib_connections/2">mod_global_distrib_connections/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#mod_global_distrib_connections_advertised_endpoints/2">mod_global_distrib_connections_advertised_endpoints/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#mod_global_distrib_connections_endpoints/2">mod_global_distrib_connections_endpoints/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#mod_global_distrib_redis/2">mod_global_distrib_redis/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#mod_global_distrib_tls_option/2">mod_global_distrib_tls_option/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#mod_http_upload_s3/2">mod_http_upload_s3/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#mod_keystore_keys/2">mod_keystore_keys/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#mod_mam_opts/2">mod_mam_opts/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#mod_muc_default_room/2">mod_muc_default_room/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#mod_muc_default_room_affiliations/2">mod_muc_default_room_affiliations/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#mod_muc_light_config_schema/2">mod_muc_light_config_schema/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#mod_muc_log_top_link/2">mod_muc_log_top_link/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#mod_pubsub_default_node_config/2">mod_pubsub_default_node_config/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#mod_pubsub_pep_mapping/2">mod_pubsub_pep_mapping/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#mod_pubsub_roster_groups_allowed/2">mod_pubsub_roster_groups_allowed/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#mod_register_ip_access_rule/2">mod_register_ip_access_rule/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#mod_revproxy_routes/2">mod_revproxy_routes/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#mod_stream_management_stale_h/2">mod_stream_management_stale_h/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#mod_vcard_ldap_binary_search_fields/2">mod_vcard_ldap_binary_search_fields/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#mod_vcard_ldap_search_fields/2">mod_vcard_ldap_search_fields/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#mod_vcard_ldap_search_reported/2">mod_vcard_ldap_search_reported/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#mod_vcard_ldap_uids/2">mod_vcard_ldap_uids/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#mod_vcard_ldap_vcard_map/2">mod_vcard_ldap_vcard_map/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#module_opt/2">module_opt/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#mongoose_api_option/2">mongoose_api_option/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#node_to_string/1">node_to_string/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#odbc_option/2">odbc_option/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#outgoing_s2s_opt/2">outgoing_s2s_opt/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#parse/1">parse/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#parse_file/1">parse_file/1</a>
+  </div>
+    <div class="summary-synopsis"><p>Callback implementation for <code class="inline">c::mongoose_config_parser.parse_file/1</code>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#parse_kv/3">parse_kv/3</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#parse_kv/4">parse_kv/4</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#parse_list/2">parse_list/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#parse_root/2">parse_root/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#parse_section/2">parse_section/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#parse_section/3">parse_section/3</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#partition_auth_opts/2">partition_auth_opts/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#path_to_string/1">path_to_string/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#pool_option/2">pool_option/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#pool_scope/1">pool_scope/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#post_process_module/2">post_process_module/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#process/1">process/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#process_access_rule/2">process_access_rule/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#process_access_rule_item/2">process_access_rule_item/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#process_acl/2">process_acl/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#process_dn_filter/1">process_dn_filter/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#process_general/2">process_general/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#process_host/2">process_host/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#process_host_item/2">process_host_item/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#process_host_policy/1">process_host_policy/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#process_listener/2">process_listener/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#process_local_filter/1">process_local_filter/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#process_module/2">process_module/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#process_override/2">process_override/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#process_pool/2">process_pool/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#process_riak_credentials/1">process_riak_credentials/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#process_s2s_address/1">process_s2s_address/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#process_s2s_option/2">process_s2s_option/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#process_section/2">process_section/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#process_service/2">process_service/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#process_shaper/2">process_shaper/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#process_welcome_message/1">process_welcome_message/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#rabbit_option/2">rabbit_option/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#rdbms_option/2">rdbms_option/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#rdbms_server/2">rdbms_server/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#redis_option/2">redis_option/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#riak_credentials/2">riak_credentials/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#riak_option/2">riak_option/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#riak_opts/2">riak_opts/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#s2s_addr_opt/2">s2s_addr_opt/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#s2s_address/2">s2s_address/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#s2s_address_family/2">s2s_address_family/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#s2s_dns_opt/2">s2s_dns_opt/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#s2s_domain_cert/2">s2s_domain_cert/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#s2s_host_policy/2">s2s_host_policy/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#s2s_host_policy_opt/2">s2s_host_policy_opt/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#s2s_listener_opt/2">s2s_listener_opt/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#s2s_tls_option/2">s2s_tls_option/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#sasl_external/2">sasl_external/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#sasl_mechanism/2">sasl_mechanism/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#service_admin_extra_submods/2">service_admin_extra_submods/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#service_listener_opt/2">service_listener_opt/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#service_opt/2">service_opt/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#set_overrides/2">set_overrides/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#sql_server_option/2">sql_server_option/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#tls_cipher/2">tls_cipher/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#tls_option/2">tls_option/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#try_call/4">try_call/4</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#verify_peer/1">verify_peer/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#websockets_option/2">websockets_option/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#welcome_message/2">welcome_message/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#xmpp_listener_opt/2">xmpp_listener_opt/2</a>
+  </div>
+</div>
+  </div>
+        </section>
+
+        <section id="types" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#types">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+Types          </h1>
+          <div class="types-list">
+<section class="detail" id="t:config/0">
+  <div class="detail-header">
+    <a href="#t:config/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">config()</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>t:mongoose_config_parser_toml.config/0</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="t:config_error/0">
+  <div class="detail-header">
+    <a href="#t:config_error/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">config_error()</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>t:mongoose_config_parser_toml.config_error/0</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="t:config_list/0">
+  <div class="detail-header">
+    <a href="#t:config_list/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">config_list()</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>t:mongoose_config_parser_toml.config_list/0</pre>
+      </div>
+
+see HOST_F  </section>
+</section>
+<section class="detail" id="t:option/0">
+  <div class="detail-header">
+    <a href="#t:option/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">option()</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>t:mongoose_config_parser_toml.option/0</pre>
+      </div>
+
+a part of a config value OR a list of them, may contain config errors  </section>
+</section>
+<section class="detail" id="t:override/0">
+  <div class="detail-header">
+    <a href="#t:override/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">override()</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>t:mongoose_config_parser_toml.override/0</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="t:path/0">
+  <div class="detail-header">
+    <a href="#t:path/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">path()</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>t:mongoose_config_parser_toml.path/0</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="t:toml_key/0">
+  <div class="detail-header">
+    <a href="#t:toml_key/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">toml_key()</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>t:mongoose_config_parser_toml.toml_key/0</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="t:toml_section/0">
+  <div class="detail-header">
+    <a href="#t:toml_section/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">toml_section()</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>t:mongoose_config_parser_toml.toml_section/0</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="t:toml_value/0">
+  <div class="detail-header">
+    <a href="#t:toml_value/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">toml_value()</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>t:mongoose_config_parser_toml.toml_value/0</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="t:top_level_option/0">
+  <div class="detail-header">
+    <a href="#t:top_level_option/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">top_level_option()</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>t:mongoose_config_parser_toml.top_level_option/0</pre>
+      </div>
+
+  </section>
+</section>
+          </div>
+        </section>
+        <section id="functions" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#functions">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+Functions          </h1>
+          <div class="functions-list">
+<section class="detail" id="access_rule_value/1">
+  <div class="detail-header">
+    <a href="#access_rule_value/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">access_rule_value/1</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_config_parser_toml.access_rule_value/1</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="acl_data/1">
+  <div class="detail-header">
+    <a href="#acl_data/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">acl_data/1</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_config_parser_toml.acl_data/1</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="acl_keys/0">
+  <div class="detail-header">
+    <a href="#acl_keys/0" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">acl_keys/0</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="auth_anonymous_option/2">
+  <div class="detail-header">
+    <a href="#auth_anonymous_option/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">auth_anonymous_option/2</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="auth_external_option/2">
+  <div class="detail-header">
+    <a href="#auth_external_option/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">auth_external_option/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_config_parser_toml.auth_external_option/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="auth_http_option/2">
+  <div class="detail-header">
+    <a href="#auth_http_option/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">auth_http_option/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_config_parser_toml.auth_http_option/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="auth_jwt_option/2">
+  <div class="detail-header">
+    <a href="#auth_jwt_option/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">auth_jwt_option/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_config_parser_toml.auth_jwt_option/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="auth_jwt_secret/2">
+  <div class="detail-header">
+    <a href="#auth_jwt_secret/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">auth_jwt_secret/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_config_parser_toml.auth_jwt_secret/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="auth_ldap_dn_filter/2">
+  <div class="detail-header">
+    <a href="#auth_ldap_dn_filter/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">auth_ldap_dn_filter/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_config_parser_toml.auth_ldap_dn_filter/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="auth_ldap_local_filter/2">
+  <div class="detail-header">
+    <a href="#auth_ldap_local_filter/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">auth_ldap_local_filter/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_config_parser_toml.auth_ldap_local_filter/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="auth_ldap_option/2">
+  <div class="detail-header">
+    <a href="#auth_ldap_option/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">auth_ldap_option/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_config_parser_toml.auth_ldap_option/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="auth_ldap_uids/2">
+  <div class="detail-header">
+    <a href="#auth_ldap_uids/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">auth_ldap_uids/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_config_parser_toml.auth_ldap_uids/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="auth_option/2">
+  <div class="detail-header">
+    <a href="#auth_option/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">auth_option/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_config_parser_toml.auth_option/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="auth_riak_option/2">
+  <div class="detail-header">
+    <a href="#auth_riak_option/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">auth_riak_option/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_config_parser_toml.auth_riak_option/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="b2a/1">
+  <div class="detail-header">
+    <a href="#b2a/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">b2a/1</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="b2l/1">
+  <div class="detail-header">
+    <a href="#b2l/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">b2l/1</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="build_state/3">
+  <div class="detail-header">
+    <a href="#build_state/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">build_state/3</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_config_parser_toml.build_state/3</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="c2s_listener_opt/2">
+  <div class="detail-header">
+    <a href="#c2s_listener_opt/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">c2s_listener_opt/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_config_parser_toml.c2s_listener_opt/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="c2s_tls_option/2">
+  <div class="detail-header">
+    <a href="#c2s_tls_option/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">c2s_tls_option/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_config_parser_toml.c2s_tls_option/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="cassandra_option/2">
+  <div class="detail-header">
+    <a href="#cassandra_option/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">cassandra_option/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_config_parser_toml.cassandra_option/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="cassandra_server/2">
+  <div class="detail-header">
+    <a href="#cassandra_server/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">cassandra_server/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_config_parser_toml.cassandra_server/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="connection_options/2">
+  <div class="detail-header">
+    <a href="#connection_options/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">connection_options/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_config_parser_toml.connection_options/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="cowboy_module/2">
+  <div class="detail-header">
+    <a href="#cowboy_module/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">cowboy_module/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_config_parser_toml.cowboy_module/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="cowboy_module_options/2">
+  <div class="detail-header">
+    <a href="#cowboy_module_options/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">cowboy_module_options/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_config_parser_toml.cowboy_module_options/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="cowboy_protocol_opt/2">
+  <div class="detail-header">
+    <a href="#cowboy_protocol_opt/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">cowboy_protocol_opt/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_config_parser_toml.cowboy_protocol_opt/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="cowboy_transport_opt/2">
+  <div class="detail-header">
+    <a href="#cowboy_transport_opt/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">cowboy_transport_opt/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_config_parser_toml.cowboy_transport_opt/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="ctl_access_arg_restriction/2">
+  <div class="detail-header">
+    <a href="#ctl_access_arg_restriction/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">ctl_access_arg_restriction/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_config_parser_toml.ctl_access_arg_restriction/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="ctl_access_commands/2">
+  <div class="detail-header">
+    <a href="#ctl_access_commands/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">ctl_access_commands/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_config_parser_toml.ctl_access_commands/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="ctl_access_rule/2">
+  <div class="detail-header">
+    <a href="#ctl_access_rule/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">ctl_access_rule/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_config_parser_toml.ctl_access_rule/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="defined_or_false/2">
+  <div class="detail-header">
+    <a href="#defined_or_false/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">defined_or_false/2</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="elastic_option/2">
+  <div class="detail-header">
+    <a href="#elastic_option/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">elastic_option/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_config_parser_toml.elastic_option/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="ensure_keys/2">
+  <div class="detail-header">
+    <a href="#ensure_keys/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">ensure_keys/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_config_parser_toml.ensure_keys/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="error_fields/1">
+  <div class="detail-header">
+    <a href="#error_fields/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">error_fields/1</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_config_parser_toml.error_fields/1</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="error_text/1">
+  <div class="detail-header">
+    <a href="#error_text/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">error_text/1</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_config_parser_toml.error_text/1</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="extract/2">
+  <div class="detail-header">
+    <a href="#extract/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">extract/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_config_parser_toml.extract/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="extract_errors/1">
+  <div class="detail-header">
+    <a href="#extract_errors/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">extract_errors/1</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_config_parser_toml.extract_errors/1</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="extract_items/2">
+  <div class="detail-header">
+    <a href="#extract_items/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">extract_items/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_config_parser_toml.extract_items/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="fast_tls_option/2">
+  <div class="detail-header">
+    <a href="#fast_tls_option/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">fast_tls_option/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_config_parser_toml.fast_tls_option/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="find_acl/3">
+  <div class="detail-header">
+    <a href="#find_acl/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">find_acl/3</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="format_global_distrib_bounce/1">
+  <div class="detail-header">
+    <a href="#format_global_distrib_bounce/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">format_global_distrib_bounce/1</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_config_parser_toml.format_global_distrib_bounce/1</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="format_global_distrib_tls/1">
+  <div class="detail-header">
+    <a href="#format_global_distrib_tls/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">format_global_distrib_tls/1</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_config_parser_toml.format_global_distrib_tls/1</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="get_hosts/1">
+  <div class="detail-header">
+    <a href="#get_hosts/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">get_hosts/1</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_config_parser_toml.get_hosts/1</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="handle/2">
+  <div class="detail-header">
+    <a href="#handle/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">handle/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_config_parser_toml.handle/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="handle_step/2">
+  <div class="detail-header">
+    <a href="#handle_step/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">handle_step/2</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="handler/1">
+  <div class="detail-header">
+    <a href="#handler/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">handler/1</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_config_parser_toml.handler/1</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="handler_for_host/1">
+  <div class="detail-header">
+    <a href="#handler_for_host/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">handler_for_host/1</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_config_parser_toml.handler_for_host/1</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="host/1">
+  <div class="detail-header">
+    <a href="#host/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">host/1</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="http_listener_opt/2">
+  <div class="detail-header">
+    <a href="#http_listener_opt/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">http_listener_opt/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_config_parser_toml.http_listener_opt/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="http_option/2">
+  <div class="detail-header">
+    <a href="#http_option/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">http_option/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_config_parser_toml.http_option/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="https_option/2">
+  <div class="detail-header">
+    <a href="#https_option/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">https_option/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_config_parser_toml.https_option/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="int_or_infinity/1">
+  <div class="detail-header">
+    <a href="#int_or_infinity/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">int_or_infinity/1</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="iqdisc_value/2">
+  <div class="detail-header">
+    <a href="#iqdisc_value/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">iqdisc_value/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_config_parser_toml.iqdisc_value/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="is_inner_auth_opt/1">
+  <div class="detail-header">
+    <a href="#is_inner_auth_opt/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">is_inner_auth_opt/1</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_config_parser_toml.is_inner_auth_opt/1</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="item_key/2">
+  <div class="detail-header">
+    <a href="#item_key/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">item_key/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_config_parser_toml.item_key/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="just_tls_verify_fun/2">
+  <div class="detail-header">
+    <a href="#just_tls_verify_fun/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">just_tls_verify_fun/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_config_parser_toml.just_tls_verify_fun/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="key/3">
+  <div class="detail-header">
+    <a href="#key/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">key/3</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_config_parser_toml.key/3</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="ldap_option/2">
+  <div class="detail-header">
+    <a href="#ldap_option/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">ldap_option/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_config_parser_toml.ldap_option/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="limit_keys/2">
+  <div class="detail-header">
+    <a href="#limit_keys/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">limit_keys/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_config_parser_toml.limit_keys/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="listener_module/1">
+  <div class="detail-header">
+    <a href="#listener_module/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">listener_module/1</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_config_parser_toml.listener_module/1</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="listener_opt/2">
+  <div class="detail-header">
+    <a href="#listener_opt/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">listener_opt/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_config_parser_toml.listener_opt/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="listener_portip/1">
+  <div class="detail-header">
+    <a href="#listener_portip/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">listener_portip/1</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_config_parser_toml.listener_portip/1</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="listener_tls_opts/2">
+  <div class="detail-header">
+    <a href="#listener_tls_opts/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">listener_tls_opts/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_config_parser_toml.listener_tls_opts/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="mod_auth_token_validity_periods/2">
+  <div class="detail-header">
+    <a href="#mod_auth_token_validity_periods/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">mod_auth_token_validity_periods/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_config_parser_toml.mod_auth_token_validity_periods/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="mod_disco_server_info/2">
+  <div class="detail-header">
+    <a href="#mod_disco_server_info/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">mod_disco_server_info/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_config_parser_toml.mod_disco_server_info/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="mod_event_pusher_backend_http/2">
+  <div class="detail-header">
+    <a href="#mod_event_pusher_backend_http/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">mod_event_pusher_backend_http/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_config_parser_toml.mod_event_pusher_backend_http/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="mod_event_pusher_backend_http_opts/2">
+  <div class="detail-header">
+    <a href="#mod_event_pusher_backend_http_opts/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">mod_event_pusher_backend_http_opts/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_config_parser_toml.mod_event_pusher_backend_http_opts/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="mod_event_pusher_backend_push/2">
+  <div class="detail-header">
+    <a href="#mod_event_pusher_backend_push/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">mod_event_pusher_backend_push/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_config_parser_toml.mod_event_pusher_backend_push/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="mod_event_pusher_backend_push_opts/2">
+  <div class="detail-header">
+    <a href="#mod_event_pusher_backend_push_opts/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">mod_event_pusher_backend_push_opts/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_config_parser_toml.mod_event_pusher_backend_push_opts/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="mod_event_pusher_backend_rabbit/2">
+  <div class="detail-header">
+    <a href="#mod_event_pusher_backend_rabbit/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">mod_event_pusher_backend_rabbit/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_config_parser_toml.mod_event_pusher_backend_rabbit/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="mod_event_pusher_backend_rabbit_opts/2">
+  <div class="detail-header">
+    <a href="#mod_event_pusher_backend_rabbit_opts/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">mod_event_pusher_backend_rabbit_opts/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_config_parser_toml.mod_event_pusher_backend_rabbit_opts/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="mod_event_pusher_backend_sns/2">
+  <div class="detail-header">
+    <a href="#mod_event_pusher_backend_sns/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">mod_event_pusher_backend_sns/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_config_parser_toml.mod_event_pusher_backend_sns/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="mod_event_pusher_backend_sns_opts/2">
+  <div class="detail-header">
+    <a href="#mod_event_pusher_backend_sns_opts/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">mod_event_pusher_backend_sns_opts/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_config_parser_toml.mod_event_pusher_backend_sns_opts/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="mod_event_pusher_rabbit_msg_ex/2">
+  <div class="detail-header">
+    <a href="#mod_event_pusher_rabbit_msg_ex/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">mod_event_pusher_rabbit_msg_ex/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_config_parser_toml.mod_event_pusher_rabbit_msg_ex/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="mod_event_pusher_rabbit_presence_ex/2">
+  <div class="detail-header">
+    <a href="#mod_event_pusher_rabbit_presence_ex/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">mod_event_pusher_rabbit_presence_ex/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_config_parser_toml.mod_event_pusher_rabbit_presence_ex/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="mod_extdisco_service/2">
+  <div class="detail-header">
+    <a href="#mod_extdisco_service/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">mod_extdisco_service/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_config_parser_toml.mod_extdisco_service/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="mod_global_distrib_bounce/2">
+  <div class="detail-header">
+    <a href="#mod_global_distrib_bounce/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">mod_global_distrib_bounce/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_config_parser_toml.mod_global_distrib_bounce/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="mod_global_distrib_cache/2">
+  <div class="detail-header">
+    <a href="#mod_global_distrib_cache/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">mod_global_distrib_cache/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_config_parser_toml.mod_global_distrib_cache/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="mod_global_distrib_connections/2">
+  <div class="detail-header">
+    <a href="#mod_global_distrib_connections/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">mod_global_distrib_connections/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_config_parser_toml.mod_global_distrib_connections/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="mod_global_distrib_connections_advertised_endpoints/2">
+  <div class="detail-header">
+    <a href="#mod_global_distrib_connections_advertised_endpoints/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">mod_global_distrib_connections_advertised_endpoints/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_config_parser_toml.mod_global_distrib_connections_advertised_endpoints/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="mod_global_distrib_connections_endpoints/2">
+  <div class="detail-header">
+    <a href="#mod_global_distrib_connections_endpoints/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">mod_global_distrib_connections_endpoints/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_config_parser_toml.mod_global_distrib_connections_endpoints/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="mod_global_distrib_redis/2">
+  <div class="detail-header">
+    <a href="#mod_global_distrib_redis/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">mod_global_distrib_redis/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_config_parser_toml.mod_global_distrib_redis/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="mod_global_distrib_tls_option/2">
+  <div class="detail-header">
+    <a href="#mod_global_distrib_tls_option/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">mod_global_distrib_tls_option/2</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="mod_http_upload_s3/2">
+  <div class="detail-header">
+    <a href="#mod_http_upload_s3/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">mod_http_upload_s3/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_config_parser_toml.mod_http_upload_s3/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="mod_keystore_keys/2">
+  <div class="detail-header">
+    <a href="#mod_keystore_keys/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">mod_keystore_keys/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_config_parser_toml.mod_keystore_keys/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="mod_mam_opts/2">
+  <div class="detail-header">
+    <a href="#mod_mam_opts/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">mod_mam_opts/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_config_parser_toml.mod_mam_opts/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="mod_muc_default_room/2">
+  <div class="detail-header">
+    <a href="#mod_muc_default_room/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">mod_muc_default_room/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_config_parser_toml.mod_muc_default_room/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="mod_muc_default_room_affiliations/2">
+  <div class="detail-header">
+    <a href="#mod_muc_default_room_affiliations/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">mod_muc_default_room_affiliations/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_config_parser_toml.mod_muc_default_room_affiliations/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="mod_muc_light_config_schema/2">
+  <div class="detail-header">
+    <a href="#mod_muc_light_config_schema/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">mod_muc_light_config_schema/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_config_parser_toml.mod_muc_light_config_schema/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="mod_muc_log_top_link/2">
+  <div class="detail-header">
+    <a href="#mod_muc_log_top_link/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">mod_muc_log_top_link/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_config_parser_toml.mod_muc_log_top_link/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="mod_pubsub_default_node_config/2">
+  <div class="detail-header">
+    <a href="#mod_pubsub_default_node_config/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">mod_pubsub_default_node_config/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_config_parser_toml.mod_pubsub_default_node_config/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="mod_pubsub_pep_mapping/2">
+  <div class="detail-header">
+    <a href="#mod_pubsub_pep_mapping/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">mod_pubsub_pep_mapping/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_config_parser_toml.mod_pubsub_pep_mapping/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="mod_pubsub_roster_groups_allowed/2">
+  <div class="detail-header">
+    <a href="#mod_pubsub_roster_groups_allowed/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">mod_pubsub_roster_groups_allowed/2</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="mod_register_ip_access_rule/2">
+  <div class="detail-header">
+    <a href="#mod_register_ip_access_rule/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">mod_register_ip_access_rule/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_config_parser_toml.mod_register_ip_access_rule/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="mod_revproxy_routes/2">
+  <div class="detail-header">
+    <a href="#mod_revproxy_routes/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">mod_revproxy_routes/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_config_parser_toml.mod_revproxy_routes/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="mod_stream_management_stale_h/2">
+  <div class="detail-header">
+    <a href="#mod_stream_management_stale_h/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">mod_stream_management_stale_h/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_config_parser_toml.mod_stream_management_stale_h/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="mod_vcard_ldap_binary_search_fields/2">
+  <div class="detail-header">
+    <a href="#mod_vcard_ldap_binary_search_fields/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">mod_vcard_ldap_binary_search_fields/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_config_parser_toml.mod_vcard_ldap_binary_search_fields/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="mod_vcard_ldap_search_fields/2">
+  <div class="detail-header">
+    <a href="#mod_vcard_ldap_search_fields/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">mod_vcard_ldap_search_fields/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_config_parser_toml.mod_vcard_ldap_search_fields/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="mod_vcard_ldap_search_reported/2">
+  <div class="detail-header">
+    <a href="#mod_vcard_ldap_search_reported/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">mod_vcard_ldap_search_reported/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_config_parser_toml.mod_vcard_ldap_search_reported/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="mod_vcard_ldap_uids/2">
+  <div class="detail-header">
+    <a href="#mod_vcard_ldap_uids/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">mod_vcard_ldap_uids/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_config_parser_toml.mod_vcard_ldap_uids/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="mod_vcard_ldap_vcard_map/2">
+  <div class="detail-header">
+    <a href="#mod_vcard_ldap_vcard_map/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">mod_vcard_ldap_vcard_map/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_config_parser_toml.mod_vcard_ldap_vcard_map/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="module_opt/2">
+  <div class="detail-header">
+    <a href="#module_opt/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">module_opt/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_config_parser_toml.module_opt/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="mongoose_api_option/2">
+  <div class="detail-header">
+    <a href="#mongoose_api_option/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">mongoose_api_option/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_config_parser_toml.mongoose_api_option/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="node_to_string/1">
+  <div class="detail-header">
+    <a href="#node_to_string/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">node_to_string/1</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="odbc_option/2">
+  <div class="detail-header">
+    <a href="#odbc_option/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">odbc_option/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_config_parser_toml.odbc_option/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="outgoing_s2s_opt/2">
+  <div class="detail-header">
+    <a href="#outgoing_s2s_opt/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">outgoing_s2s_opt/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_config_parser_toml.outgoing_s2s_opt/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="parse/1">
+  <div class="detail-header">
+    <a href="#parse/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">parse/1</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_config_parser_toml.parse/1</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="parse_file/1">
+  <div class="detail-header">
+    <a href="#parse_file/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">parse_file/1</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_config_parser_toml.parse_file/1</pre>
+      </div>
+
+<p>Callback implementation for <code class="inline">c::mongoose_config_parser.parse_file/1</code>.</p>  </section>
+</section>
+<section class="detail" id="parse_kv/3">
+  <div class="detail-header">
+    <a href="#parse_kv/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">parse_kv/3</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_config_parser_toml.parse_kv/3</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="parse_kv/4">
+  <div class="detail-header">
+    <a href="#parse_kv/4" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">parse_kv/4</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_config_parser_toml.parse_kv/4</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="parse_list/2">
+  <div class="detail-header">
+    <a href="#parse_list/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">parse_list/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_config_parser_toml.parse_list/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="parse_root/2">
+  <div class="detail-header">
+    <a href="#parse_root/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">parse_root/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_config_parser_toml.parse_root/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="parse_section/2">
+  <div class="detail-header">
+    <a href="#parse_section/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">parse_section/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_config_parser_toml.parse_section/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="parse_section/3">
+  <div class="detail-header">
+    <a href="#parse_section/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">parse_section/3</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_config_parser_toml.parse_section/3</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="partition_auth_opts/2">
+  <div class="detail-header">
+    <a href="#partition_auth_opts/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">partition_auth_opts/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_config_parser_toml.partition_auth_opts/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="path_to_string/1">
+  <div class="detail-header">
+    <a href="#path_to_string/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">path_to_string/1</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_config_parser_toml.path_to_string/1</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="pool_option/2">
+  <div class="detail-header">
+    <a href="#pool_option/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">pool_option/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_config_parser_toml.pool_option/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="pool_scope/1">
+  <div class="detail-header">
+    <a href="#pool_scope/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">pool_scope/1</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_config_parser_toml.pool_scope/1</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="post_process_module/2">
+  <div class="detail-header">
+    <a href="#post_process_module/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">post_process_module/2</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="process/1">
+  <div class="detail-header">
+    <a href="#process/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">process/1</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_config_parser_toml.process/1</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="process_access_rule/2">
+  <div class="detail-header">
+    <a href="#process_access_rule/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">process_access_rule/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_config_parser_toml.process_access_rule/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="process_access_rule_item/2">
+  <div class="detail-header">
+    <a href="#process_access_rule_item/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">process_access_rule_item/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_config_parser_toml.process_access_rule_item/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="process_acl/2">
+  <div class="detail-header">
+    <a href="#process_acl/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">process_acl/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_config_parser_toml.process_acl/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="process_dn_filter/1">
+  <div class="detail-header">
+    <a href="#process_dn_filter/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">process_dn_filter/1</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="process_general/2">
+  <div class="detail-header">
+    <a href="#process_general/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">process_general/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_config_parser_toml.process_general/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="process_host/2">
+  <div class="detail-header">
+    <a href="#process_host/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">process_host/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_config_parser_toml.process_host/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="process_host_item/2">
+  <div class="detail-header">
+    <a href="#process_host_item/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">process_host_item/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_config_parser_toml.process_host_item/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="process_host_policy/1">
+  <div class="detail-header">
+    <a href="#process_host_policy/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">process_host_policy/1</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="process_listener/2">
+  <div class="detail-header">
+    <a href="#process_listener/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">process_listener/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_config_parser_toml.process_listener/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="process_local_filter/1">
+  <div class="detail-header">
+    <a href="#process_local_filter/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">process_local_filter/1</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="process_module/2">
+  <div class="detail-header">
+    <a href="#process_module/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">process_module/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_config_parser_toml.process_module/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="process_override/2">
+  <div class="detail-header">
+    <a href="#process_override/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">process_override/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_config_parser_toml.process_override/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="process_pool/2">
+  <div class="detail-header">
+    <a href="#process_pool/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">process_pool/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_config_parser_toml.process_pool/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="process_riak_credentials/1">
+  <div class="detail-header">
+    <a href="#process_riak_credentials/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">process_riak_credentials/1</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="process_s2s_address/1">
+  <div class="detail-header">
+    <a href="#process_s2s_address/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">process_s2s_address/1</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="process_s2s_option/2">
+  <div class="detail-header">
+    <a href="#process_s2s_option/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">process_s2s_option/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_config_parser_toml.process_s2s_option/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="process_section/2">
+  <div class="detail-header">
+    <a href="#process_section/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">process_section/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_config_parser_toml.process_section/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="process_service/2">
+  <div class="detail-header">
+    <a href="#process_service/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">process_service/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_config_parser_toml.process_service/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="process_shaper/2">
+  <div class="detail-header">
+    <a href="#process_shaper/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">process_shaper/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_config_parser_toml.process_shaper/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="process_welcome_message/1">
+  <div class="detail-header">
+    <a href="#process_welcome_message/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">process_welcome_message/1</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="rabbit_option/2">
+  <div class="detail-header">
+    <a href="#rabbit_option/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">rabbit_option/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_config_parser_toml.rabbit_option/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="rdbms_option/2">
+  <div class="detail-header">
+    <a href="#rdbms_option/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">rdbms_option/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_config_parser_toml.rdbms_option/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="rdbms_server/2">
+  <div class="detail-header">
+    <a href="#rdbms_server/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">rdbms_server/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_config_parser_toml.rdbms_server/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="redis_option/2">
+  <div class="detail-header">
+    <a href="#redis_option/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">redis_option/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_config_parser_toml.redis_option/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="riak_credentials/2">
+  <div class="detail-header">
+    <a href="#riak_credentials/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">riak_credentials/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_config_parser_toml.riak_credentials/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="riak_option/2">
+  <div class="detail-header">
+    <a href="#riak_option/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">riak_option/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_config_parser_toml.riak_option/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="riak_opts/2">
+  <div class="detail-header">
+    <a href="#riak_opts/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">riak_opts/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_config_parser_toml.riak_opts/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="s2s_addr_opt/2">
+  <div class="detail-header">
+    <a href="#s2s_addr_opt/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">s2s_addr_opt/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_config_parser_toml.s2s_addr_opt/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="s2s_address/2">
+  <div class="detail-header">
+    <a href="#s2s_address/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">s2s_address/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_config_parser_toml.s2s_address/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="s2s_address_family/2">
+  <div class="detail-header">
+    <a href="#s2s_address_family/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">s2s_address_family/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_config_parser_toml.s2s_address_family/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="s2s_dns_opt/2">
+  <div class="detail-header">
+    <a href="#s2s_dns_opt/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">s2s_dns_opt/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_config_parser_toml.s2s_dns_opt/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="s2s_domain_cert/2">
+  <div class="detail-header">
+    <a href="#s2s_domain_cert/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">s2s_domain_cert/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_config_parser_toml.s2s_domain_cert/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="s2s_host_policy/2">
+  <div class="detail-header">
+    <a href="#s2s_host_policy/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">s2s_host_policy/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_config_parser_toml.s2s_host_policy/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="s2s_host_policy_opt/2">
+  <div class="detail-header">
+    <a href="#s2s_host_policy_opt/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">s2s_host_policy_opt/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_config_parser_toml.s2s_host_policy_opt/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="s2s_listener_opt/2">
+  <div class="detail-header">
+    <a href="#s2s_listener_opt/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">s2s_listener_opt/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_config_parser_toml.s2s_listener_opt/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="s2s_tls_option/2">
+  <div class="detail-header">
+    <a href="#s2s_tls_option/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">s2s_tls_option/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_config_parser_toml.s2s_tls_option/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="sasl_external/2">
+  <div class="detail-header">
+    <a href="#sasl_external/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">sasl_external/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_config_parser_toml.sasl_external/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="sasl_mechanism/2">
+  <div class="detail-header">
+    <a href="#sasl_mechanism/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">sasl_mechanism/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_config_parser_toml.sasl_mechanism/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="service_admin_extra_submods/2">
+  <div class="detail-header">
+    <a href="#service_admin_extra_submods/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">service_admin_extra_submods/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_config_parser_toml.service_admin_extra_submods/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="service_listener_opt/2">
+  <div class="detail-header">
+    <a href="#service_listener_opt/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">service_listener_opt/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_config_parser_toml.service_listener_opt/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="service_opt/2">
+  <div class="detail-header">
+    <a href="#service_opt/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">service_opt/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_config_parser_toml.service_opt/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="set_overrides/2">
+  <div class="detail-header">
+    <a href="#set_overrides/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">set_overrides/2</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="sql_server_option/2">
+  <div class="detail-header">
+    <a href="#sql_server_option/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">sql_server_option/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_config_parser_toml.sql_server_option/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="tls_cipher/2">
+  <div class="detail-header">
+    <a href="#tls_cipher/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">tls_cipher/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_config_parser_toml.tls_cipher/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="tls_option/2">
+  <div class="detail-header">
+    <a href="#tls_option/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">tls_option/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_config_parser_toml.tls_option/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="try_call/4">
+  <div class="detail-header">
+    <a href="#try_call/4" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">try_call/4</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_config_parser_toml.try_call/4</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="verify_peer/1">
+  <div class="detail-header">
+    <a href="#verify_peer/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">verify_peer/1</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_config_parser_toml.verify_peer/1</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="websockets_option/2">
+  <div class="detail-header">
+    <a href="#websockets_option/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">websockets_option/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_config_parser_toml.websockets_option/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="welcome_message/2">
+  <div class="detail-header">
+    <a href="#welcome_message/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">welcome_message/2</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="xmpp_listener_opt/2">
+  <div class="detail-header">
+    <a href="#xmpp_listener_opt/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">xmpp_listener_opt/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mongoose_config_parser_toml.xmpp_listener_opt/2</pre>
+      </div>
+
+  </section>
+</section>
+          </div>
+        </section>
+      <footer class="footer">
+        <p>
+          <span class="line">
+            Built using
+            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener">ExDoc</a> (v0.23.0) for the
+            <a href="https://elixir-lang.org" title="Elixir" target="_blank">Elixir programming language</a>.
+          </span>
+          <span class="line">
+            Designed by
+            <a href="https://twitter.com/dignifiedquire" target="_blank" rel="noopener" title="@dignifiedquire">Friedel Ziegelmayer</a>.
+          </span>
+        </p>
+        <p>
+            <a href="api-reference.html" title="API reference" class="line footer-button">API Reference</a>
+          <button class="line footer-button display-shortcuts-help">
+            Display keyboard shortcuts
+          </button>
+          <button class="line footer-button night-mode-toggle">
+            Toggle night mode
+          </button>
+          <button class="line footer-button display-quick-switch">
+            Go to a HexDocs package
+          </button>
+          <button class="line footer-button tooltips-toggle">
+            <span class="tooltips-option-disable">Disable tooltips</span>
+            <span class="tooltips-option-enable">Enable tooltips</span>
+          </button>
+        </p>
+      </footer>
+    </div>
+  </div>
+</section>
+</div>
+  </body>
+</html>

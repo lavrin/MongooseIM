@@ -1,0 +1,1241 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.23.0">
+    <meta name="project" content="MongooseIM v4.0.1">
+    <title>jlib — MongooseIM v4.0.1</title>
+    <link rel="stylesheet" href="dist/erlang-8a5f731dbc512bf6261b.css" />
+    <script src="dist/sidebar_items-38e40981d8.js"></script>
+      <script src="docs_config.js"></script>
+    <script async src="dist/app-60a0c9f10e9e52eae31f.js"></script>
+  </head>
+  <body data-type="modules">
+    <script>try { if(localStorage.getItem('night-mode') === 'true') document.body.className += ' night-mode'; } catch (e) { }</script>
+<div class="main">
+
+<button class="sidebar-button sidebar-toggle">
+  <span class="icon-menu" title="Collapse/expand sidebar"></span>
+</button>
+
+<section class="sidebar">
+  <form class="sidebar-search" action="search.html">
+    <button type="submit" class="search-button" aria-label="Submit Search">
+      <span class="icon-search" aria-hidden="true" title="Submit search"></span>
+    </button>
+    <button type="button" tabindex="-1" class="search-close-button" aria-label="Cancel Search">
+      <span class="icon-cross" aria-hidden="true" title="Cancel search"></span>
+    </button>
+    <label class="search-label">
+      <input name="q" type="text" id="search-list" class="search-input" placeholder="Search..." aria-label="Input your search terms" autocomplete="off" />
+    </label>
+  </form>
+
+  <div class="autocomplete">
+    <div class="autocomplete-results">
+    </div>
+  </div>
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectDetails">
+      <a href="mongooseim.html" class="sidebar-projectName">
+MongooseIM      </a>
+      <strong class="sidebar-projectVersion">
+        v4.0.1
+      </strong>
+    </div>
+  </div>
+
+  <ul class="sidebar-listNav">
+    <li><a id="extras-list" href="#full-list">Pages</a></li>
+
+      <li><a id="modules-list" href="#full-list">Modules</a></li>
+
+  </ul>
+  <div class="gradient"></div>
+  <ul id="full-list" class="sidebar-fullList"></ul>
+</section>
+
+<section class="content">
+  <div class="content-outer">
+    <div id="content" class="content-inner">
+
+      <h1>
+        jlib <small class="app-vsn">(MongooseIM v4.0.1)</small>
+      </h1>
+
+
+
+        <section id="summary" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#summary">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+            Summary
+          </h1>
+  <div class="summary-types summary">
+    <h2>
+      <a href="#types">Types</a>
+    </h2>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:binary_pair/0">binary_pair()</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:iq/0">iq()</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:rsm_in/0">rsm_in()</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:rsm_out/0">rsm_out()</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:xmlcdata/0">xmlcdata()</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:xmlch/0">xmlch()</a>
+  </div>
+    <div class="summary-synopsis">(XML ch)ild</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:xmlstreamel/0">xmlstreamel()</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:xmlstreamend/0">xmlstreamend()</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:xmlstreamstart/0">xmlstreamstart()</a>
+  </div>
+</div>
+  </div>
+  <div class="summary-functions summary">
+    <h2>
+      <a href="#functions">Functions</a>
+    </h2>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#decode_base64/1">decode_base64/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#encode_base64/1">encode_base64/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#extract_xmlns/1">extract_xmlns/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#form_field/1">form_field/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#i2b/1">i2b/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#ip_to_list/1">ip_to_list/1</a>
+  </div>
+    <div class="summary-synopsis">Convert Erlang inet IP to list</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#iq_info_internal/2">iq_info_internal/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#iq_query_info/1">iq_query_info/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#iq_query_or_response_info/1">iq_query_or_response_info/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#iq_to_xml/1">iq_to_xml/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#iq_type_to_binary/1">iq_type_to_binary/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#make_config_change_message/1">make_config_change_message/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#make_error_reply/2">make_error_reply/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#make_error_reply/3">make_error_reply/3</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#make_error_reply_attrs/1">make_error_reply_attrs/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#make_invitation/3">make_invitation/3</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#make_reply_from_type/1">make_reply_from_type/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#make_result_iq_reply/1">make_result_iq_reply/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#make_result_iq_reply_attrs/1">make_result_iq_reply_attrs/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#make_voice_approval_form/3">make_voice_approval_form/3</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#parse_xdata_fields/1">parse_xdata_fields/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#parse_xdata_submit/1">parse_xdata_submit/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#parse_xdata_values/1">parse_xdata_values/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#remove_attr/2">remove_attr/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#remove_delay_tags/1">remove_delay_tags/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#replace_from_to/3">replace_from_to/3</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#replace_from_to_attrs/3">replace_from_to_attrs/3</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#rsm_decode/1">rsm_decode/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#rsm_encode/1">rsm_encode/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#rsm_encode_count/2">rsm_encode_count/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#rsm_encode_first/3">rsm_encode_first/3</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#rsm_encode_last/2">rsm_encode_last/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#rsm_encode_out/1">rsm_encode_out/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#rsm_parse_element/2">rsm_parse_element/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#stanza_error/3">stanza_error/3</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#stanza_error/5">stanza_error/5</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#stanza_errort/5">stanza_errort/5</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#stream_error/1">stream_error/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#stream_errort/3">stream_errort/3</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#sub_el_to_els/1">sub_el_to_els/1</a>
+  </div>
+    <div class="summary-synopsis">Convert <code>#iq.sub_el</code> back to <code>#xmlel.children</code>.</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#timestamp_to_xml/3">timestamp_to_xml/3</a>
+  </div>
+</div>
+  </div>
+        </section>
+
+        <section id="types" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#types">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+Types          </h1>
+          <div class="types-list">
+<section class="detail" id="t:binary_pair/0">
+  <div class="detail-header">
+    <a href="#t:binary_pair/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">binary_pair()</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>t:jlib.binary_pair/0</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="t:iq/0">
+  <div class="detail-header">
+    <a href="#t:iq/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">iq()</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>t:jlib.iq/0</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="t:rsm_in/0">
+  <div class="detail-header">
+    <a href="#t:rsm_in/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">rsm_in()</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>t:jlib.rsm_in/0</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="t:rsm_out/0">
+  <div class="detail-header">
+    <a href="#t:rsm_out/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">rsm_out()</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>t:jlib.rsm_out/0</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="t:xmlcdata/0">
+  <div class="detail-header">
+    <a href="#t:xmlcdata/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">xmlcdata()</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>t:jlib.xmlcdata/0</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="t:xmlch/0">
+  <div class="detail-header">
+    <a href="#t:xmlch/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">xmlch()</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>t:jlib.xmlch/0</pre>
+      </div>
+
+(XML ch)ild  </section>
+</section>
+<section class="detail" id="t:xmlstreamel/0">
+  <div class="detail-header">
+    <a href="#t:xmlstreamel/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">xmlstreamel()</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>t:jlib.xmlstreamel/0</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="t:xmlstreamend/0">
+  <div class="detail-header">
+    <a href="#t:xmlstreamend/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">xmlstreamend()</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>t:jlib.xmlstreamend/0</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="t:xmlstreamstart/0">
+  <div class="detail-header">
+    <a href="#t:xmlstreamstart/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">xmlstreamstart()</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>t:jlib.xmlstreamstart/0</pre>
+      </div>
+
+  </section>
+</section>
+          </div>
+        </section>
+        <section id="functions" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#functions">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+Functions          </h1>
+          <div class="functions-list">
+<section class="detail" id="decode_base64/1">
+  <div class="detail-header">
+    <a href="#decode_base64/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">decode_base64/1</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>jlib.decode_base64/1</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="encode_base64/1">
+  <div class="detail-header">
+    <a href="#encode_base64/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">encode_base64/1</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>jlib.encode_base64/1</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="extract_xmlns/1">
+  <div class="detail-header">
+    <a href="#extract_xmlns/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">extract_xmlns/1</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>jlib.extract_xmlns/1</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="form_field/1">
+  <div class="detail-header">
+    <a href="#form_field/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">form_field/1</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>jlib.form_field/1</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="i2b/1">
+  <div class="detail-header">
+    <a href="#i2b/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">i2b/1</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>jlib.i2b/1</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="ip_to_list/1">
+  <div class="detail-header">
+    <a href="#ip_to_list/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">ip_to_list/1</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>jlib.ip_to_list/1</pre>
+      </div>
+
+Convert Erlang inet IP to list  </section>
+</section>
+<section class="detail" id="iq_info_internal/2">
+  <div class="detail-header">
+    <a href="#iq_info_internal/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">iq_info_internal/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>jlib.iq_info_internal/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="iq_query_info/1">
+  <div class="detail-header">
+    <a href="#iq_query_info/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">iq_query_info/1</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>jlib.iq_query_info/1</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="iq_query_or_response_info/1">
+  <div class="detail-header">
+    <a href="#iq_query_or_response_info/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">iq_query_or_response_info/1</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>jlib.iq_query_or_response_info/1</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="iq_to_xml/1">
+  <div class="detail-header">
+    <a href="#iq_to_xml/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">iq_to_xml/1</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>jlib.iq_to_xml/1</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="iq_type_to_binary/1">
+  <div class="detail-header">
+    <a href="#iq_type_to_binary/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">iq_type_to_binary/1</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>jlib.iq_type_to_binary/1</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="make_config_change_message/1">
+  <div class="detail-header">
+    <a href="#make_config_change_message/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">make_config_change_message/1</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>jlib.make_config_change_message/1</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="make_error_reply/2">
+  <div class="detail-header">
+    <a href="#make_error_reply/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">make_error_reply/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>jlib.make_error_reply/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="make_error_reply/3">
+  <div class="detail-header">
+    <a href="#make_error_reply/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">make_error_reply/3</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="make_error_reply_attrs/1">
+  <div class="detail-header">
+    <a href="#make_error_reply_attrs/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">make_error_reply_attrs/1</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>jlib.make_error_reply_attrs/1</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="make_invitation/3">
+  <div class="detail-header">
+    <a href="#make_invitation/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">make_invitation/3</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>jlib.make_invitation/3</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="make_reply_from_type/1">
+  <div class="detail-header">
+    <a href="#make_reply_from_type/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">make_reply_from_type/1</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>jlib.make_reply_from_type/1</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="make_result_iq_reply/1">
+  <div class="detail-header">
+    <a href="#make_result_iq_reply/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">make_result_iq_reply/1</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>jlib.make_result_iq_reply/1</pre>
+          <pre>jlib.make_result_iq_reply/1</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="make_result_iq_reply_attrs/1">
+  <div class="detail-header">
+    <a href="#make_result_iq_reply_attrs/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">make_result_iq_reply_attrs/1</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>jlib.make_result_iq_reply_attrs/1</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="make_voice_approval_form/3">
+  <div class="detail-header">
+    <a href="#make_voice_approval_form/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">make_voice_approval_form/3</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>jlib.make_voice_approval_form/3</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="parse_xdata_fields/1">
+  <div class="detail-header">
+    <a href="#parse_xdata_fields/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">parse_xdata_fields/1</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>jlib.parse_xdata_fields/1</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="parse_xdata_submit/1">
+  <div class="detail-header">
+    <a href="#parse_xdata_submit/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">parse_xdata_submit/1</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>jlib.parse_xdata_submit/1</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="parse_xdata_values/1">
+  <div class="detail-header">
+    <a href="#parse_xdata_values/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">parse_xdata_values/1</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>jlib.parse_xdata_values/1</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="remove_attr/2">
+  <div class="detail-header">
+    <a href="#remove_attr/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">remove_attr/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>jlib.remove_attr/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="remove_delay_tags/1">
+  <div class="detail-header">
+    <a href="#remove_delay_tags/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">remove_delay_tags/1</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="replace_from_to/3">
+  <div class="detail-header">
+    <a href="#replace_from_to/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">replace_from_to/3</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>jlib.replace_from_to/3</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="replace_from_to_attrs/3">
+  <div class="detail-header">
+    <a href="#replace_from_to_attrs/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">replace_from_to_attrs/3</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>jlib.replace_from_to_attrs/3</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="rsm_decode/1">
+  <div class="detail-header">
+    <a href="#rsm_decode/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">rsm_decode/1</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>jlib.rsm_decode/1</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="rsm_encode/1">
+  <div class="detail-header">
+    <a href="#rsm_encode/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">rsm_encode/1</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>jlib.rsm_encode/1</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="rsm_encode_count/2">
+  <div class="detail-header">
+    <a href="#rsm_encode_count/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">rsm_encode_count/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>jlib.rsm_encode_count/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="rsm_encode_first/3">
+  <div class="detail-header">
+    <a href="#rsm_encode_first/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">rsm_encode_first/3</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>jlib.rsm_encode_first/3</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="rsm_encode_last/2">
+  <div class="detail-header">
+    <a href="#rsm_encode_last/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">rsm_encode_last/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>jlib.rsm_encode_last/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="rsm_encode_out/1">
+  <div class="detail-header">
+    <a href="#rsm_encode_out/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">rsm_encode_out/1</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>jlib.rsm_encode_out/1</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="rsm_parse_element/2">
+  <div class="detail-header">
+    <a href="#rsm_parse_element/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">rsm_parse_element/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>jlib.rsm_parse_element/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="stanza_error/3">
+  <div class="detail-header">
+    <a href="#stanza_error/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">stanza_error/3</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>jlib.stanza_error/3</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="stanza_error/5">
+  <div class="detail-header">
+    <a href="#stanza_error/5" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">stanza_error/5</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>jlib.stanza_error/5</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="stanza_errort/5">
+  <div class="detail-header">
+    <a href="#stanza_errort/5" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">stanza_errort/5</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>jlib.stanza_errort/5</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="stream_error/1">
+  <div class="detail-header">
+    <a href="#stream_error/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">stream_error/1</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>jlib.stream_error/1</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="stream_errort/3">
+  <div class="detail-header">
+    <a href="#stream_errort/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">stream_errort/3</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>jlib.stream_errort/3</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="sub_el_to_els/1">
+  <div class="detail-header">
+    <a href="#sub_el_to_els/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">sub_el_to_els/1</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>jlib.sub_el_to_els/1</pre>
+      </div>
+
+Convert <code>#iq.sub_el</code> back to <code>#xmlel.children</code>.  </section>
+</section>
+<section class="detail" id="timestamp_to_xml/3">
+  <div class="detail-header">
+    <a href="#timestamp_to_xml/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">timestamp_to_xml/3</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>jlib.timestamp_to_xml/3</pre>
+      </div>
+
+  </section>
+</section>
+          </div>
+        </section>
+      <footer class="footer">
+        <p>
+          <span class="line">
+            Built using
+            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener">ExDoc</a> (v0.23.0) for the
+            <a href="https://elixir-lang.org" title="Elixir" target="_blank">Elixir programming language</a>.
+          </span>
+          <span class="line">
+            Designed by
+            <a href="https://twitter.com/dignifiedquire" target="_blank" rel="noopener" title="@dignifiedquire">Friedel Ziegelmayer</a>.
+          </span>
+        </p>
+        <p>
+            <a href="api-reference.html" title="API reference" class="line footer-button">API Reference</a>
+          <button class="line footer-button display-shortcuts-help">
+            Display keyboard shortcuts
+          </button>
+          <button class="line footer-button night-mode-toggle">
+            Toggle night mode
+          </button>
+          <button class="line footer-button display-quick-switch">
+            Go to a HexDocs package
+          </button>
+          <button class="line footer-button tooltips-toggle">
+            <span class="tooltips-option-disable">Disable tooltips</span>
+            <span class="tooltips-option-enable">Enable tooltips</span>
+          </button>
+        </p>
+      </footer>
+    </div>
+  </div>
+</section>
+</div>
+  </body>
+</html>

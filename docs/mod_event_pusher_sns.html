@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.23.0">
+    <meta name="project" content="MongooseIM v4.0.1">
+    <title>mod_event_pusher_sns — MongooseIM v4.0.1</title>
+    <link rel="stylesheet" href="dist/erlang-8a5f731dbc512bf6261b.css" />
+    <script src="dist/sidebar_items-38e40981d8.js"></script>
+      <script src="docs_config.js"></script>
+    <script async src="dist/app-60a0c9f10e9e52eae31f.js"></script>
+  </head>
+  <body data-type="modules">
+    <script>try { if(localStorage.getItem('night-mode') === 'true') document.body.className += ' night-mode'; } catch (e) { }</script>
+<div class="main">
+
+<button class="sidebar-button sidebar-toggle">
+  <span class="icon-menu" title="Collapse/expand sidebar"></span>
+</button>
+
+<section class="sidebar">
+  <form class="sidebar-search" action="search.html">
+    <button type="submit" class="search-button" aria-label="Submit Search">
+      <span class="icon-search" aria-hidden="true" title="Submit search"></span>
+    </button>
+    <button type="button" tabindex="-1" class="search-close-button" aria-label="Cancel Search">
+      <span class="icon-cross" aria-hidden="true" title="Cancel search"></span>
+    </button>
+    <label class="search-label">
+      <input name="q" type="text" id="search-list" class="search-input" placeholder="Search..." aria-label="Input your search terms" autocomplete="off" />
+    </label>
+  </form>
+
+  <div class="autocomplete">
+    <div class="autocomplete-results">
+    </div>
+  </div>
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectDetails">
+      <a href="mongooseim.html" class="sidebar-projectName">
+MongooseIM      </a>
+      <strong class="sidebar-projectVersion">
+        v4.0.1
+      </strong>
+    </div>
+  </div>
+
+  <ul class="sidebar-listNav">
+    <li><a id="extras-list" href="#full-list">Pages</a></li>
+
+      <li><a id="modules-list" href="#full-list">Modules</a></li>
+
+  </ul>
+  <div class="gradient"></div>
+  <ul id="full-list" class="sidebar-fullList"></ul>
+</section>
+
+<section class="content">
+  <div class="content-outer">
+    <div id="content" class="content-inner">
+
+      <h1>
+        mod_event_pusher_sns <small>behaviour</small> <small class="app-vsn">(MongooseIM v4.0.1)</small>
+      </h1>
+
+
+
+        <section id="summary" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#summary">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+            Summary
+          </h1>
+  <div class="summary-types summary">
+    <h2>
+      <a href="#types">Types</a>
+    </h2>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:attributes/0">attributes()</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:aws_assume_role/0">aws_assume_role()</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:aws_config/0">aws_config()</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:hackney_client_options/0">hackney_client_options()</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:topic/0">topic()</a>
+  </div>
+    <div class="summary-synopsis">{TOPIC} part of topic_arn() type</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:topic_arn/0">topic_arn()</a>
+  </div>
+    <div class="summary-synopsis">Full topic ARN in format arn:aws:sns:{REGION}:{ACCOUNT_ID}:{TOPIC}</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:user_guid/0">user_guid()</a>
+  </div>
+</div>
+  </div>
+  <div class="summary-functions summary">
+    <h2>
+      <a href="#functions">Functions</a>
+    </h2>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#async_publish/4">async_publish/4</a>
+  </div>
+    <div class="summary-synopsis">Start publish process notification to AWS SNS service. Content should be valid JSON term</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#aws_handle/1">aws_handle/1</a>
+  </div>
+    <div class="summary-synopsis">Returns AWS SNS handle base on configured AWS credentials</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#calc_backoff_time/2">calc_backoff_time/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#get_topic/2">get_topic/2</a>
+  </div>
+    <div class="summary-synopsis">Returns notification topic based on packet type and module configuration</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#handle_packet/3">handle_packet/3</a>
+  </div>
+    <div class="summary-synopsis">Handles packet and if needed publishes SNS notification</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#make_topic_arn/2">make_topic_arn/2</a>
+  </div>
+    <div class="summary-synopsis">Constructs SNS TopicArn from given topic suffix</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#message_attributes/4">message_attributes/4</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#message_attributes/6">message_attributes/6</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#message_type/1">message_type/1</a>
+  </div>
+    <div class="summary-synopsis">Returns message type</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#opt/2">opt/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#opt/3">opt/3</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#publish/4">publish/4</a>
+  </div>
+    <div class="summary-synopsis">Publish notification to AWS SNS service. Content should be a valid JSON term</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#push_event/3">push_event/3</a>
+  </div>
+    <div class="summary-synopsis"><p>Callback implementation for <code class="inline">c::mod_event_pusher.push_event/3</code>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#start/2">start/2</a>
+  </div>
+    <div class="summary-synopsis"><p>Callback implementation for <code class="inline">c::gen_mod.start/2</code>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#stop/1">stop/1</a>
+  </div>
+    <div class="summary-synopsis"><p>Callback implementation for <code class="inline">c::gen_mod.stop/1</code>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#try_publish/5">try_publish/5</a>
+  </div>
+    <div class="summary-synopsis">Publish notification to AWS SNS service. Content should be a valid JSON term</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#user_guid/2">user_guid/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#user_presence_changed/2">user_presence_changed/2</a>
+  </div>
+</div>
+  </div>
+  <div class="summary-callbacks summary">
+    <h2>
+      <a href="#callbacks">Callbacks</a>
+    </h2>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#c:message_attributes/3">message_attributes(topicARN, userJID, isOnline)</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#c:message_attributes/5">message_attributes(topicARN, from, to, messageType, packet)</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#c:user_guid/1">user_guid(userJID)</a>
+  </div>
+</div>
+  </div>
+        </section>
+
+        <section id="types" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#types">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+Types          </h1>
+          <div class="types-list">
+<section class="detail" id="t:attributes/0">
+  <div class="detail-header">
+    <a href="#t:attributes/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">attributes()</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>t:mod_event_pusher_sns.attributes/0</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="t:aws_assume_role/0">
+  <div class="detail-header">
+    <a href="#t:aws_assume_role/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">aws_assume_role()</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>t:mod_event_pusher_sns.aws_assume_role/0</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="t:aws_config/0">
+  <div class="detail-header">
+    <a href="#t:aws_config/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">aws_config()</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>t:mod_event_pusher_sns.aws_config/0</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="t:hackney_client_options/0">
+  <div class="detail-header">
+    <a href="#t:hackney_client_options/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">hackney_client_options()</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>t:mod_event_pusher_sns.hackney_client_options/0</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="t:topic/0">
+  <div class="detail-header">
+    <a href="#t:topic/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">topic()</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>t:mod_event_pusher_sns.topic/0</pre>
+      </div>
+
+{TOPIC} part of topic_arn() type  </section>
+</section>
+<section class="detail" id="t:topic_arn/0">
+  <div class="detail-header">
+    <a href="#t:topic_arn/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">topic_arn()</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>t:mod_event_pusher_sns.topic_arn/0</pre>
+      </div>
+
+Full topic ARN in format arn:aws:sns:{REGION}:{ACCOUNT_ID}:{TOPIC}  </section>
+</section>
+<section class="detail" id="t:user_guid/0">
+  <div class="detail-header">
+    <a href="#t:user_guid/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">user_guid()</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>t:mod_event_pusher_sns.user_guid/0</pre>
+      </div>
+
+  </section>
+</section>
+          </div>
+        </section>
+        <section id="functions" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#functions">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+Functions          </h1>
+          <div class="functions-list">
+<section class="detail" id="async_publish/4">
+  <div class="detail-header">
+    <a href="#async_publish/4" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">async_publish/4</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_event_pusher_sns.async_publish/4</pre>
+      </div>
+
+Start publish process notification to AWS SNS service. Content should be valid JSON term  </section>
+</section>
+<section class="detail" id="aws_handle/1">
+  <div class="detail-header">
+    <a href="#aws_handle/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">aws_handle/1</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_event_pusher_sns.aws_handle/1</pre>
+      </div>
+
+Returns AWS SNS handle base on configured AWS credentials  </section>
+</section>
+<section class="detail" id="calc_backoff_time/2">
+  <div class="detail-header">
+    <a href="#calc_backoff_time/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">calc_backoff_time/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_event_pusher_sns.calc_backoff_time/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="get_topic/2">
+  <div class="detail-header">
+    <a href="#get_topic/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">get_topic/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_event_pusher_sns.get_topic/2</pre>
+      </div>
+
+Returns notification topic based on packet type and module configuration  </section>
+</section>
+<section class="detail" id="handle_packet/3">
+  <div class="detail-header">
+    <a href="#handle_packet/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">handle_packet/3</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_event_pusher_sns.handle_packet/3</pre>
+      </div>
+
+Handles packet and if needed publishes SNS notification  </section>
+</section>
+<section class="detail" id="make_topic_arn/2">
+  <div class="detail-header">
+    <a href="#make_topic_arn/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">make_topic_arn/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_event_pusher_sns.make_topic_arn/2</pre>
+      </div>
+
+Constructs SNS TopicArn from given topic suffix  </section>
+</section>
+<section class="detail" id="message_attributes/4">
+  <div class="detail-header">
+    <a href="#message_attributes/4" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">message_attributes/4</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_event_pusher_sns.message_attributes/4</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="message_attributes/6">
+  <div class="detail-header">
+    <a href="#message_attributes/6" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">message_attributes/6</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_event_pusher_sns.message_attributes/6</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="message_type/1">
+  <div class="detail-header">
+    <a href="#message_type/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">message_type/1</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_event_pusher_sns.message_type/1</pre>
+      </div>
+
+Returns message type  </section>
+</section>
+<section class="detail" id="opt/2">
+  <div class="detail-header">
+    <a href="#opt/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">opt/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_event_pusher_sns.opt/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="opt/3">
+  <div class="detail-header">
+    <a href="#opt/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">opt/3</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_event_pusher_sns.opt/3</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="publish/4">
+  <div class="detail-header">
+    <a href="#publish/4" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">publish/4</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_event_pusher_sns.publish/4</pre>
+      </div>
+
+Publish notification to AWS SNS service. Content should be a valid JSON term  </section>
+</section>
+<section class="detail" id="push_event/3">
+  <div class="detail-header">
+    <a href="#push_event/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">push_event/3</h1>
+  </div>
+
+  <section class="docstring">
+
+<p>Callback implementation for <code class="inline">c::mod_event_pusher.push_event/3</code>.</p>  </section>
+</section>
+<section class="detail" id="start/2">
+  <div class="detail-header">
+    <a href="#start/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">start/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_event_pusher_sns.start/2</pre>
+      </div>
+
+<p>Callback implementation for <code class="inline">c::gen_mod.start/2</code>.</p>  </section>
+</section>
+<section class="detail" id="stop/1">
+  <div class="detail-header">
+    <a href="#stop/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">stop/1</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_event_pusher_sns.stop/1</pre>
+      </div>
+
+<p>Callback implementation for <code class="inline">c::gen_mod.stop/1</code>.</p>  </section>
+</section>
+<section class="detail" id="try_publish/5">
+  <div class="detail-header">
+    <a href="#try_publish/5" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">try_publish/5</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_event_pusher_sns.try_publish/5</pre>
+      </div>
+
+Publish notification to AWS SNS service. Content should be a valid JSON term  </section>
+</section>
+<section class="detail" id="user_guid/2">
+  <div class="detail-header">
+    <a href="#user_guid/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">user_guid/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_event_pusher_sns.user_guid/2</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="user_presence_changed/2">
+  <div class="detail-header">
+    <a href="#user_presence_changed/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">user_presence_changed/2</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>mod_event_pusher_sns.user_presence_changed/2</pre>
+      </div>
+
+  </section>
+</section>
+          </div>
+        </section>
+        <section id="callbacks" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#callbacks">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+Callbacks          </h1>
+          <div class="callbacks-list">
+<section class="detail" id="c:message_attributes/3">
+  <div class="detail-header">
+    <a href="#c:message_attributes/3" class="detail-link" title="Link to this callback">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this callback</span>
+    </a>
+    <h1 class="signature">message_attributes(topicARN, userJID, isOnline)</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>c:mod_event_pusher_sns.message_attributes/3</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="c:message_attributes/5">
+  <div class="detail-header">
+    <a href="#c:message_attributes/5" class="detail-link" title="Link to this callback">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this callback</span>
+    </a>
+    <h1 class="signature">message_attributes(topicARN, from, to, messageType, packet)</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>c:mod_event_pusher_sns.message_attributes/5</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="c:user_guid/1">
+  <div class="detail-header">
+    <a href="#c:user_guid/1" class="detail-link" title="Link to this callback">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this callback</span>
+    </a>
+    <h1 class="signature">user_guid(userJID)</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>c:mod_event_pusher_sns.user_guid/1</pre>
+      </div>
+
+  </section>
+</section>
+          </div>
+        </section>
+      <footer class="footer">
+        <p>
+          <span class="line">
+            Built using
+            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener">ExDoc</a> (v0.23.0) for the
+            <a href="https://elixir-lang.org" title="Elixir" target="_blank">Elixir programming language</a>.
+          </span>
+          <span class="line">
+            Designed by
+            <a href="https://twitter.com/dignifiedquire" target="_blank" rel="noopener" title="@dignifiedquire">Friedel Ziegelmayer</a>.
+          </span>
+        </p>
+        <p>
+            <a href="api-reference.html" title="API reference" class="line footer-button">API Reference</a>
+          <button class="line footer-button display-shortcuts-help">
+            Display keyboard shortcuts
+          </button>
+          <button class="line footer-button night-mode-toggle">
+            Toggle night mode
+          </button>
+          <button class="line footer-button display-quick-switch">
+            Go to a HexDocs package
+          </button>
+          <button class="line footer-button tooltips-toggle">
+            <span class="tooltips-option-disable">Disable tooltips</span>
+            <span class="tooltips-option-enable">Enable tooltips</span>
+          </button>
+        </p>
+      </footer>
+    </div>
+  </div>
+</section>
+</div>
+  </body>
+</html>
